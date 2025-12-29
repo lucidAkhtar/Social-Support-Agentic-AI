@@ -76,6 +76,7 @@ python-jose = {extras = ["cryptography"], version = "^3.3.0"}
 
 # Logging
 loguru = "^0.7.2"
+plotly = "^6.5.0"
 
 [tool.poetry.group.multimodal.dependencies]
 opencv-python = "^4.9.0"

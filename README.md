@@ -10,3 +10,7 @@ First, run the ollama server by below step:
 To kill , use pkill ollama
 
 - The stack is intentionally optimized for local execution on constrained Apple Silicon(M1) hardware while still demonstrating full agentic orchestration, multimodal processing, explainability, and observability as required by the problem statement.
+
+Tool substitutions rationale
+----------------------------
+Due to local execution constraints (Apple Silicon M1, 8 GB RAM) and the prototyping nature of the assignment, lightweight local alternatives were used (SQLite, TinyDB, NetworkX, ChromaDB). These preserve the same data modeling and interaction semantics as PostgreSQL, MongoDB, Neo4j, and Qdrant, while enabling reliable local demos. The architecture is database-agnostic and can be swapped with enterprise-grade systems without changes to business logic.

@@ -36,3 +36,7 @@ htmlcov/
 
 # Streamlit
 .streamlit/secrets.toml
+
+*.json
+*.md 
+
