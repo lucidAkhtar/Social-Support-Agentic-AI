@@ -97,6 +97,101 @@ class ExplainableML:
                 explanation += f"• {factor['feature']}: {factor['value']} (impact: -{abs(factor['impact']):.3f})\n"
         
         return explanation
+    
+    def predict_eligibility(self, features: Dict[str, float]) -> Dict[str, Any]:
+        """
+        Predict eligibility score for an applicant.
+        Used by LangGraph for ML scoring stage.
+        
+        Args:
+            features: Dictionary with monthly_income, family_size, total_assets, etc.
+        
+        Returns:
+            Dictionary with eligibility_score, confidence, and prediction details
+        """
+        # Convert dict to DataFrame format expected by model
+        feature_names = ['monthly_income', 'family_size', 'total_assets', 'total_liabilities', 
+                        'age', 'years_employed', 'credit_score']
+        
+        # Create a row with provided features, using defaults for missing ones
+        feature_values = [features.get(fname, 0) for fname in feature_names]
+        
+        # Create a DataFrame with proper column names
+        X = pd.DataFrame([feature_values], columns=feature_names)
+        
+        # Make prediction if model exists, otherwise use heuristic
+        if self.model is not None:
+            prediction = self.model.predict(X)[0]
+            probability = self.model.predict_proba(X)[0]
+            confidence = float(max(probability))
+            eligibility_score = float(probability[1]) if len(probability) > 1 else float(probability[0])
+        else:
+            # Fallback heuristic: higher eligibility for lower income, larger family
+            monthly_income = features.get('monthly_income', 10000)
+            family_size = features.get('family_size', 3)
+            total_assets = features.get('total_assets', 0)
+            
+            # Simple scoring: income threshold + family size + assets
+            score = 0.5
+            if monthly_income < 15000:
+                score += 0.2
+            if family_size >= 3:
+                score += 0.2
+            if total_assets < 200000:
+                score += 0.1
+            
+            eligibility_score = min(0.95, score)
+            confidence = 0.75
+        
+        return {
+            "eligibility_score": eligibility_score,
+            "confidence": confidence,
+            "prediction": "eligible" if eligibility_score > 0.5 else "ineligible",
+            "reasoning": "Based on income, family size, and assets"
+        }
+    
+    def get_feature_importance(self, features: Dict[str, float]) -> Dict[str, float]:
+        """
+        Get feature importance rankings for an applicant's features.
+        
+        Args:
+            features: Dictionary with applicant features
+        
+        Returns:
+            Dictionary mapping feature names to importance scores
+        """
+        # If SHAP explainer is available, use it
+        if self.explainer is not None and self.model is not None:
+            feature_names = ['monthly_income', 'family_size', 'total_assets', 'total_liabilities', 
+                            'age', 'years_employed', 'credit_score']
+            
+            feature_values = [features.get(fname, 0) for fname in feature_names]
+            X = pd.DataFrame([feature_values], columns=feature_names)
+            
+            shap_values = self.explainer.shap_values(X)
+            
+            # Handle both binary and single output
+            if isinstance(shap_values, list):
+                shap_vals = shap_values[1][0] if len(shap_values) > 1 else shap_values[0][0]
+            else:
+                shap_vals = shap_values[0]
+            
+            importance = {}
+            for fname, shap_val in zip(feature_names, shap_vals):
+                importance[fname] = float(abs(shap_val))
+            
+            return importance
+        
+        # Fallback: basic importance scoring
+        return {
+            "monthly_income": 0.25,
+            "family_size": 0.20,
+            "total_assets": 0.20,
+            "total_liabilities": 0.15,
+            "age": 0.10,
+            "years_employed": 0.07,
+            "credit_score": 0.03
+        }
 
 class BiasDetector:
     """

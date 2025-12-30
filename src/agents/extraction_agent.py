@@ -1067,6 +1067,70 @@ class ExtractionAgent:
         if not extraction.personal_info.marital_status and app_metadata.get('marital_status'):
             extraction.personal_info.marital_status = app_metadata['marital_status']
     
+    def extract_from_application(self, app_data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Extract structured data from application dictionary.
+        This is the main method used by LangGraph orchestrator.
+        
+        Args:
+            app_data: Dictionary containing applicant_info, income, family_members, assets, liabilities
+        
+        Returns:
+            Dictionary with extracted fields and confidence scores
+        """
+        extracted = {
+            "fields": {},
+            "confidence": 0.85,
+            "extraction_method": "dict_parsing"
+        }
+        
+        # Extract personal info
+        if "applicant_info" in app_data:
+            applicant = app_data["applicant_info"]
+            extracted["fields"].update({
+                "full_name": applicant.get("full_name"),
+                "email": applicant.get("email"),
+                "phone": applicant.get("phone"),
+                "nationality": applicant.get("nationality"),
+                "age": applicant.get("age")
+            })
+        
+        # Extract income info
+        if "income" in app_data:
+            income = app_data["income"]
+            extracted["fields"].update({
+                "total_monthly_income": income.get("total_monthly"),
+                "employment_type": income.get("employment_type"),
+                "employer": income.get("employer")
+            })
+        
+        # Extract family info
+        if "family_members" in app_data:
+            extracted["fields"]["family_members"] = app_data["family_members"]
+            extracted["fields"]["family_size"] = len(app_data["family_members"])
+        
+        # Extract assets
+        if "assets" in app_data:
+            assets = app_data["assets"]
+            extracted["fields"].update({
+                "real_estate": assets.get("real_estate"),
+                "vehicles": assets.get("vehicles"),
+                "savings": assets.get("savings"),
+                "investments": assets.get("investments")
+            })
+        
+        # Extract liabilities
+        if "liabilities" in app_data:
+            liabilities = app_data["liabilities"]
+            extracted["fields"].update({
+                "mortgage": liabilities.get("mortgage"),
+                "car_loan": liabilities.get("car_loan"),
+                "credit_debt": liabilities.get("credit_debt"),
+                "other_debt": liabilities.get("other_debt")
+            })
+        
+        return extracted
+    
     def extract_application(self, app_id: str, app_folder: str) -> ApplicationExtraction:
         """
         Extract all data from an application folder.

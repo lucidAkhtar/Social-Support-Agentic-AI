@@ -8,14 +8,6 @@ __pycache__/
 # Environment
 .env.local
 
-# Data
-data/raw/*
-data/processed/*
-!data/.gitkeep
-
-# Models
-
-
 # IDE
 .vscode/
 .idea/

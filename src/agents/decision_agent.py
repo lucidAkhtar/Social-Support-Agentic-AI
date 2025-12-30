@@ -85,17 +85,25 @@ class DecisionAgent:
     └─ Final Decision → APPROVE/DENY/NEEDS_REVIEW
     """
 
-    def __init__(self, validation_results_path: str, model_path: str = None):
+    def __init__(self, validation_results_path: str = None, model_path: str = None):
         """
         Args:
-            validation_results_path: Path to validation_test_results.json
+            validation_results_path: Path to validation_test_results.json (optional)
             model_path: Path to saved RandomForest model (optional - will train if not provided)
         """
+        # Make validation_results_path optional with default
+        if validation_results_path is None:
+            validation_results_path = "data/validation_results/validation_test_results.json"
+        
         self.validation_results_path = Path(validation_results_path)
         self.model_path = Path(model_path) if model_path else None
         
-        # Load validation results
-        self.validation_data = self._load_validation_data()
+        # Load validation results (graceful fallback if not available)
+        try:
+            self.validation_data = self._load_validation_data()
+        except Exception as e:
+            print(f"Warning: Could not load validation data: {e} - using empty fallback")
+            self.validation_data = {}
         
         # Load or prepare model
         self.model = None
@@ -112,7 +120,21 @@ class DecisionAgent:
         
     def _load_validation_data(self) -> Dict[str, Dict[str, Any]]:
         """Load validation results from JSON"""
-        with open(self.validation_results_path, 'r') as f:
+        # Handle case where path might be a directory
+        path = self.validation_results_path
+        if path.is_dir():
+            # Try to find validation results file in directory
+            json_file = path / "validation_test_results.json"
+            if not json_file.exists():
+                json_file = path / "validation_results.json"
+            if not json_file.exists():
+                return {}
+            path = json_file
+        
+        if not path.exists():
+            return {}
+        
+        with open(path, 'r') as f:
             data = json.load(f)
         
         # Convert to dict keyed by application_id

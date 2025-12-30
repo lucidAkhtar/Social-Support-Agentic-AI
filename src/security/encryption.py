@@ -4,8 +4,6 @@ WHAT THIS GIVES YOU: Military-grade protection of PII data
 """
 
 from cryptography.fernet import Fernet
-from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2
 import base64
 import os
 import json
@@ -15,20 +13,17 @@ import hashlib
 class DataEncryption:
     """
     AES-256 encryption for all sensitive data
+    Uses Fernet (symmetric encryption)
     """
     
     def __init__(self, master_key: str = None):
         if master_key is None:
             master_key = os.getenv('ENCRYPTION_KEY', 'default-key-change-in-production')
         
-        # Derive encryption key from master key
-        kdf = PBKDF2(
-            algorithm=hashes.SHA256(),
-            length=32,
-            salt=b'social-support-ai-salt',  # In production: unique per deployment
-            iterations=100000,
-        )
-        key = base64.urlsafe_b64encode(kdf.derive(master_key.encode()))
+        # Create a stable key from master key
+        # Hash the master key and use it to create Fernet key
+        hashed = hashlib.sha256(master_key.encode()).digest()
+        key = base64.urlsafe_b64encode(hashed)
         self.cipher = Fernet(key)
     
     def encrypt(self, data: str) -> str:

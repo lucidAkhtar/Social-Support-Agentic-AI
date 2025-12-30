@@ -41,9 +41,9 @@ langfuse = "^2.20.0"
 scikit-learn = "^1.4.0"
 xgboost = "^2.0.3"
 pandas = "^2.2.0"
-numpy = "^1.26.3"
+numpy = ">=1.26.3,<2.0.0"
 scipy = "^1.12.0"
-shap = "^0.44.0"  # For explainability
+shap = ">=0.44.0,<0.50.0"  # For explainability (compatible with NumPy 1.26)
 imbalanced-learn = "^0.12.0"
 
 # Document Processing (Multi-modal)
