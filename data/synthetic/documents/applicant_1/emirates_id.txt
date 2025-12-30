@@ -1,0 +1,10 @@
+
+EMIRATES ID CARD
+════════════════════════════════════════════
+Name: Applicant_1
+ID Number: 784-1997-5323737-1
+Nationality: Jordan
+Date of Birth: 1982-01-14
+Gender: Male
+Address: Abu Dhabi, UAE
+════════════════════════════════════════════

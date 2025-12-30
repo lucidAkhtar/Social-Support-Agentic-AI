@@ -76,7 +76,7 @@ The system implements a layered architecture with clear separation of concerns:
 │  │        Master Orchestrator (LangGraph)             │     │
 │  │                                                    │     │
 │  │  ┌──────────┐  ┌──────────┐  ┌──────────┐          │     │
-│  │  │ Extract  │→│ Validate │→│Eligibility│           │     │
+│  │  │ Extract  │→ │ Validate │→ │Eligibility│         │     │
 │  │  │ Agent    │  │ Agent    │  │ Agent     │         │     │
 │  │  └──────────┘  └──────────┘  └──────────┘          │     │
 │  │       │             │              │               │     │
@@ -99,15 +99,15 @@ The system implements a layered architecture with clear separation of concerns:
 ┌──────────────────────────▼──────────────────────────────────┐
 │                      ML/AI LAYER                            │
 │  ┌─────────────┐ ┌─────────────┐ ┌─────────────┐            │
-│  │   Ollama    │ │  XGBoost    │ │Random Forest│            │
-│  │ Llama 3.1 8B│ │Risk Scorer  │ │Classifier   │            │
+│  │   Ollama    │ │ Scikit-learn│ │Random Forest│            │
+│  │ Mistral 7B  │               │ │Classifier   │            │
 │  └─────────────┘ └─────────────┘ └─────────────┘            │
 └─────────────────────────────────────────────────────────────┘
                            │
 ┌──────────────────────────▼──────────────────────────────────┐
 │                    DATA STORAGE LAYER                       │
 │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐        │
-│  │PostgreSQL│ │ MongoDB  │ │  Qdrant  │ │  Neo4j   │        │
+│  │SQLite    │ │ TinyDB   │ │ ChromaDB │ │  Neo4j   │        │
 │  │Relational│ │Documents │ │ Vectors  │ │  Graph   │        │
 │  └──────────┘ └──────────┘ └──────────┘ └──────────┘        │
 └─────────────────────────────────────────────────────────────┘

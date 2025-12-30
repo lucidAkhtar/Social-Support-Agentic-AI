@@ -1,0 +1,13 @@
+
+CREDIT BUREAU REPORT
+════════════════════════════════════════════
+Applicant: Applicant_5
+Report Date: 2025-12-31
+
+CREDIT SCORE: 649
+Rating: Fair
+
+Payment History: Good
+Outstanding Debt: 11265.76 AED
+Credit Utilization: 125.0%
+════════════════════════════════════════════

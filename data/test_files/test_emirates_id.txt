@@ -1,0 +1,6 @@
+
+        Emirates ID Document
+        Name: Test User
+        ID Number: 784-1990-1234567-8
+        Date of Birth: 01/01/1990
+        

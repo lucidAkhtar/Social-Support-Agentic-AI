@@ -1,0 +1,10 @@
+
+EMIRATES ID CARD
+════════════════════════════════════════════
+Name: Applicant_3
+ID Number: 784-1985-5774942-1
+Nationality: UAE
+Date of Birth: 1982-06-22
+Gender: Male
+Address: Dubai, UAE
+════════════════════════════════════════════

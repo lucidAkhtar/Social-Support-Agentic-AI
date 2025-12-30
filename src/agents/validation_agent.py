@@ -1,705 +1,578 @@
 """
-Validation Agent - Cross-document consistency checking and data quality validation.
-
-This agent validates extracted data from multiple documents by:
-1. Checking consistency across documents (name, ID, dates)
-2. Detecting income mismatches and financial anomalies
-3. Verifying employment details against bank records
-4. Scoring overall data quality
-5. Flagging conflicts and inconsistencies for review
-
-Uses ApplicationExtraction from Phase 2 as input.
-Produces ValidationResult with detailed findings.
+Production-Grade Data Validation Agent
+Comprehensive validation with precise rules and intelligent cross-checks
 """
-
 import logging
-from datetime import datetime, date
-from typing import Optional, List, Dict, Tuple
-from dataclasses import dataclass, field
-from enum import Enum
+import re
+from typing import Dict, Any, List, Tuple
+from datetime import datetime
+from difflib import SequenceMatcher
 
-from src.models.extraction_models import (
-    ApplicationExtraction, PersonalInfo, EmploymentInfo, 
-    BankStatementExtraction, AssetLiabilityExtraction,
-    CreditReportExtraction, ExtractionMetadata
-)
-
-logger = logging.getLogger(__name__)
+from ..core.base_agent import BaseAgent
+from ..core.types import ExtractedData, ValidationReport, ValidationIssue
 
 
-class ConflictSeverity(str, Enum):
-    """Severity level of validation conflicts."""
-    CRITICAL = "critical"      # Must resolve before approval
-    HIGH = "high"              # Should review before approval
-    MEDIUM = "medium"          # Review if threshold exceeded
-    LOW = "low"                # Minor inconsistency, may auto-resolve
-    INFO = "info"              # Informational, no action needed
-
-
-class ValidationStatus(str, Enum):
-    """Overall validation status."""
-    PASSED = "passed"          # All checks successful
-    PASSED_WITH_WARNINGS = "passed_with_warnings"  # Passed but has issues
-    NEEDS_REVIEW = "needs_review"                  # Conflicts found
-    FAILED = "failed"          # Critical failures
-
-
-@dataclass
-class ValidationFinding:
-    """Single validation finding."""
-    category: str              # "personal_info", "employment", "income", etc.
-    finding_type: str          # "mismatch", "missing", "inconsistent", etc.
-    severity: ConflictSeverity
-    message: str
-    fields_involved: List[str]
-    affected_documents: List[str]
-    auto_resolvable: bool = False
-    suggested_resolution: Optional[str] = None
-
-
-@dataclass
-class ValidationResult:
-    """Complete validation result for an application."""
-    application_id: str
-    validation_status: ValidationStatus
+class DataValidationAgent(BaseAgent):
+    """
+    High-quality data validation with:
+    - Precise field validation
+    - Intelligent name matching (fuzzy logic)
+    - Financial data verification
+    - Cross-document consistency checks
+    - Completeness scoring
+    """
     
-    # Validation metrics
-    consistency_score: float        # 0.0-1.0, how consistent are documents
-    completeness_score: float       # 0.0-1.0, how complete is the data
-    quality_score: float            # 0.0-1.0, overall quality
+    def __init__(self, config: Dict[str, Any] = None):
+        super().__init__("DataValidationAgent", config)
+        self.logger = logging.getLogger("DataValidationAgent")
     
-    # Findings
-    findings: List[ValidationFinding] = field(default_factory=list)
-    
-    # Summary
-    documents_validated: List[str] = field(default_factory=list)
-    validation_timestamp: datetime = field(default_factory=datetime.now)
-    validation_duration_ms: float = 0.0
-    
-    # Scores breakdown
-    personal_info_score: float = 0.0
-    employment_score: float = 0.0
-    income_score: float = 0.0
-    assets_score: float = 0.0
-    credit_score: float = 0.0
-    
-    def add_finding(self, finding: ValidationFinding):
-        """Add a validation finding."""
-        self.findings.append(finding)
-    
-    def critical_issues(self) -> List[ValidationFinding]:
-        """Get all critical severity findings."""
-        return [f for f in self.findings if f.severity == ConflictSeverity.CRITICAL]
-    
-    def high_issues(self) -> List[ValidationFinding]:
-        """Get all high severity findings."""
-        return [f for f in self.findings if f.severity == ConflictSeverity.HIGH]
-    
-    def all_issues(self) -> List[ValidationFinding]:
-        """Get all non-info findings."""
-        return [f for f in self.findings 
-                if f.severity not in [ConflictSeverity.INFO]]
-
-
-class PersonalInfoValidator:
-    """Validate personal information consistency across documents."""
-    
-    @staticmethod
-    def validate(extraction: ApplicationExtraction) -> List[ValidationFinding]:
-        """Validate personal information consistency."""
-        findings = []
-        
-        if not extraction.personal_info:
-            return findings
-        
-        personal_info = extraction.personal_info
-        
-        # Check for complete personal info
-        required_fields = ['full_name', 'emirates_id', 'date_of_birth', 'nationality']
-        missing_fields = [f for f in required_fields 
-                         if not getattr(personal_info, f, None)]
-        
-        if missing_fields:
-            findings.append(ValidationFinding(
-                category="personal_info",
-                finding_type="missing_fields",
-                severity=ConflictSeverity.HIGH,
-                message=f"Missing personal information: {', '.join(missing_fields)}",
-                fields_involved=missing_fields,
-                affected_documents=["emirates_id"]
-            ))
-        
-        # Validate Emirates ID format
-        if personal_info.emirates_id:
-            if not PersonalInfoValidator._is_valid_emirates_id(personal_info.emirates_id):
-                findings.append(ValidationFinding(
-                    category="personal_info",
-                    finding_type="invalid_format",
-                    severity=ConflictSeverity.MEDIUM,
-                    message=f"Emirates ID format appears invalid: {personal_info.emirates_id}",
-                    fields_involved=["emirates_id"],
-                    affected_documents=["emirates_id"]
-                ))
-        
-        # Validate age (should be > 18)
-        if personal_info.date_of_birth:
-            age = (date.today() - personal_info.date_of_birth).days // 365
-            if age < 18:
-                findings.append(ValidationFinding(
-                    category="personal_info",
-                    finding_type="age_validation",
-                    severity=ConflictSeverity.CRITICAL,
-                    message=f"Applicant age is {age}, must be 18+",
-                    fields_involved=["date_of_birth"],
-                    affected_documents=["emirates_id"]
-                ))
-            elif age > 100:
-                findings.append(ValidationFinding(
-                    category="personal_info",
-                    finding_type="age_validation",
-                    severity=ConflictSeverity.MEDIUM,
-                    message=f"Applicant age is {age}, appears implausible",
-                    fields_involved=["date_of_birth"],
-                    affected_documents=["emirates_id"],
-                    auto_resolvable=True
-                ))
-        
-        return findings
-    
-    @staticmethod
-    def _is_valid_emirates_id(emirates_id: str) -> bool:
-        """Check if Emirates ID format is valid."""
-        # Format: XXX-YYYY-ZZZZZZZZ-C (12 digits + 3 hyphens)
-        import re
-        pattern = r'^\d{3}-\d{4}-\d{7}-\d$'
-        return bool(re.match(pattern, emirates_id))
-
-
-class EmploymentValidator:
-    """Validate employment information consistency."""
-    
-    @staticmethod
-    def validate(extraction: ApplicationExtraction) -> List[ValidationFinding]:
-        """Validate employment information."""
-        findings = []
-        
-        if not extraction.employment_info:
-            findings.append(ValidationFinding(
-                category="employment",
-                finding_type="missing_data",
-                severity=ConflictSeverity.HIGH,
-                message="No employment information extracted",
-                fields_involved=["employment_info"],
-                affected_documents=["employment_letter", "resume"]
-            ))
-            return findings
-        
-        emp = extraction.employment_info
-        
-        # Check required employment fields
-        if not emp.current_employer:
-            findings.append(ValidationFinding(
-                category="employment",
-                finding_type="missing_employer",
-                severity=ConflictSeverity.HIGH,
-                message="Current employer information missing",
-                fields_involved=["current_employer"],
-                affected_documents=["employment_letter"]
-            ))
-        
-        if not emp.job_title:
-            findings.append(ValidationFinding(
-                category="employment",
-                finding_type="missing_job_title",
-                severity=ConflictSeverity.MEDIUM,
-                message="Job title information missing",
-                fields_involved=["job_title"],
-                affected_documents=["employment_letter", "resume"]
-            ))
-        
-        # Validate employment duration
-        if emp.employment_start_date and emp.employment_end_date:
-            if emp.employment_end_date < emp.employment_start_date:
-                findings.append(ValidationFinding(
-                    category="employment",
-                    finding_type="invalid_dates",
-                    severity=ConflictSeverity.CRITICAL,
-                    message="Employment end date is before start date",
-                    fields_involved=["employment_start_date", "employment_end_date"],
-                    affected_documents=["employment_letter", "resume"]
-                ))
-        
-        # Check employment duration (should be at least 3 months for stability)
-        if emp.employment_start_date:
-            duration_days = (date.today() - emp.employment_start_date).days
-            if duration_days < 90:
-                findings.append(ValidationFinding(
-                    category="employment",
-                    finding_type="short_duration",
-                    severity=ConflictSeverity.MEDIUM,
-                    message=f"Current employment duration is only {duration_days // 30} months",
-                    fields_involved=["employment_start_date"],
-                    affected_documents=["employment_letter"]
-                ))
-        
-        return findings
-
-
-class IncomeValidator:
-    """Validate income consistency across documents."""
-    
-    @staticmethod
-    def validate(extraction: ApplicationExtraction) -> List[ValidationFinding]:
-        """Validate income information and consistency."""
-        findings = []
-        
-        emp_salary = None
-        bank_income = None
-        
-        # Get employment salary
-        if extraction.employment_info and extraction.employment_info.monthly_salary:
-            emp_salary = extraction.employment_info.monthly_salary
-        
-        # Get average monthly income from bank statement
-        if extraction.bank_statement:
-            bank_income = extraction.bank_statement.extract_monthly_income()
-        
-        # Check for income data
-        if not emp_salary and not bank_income:
-            findings.append(ValidationFinding(
-                category="income",
-                finding_type="missing_income",
-                severity=ConflictSeverity.CRITICAL,
-                message="No income information found in employment letter or bank statement",
-                fields_involved=["monthly_salary", "extract_monthly_income()"],
-                affected_documents=["employment_letter", "bank_statement"]
-            ))
-            return findings
-        
-        # Validate income consistency
-        if emp_salary and bank_income:
-            # Allow 20% variance (different calculation methods)
-            variance = abs(emp_salary - bank_income) / max(emp_salary, bank_income)
-            
-            if variance > 0.30:  # > 30% variance
-                findings.append(ValidationFinding(
-                    category="income",
-                    finding_type="income_mismatch",
-                    severity=ConflictSeverity.HIGH,
-                    message=f"Income mismatch: Employment letter shows AED {emp_salary}, "
-                           f"but bank statement shows average AED {bank_income} ({variance*100:.0f}% variance)",
-                    fields_involved=["monthly_salary", "monthly_average_credit"],
-                    affected_documents=["employment_letter", "bank_statement"],
-                    auto_resolvable=False,
-                    suggested_resolution="Manual review required to verify actual income"
-                ))
-            elif variance > 0.15:  # > 15% variance
-                findings.append(ValidationFinding(
-                    category="income",
-                    finding_type="income_variance",
-                    severity=ConflictSeverity.MEDIUM,
-                    message=f"Income variance detected: {variance*100:.0f}% difference between "
-                           f"employment letter (AED {emp_salary}) and bank statement (AED {bank_income})",
-                    fields_involved=["monthly_salary", "monthly_average_credit"],
-                    affected_documents=["employment_letter", "bank_statement"],
-                    auto_resolvable=True,
-                    suggested_resolution="Accept average of both values"
-                ))
-        
-        # Validate income minimum threshold (for UAE social support)
-        final_income = emp_salary or bank_income
-        if final_income and final_income < 1000:  # Below minimum
-            findings.append(ValidationFinding(
-                category="income",
-                finding_type="low_income",
-                severity=ConflictSeverity.INFO,
-                message=f"Monthly income is AED {final_income}, which may qualify for support",
-                fields_involved=["monthly_salary"],
-                affected_documents=["employment_letter", "bank_statement"]
-            ))
-        
-        return findings
-
-
-class AssetValidator:
-    """Validate assets and liabilities consistency."""
-    
-    @staticmethod
-    def validate(extraction: ApplicationExtraction) -> List[ValidationFinding]:
-        """Validate assets and financial position."""
-        findings = []
-        
-        if not extraction.assets_liabilities:
-            findings.append(ValidationFinding(
-                category="assets",
-                finding_type="missing_data",
-                severity=ConflictSeverity.MEDIUM,
-                message="No asset/liability information extracted",
-                fields_involved=["assets_liabilities"],
-                affected_documents=["assets_liabilities"]
-            ))
-            return findings
-        
-        assets = extraction.assets_liabilities
-        net_worth = assets.calculate_net_worth()
-        
-        # Check for extreme wealth (may disqualify from benefits)
-        if net_worth and net_worth > 500000:  # > AED 500K
-            findings.append(ValidationFinding(
-                category="assets",
-                finding_type="high_net_worth",
-                severity=ConflictSeverity.MEDIUM,
-                message=f"High net worth detected: AED {net_worth:,.0f}. May not qualify for social support.",
-                fields_involved=["properties", "vehicles", "loans"],
-                affected_documents=["assets_liabilities"],
-                auto_resolvable=False
-            ))
-        
-        # Check for negative net worth
-        if net_worth and net_worth < -100000:  # < -AED 100K debt
-            findings.append(ValidationFinding(
-                category="assets",
-                finding_type="high_debt",
-                severity=ConflictSeverity.HIGH,
-                message=f"High debt burden detected: AED {net_worth:,.0f} net worth",
-                fields_involved=["loans"],
-                affected_documents=["assets_liabilities"],
-                auto_resolvable=False,
-                suggested_resolution="Verify loan obligations and debt structure"
-            ))
-        
-        # Validate assets consistency
-        if assets.properties and len(assets.properties) > 5:
-            findings.append(ValidationFinding(
-                category="assets",
-                finding_type="multiple_properties",
-                severity=ConflictSeverity.LOW,
-                message=f"Multiple properties listed ({len(assets.properties)})",
-                fields_involved=["properties"],
-                affected_documents=["assets_liabilities"]
-            ))
-        
-        return findings
-
-
-class CreditValidator:
-    """Validate credit information consistency."""
-    
-    @staticmethod
-    def validate(extraction: ApplicationExtraction) -> List[ValidationFinding]:
-        """Validate credit history and score."""
-        findings = []
-        
-        if not extraction.credit_report:
-            findings.append(ValidationFinding(
-                category="credit",
-                finding_type="missing_data",
-                severity=ConflictSeverity.MEDIUM,
-                message="No credit report information extracted",
-                fields_involved=["credit_report"],
-                affected_documents=["credit_report"]
-            ))
-            return findings
-        
-        credit = extraction.credit_report
-        
-        # Validate credit score
-        if credit.credit_score:
-            if credit.credit_score < 300:
-                findings.append(ValidationFinding(
-                    category="credit",
-                    finding_type="low_credit_score",
-                    severity=ConflictSeverity.HIGH,
-                    message=f"Credit score is very low ({credit.credit_score}). "
-                           f"May indicate financial risk.",
-                    fields_involved=["credit_score"],
-                    affected_documents=["credit_report"],
-                    auto_resolvable=False
-                ))
-            elif credit.credit_score < 600:
-                findings.append(ValidationFinding(
-                    category="credit",
-                    finding_type="poor_credit_score",
-                    severity=ConflictSeverity.MEDIUM,
-                    message=f"Credit score is poor ({credit.credit_score}). "
-                           f"Consider additional review.",
-                    fields_involved=["credit_score"],
-                    affected_documents=["credit_report"]
-                ))
-        
-        # Check for active accounts
-        if credit.accounts:
-            # Count delinquent accounts
-            delinquent = [a for a in credit.accounts 
-                         if hasattr(a, 'status') and 'delinquent' in str(a.status).lower()]
-            
-            if delinquent:
-                findings.append(ValidationFinding(
-                    category="credit",
-                    finding_type="delinquent_accounts",
-                    severity=ConflictSeverity.HIGH,
-                    message=f"{len(delinquent)} delinquent account(s) found",
-                    fields_involved=["accounts"],
-                    affected_documents=["credit_report"],
-                    auto_resolvable=False,
-                    suggested_resolution="Verify account statuses and payment history"
-                ))
-        
-        return findings
-
-
-class ValidationAgent:
-    """Main validation agent orchestrating all validators."""
-    
-    def __init__(self):
-        self.personal_validator = PersonalInfoValidator()
-        self.employment_validator = EmploymentValidator()
-        self.income_validator = IncomeValidator()
-        self.asset_validator = AssetValidator()
-        self.credit_validator = CreditValidator()
-        logger.info("ValidationAgent initialized")
-    
-    def validate_application(self, extraction) -> dict:
-        """
-        Validate a complete extracted application.
-        
-        Args:
-            extraction: ApplicationExtraction from Phase 2 or dict with extracted data
-        
-        Returns:
-            Dict-like ValidationResult with all findings and scores
-        """
+    async def execute(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
+        """Validate extracted data comprehensively"""
         start_time = datetime.now()
+        application_id = input_data["application_id"]
+        extracted_data = input_data["extracted_data"]
+        applicant_name_from_application = input_data.get("applicant_name")  # Name from application creation
         
-        # Handle dict input (from test or LangGraph)
-        if isinstance(extraction, dict):
-            # Create a minimal ApplicationExtraction object from dict
-            app_extract = ApplicationExtraction(
-                application_id=extraction.get("application_id", "UNKNOWN"),
-                personal_info=PersonalInfo(),
-                employment_info=EmploymentInfo()
+        self.logger.info(f"[{application_id}] Starting comprehensive validation")
+        
+        issues = []
+        cross_checks = {}
+        
+        # CRITICAL: Validate applicant name matches documents
+        if applicant_name_from_application:
+            name_verification_issues, name_verification = self._verify_applicant_identity(
+                applicant_name_from_application, extracted_data
             )
-            extraction = app_extract
+            issues.extend(name_verification_issues)
+            cross_checks["applicant_identity_verification"] = name_verification
         
-        result = ValidationResult(
-            application_id=extraction.application_id,
-            validation_status=ValidationStatus.PASSED,
-            consistency_score=0.0,
-            completeness_score=0.0,
-            quality_score=0.0
-        )
+        # 1. Validate applicant identity
+        identity_issues, identity_check = self._validate_identity(extracted_data)
+        issues.extend(identity_issues)
+        cross_checks["identity"] = identity_check
         
-        # Run all validators
-        result.findings.extend(self.personal_validator.validate(extraction))
-        result.findings.extend(self.employment_validator.validate(extraction))
-        result.findings.extend(self.income_validator.validate(extraction))
-        result.findings.extend(self.asset_validator.validate(extraction))
-        result.findings.extend(self.credit_validator.validate(extraction))
+        # 2. Validate financial data
+        financial_issues, financial_check = self._validate_financial_data(extracted_data)
+        issues.extend(financial_issues)
+        cross_checks["financial"] = financial_check
+        
+        # 3. Validate employment data
+        employment_issues, employment_check = self._validate_employment(extracted_data)
+        issues.extend(employment_issues)
+        cross_checks["employment"] = employment_check
+        
+        # 4. Cross-document name consistency (fuzzy matching)
+        name_issues, name_check = self._validate_name_consistency_fuzzy(extracted_data)
+        issues.extend(name_issues)
+        cross_checks["name_consistency"] = name_check
+        
+        # 5. Debt-to-income validation
+        dti_issues, dti_check = self._validate_debt_to_income(extracted_data)
+        issues.extend(dti_issues)
+        cross_checks["debt_to_income"] = dti_check
+        
+        # 6. Data integrity checks
+        integrity_issues = self._check_data_integrity(extracted_data)
+        issues.extend(integrity_issues)
         
         # Calculate scores
-        result.personal_info_score = self._score_personal_info(extraction, result)
-        result.employment_score = self._score_employment(extraction, result)
-        result.income_score = self._score_income(extraction, result)
-        result.assets_score = self._score_assets(extraction, result)
-        result.credit_score = self._score_credit(extraction, result)
+        completeness_score = self._calculate_completeness_score(extracted_data)
+        confidence_score = self._calculate_confidence_score(issues, completeness_score)
         
-        # Calculate overall scores
-        result.consistency_score = self._calculate_consistency_score(result)
-        result.completeness_score = self._calculate_completeness_score(extraction)
-        result.quality_score = (
-            result.personal_info_score * 0.15 +
-            result.employment_score * 0.15 +
-            result.income_score * 0.25 +
-            result.assets_score * 0.20 +
-            result.credit_score * 0.25
+        # Determine validation result
+        critical_issues = [i for i in issues if i.severity == "critical"]
+        is_valid = len(critical_issues) == 0 and completeness_score >= 0.60
+        
+        validation_report = ValidationReport(
+            is_valid=is_valid,
+            issues=issues,
+            cross_document_checks=cross_checks,
+            data_completeness_score=completeness_score,
+            confidence_score=confidence_score
         )
         
-        # Determine validation status
-        critical = result.critical_issues()
-        high = result.high_issues()
+        duration = (datetime.now() - start_time).total_seconds()
+        self.logger.info(
+            f"[{application_id}] Validation complete - "
+            f"Valid: {is_valid}, Issues: {len(issues)} "
+            f"(Critical: {len(critical_issues)}), "
+            f"Completeness: {completeness_score:.2%}"
+        )
         
-        if critical:
-            result.validation_status = ValidationStatus.FAILED
-        elif high or (len(result.findings) > 0 and result.quality_score < 0.6):
-            result.validation_status = ValidationStatus.NEEDS_REVIEW
-        elif result.findings:
-            result.validation_status = ValidationStatus.PASSED_WITH_WARNINGS
-        else:
-            result.validation_status = ValidationStatus.PASSED
-        
-        # Convert to dict for compatibility with tests
         return {
-            "application_id": result.application_id,
-            "validation_status": result.validation_status.value,
-            "quality_score": result.quality_score,
-            "consistency_score": result.consistency_score,
-            "completeness_score": result.completeness_score,
-            "validation_errors": [(f.category, f.message) for f in result.findings if f.severity.value in ["critical", "high"]],
-            "findings_count": len(result.findings),
-            "result_object": result  # Keep original for further processing
+            "validation_report": validation_report,
+            "validation_time": duration
+        }
+    
+    # ========== Identity Validation ==========
+    
+    def _verify_applicant_identity(self, application_name: str, 
+                                   data: ExtractedData) -> Tuple[List[ValidationIssue], Dict]:
+        """CRITICAL: Verify the person who applied is the same as in documents"""
+        issues = []
+        check_result = {"identity_verified": False, "details": {}}
+        
+        # Get name from documents
+        document_names = []
+        
+        if data.applicant_info.get("full_name"):
+            document_names.append(("emirates_id", data.applicant_info["full_name"]))
+        
+        if data.income_data.get("account_holder"):
+            document_names.append(("bank_statement", data.income_data["account_holder"]))
+        
+        if data.employment_data.get("full_name"):
+            document_names.append(("resume", data.employment_data["full_name"]))
+        
+        if not document_names:
+            issues.append(ValidationIssue(
+                severity="critical",
+                category="missing_data",
+                field="applicant_identity",
+                message="No name found in any uploaded documents",
+                documents_affected=["all"],
+                suggested_resolution="Ensure documents are readable and contain applicant information"
+            ))
+            return issues, check_result
+        
+        # Check if application name matches ANY document
+        match_found = False
+        similarity_scores = {}
+        
+        for doc_type, doc_name in document_names:
+            similarity = self._name_similarity(application_name, doc_name)
+            similarity_scores[doc_type] = {
+                "name_in_document": doc_name,
+                "similarity": similarity
+            }
+            
+            if similarity >= 0.75:  # 75% match threshold
+                match_found = True
+        
+        check_result["details"] = {
+            "application_name": application_name,
+            "document_names": dict(document_names),
+            "similarity_scores": similarity_scores,
+            "identity_verified": match_found
         }
         
-        # Track validated documents
-        if extraction.personal_info:
-            result.documents_validated.append("emirates_id")
-        if extraction.employment_info:
-            result.documents_validated.append("employment_letter")
-        if extraction.bank_statement:
-            result.documents_validated.append("bank_statement")
-        if extraction.resume:
-            result.documents_validated.append("resume")
-        if extraction.assets_liabilities:
-            result.documents_validated.append("assets_liabilities")
-        if extraction.credit_report:
-            result.documents_validated.append("credit_report")
+        if not match_found:
+            # CRITICAL SECURITY ISSUE
+            best_match = max(similarity_scores.items(), key=lambda x: x[1]["similarity"])
+            best_doc, best_score_data = best_match
+            
+            issues.append(ValidationIssue(
+                severity="critical",
+                category="identity_mismatch",
+                field="applicant_identity",
+                message=f"IDENTITY MISMATCH: Application name '{application_name}' does not match documents. Best match: '{best_score_data['name_in_document']}' from {best_doc} (similarity: {best_score_data['similarity']:.0%})",
+                documents_affected=[doc for doc, _ in document_names],
+                suggested_resolution="VERIFY APPLICANT IDENTITY - Documents may belong to a different person. This requires manual review and re-submission with correct documents."
+            ))
+        else:
+            check_result["identity_verified"] = True
+            self.logger.info(f"Identity verified: {application_name} matches documents")
         
-        result.validation_duration_ms = (datetime.now() - start_time).total_seconds() * 1000
-        
-        return result
+        return issues, check_result
     
-    @staticmethod
-    def _score_personal_info(extraction: ApplicationExtraction, result: ValidationResult) -> float:
-        """Score personal information completeness."""
-        if not extraction.personal_info:
-            return 0.0
+    def _validate_identity(self, data: ExtractedData) -> Tuple[List[ValidationIssue], Dict]:
+        """Validate applicant identity fields"""
+        issues = []
+        check_result = {"passed": True, "details": {}}
         
-        score = 1.0
-        personal_findings = [f for f in result.findings if f.category == "personal_info"]
+        # Full name
+        name = data.applicant_info.get("full_name")
+        if not name or name == "Not found":
+            issues.append(ValidationIssue(
+                severity="critical",
+                category="missing_data",
+                field="applicant_info.full_name",
+                message="Applicant full name is required",
+                documents_affected=["emirates_id"],
+                suggested_resolution="Verify Emirates ID is readable and uploaded correctly"
+            ))
+            check_result["passed"] = False
+        else:
+            check_result["details"]["name"] = name
         
-        # Deduct for each finding
-        score -= len([f for f in personal_findings if f.severity == ConflictSeverity.CRITICAL]) * 0.3
-        score -= len([f for f in personal_findings if f.severity == ConflictSeverity.HIGH]) * 0.15
-        score -= len([f for f in personal_findings if f.severity == ConflictSeverity.MEDIUM]) * 0.05
+        # ID Number
+        id_number = data.applicant_info.get("id_number")
+        if not id_number or id_number == "Not found":
+            issues.append(ValidationIssue(
+                severity="critical",
+                category="missing_data",
+                field="applicant_info.id_number",
+                message="Emirates ID number is required",
+                documents_affected=["emirates_id"],
+                suggested_resolution="Ensure ID number is clearly visible in uploaded image"
+            ))
+            check_result["passed"] = False
+        else:
+            # Validate ID format
+            if not self._is_valid_emirates_id(id_number):
+                issues.append(ValidationIssue(
+                    severity="warning",
+                    category="format_error",
+                    field="applicant_info.id_number",
+                    message=f"ID number format may be incorrect: {id_number}",
+                    documents_affected=["emirates_id"],
+                    suggested_resolution="Verify ID number follows UAE format (15 digits or 784-YYYY-XXXXXXX-X)"
+                ))
+            check_result["details"]["id_number"] = id_number
+        
+        # Date of birth
+        dob = data.applicant_info.get("date_of_birth")
+        if not dob or dob == "Not found":
+            issues.append(ValidationIssue(
+                severity="warning",
+                category="missing_data",
+                field="applicant_info.date_of_birth",
+                message="Date of birth not extracted",
+                documents_affected=["emirates_id"]
+            ))
+        else:
+            # Validate age (18-100 years old)
+            age = self._calculate_age(dob)
+            if age and (age < 18 or age > 100):
+                issues.append(ValidationIssue(
+                    severity="warning",
+                    category="inconsistency",
+                    field="applicant_info.date_of_birth",
+                    message=f"Unusual age detected: {age} years",
+                    documents_affected=["emirates_id"],
+                    suggested_resolution="Verify date of birth is correct"
+                ))
+            check_result["details"]["age"] = age
+        
+        # Nationality
+        nationality = data.applicant_info.get("nationality")
+        if nationality and "UAE" in nationality.upper():
+            check_result["details"]["is_uae_national"] = True
+        
+        return issues, check_result
+    
+    def _is_valid_emirates_id(self, id_number: str) -> bool:
+        """Validate Emirates ID format"""
+        # Remove spaces and dashes
+        cleaned = id_number.replace("-", "").replace(" ", "")
+        
+        # Should be 15 digits
+        if len(cleaned) == 15 and cleaned.isdigit():
+            return True
+        
+        # Or 784-YYYY-XXXXXXX-X format
+        pattern = r'784-\d{4}-\d{7}-\d'
+        if re.match(pattern, id_number):
+            return True
+        
+        return False
+    
+    def _calculate_age(self, dob_str: str) -> int:
+        """Calculate age from date of birth string"""
+        try:
+            # Try different date formats
+            for fmt in ["%Y-%m-%d", "%d-%m-%Y", "%d/%m/%Y"]:
+                try:
+                    dob = datetime.strptime(dob_str, fmt)
+                    today = datetime.now()
+                    age = today.year - dob.year - ((today.month, today.day) < (dob.month, dob.day))
+                    return age
+                except ValueError:
+                    continue
+        except:
+            pass
+        return None
+    
+    # ========== Financial Data Validation ==========
+    
+    def _validate_financial_data(self, data: ExtractedData) -> Tuple[List[ValidationIssue], Dict]:
+        """Validate financial data for consistency"""
+        issues = []
+        check_result = {"passed": True, "details": {}}
+        
+        # Monthly income
+        income = data.income_data.get("monthly_income", 0)
+        if income <= 0:
+            issues.append(ValidationIssue(
+                severity="critical",
+                category="missing_data",
+                field="income_data.monthly_income",
+                message="Monthly income must be provided",
+                documents_affected=["bank_statement"],
+                suggested_resolution="Verify bank statement shows income transactions"
+            ))
+            check_result["passed"] = False
+        elif income < 1000:
+            issues.append(ValidationIssue(
+                severity="warning",
+                category="inconsistency",
+                field="income_data.monthly_income",
+                message=f"Unusually low monthly income: AED {income:.2f}",
+                documents_affected=["bank_statement"],
+                suggested_resolution="Verify income calculation is correct"
+            ))
+        elif income > 100000:
+            issues.append(ValidationIssue(
+                severity="info",
+                category="inconsistency",
+                field="income_data.monthly_income",
+                message=f"High monthly income: AED {income:.2f}",
+                documents_affected=["bank_statement"]
+            ))
+        
+        check_result["details"]["monthly_income"] = income
+        
+        # Monthly expenses
+        expenses = data.income_data.get("monthly_expenses", 0)
+        check_result["details"]["monthly_expenses"] = expenses
+        
+        # Income-expense validation
+        if expenses > 0:
+            if expenses > income * 2:
+                issues.append(ValidationIssue(
+                    severity="warning",
+                    category="inconsistency",
+                    field="income_data",
+                    message=f"Expenses (AED {expenses:.2f}) are {expenses/income:.1f}x income (AED {income:.2f})",
+                    documents_affected=["bank_statement"],
+                    suggested_resolution="Review expense calculation or verify additional income sources"
+                ))
+            
+            check_result["details"]["savings_rate"] = ((income - expenses) / income * 100) if income > 0 else 0
+        
+        # Assets and liabilities
+        total_assets = data.assets_liabilities.get("total_assets", 0)
+        total_liabilities = data.assets_liabilities.get("total_liabilities", 0)
+        net_worth = data.assets_liabilities.get("net_worth", 0)
+        
+        # Verify net worth calculation
+        calculated_net_worth = total_assets - total_liabilities
+        if abs(calculated_net_worth - net_worth) > 100:
+            issues.append(ValidationIssue(
+                severity="warning",
+                category="inconsistency",
+                field="assets_liabilities.net_worth",
+                message=f"Net worth calculation mismatch: Reported {net_worth}, calculated {calculated_net_worth}",
+                documents_affected=["assets_liabilities"],
+                suggested_resolution="Verify asset and liability totals"
+            ))
+        
+        check_result["details"]["total_assets"] = total_assets
+        check_result["details"]["total_liabilities"] = total_liabilities
+        check_result["details"]["net_worth"] = net_worth
+        
+        return issues, check_result
+    
+    # ========== Employment Validation ==========
+    
+    def _validate_employment(self, data: ExtractedData) -> Tuple[List[ValidationIssue], Dict]:
+        """Validate employment data"""
+        issues = []
+        check_result = {"passed": True, "details": {}}
+        
+        employment_status = data.employment_data.get("employment_status", "unknown")
+        income = data.income_data.get("monthly_income", 0)
+        
+        check_result["details"]["employment_status"] = employment_status
+        
+        # Check consistency between employment status and income
+        if employment_status == "employed" and income < 1000:
+            issues.append(ValidationIssue(
+                severity="warning",
+                category="inconsistency",
+                field="employment_data.employment_status",
+                message="Marked as employed but income is very low",
+                documents_affected=["resume", "bank_statement"],
+                suggested_resolution="Verify employment status and income sources"
+            ))
+        
+        if employment_status == "unemployed" and income > 5000:
+            issues.append(ValidationIssue(
+                severity="info",
+                category="inconsistency",
+                field="employment_data.employment_status",
+                message="Marked as unemployed but has significant income",
+                documents_affected=["resume", "bank_statement"],
+                suggested_resolution="Check for self-employment or other income sources"
+            ))
+        
+        # Years of experience
+        years_exp = data.employment_data.get("years_of_experience", 0)
+        check_result["details"]["years_of_experience"] = years_exp
+        
+        return issues, check_result
+    
+    # ========== Name Consistency (Fuzzy Matching) ==========
+    
+    def _validate_name_consistency_fuzzy(self, data: ExtractedData) -> Tuple[List[ValidationIssue], Dict]:
+        """Validate name consistency across documents using fuzzy matching"""
+        issues = []
+        names = {}
+        
+        # Collect names from different sources
+        if data.applicant_info.get("full_name"):
+            names["emirates_id"] = data.applicant_info["full_name"]
+        
+        if data.income_data.get("account_holder"):
+            names["bank_statement"] = data.income_data["account_holder"]
+        
+        if data.employment_data.get("full_name"):
+            names["resume"] = data.employment_data["full_name"]
+        
+        check_result = {
+            "names_found": names,
+            "is_consistent": True,
+            "similarity_scores": {}
+        }
+        
+        # If we have multiple names, check similarity
+        if len(names) >= 2:
+            name_list = list(names.items())
+            
+            for i in range(len(name_list)):
+                for j in range(i + 1, len(name_list)):
+                    doc1, name1 = name_list[i]
+                    doc2, name2 = name_list[j]
+                    
+                    similarity = self._name_similarity(name1, name2)
+                    check_result["similarity_scores"][f"{doc1}_vs_{doc2}"] = similarity
+                    
+                    if similarity < 0.7:  # 70% similarity threshold
+                        issues.append(ValidationIssue(
+                            severity="warning",
+                            category="inconsistency",
+                            field="full_name",
+                            message=f"Name mismatch: '{name1}' vs '{name2}' (similarity: {similarity:.0%})",
+                            documents_affected=[doc1, doc2],
+                            suggested_resolution="Verify applicant identity across all documents"
+                        ))
+                        check_result["is_consistent"] = False
+        
+        return issues, check_result
+    
+    def _name_similarity(self, name1: str, name2: str) -> float:
+        """Calculate similarity between two names (0.0 to 1.0)"""
+        # Normalize names
+        n1 = name1.lower().strip()
+        n2 = name2.lower().strip()
+        
+        # Use SequenceMatcher for fuzzy matching
+        return SequenceMatcher(None, n1, n2).ratio()
+    
+    # ========== Debt-to-Income Validation ==========
+    
+    def _validate_debt_to_income(self, data: ExtractedData) -> Tuple[List[ValidationIssue], Dict]:
+        """Validate debt-to-income ratio"""
+        issues = []
+        
+        income = data.income_data.get("monthly_income", 0)
+        liabilities = data.assets_liabilities.get("total_liabilities", 0)
+        
+        if income == 0:
+            return issues, {"dti_ratio": None, "is_healthy": None}
+        
+        # Estimate monthly debt payment (assume 5% of total liabilities)
+        monthly_debt = liabilities * 0.05
+        dti_ratio = (monthly_debt / income) * 100
+        
+        check_result = {
+            "monthly_income": income,
+            "total_liabilities": liabilities,
+            "estimated_monthly_debt": monthly_debt,
+            "dti_ratio": round(dti_ratio, 2),
+            "is_healthy": dti_ratio < 43
+        }
+        
+        if dti_ratio > 43:
+            issues.append(ValidationIssue(
+                severity="warning",
+                category="financial_risk",
+                field="debt_to_income",
+                message=f"High debt-to-income ratio: {dti_ratio:.1f}% (healthy threshold: <43%)",
+                documents_affected=["bank_statement", "assets_liabilities"],
+                suggested_resolution="Consider debt consolidation or income improvement programs"
+            ))
+        
+        return issues, check_result
+    
+    # ========== Data Integrity ==========
+    
+    def _check_data_integrity(self, data: ExtractedData) -> List[ValidationIssue]:
+        """Check for data integrity issues"""
+        issues = []
+        
+        # Check for obviously wrong values
+        if data.assets_liabilities.get("total_assets", 0) < 0:
+            issues.append(ValidationIssue(
+                severity="critical",
+                category="data_error",
+                field="assets_liabilities.total_assets",
+                message="Assets cannot be negative",
+                documents_affected=["assets_liabilities"]
+            ))
+        
+        if data.income_data.get("monthly_income", 0) < 0:
+            issues.append(ValidationIssue(
+                severity="critical",
+                category="data_error",
+                field="income_data.monthly_income",
+                message="Income cannot be negative",
+                documents_affected=["bank_statement"]
+            ))
+        
+        return issues
+    
+    # ========== Scoring ==========
+    
+    def _calculate_completeness_score(self, data: ExtractedData) -> float:
+        """Calculate data completeness score"""
+        total_weight = 0
+        filled_weight = 0
+        
+        # Critical fields (higher weight)
+        critical_fields = {
+            ("applicant_info", "full_name"): 10,
+            ("applicant_info", "id_number"): 10,
+            ("applicant_info", "nationality"): 5,
+            ("applicant_info", "date_of_birth"): 5,
+            ("income_data", "monthly_income"): 10,
+            ("income_data", "account_holder"): 5,
+        }
+        
+        # Important fields (medium weight)
+        important_fields = {
+            ("income_data", "monthly_expenses"): 7,
+            ("income_data", "average_balance"): 5,
+            ("employment_data", "employment_status"): 7,
+            ("employment_data", "years_of_experience"): 5,
+            ("assets_liabilities", "total_assets"): 5,
+            ("assets_liabilities", "total_liabilities"): 5,
+        }
+        
+        all_fields = {**critical_fields, **important_fields}
+        
+        for (category, field), weight in all_fields.items():
+            total_weight += weight
+            
+            value = getattr(data, category).get(field)
+            if value and value != "Not found" and value != 0:
+                filled_weight += weight
+        
+        return filled_weight / total_weight if total_weight > 0 else 0.0
+    
+    def _calculate_confidence_score(self, issues: List[ValidationIssue], 
+                                    completeness: float) -> float:
+        """Calculate overall confidence score"""
+        # Start with completeness score
+        score = completeness
+        
+        # Deduct for issues
+        for issue in issues:
+            if issue.severity == "critical":
+                score -= 0.15
+            elif issue.severity == "warning":
+                score -= 0.05
+            elif issue.severity == "info":
+                score -= 0.01
         
         return max(0.0, min(1.0, score))
-    
-    @staticmethod
-    def _score_employment(extraction: ApplicationExtraction, result: ValidationResult) -> float:
-        """Score employment information."""
-        if not extraction.employment_info:
-            return 0.5  # Partial credit for missing
-        
-        score = 1.0
-        emp_findings = [f for f in result.findings if f.category == "employment"]
-        
-        score -= len([f for f in emp_findings if f.severity == ConflictSeverity.CRITICAL]) * 0.3
-        score -= len([f for f in emp_findings if f.severity == ConflictSeverity.HIGH]) * 0.15
-        score -= len([f for f in emp_findings if f.severity == ConflictSeverity.MEDIUM]) * 0.05
-        
-        return max(0.0, min(1.0, score))
-    
-    @staticmethod
-    def _score_income(extraction: ApplicationExtraction, result: ValidationResult) -> float:
-        """Score income validation."""
-        has_employment = extraction.employment_info and extraction.employment_info.monthly_salary
-        has_bank = extraction.bank_statement and extraction.bank_statement.extract_monthly_income()
-        
-        if not has_employment and not has_bank:
-            return 0.0
-        
-        score = 1.0
-        income_findings = [f for f in result.findings if f.category == "income"]
-        
-        score -= len([f for f in income_findings if f.severity == ConflictSeverity.CRITICAL]) * 0.3
-        score -= len([f for f in income_findings if f.severity == ConflictSeverity.HIGH]) * 0.15
-        score -= len([f for f in income_findings if f.severity == ConflictSeverity.MEDIUM]) * 0.1
-        
-        return max(0.0, min(1.0, score))
-    
-    @staticmethod
-    def _score_assets(extraction: ApplicationExtraction, result: ValidationResult) -> float:
-        """Score assets/liabilities."""
-        if not extraction.assets_liabilities:
-            return 0.5
-        
-        score = 1.0
-        asset_findings = [f for f in result.findings if f.category == "assets"]
-        
-        score -= len([f for f in asset_findings if f.severity == ConflictSeverity.CRITICAL]) * 0.3
-        score -= len([f for f in asset_findings if f.severity == ConflictSeverity.HIGH]) * 0.2
-        score -= len([f for f in asset_findings if f.severity == ConflictSeverity.MEDIUM]) * 0.1
-        
-        return max(0.0, min(1.0, score))
-    
-    @staticmethod
-    def _score_credit(extraction: ApplicationExtraction, result: ValidationResult) -> float:
-        """Score credit information."""
-        if not extraction.credit_report:
-            return 0.5
-        
-        score = 1.0
-        credit_findings = [f for f in result.findings if f.category == "credit"]
-        
-        score -= len([f for f in credit_findings if f.severity == ConflictSeverity.CRITICAL]) * 0.3
-        score -= len([f for f in credit_findings if f.severity == ConflictSeverity.HIGH]) * 0.2
-        score -= len([f for f in credit_findings if f.severity == ConflictSeverity.MEDIUM]) * 0.1
-        
-        return max(0.0, min(1.0, score))
-    
-    @staticmethod
-    def _calculate_consistency_score(result: ValidationResult) -> float:
-        """Calculate consistency score based on conflicts."""
-        if not result.findings:
-            return 1.0
-        
-        non_info = [f for f in result.findings 
-                   if f.severity != ConflictSeverity.INFO]
-        
-        if not non_info:
-            return 1.0
-        
-        # Penalize based on severity and count
-        critical_count = sum(1 for f in non_info if f.severity == ConflictSeverity.CRITICAL)
-        high_count = sum(1 for f in non_info if f.severity == ConflictSeverity.HIGH)
-        medium_count = sum(1 for f in non_info if f.severity == ConflictSeverity.MEDIUM)
-        low_count = sum(1 for f in non_info if f.severity == ConflictSeverity.LOW)
-        
-        penalty = (critical_count * 0.30 + high_count * 0.20 + 
-                  medium_count * 0.10 + low_count * 0.05)
-        
-        return max(0.0, 1.0 - penalty)
-    
-    @staticmethod
-    def _calculate_completeness_score(extraction: ApplicationExtraction) -> float:
-        """Calculate data completeness score."""
-        score = 0.0
-        max_score = 0.0
-        
-        # Check each component
-        if extraction.personal_info:
-            score += 0.15
-            max_score += 0.15
-        else:
-            max_score += 0.15
-        
-        if extraction.employment_info:
-            score += 0.15
-            max_score += 0.15
-        else:
-            max_score += 0.15
-        
-        if extraction.bank_statement:
-            score += 0.20
-            max_score += 0.20
-        else:
-            max_score += 0.20
-        
-        if extraction.resume:
-            score += 0.15
-            max_score += 0.15
-        else:
-            max_score += 0.15
-        
-        if extraction.assets_liabilities:
-            score += 0.20
-            max_score += 0.20
-        else:
-            max_score += 0.20
-        
-        if extraction.credit_report:
-            score += 0.15
-            max_score += 0.15
-        else:
-            max_score += 0.15
-        
-        return score / max_score if max_score > 0 else 0.0

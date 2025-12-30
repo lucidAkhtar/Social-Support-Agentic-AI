@@ -1,0 +1,18 @@
+
+BANK STATEMENT
+════════════════════════════════════════════
+Account Holder: Applicant_4
+Account Number: ****5694
+Statement Period: Last 6 months
+
+Average Monthly Balance: 3533.29 AED
+Monthly Credit (Income): 2415.90 AED
+Monthly Debit (Expenses): 1747.28 AED
+
+Transaction Summary:
+- Salary Credits: 2415.90 AED
+- Rent Payments: 698.91 AED
+- Utilities: 262.09 AED
+- Food & Groceries: 436.82 AED
+- Other: 349.46 AED
+════════════════════════════════════════════

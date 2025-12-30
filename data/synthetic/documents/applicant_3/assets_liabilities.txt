@@ -1,0 +1,17 @@
+
+ASSETS & LIABILITIES STATEMENT
+════════════════════════════════════════════
+ASSETS:
+Savings Account: 42.40 AED
+Vehicle: 52.99 AED
+Other Assets: 10.60 AED
+TOTAL ASSETS: 105.99 AED
+
+LIABILITIES:
+Car Loan: 276.75 AED
+Credit Card: 138.38 AED
+Personal Loan: 46.12 AED
+TOTAL LIABILITIES: 461.25 AED
+
+NET WORTH: -355.25 AED
+════════════════════════════════════════════

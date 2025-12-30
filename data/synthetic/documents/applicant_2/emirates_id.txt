@@ -1,0 +1,10 @@
+
+EMIRATES ID CARD
+════════════════════════════════════════════
+Name: Applicant_2
+ID Number: 784-1999-4337963-1
+Nationality: Egypt
+Date of Birth: 1996-10-21
+Gender: Male
+Address: Dubai, UAE
+════════════════════════════════════════════
