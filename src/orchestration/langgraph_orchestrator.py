@@ -19,7 +19,7 @@ try:
     from langchain_community.llms import Ollama
     LANGGRAPH_AVAILABLE = True
 except ImportError as e:
-    print(f"⚠️  Warning: LangGraph/LangChain not fully available: {e}")
+    print(f"Warning: LangGraph/LangChain not fully available: {e}")
     LANGGRAPH_AVAILABLE = False
     # Define dummy classes for fallback
     StateGraph = None
@@ -119,7 +119,7 @@ class LangGraphOrchestrator:
             else:
                 self.llm = None
         except Exception as e:
-            print(f"⚠ Ollama LLM init failed: {e}")
+            print(f"Ollama LLM init failed: {e}")
             self.llm = None
         
         # Build workflow graph (only if langgraph is available)

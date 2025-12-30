@@ -28,10 +28,10 @@ class Neo4jManager:
                 session.run("RETURN 1")
             print("✓ Connected to Neo4j")
         except ServiceUnavailable:
-            print("⚠️  Neo4j not available. Using in-memory fallback.")
+            print(" Neo4j not available. Using in-memory fallback.")
             self.driver = None
         except Exception as e:
-            print(f"⚠️  Neo4j connection error: {e}. Proceeding with limited graph functionality.")
+            print(f"Neo4j connection error: {e}. Proceeding with limited graph functionality.")
             self.driver = None
 
     def create_applicant_node(self, applicant_id: str, name: str, age: int, 

@@ -37,7 +37,6 @@ try:
     from src.database.database_manager import DatabaseManager
     DATABASE_AVAILABLE = True
 except ImportError as e:
-    print(f"⚠️  Warning: Database manager not available: {e}")
     DATABASE_AVAILABLE = False
     DatabaseManager = None
 

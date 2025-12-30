@@ -245,7 +245,7 @@ class GovernanceEngine:
             conn.commit()
             conn.close()
             
-            status = "✓ GRANTED" if granted else "❌ DENIED"
+            status = "✓ GRANTED" if granted else "DENIED"
             logger.info(f"Consent recorded: {applicant_id} | {consent_type.value} | {status}")
             return True
         except Exception as e:
@@ -545,7 +545,7 @@ class GovernanceEngine:
                         for e in audit_events[:20]  # Last 20 events
                     ]
                 },
-                "compliance_status": "✅ COMPLIANT" if self._verify_compliance(conn) else "⚠️ REVIEW REQUIRED"
+                "compliance_status": "COMPLIANT" if self._verify_compliance(conn) else "⚠️ REVIEW REQUIRED"
             }
             
             # Save report
@@ -632,7 +632,7 @@ class ComplianceMonitor:
                 "severity": "HIGH"
             }
             self.violations.append(violation)
-            logger.warning(f"⚠️ VIOLATION: Unauthorized access detected: {actor} ({actor_role}) → {data_entity}")
+            logger.warning(f"VIOLATION: Unauthorized access detected: {actor} ({actor_role}) → {data_entity}")
             return False
         return True
 
@@ -653,7 +653,7 @@ class ComplianceMonitor:
                 "severity": "CRITICAL"
             }
             self.violations.append(violation)
-            logger.warning(f"⚠️ VIOLATION: Missing consent: {applicant_id} → {consent_type.value}")
+            logger.warning(f"VIOLATION: Missing consent: {applicant_id} → {consent_type.value}")
         
         return is_valid
 
@@ -691,7 +691,7 @@ class ComplianceMonitor:
                     "severity": "MEDIUM"
                 }
                 self.violations.append(violation)
-                logger.warning(f"⚠️ VIOLATION: Data retention exceeded: {data_entity}")
+                logger.warning(f"VIOLATION: Data retention exceeded: {data_entity}")
                 return False
             
             return True

@@ -125,5 +125,5 @@ if __name__ == "__main__":
     # Show audit trail
     print("\n=== Audit Trail ===")
     for log in rbac.get_audit_trail():
-        status = "✅ GRANTED" if log['granted'] else "❌ DENIED"
+        status = "GRANTED" if log['granted'] else "DENIED"
         print(f"{log['timestamp']} | {log['user_id']} | {log['action']} | {status}")
