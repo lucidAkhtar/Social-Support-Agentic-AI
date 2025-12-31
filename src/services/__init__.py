@@ -1,23 +1,14 @@
-"""Services module - Document Extraction, LLM, Parsers"""
-from .llm_service import LLMService, LLMConfig, get_llm_service
+"""Services module - Production Services Only"""
 from .document_extractor import DocumentExtractor, get_document_extractor
-
-# Legacy imports for backward compatibility
-from .ocr_service import OCRService, OCRConfig, get_ocr_service
-from .resume_parser import ResumeParser, get_resume_parser
-from .excel_parser import ExcelParser, get_excel_parser
+from .rag_engine import RAGEngine
+from .governance import get_audit_logger, get_structured_logger
+from .conversation_manager import get_conversation_manager
 
 __all__ = [
     'DocumentExtractor',
     'get_document_extractor',
-    'LLMService',
-    'LLMConfig',
-    'get_llm_service',
-    'OCRService',
-    'OCRConfig',
-    'get_ocr_service',
-    'ResumeParser',
-    'get_resume_parser',
-    'ExcelParser',
-    'get_excel_parser',
+    'RAGEngine',
+    'get_audit_logger',
+    'get_structured_logger',
+    'get_conversation_manager',
 ]

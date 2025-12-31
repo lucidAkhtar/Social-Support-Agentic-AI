@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000030",
+  "applicant_name": "Waleed Al Nuaimi",
+  "emirates_id": "1994-1107-59948088-1",
+  "profile": {
+    "monthly_income": 3512.98,
+    "monthly_expenses": 1966.18,
+    "employment_status": "Self-employed",
+    "family_size": 2,
+    "total_assets": 110460.9,
+    "total_liabilities": 39256.43,
+    "credit_score": 660,
+    "target_score": 55.0
+  },
+  "policy_score": 55.0,
+  "tier": "MEDIUM"
+}

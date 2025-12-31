@@ -1,0 +1,62 @@
+{
+  "report_id": "CB-789461",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Majid Al Qassimi",
+    "emirates_id": "1958-1014-95025258-4",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1062,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 21,
+    "late_payments_30_days": 5,
+    "late_payments_60_days": 3,
+    "missed_payments": 2,
+    "payment_ratio": 75.0
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 39747.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-17",
+      "last_payment_amount": 2830.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "ADIB",
+      "account_status": "Active",
+      "balance": 48373.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-31",
+      "last_payment_amount": 3121.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 29895.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-18",
+      "last_payment_amount": 4355.0
+    }
+  ],
+  "total_outstanding": 17510.11,
+  "enquiries": [
+    {
+      "date": "2025-07-07",
+      "type": "Credit Card Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-11-29",
+      "type": "Mortgage Application",
+      "institution": "Emirates Islamic"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

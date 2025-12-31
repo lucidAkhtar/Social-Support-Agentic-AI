@@ -17,11 +17,17 @@ Due to local execution constraints (Apple Silicon M1, 8 GB RAM) and the prototyp
 
 The case study suggested PostgreSQL, MongoDB, Qdrant, and Neo4j. On M1 8GB with Mistral already consuming 4.4GB, I optimized the stack:
 
-PostgreSQL → SQLite (relational): Built-in Python, zero overhead. M1 constraint requires lightweight infrastructure.
-MongoDB → SQLite JSON1 (documents): JSON columns in same SQLite handle flexible schema. Why separate NoSQL?
-Qdrant → ChromaDB (vector): Cohere-compatible, <250MB. Case study doesn't mandate Qdrant specifically.
-Neo4j → Neo4j Community (graph): FULLY IMPLEMENTED. Graph relationships require dedicated graph database for professional demonstrations. This is non-negotiable.
-The choice reflects constraint-aware engineering: lightweight where possible, professional-grade where it matters (Neo4j for graph DB value)."
+**Database Substitutions (Constraint-Aware Engineering):**
+1. PostgreSQL → **SQLite** (relational): Built-in Python, zero overhead, ACID compliance maintained
+2. MongoDB → **TinyDB** (documents): JSON-based document store, maintains flexible schema semantics
+3. Qdrant → **ChromaDB** (vector): Production-grade embeddings, Cohere-compatible, <250MB memory
+4. Neo4j → **NetworkX** (graph): **Lightweight alternative due to M1 8GB RAM limitation**
+   - NetworkX provides graph algorithms and relationship modeling
+   - Maintains graph semantics (nodes, edges, traversal) for demonstration
+   - Production deployment would use Neo4j Community Edition
+   - Trade-off: In-memory only, no persistence layer, but sufficient for prototype
+
+**Rationale:** The architecture is database-agnostic. All data access is abstracted through manager classes, enabling seamless migration to enterprise-grade systems (PostgreSQL, MongoDB, Qdrant, Neo4j) without business logic changes."
 
 ---
 

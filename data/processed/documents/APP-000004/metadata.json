@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000004",
+  "applicant_name": "Abdullah Al Kalbani",
+  "emirates_id": "1961-0319-98227303-7",
+  "profile": {
+    "monthly_income": 1896.28,
+    "monthly_expenses": 791.35,
+    "employment_status": "Unemployed",
+    "family_size": 1,
+    "total_assets": 604150.31,
+    "total_liabilities": 48657.54,
+    "credit_score": 495,
+    "target_score": 25.0
+  },
+  "policy_score": 25.0,
+  "tier": "LOW"
+}

@@ -325,12 +325,19 @@ def chat_with_agent(application_id: str, query: str) -> Optional[str]:
                 "query": query,
                 "query_type": "explanation"
             },
-            timeout=30
+            timeout=180  # Increased from 30s - LLM can take 60-120s to generate responses
         )
         response.raise_for_status()
         data = response.json()
         return data.get('response')
-    except:
+    except requests.exceptions.Timeout:
+        st.error("⏱️ Request timed out. The AI is taking longer than expected. Please try again.")
+        return None
+    except requests.exceptions.RequestException as e:
+        st.error(f"❌ Connection error: {str(e)}")
+        return None
+    except Exception as e:
+        st.error(f"❌ Unexpected error: {str(e)}")
         return None
 
 
@@ -357,6 +364,12 @@ with st.sidebar:
         if status:
             stage = status.get('current_stage', 'unknown')
             progress = status.get('progress_percentage', 0)
+            
+            # Calculate progress based on current step if not available from API
+            if progress == 0 and st.session_state.current_step > 1:
+                progress = (st.session_state.current_step - 1) * 25
+            if st.session_state.current_step == 4:
+                progress = 100
             
             st.progress(progress / 100)
             st.caption(f"Progress: {progress}%")
@@ -717,55 +730,67 @@ elif st.session_state.current_step == 4:
             
             st.info("💬 Ask me anything about your application, decision, or how to improve!")
             
-            # Chat history
-            for msg in st.session_state.chat_history:
-                if msg['role'] == 'user':
-                    st.markdown(f"**You:** {msg['content']}")
+            # Chat history display
+            chat_container = st.container()
+            with chat_container:
+                if st.session_state.chat_history:
+                    for msg in st.session_state.chat_history:
+                        if msg['role'] == 'user':
+                            st.markdown(f"**You:** {msg['content']}")
+                        else:
+                            st.markdown(f"**AI Assistant:** {msg['content']}")
+                        st.markdown("---")
                 else:
-                    st.markdown(f"**AI:** {msg['content']}")
-                st.markdown("---")
+                    st.info("👋 Start by asking a question or use the quick questions below!")
             
             # Quick action buttons
             st.markdown("##### Quick Questions:")
             col1, col2, col3 = st.columns(3)
             
             with col1:
-                if st.button("💡 Why this decision?", use_container_width=True):
+                if st.button("💡 Why this decision?", use_container_width=True, key="quick_why"):
                     query = "Why was I approved/declined? Explain in detail."
-                    response = chat_with_agent(st.session_state.application_id, query)
-                    if response:
-                        st.session_state.chat_history.append({"role": "user", "content": query})
-                        st.session_state.chat_history.append({"role": "assistant", "content": response})
-                        st.rerun()
+                    with st.spinner("🤔 AI is analyzing your application... This may take up to 2 minutes."):
+                        response = chat_with_agent(st.session_state.application_id, query)
+                        if response:
+                            st.session_state.chat_history.append({"role": "user", "content": query})
+                            st.session_state.chat_history.append({"role": "assistant", "content": response})
+                            st.rerun()
             
             with col2:
-                if st.button("📈 How to improve?", use_container_width=True):
+                if st.button("📈 How to improve?", use_container_width=True, key="quick_improve"):
                     query = "What can I do to improve my chances next time?"
-                    response = chat_with_agent(st.session_state.application_id, query)
-                    if response:
-                        st.session_state.chat_history.append({"role": "user", "content": query})
-                        st.session_state.chat_history.append({"role": "assistant", "content": response})
-                        st.rerun()
+                    with st.spinner("🤔 AI is analyzing your application... This may take up to 2 minutes."):
+                        response = chat_with_agent(st.session_state.application_id, query)
+                        if response:
+                            st.session_state.chat_history.append({"role": "user", "content": query})
+                            st.session_state.chat_history.append({"role": "assistant", "content": response})
+                            st.rerun()
             
             with col3:
-                if st.button("🔍 Check details", use_container_width=True):
+                if st.button("🔍 Check details", use_container_width=True, key="quick_details"):
                     query = "Show me the key factors in my application"
-                    response = chat_with_agent(st.session_state.application_id, query)
-                    if response:
-                        st.session_state.chat_history.append({"role": "user", "content": query})
-                        st.session_state.chat_history.append({"role": "assistant", "content": response})
-                        st.rerun()
+                    with st.spinner("🤔 AI is analyzing your application... This may take up to 2 minutes."):
+                        response = chat_with_agent(st.session_state.application_id, query)
+                        if response:
+                            st.session_state.chat_history.append({"role": "user", "content": query})
+                            st.session_state.chat_history.append({"role": "assistant", "content": response})
+                            st.rerun()
             
-            # Chat input
-            user_query = st.text_input("Ask your question:", placeholder="Type your question here...")
-            
-            if user_query:
-                with st.spinner("Thinking..."):
-                    response = chat_with_agent(st.session_state.application_id, user_query)
-                    if response:
-                        st.session_state.chat_history.append({"role": "user", "content": user_query})
-                        st.session_state.chat_history.append({"role": "assistant", "content": response})
-                        st.rerun()
+            # Chat input with form to handle submission properly
+            with st.form(key="chat_form", clear_on_submit=True):
+                user_query = st.text_input("Ask your question:", placeholder="Type your question here...", key="chat_input")
+                submit_chat = st.form_submit_button("Send 💬", use_container_width=True, type="primary")
+                
+                if submit_chat and user_query.strip():
+                    with st.spinner("🤔 AI is analyzing your question... This may take up to 2 minutes for complex queries."):
+                        response = chat_with_agent(st.session_state.application_id, user_query)
+                        if response:
+                            st.session_state.chat_history.append({"role": "user", "content": user_query})
+                            st.session_state.chat_history.append({"role": "assistant", "content": response})
+                            st.rerun()
+                        else:
+                            st.error("❌ Failed to get response from AI. Please try a simpler question or try again later.")
     else:
         st.error("Unable to load results")
 
@@ -775,6 +800,6 @@ st.markdown("""
 <div style='text-align: center; color: #6b7280; padding: 2rem 0;'>
     <p><strong>UAE Social Support Portal</strong></p>
     <p>Powered by AI • Secure • Confidential</p>
-    <p><small>© 2025 UAE Government. All rights reserved.</small></p>
+    <p><small>© 2026 UAE Government. All rights reserved.</small></p>
 </div>
 """, unsafe_allow_html=True)

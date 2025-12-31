@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000031",
+  "applicant_name": "Amr Al Memari",
+  "emirates_id": "2001-0624-89042306-8",
+  "profile": {
+    "monthly_income": 5095.97,
+    "monthly_expenses": 2776.99,
+    "employment_status": "Self-employed",
+    "family_size": 3,
+    "total_assets": 133976.85,
+    "total_liabilities": 53059.45,
+    "credit_score": 611,
+    "target_score": 55.0
+  },
+  "policy_score": 55.0,
+  "tier": "MEDIUM"
+}

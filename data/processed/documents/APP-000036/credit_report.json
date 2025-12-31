@@ -1,0 +1,72 @@
+{
+  "report_id": "CB-458163",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Rahma Al Qassimi",
+    "emirates_id": "1971-1102-41624005-1",
+    "nationality": "UAE National"
+  },
+  "credit_score": 985,
+  "credit_rating": "Poor",
+  "payment_history": {
+    "on_time_payments": 27,
+    "late_payments_30_days": 3,
+    "late_payments_60_days": 1,
+    "missed_payments": 1,
+    "payment_ratio": 87.1
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 36188.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-17",
+      "last_payment_amount": 3931.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "Emirates NBD",
+      "account_status": "Active",
+      "balance": 21285.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-20",
+      "last_payment_amount": 3242.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 46159.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-11",
+      "last_payment_amount": 2937.0
+    }
+  ],
+  "total_outstanding": 43665.95,
+  "enquiries": [
+    {
+      "date": "2025-11-03",
+      "type": "Credit Card Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-08-16",
+      "type": "Mortgage Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-07-12",
+      "type": "Credit Card Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-07-29",
+      "type": "Loan Application",
+      "institution": "Mashreq"
+    }
+  ],
+  "remarks": "Very poor credit profile. High risk customer."
+}

@@ -1,0 +1,39 @@
+{
+  "report_id": "CB-434165",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Abdullah Al Kalbani",
+    "emirates_id": "1961-0319-98227303-7",
+    "nationality": "UAE National"
+  },
+  "credit_score": 913,
+  "credit_rating": "Poor",
+  "payment_history": {
+    "on_time_payments": 46,
+    "late_payments_30_days": 3,
+    "late_payments_60_days": 1,
+    "missed_payments": 1,
+    "payment_ratio": 92.0
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "Emirates NBD",
+      "account_status": "Active",
+      "balance": 7397.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-15",
+      "last_payment_amount": 2496.0
+    }
+  ],
+  "total_outstanding": 48657.54,
+  "enquiries": [
+    {
+      "date": "2025-09-27",
+      "type": "Mortgage Application",
+      "institution": "FAB"
+    }
+  ],
+  "remarks": "Very poor credit profile. High risk customer."
+}

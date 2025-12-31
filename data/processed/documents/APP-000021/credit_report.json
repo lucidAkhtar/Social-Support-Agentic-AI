@@ -1,0 +1,48 @@
+{
+  "report_id": "CB-484264",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Rana Al Jabri",
+    "emirates_id": "1983-0915-71472671-6",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1056,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 44,
+    "late_payments_30_days": 5,
+    "late_payments_60_days": 3,
+    "missed_payments": 2,
+    "payment_ratio": 86.3
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 9460.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-13",
+      "last_payment_amount": 4053.0
+    },
+    {
+      "account_type": "Personal Loan",
+      "institution": "Dubai Islamic Bank",
+      "account_status": "Active",
+      "balance": 35324.0,
+      "credit_limit": 42549.0,
+      "last_payment": "2025-12-03",
+      "last_payment_amount": 4016.0
+    }
+  ],
+  "total_outstanding": 54439.62,
+  "enquiries": [
+    {
+      "date": "2025-12-06",
+      "type": "Mortgage Application",
+      "institution": "Emirates Islamic"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

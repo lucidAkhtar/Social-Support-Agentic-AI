@@ -1,0 +1,72 @@
+{
+  "report_id": "CB-821846",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Ibrahim Al Shamsi",
+    "emirates_id": "2003-0427-93026670-0",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1009,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 49,
+    "late_payments_30_days": 2,
+    "late_payments_60_days": 0,
+    "missed_payments": 0,
+    "payment_ratio": 96.1
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 38513.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-14",
+      "last_payment_amount": 3084.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 26655.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-22",
+      "last_payment_amount": 1795.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 43865.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-25",
+      "last_payment_amount": 4893.0
+    }
+  ],
+  "total_outstanding": 6496.52,
+  "enquiries": [
+    {
+      "date": "2025-10-09",
+      "type": "Mortgage Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-10-22",
+      "type": "Credit Card Application",
+      "institution": "FAB"
+    },
+    {
+      "date": "2025-09-21",
+      "type": "Mortgage Application",
+      "institution": "FAB"
+    },
+    {
+      "date": "2025-12-21",
+      "type": "Credit Card Application",
+      "institution": "Emirates Islamic"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

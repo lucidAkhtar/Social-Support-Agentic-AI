@@ -1,0 +1,53 @@
+{
+  "report_id": "CB-198735",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Noor Al Jabri",
+    "emirates_id": "1994-0825-49071710-4",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1032,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 36,
+    "late_payments_30_days": 3,
+    "late_payments_60_days": 1,
+    "missed_payments": 2,
+    "payment_ratio": 87.8
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Mortgage",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 95080.0,
+      "credit_limit": 103003.0,
+      "last_payment": "2025-12-08",
+      "last_payment_amount": 7923.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "ADIB",
+      "account_status": "Active",
+      "balance": 49090.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-07",
+      "last_payment_amount": 4035.0
+    }
+  ],
+  "total_outstanding": 158466.58,
+  "enquiries": [
+    {
+      "date": "2025-12-24",
+      "type": "Credit Card Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-12-01",
+      "type": "Loan Application",
+      "institution": "FAB"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

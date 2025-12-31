@@ -108,7 +108,3 @@ effectively?
  Demo UI: Is the demo UI user-friendly?
  Problem-Solving: How well did you address the challenges met during development?
  Communication: Is your documentation clear, concise, and thorough?
-
-7. Timeframe
-The expected time to complete this take home prototype and documentation is up to 3 days,
-followed by an hour in-person or online demo and presentation.

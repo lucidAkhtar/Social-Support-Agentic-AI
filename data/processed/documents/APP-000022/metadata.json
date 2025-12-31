@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000022",
+  "applicant_name": "Faisal Al Ameri",
+  "emirates_id": "1974-0707-79021601-1",
+  "profile": {
+    "monthly_income": 3584.14,
+    "monthly_expenses": 1956.18,
+    "employment_status": "Private Sector",
+    "family_size": 2,
+    "total_assets": 80431.45,
+    "total_liabilities": 63313.64,
+    "credit_score": 587,
+    "target_score": 65.0
+  },
+  "policy_score": 65.0,
+  "tier": "MEDIUM"
+}

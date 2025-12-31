@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000007",
+  "applicant_name": "Mariam Al Maktoum",
+  "emirates_id": "1972-1203-82633735-6",
+  "profile": {
+    "monthly_income": 5027.59,
+    "monthly_expenses": 3472.55,
+    "employment_status": "Private Sector",
+    "family_size": 1,
+    "total_assets": 79170.36,
+    "total_liabilities": 60500.43,
+    "credit_score": 659,
+    "target_score": 60.0
+  },
+  "policy_score": 60.0,
+  "tier": "MEDIUM"
+}

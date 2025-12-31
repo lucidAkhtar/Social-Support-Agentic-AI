@@ -1,0 +1,49 @@
+{
+  "report_id": "CB-638169",
+  "report_date": "2026-01-01",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Hassan Al Mazrouei",
+    "emirates_id": "1967-0711-78147397-6",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1006,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 41,
+    "late_payments_30_days": 0,
+    "late_payments_60_days": 0,
+    "missed_payments": 0,
+    "payment_ratio": 100.0
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 40549.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-25",
+      "last_payment_amount": 3355.0
+    }
+  ],
+  "total_outstanding": 12000,
+  "enquiries": [
+    {
+      "date": "2025-12-19",
+      "type": "Mortgage Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-08-20",
+      "type": "Mortgage Application",
+      "institution": "FAB"
+    },
+    {
+      "date": "2025-09-02",
+      "type": "Loan Application",
+      "institution": "Mashreq"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

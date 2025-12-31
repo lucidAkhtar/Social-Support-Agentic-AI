@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000029",
+  "applicant_name": "Mona Al Kalbani",
+  "emirates_id": "1962-1205-79800523-2",
+  "profile": {
+    "monthly_income": 1259.85,
+    "monthly_expenses": 644.32,
+    "employment_status": "Unemployed",
+    "family_size": 1,
+    "total_assets": 615387.63,
+    "total_liabilities": 71274.69,
+    "credit_score": 367,
+    "target_score": 25.0
+  },
+  "policy_score": 25.0,
+  "tier": "LOW"
+}

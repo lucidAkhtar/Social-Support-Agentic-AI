@@ -1,0 +1,93 @@
+{
+  "trace_id": "trace_obs_003",
+  "application_id": "APP_OBS_003",
+  "start_time": "2025-12-30T17:29:32.150668",
+  "metadata": {
+    "income": 3500
+  },
+  "spans": [
+    {
+      "span_id": "extraction_stage_1767095972150",
+      "name": "extraction_stage",
+      "type": "agent",
+      "start_time": "2025-12-30T17:29:32.150671",
+      "duration": 2.0,
+      "input": {
+        "application_id": "APP_OBS_003"
+      },
+      "output": {
+        "fields_extracted": 26,
+        "confidence": 0.93,
+        "errors": []
+      },
+      "metadata": {
+        "agent": "ExtractionAgent",
+        "model": "Mistral 7B"
+      }
+    },
+    {
+      "span_id": "validation_stage_1767095972150",
+      "name": "validation_stage",
+      "type": "agent",
+      "start_time": "2025-12-30T17:29:32.150673",
+      "duration": 1.0,
+      "input": {
+        "application_id": "APP_OBS_003"
+      },
+      "output": {
+        "quality_score": 0.9099999999999999,
+        "issues_found": -1,
+        "auto_corrected": 0
+      },
+      "metadata": {
+        "agent": "ValidationAgent",
+        "validation_rules_applied": 15
+      }
+    },
+    {
+      "span_id": "ml_scoring_stage_1767095972150",
+      "name": "ml_scoring_stage",
+      "type": "model",
+      "start_time": "2025-12-30T17:29:32.150674",
+      "duration": 0.3,
+      "input": {
+        "application_id": "APP_OBS_003",
+        "features": 8
+      },
+      "output": {
+        "eligibility_score": 0.85,
+        "confidence": 0.92
+      },
+      "metadata": {
+        "model": "GradientBoostingClassifier",
+        "accuracy": 0.98,
+        "features": 8
+      }
+    },
+    {
+      "span_id": "decision_stage_1767095972150",
+      "name": "decision_stage",
+      "type": "agent",
+      "start_time": "2025-12-30T17:29:32.150676",
+      "duration": 0.5,
+      "input": {
+        "application_id": "APP_OBS_003"
+      },
+      "output": {
+        "decision": "review",
+        "confidence": 0.8,
+        "rationale": null
+      },
+      "metadata": {
+        "agent": "DecisionAgent",
+        "decision_framework": "Eligibility + Income Assessment"
+      }
+    }
+  ],
+  "metrics": {
+    "total_duration": 3.8,
+    "span_count": 4,
+    "error_count": 0
+  },
+  "end_time": "2025-12-30T17:29:32.150677"
+}

@@ -1,0 +1,58 @@
+{
+  "report_id": "CB-130359",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Leila Al Shamsi",
+    "emirates_id": "1995-0215-32329103-7",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1016,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 47,
+    "late_payments_30_days": 5,
+    "late_payments_60_days": 3,
+    "missed_payments": 0,
+    "payment_ratio": 90.4
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 20824.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-13",
+      "last_payment_amount": 3030.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "ADIB",
+      "account_status": "Active",
+      "balance": 34553.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-24",
+      "last_payment_amount": 4389.0
+    }
+  ],
+  "total_outstanding": 60714.07,
+  "enquiries": [
+    {
+      "date": "2025-12-02",
+      "type": "Loan Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-09-13",
+      "type": "Credit Card Application",
+      "institution": "FAB"
+    },
+    {
+      "date": "2025-07-29",
+      "type": "Credit Card Application",
+      "institution": "Mashreq"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

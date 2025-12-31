@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000023",
+  "applicant_name": "Maha Al Ameri",
+  "emirates_id": "1959-0616-59357131-1",
+  "profile": {
+    "monthly_income": 1869.23,
+    "monthly_expenses": 961.46,
+    "employment_status": "Unemployed",
+    "family_size": 1,
+    "total_assets": 905711.15,
+    "total_liabilities": 123119.99,
+    "credit_score": 358,
+    "target_score": 25.0
+  },
+  "policy_score": 25.0,
+  "tier": "LOW"
+}

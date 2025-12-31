@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000010",
+  "applicant_name": "Omar Al Awani",
+  "emirates_id": "1999-0415-51380361-7",
+  "profile": {
+    "monthly_income": 7724.94,
+    "monthly_expenses": 5403.33,
+    "employment_status": "Private Sector",
+    "family_size": 4,
+    "total_assets": 192579.68,
+    "total_liabilities": 74891.14,
+    "credit_score": 621,
+    "target_score": 70.0
+  },
+  "policy_score": 70.0,
+  "tier": "HIGH"
+}

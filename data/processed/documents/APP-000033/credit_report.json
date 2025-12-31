@@ -1,0 +1,72 @@
+{
+  "report_id": "CB-574779",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Faisal Al Mansoori",
+    "emirates_id": "1952-0424-35186888-7",
+    "nationality": "UAE National"
+  },
+  "credit_score": 968,
+  "credit_rating": "Poor",
+  "payment_history": {
+    "on_time_payments": 26,
+    "late_payments_30_days": 3,
+    "late_payments_60_days": 1,
+    "missed_payments": 2,
+    "payment_ratio": 83.9
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "ADIB",
+      "account_status": "Active",
+      "balance": 30274.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-19",
+      "last_payment_amount": 2134.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "ADIB",
+      "account_status": "Active",
+      "balance": 28727.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-28",
+      "last_payment_amount": 3244.0
+    },
+    {
+      "account_type": "Personal Loan",
+      "institution": "Dubai Islamic Bank",
+      "account_status": "Active",
+      "balance": 25986.0,
+      "credit_limit": 91413.0,
+      "last_payment": "2025-12-18",
+      "last_payment_amount": 3729.0
+    }
+  ],
+  "total_outstanding": 75615.15,
+  "enquiries": [
+    {
+      "date": "2025-10-11",
+      "type": "Loan Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-11-11",
+      "type": "Mortgage Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-08-26",
+      "type": "Mortgage Application",
+      "institution": "Mashreq"
+    },
+    {
+      "date": "2025-09-15",
+      "type": "Mortgage Application",
+      "institution": "FAB"
+    }
+  ],
+  "remarks": "Very poor credit profile. High risk customer."
+}

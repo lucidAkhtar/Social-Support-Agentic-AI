@@ -1,0 +1,16 @@
+{
+  "credit_score": 745,
+  "credit_rating": "Good",
+  "credit_accounts": [
+    {"type": "Credit Card", "bank": "Emirates NBD", "limit": 50000, "balance": 12000},
+    {"type": "Auto Loan", "bank": "ADCB", "limit": 150000, "balance": 45000}
+  ],
+  "payment_history": {
+    "on_time_payments": 94,
+    "late_payments": 6,
+    "payment_ratio": 94.0
+  },
+  "total_outstanding": 57000,
+  "credit_utilization": 24.0,
+  "account_age_months": 48
+}

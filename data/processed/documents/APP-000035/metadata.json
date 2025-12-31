@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000035",
+  "applicant_name": "Hassan Al Dhaheri",
+  "emirates_id": "1950-0712-98617699-7",
+  "profile": {
+    "monthly_income": 2313.86,
+    "monthly_expenses": 1243.31,
+    "employment_status": "Self-employed",
+    "family_size": 1,
+    "total_assets": 509871.82,
+    "total_liabilities": 93614.01,
+    "credit_score": 499,
+    "target_score": 30.0
+  },
+  "policy_score": 30.0,
+  "tier": "LOW"
+}

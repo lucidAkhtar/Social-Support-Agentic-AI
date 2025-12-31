@@ -188,7 +188,8 @@ try:
         networkx_db.graph = nx.read_graphml(str(graph_path))
         logger.info(f"✅ NetworkX loaded: {networkx_db.graph.number_of_nodes()} nodes, {networkx_db.graph.number_of_edges()} edges")
     else:
-        logger.warning("⚠️  application_graph.graphml not found")
+        # Fresh system - graph will be created on first application
+        logger.debug("NetworkX graph file not found - will be created on first use")
 except Exception as e:
     logger.error(f"⚠️  NetworkX load failed: {e}")
 
@@ -324,6 +325,8 @@ async def root():
         "status": "healthy",
         "service": "Social Support System API - Production Grade",
         "version": "2.0.0",
+        "api_version": "v1",
+        "note": "All endpoints are versioned at /api/v1/* for future compatibility",
         "databases": {
             "sqlite": "operational",
             "tinydb": "operational",
@@ -341,7 +344,9 @@ async def root():
     }
 
 
-@app.post("/api/applications/create", response_model=ApplicationResponse, tags=["Applications"])
+# API Version 1 Routes
+@app.post("/api/v1/applications/create", response_model=ApplicationResponse, tags=["Applications v1"])
+@app.post("/api/applications/create", response_model=ApplicationResponse, tags=["Applications v1"], include_in_schema=False)
 async def create_application(applicant_name: str = Form(..., example="Ahmed Hassan Al Mazrouei")):
     """
     Create a new application for processing.
@@ -1270,6 +1275,218 @@ async def get_statistics():
     
     except Exception as e:
         logger.error(f"❌ Error getting statistics: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# ============================================================================
+# ML MODEL ENDPOINTS - FAANG-GRADE PRODUCTION
+# ============================================================================
+
+@app.get("/api/ml/model-info", tags=["Machine Learning"])
+async def get_ml_model_info():
+    """
+    Get ML model information and metadata.
+    
+    **Returns:**
+    - Model version and type
+    - Feature count and names
+    - Training accuracy and metrics
+    - Model size and creation date
+    
+    **Example Response:**
+    ```json
+    {
+        "model_version": "v3",
+        "model_type": "RandomForestClassifier",
+        "n_features": 12,
+        "test_accuracy": 1.0,
+        "training_date": "2026-01-01T12:00:00"
+    }
+    ```
+    """
+    try:
+        import json
+        from pathlib import Path
+        
+        models_dir = Path("models")
+        metadata_file = models_dir / "model_metadata_v3.json"
+        
+        if not metadata_file.exists():
+            raise HTTPException(status_code=404, detail="ML model metadata not found")
+        
+        with open(metadata_file) as f:
+            metadata = json.load(f)
+        
+        # Also load training report for more details
+        report_file = models_dir / "training_report_v3.json"
+        training_report = {}
+        if report_file.exists():
+            with open(report_file) as f:
+                training_report = json.load(f)
+        
+        return {
+            "status": "operational",
+            "model_version": metadata.get("model_version"),
+            "model_type": metadata.get("model_type"),
+            "n_features": metadata.get("n_features"),
+            "feature_names": metadata.get("feature_names"),
+            "training_date": metadata.get("training_date"),
+            "hyperparameters": metadata.get("hyperparameters"),
+            "test_accuracy": training_report.get("test_accuracy"),
+            "test_f1_score": training_report.get("test_f1"),
+            "cv_mean_f1": training_report.get("cv_mean_f1"),
+            "label_definition": metadata.get("label_definition"),
+            "note": metadata.get("note")
+        }
+    
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"❌ Error getting ML model info: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ml/feature-importance", tags=["Machine Learning"])
+async def get_feature_importance():
+    """
+    Get feature importance scores from the ML model.
+    
+    **Returns:**
+    - Feature names with importance scores (0-1)
+    - Sorted by importance descending
+    
+    **Example Response:**
+    ```json
+    {
+        "features": [
+            {"name": "credit_score", "importance": 0.1683},
+            {"name": "monthly_income", "importance": 0.1531},
+            {"name": "net_worth", "importance": 0.1405}
+        ]
+    }
+    ```
+    """
+    try:
+        import json
+        from pathlib import Path
+        
+        models_dir = Path("models")
+        report_file = models_dir / "training_report_v3.json"
+        
+        if not report_file.exists():
+            raise HTTPException(status_code=404, detail="Training report not found")
+        
+        with open(report_file) as f:
+            report = json.load(f)
+        
+        feature_importances = report.get("feature_importances", {})
+        
+        # Sort by importance
+        sorted_features = sorted(
+            [{"name": k, "importance": v} for k, v in feature_importances.items()],
+            key=lambda x: x["importance"],
+            reverse=True
+        )
+        
+        return {
+            "features": sorted_features,
+            "top_5": sorted_features[:5],
+            "interpretation": "Features with higher importance have more influence on the model's predictions."
+        }
+    
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"❌ Error getting feature importance: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/ml/explain/{application_id}", tags=["Machine Learning"])
+async def explain_ml_decision(application_id: str):
+    """
+    Explain ML model decision for a specific application.
+    
+    **Parameters:**
+    - `application_id`: Application ID to explain
+    
+    **Returns:**
+    - ML prediction and confidence
+    - Feature values used
+    - Contribution of each feature to decision
+    
+    **Example Response:**
+    ```json
+    {
+        "application_id": "APP-123",
+        "ml_prediction": 1,
+        "confidence": 0.925,
+        "decision": "APPROVE",
+        "feature_values": {
+            "monthly_income": 4200,
+            "family_size": 6,
+            "net_worth": 8000
+        }
+    }
+    ```
+    """
+    try:
+        # Get application from database
+        app_data = sqlite_db.get_application(application_id)
+        
+        if not app_data:
+            raise HTTPException(status_code=404, detail=f"Application {application_id} not found")
+        
+        # Get eligibility result (contains ML prediction)
+        results = sqlite_db.get_application_results(application_id)
+        
+        if not results:
+            raise HTTPException(status_code=404, detail=f"No results found for {application_id}")
+        
+        ml_prediction = results.get("ml_prediction", {})
+        extracted_data = results.get("extracted_data", {})
+        
+        # Extract feature values
+        income_data = extracted_data.get("income_data", {})
+        family_info = extracted_data.get("family_info", {})
+        assets_liabilities = extracted_data.get("assets_liabilities", {})
+        employment_data = extracted_data.get("employment_data", {})
+        credit_data = extracted_data.get("credit_data", {})
+        
+        feature_values = {
+            "monthly_income": income_data.get("monthly_income", 0),
+            "family_size": family_info.get("family_size", 1),
+            "net_worth": assets_liabilities.get("net_worth", 0),
+            "total_assets": assets_liabilities.get("total_assets", 0),
+            "total_liabilities": assets_liabilities.get("total_liabilities", 0),
+            "credit_score": credit_data.get("credit_score", 600),
+            "employment_years": employment_data.get("years_of_experience", 0),
+            "employment_status": employment_data.get("employment_status", "unknown"),
+            "housing_type": family_info.get("housing_type", "unknown")
+        }
+        
+        prediction = ml_prediction.get("prediction", 0)
+        confidence = ml_prediction.get("probability", 0)
+        
+        return {
+            "application_id": application_id,
+            "ml_prediction": prediction,
+            "confidence": confidence,
+            "decision": "APPROVE" if prediction == 1 else "REJECT",
+            "model_version": ml_prediction.get("model_version", "unknown"),
+            "feature_values": feature_values,
+            "interpretation": (
+                f"ML model predicts {'APPROVAL' if prediction == 1 else 'REJECTION'} "
+                f"with {confidence:.1%} confidence based on 12 features. "
+                f"Key factors: income ({feature_values['monthly_income']} AED), "
+                f"family size ({feature_values['family_size']}), "
+                f"net worth ({feature_values['net_worth']} AED)."
+            )
+        }
+    
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"❌ Error explaining ML decision: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 

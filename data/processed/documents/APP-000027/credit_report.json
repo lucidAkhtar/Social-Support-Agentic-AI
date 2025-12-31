@@ -1,0 +1,63 @@
+{
+  "report_id": "CB-448176",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Rashid Al Shehhi",
+    "emirates_id": "2009-0404-25916596-7",
+    "nationality": "UAE National"
+  },
+  "credit_score": 861,
+  "credit_rating": "Poor",
+  "payment_history": {
+    "on_time_payments": 20,
+    "late_payments_30_days": 3,
+    "late_payments_60_days": 1,
+    "missed_payments": 0,
+    "payment_ratio": 87.0
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "ADIB",
+      "account_status": "Active",
+      "balance": 7971.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-05",
+      "last_payment_amount": 2114.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 6977.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-03",
+      "last_payment_amount": 1874.0
+    }
+  ],
+  "total_outstanding": 87945.54,
+  "enquiries": [
+    {
+      "date": "2025-12-05",
+      "type": "Credit Card Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-10-28",
+      "type": "Mortgage Application",
+      "institution": "Mashreq"
+    },
+    {
+      "date": "2025-07-23",
+      "type": "Credit Card Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-07-11",
+      "type": "Credit Card Application",
+      "institution": "ADIB"
+    }
+  ],
+  "remarks": "Very poor credit profile. High risk customer."
+}

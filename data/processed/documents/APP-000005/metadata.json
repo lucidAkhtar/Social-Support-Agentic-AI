@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000005",
+  "applicant_name": "Salim Al Kalbani",
+  "emirates_id": "1968-0823-28628439-0",
+  "profile": {
+    "monthly_income": 6547.63,
+    "monthly_expenses": 3826.65,
+    "employment_status": "Government Employee",
+    "family_size": 2,
+    "total_assets": 231287.14,
+    "total_liabilities": 37642.07,
+    "credit_score": 590,
+    "target_score": 65.0
+  },
+  "policy_score": 65.0,
+  "tier": "MEDIUM"
+}

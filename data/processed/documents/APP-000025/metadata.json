@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000025",
+  "applicant_name": "Amira Al Jabri",
+  "emirates_id": "2010-0215-49991663-6",
+  "profile": {
+    "monthly_income": 2281.69,
+    "monthly_expenses": 1718.2,
+    "employment_status": "Self-employed",
+    "family_size": 5,
+    "total_assets": 16256.21,
+    "total_liabilities": 5049.57,
+    "credit_score": 649,
+    "target_score": 60.0
+  },
+  "policy_score": 60.0,
+  "tier": "MEDIUM"
+}

@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000018",
+  "applicant_name": "Khalid Al Ameri",
+  "emirates_id": "1951-0307-54360949-4",
+  "profile": {
+    "monthly_income": 5923.84,
+    "monthly_expenses": 3815.81,
+    "employment_status": "Private Sector",
+    "family_size": 4,
+    "total_assets": 161033.29,
+    "total_liabilities": 57661.29,
+    "credit_score": 690,
+    "target_score": 70.0
+  },
+  "policy_score": 70.0,
+  "tier": "HIGH"
+}

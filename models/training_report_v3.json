@@ -1,0 +1,40 @@
+{
+  "test_accuracy": 1.0,
+  "test_f1": 1.0,
+  "cv_mean_f1": 0.8,
+  "cv_std_f1": 0.4,
+  "cv_scores": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    0.0
+  ],
+  "confusion_matrix": [
+    [
+      1,
+      0
+    ],
+    [
+      0,
+      1
+    ]
+  ],
+  "feature_importances": {
+    "monthly_income": 0.15310539800335718,
+    "family_size": 0.09874219710767602,
+    "net_worth": 0.14050048590864916,
+    "total_assets": 0.13703416149068323,
+    "total_liabilities": 0.13945578231292516,
+    "credit_score": 0.1683441078294672,
+    "employment_years": 0.10081009659894509,
+    "is_employed": 0.010770975056689343,
+    "is_unemployed": 0.0163265306122449,
+    "owns_property": 0.01062925170068028,
+    "rents": 0.012200532386867795,
+    "lives_with_family": 0.012080480991814623
+  },
+  "n_train_samples": 8,
+  "n_test_samples": 2,
+  "n_features": 12
+}

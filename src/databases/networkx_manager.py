@@ -441,7 +441,8 @@ class NetworkXManager:
         file_path = self.persist_path / filename
         
         if not file_path.exists():
-            logger.warning(f"Graph file not found: {file_path}")
+            # Fresh system - graph will be saved after first application
+            logger.debug(f"Graph file not found: {file_path} - will be created on first save")
             return False
         
         try:

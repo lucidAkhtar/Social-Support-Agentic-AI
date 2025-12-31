@@ -1,0 +1,63 @@
+{
+  "report_id": "CB-896922",
+  "report_date": "2026-01-01",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Noor Al Maktoum",
+    "emirates_id": "1977-1126-54462389-2",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1301,
+  "credit_rating": "Good",
+  "payment_history": {
+    "on_time_payments": 33,
+    "late_payments_30_days": 5,
+    "late_payments_60_days": 3,
+    "missed_payments": 1,
+    "payment_ratio": 84.6
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "ADIB",
+      "account_status": "Active",
+      "balance": 8720.0,
+      "credit_limit": 100000,
+      "last_payment": "2026-01-01",
+      "last_payment_amount": 4184.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "ADIB",
+      "account_status": "Active",
+      "balance": 18144.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-24",
+      "last_payment_amount": 1899.0
+    }
+  ],
+  "total_outstanding": 50000,
+  "enquiries": [
+    {
+      "date": "2025-08-10",
+      "type": "Credit Card Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-08-14",
+      "type": "Credit Card Application",
+      "institution": "FAB"
+    },
+    {
+      "date": "2025-08-08",
+      "type": "Mortgage Application",
+      "institution": "Mashreq"
+    },
+    {
+      "date": "2025-08-15",
+      "type": "Loan Application",
+      "institution": "FAB"
+    }
+  ],
+  "remarks": "Fair credit profile. Acceptable risk customer."
+}

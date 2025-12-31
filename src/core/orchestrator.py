@@ -1,6 +1,61 @@
 """
-Master Orchestrator Agent
-Coordinates all sub-agents in the correct sequence
+Master Orchestrator Agent - Coordinates the complete application processing pipeline.
+
+PURPOSE:
+    Central coordinator that manages the sequential execution of all 6 agents in the
+    social support eligibility system. Ensures proper data flow, state management,
+    and error handling across the entire pipeline.
+
+ARCHITECTURE:
+    Implements the Orchestrator pattern to coordinate:
+    1. Data Extraction (documents → structured data)
+    2. Data Validation (cross-document consistency)
+    3. Eligibility Assessment (ML + rule-based decision)
+    4. Recommendation Generation (support amount + programs)
+    5. Explanation Generation (natural language justification)
+    6. RAG Chatbot (interactive Q&A support)
+
+DEPENDENCIES:
+    Required Agents (all must be registered):
+        - extraction_agent: DataExtractionAgent for document processing
+        - validation_agent: DataValidationAgent for consistency checks
+        - eligibility_agent: EligibilityAgent for ML-based decisions
+        - recommendation_agent: RecommendationAgent for support suggestions
+        - explanation_agent: ExplanationAgent for natural language output
+        - rag_chatbot_agent: RAGChatbotAgent for interactive queries (optional)
+    
+    Core Types:
+        - ApplicationState: Tracks application progress through pipeline
+        - ProcessingStage: Enum for pipeline stages
+        - ExtractedData, ValidationReport, EligibilityResult: Agent outputs
+
+USED BY:
+    - FastAPI main.py: Processes applications via REST API
+    - Integration tests: End-to-end pipeline validation
+    - Streamlit UI: Interactive application processing
+
+FLOW:
+    Application Upload → Extract → Validate → Eligible? → Recommend → Explain → Complete
+    
+    Error Handling:
+        - Graceful degradation at each stage
+        - State preservation for recovery
+        - Comprehensive error logging
+
+STATE MANAGEMENT:
+    - Maintains ApplicationState dictionary keyed by application_id
+    - Each state tracks: documents, extracted_data, validation_report, 
+      eligibility_result, recommendation, explanation
+    - State persists for entire session lifetime
+
+OBSERVABILITY:
+    - Stage-level logging with timing
+    - Agent execution tracking
+    - Error capture with context
+    - Integration with Langfuse for distributed tracing
+
+Author: Core Infrastructure Team
+Version: 2.0 - Production Grade
 """
 import asyncio
 import logging
@@ -13,22 +68,41 @@ from ..core.types import ApplicationState, ProcessingStage, AgentMessage
 
 class MasterOrchestrator(BaseAgent):
     """
-    Master Orchestrator coordinates the entire application processing pipeline
+    Master Orchestrator coordinates the entire application processing pipeline.
     
-    Flow:
-    1. Upload Documents
-    2. Data Extraction Agent (OCR, Resume, Excel)
-    3. Data Validation Agent (Cross-doc checks, conflicts)
-    4. Eligibility Agent (ML + Rules)
-    5. Recommendation Agent (LLM reasoning)
-    6. Explanation Agent (Natural language justification)
+    Implements dependency injection pattern for all 6 agents and manages
+    application state throughout the processing lifecycle.
+    
+    Processing Pipeline:
+        1. Upload Documents (user action)
+        2. Data Extraction Agent (OCR, parsing, field extraction)
+        3. Data Validation Agent (cross-document checks, conflict detection)
+        4. Eligibility Agent (ML model + business rules)
+        5. Recommendation Agent (support amount + program matching)
+        6. Explanation Agent (natural language justification)
+        7. RAG Chatbot Agent (interactive Q&A - optional)
+    
+    Attributes:
+        extraction_agent: Processes documents into structured data
+        validation_agent: Validates consistency across documents
+        eligibility_agent: Determines approval/rejection with ML
+        recommendation_agent: Generates support recommendations
+        explanation_agent: Creates human-readable explanations
+        rag_chatbot_agent: Handles conversational queries
+        applications: Dictionary mapping application_id to ApplicationState
     """
     
     def __init__(self, config: Optional[Dict[str, Any]] = None):
+        """
+        Initialize orchestrator with optional configuration.
+        
+        Args:
+            config: Optional configuration dictionary for orchestrator behavior
+        """
         super().__init__("MasterOrchestrator", config)
         self.logger = logging.getLogger("MasterOrchestrator")
         
-        # Agents will be injected
+        # Agents will be injected via register_agents()
         self.extraction_agent = None
         self.validation_agent = None
         self.eligibility_agent = None
@@ -36,7 +110,7 @@ class MasterOrchestrator(BaseAgent):
         self.explanation_agent = None
         self.rag_chatbot_agent = None  # NEW: RAG-powered chatbot
         
-        # State management
+        # State management - stores all active applications
         self.applications: Dict[str, ApplicationState] = {}
         
     def register_agents(self, 
@@ -46,7 +120,20 @@ class MasterOrchestrator(BaseAgent):
                        recommendation_agent,
                        explanation_agent,
                        rag_chatbot_agent=None):  # NEW: Optional RAG chatbot
-        """Register all sub-agents"""
+        """
+        Register all sub-agents for dependency injection.
+        
+        Must be called before processing any applications. Enables loose coupling
+        and testability by allowing agent substitution.
+        
+        Args:
+            extraction_agent: DataExtractionAgent instance
+            validation_agent: DataValidationAgent instance
+            eligibility_agent: EligibilityAgent instance
+            recommendation_agent: RecommendationAgent instance
+            explanation_agent: ExplanationAgent instance
+            rag_chatbot_agent: RAGChatbotAgent instance (optional)
+        """
         self.extraction_agent = extraction_agent
         self.validation_agent = validation_agent
         self.eligibility_agent = eligibility_agent
@@ -56,18 +143,43 @@ class MasterOrchestrator(BaseAgent):
         self.logger.info("All agents registered")
     
     async def execute(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
-        """Execute orchestration - not used directly, use process_application instead"""
+        """
+        Execute orchestration - not used directly, use process_application instead.
+        
+        This method satisfies the BaseAgent abstract interface but is not the
+        primary entry point. Use process_application() for application processing.
+        
+        Args:
+            input_data: Generic input data (not used)
+            
+        Returns:
+            Empty dictionary
+        """
         pass
     
     async def process_application(self, application_id: str) -> ApplicationState:
         """
-        Process a complete application through the pipeline
+        Process a complete application through the entire 5-stage pipeline.
+        
+        Executes all agents sequentially: Extract → Validate → Eligibility → 
+        Recommend → Explain. Each stage updates the ApplicationState with results.
+        Handles errors gracefully and tracks execution time.
         
         Args:
-            application_id: Application ID to process
+            application_id: Unique identifier for the application to process.
+                          Must exist in self.applications dictionary.
             
         Returns:
-            Final ApplicationState with all results
+            ApplicationState with all processing results:
+                - extracted_data: Structured data from documents
+                - validation_report: Consistency check results
+                - eligibility_result: ML-based decision (approved/rejected)
+                - recommendation: Support amount and program suggestions
+                - explanation: Natural language justification
+                
+        Raises:
+            ValueError: If application_id not found in applications dictionary
+            Exception: For any stage-specific processing errors (captured in state)
         """
         start_time = datetime.now()
         
@@ -106,7 +218,24 @@ class MasterOrchestrator(BaseAgent):
         return app_state
     
     async def _run_extraction(self, app_state: ApplicationState) -> ApplicationState:
-        """Run Data Extraction Agent"""
+        """
+        Execute Data Extraction Agent to process uploaded documents.
+        
+        Extracts structured data from all document types (Emirates ID, bank statements,
+        resume, assets/liabilities, credit report, employment letter) using OCR,
+        PDF parsing, and Excel extraction.
+        
+        Args:
+            app_state: Current application state with uploaded documents
+            
+        Returns:
+            Updated ApplicationState with extracted_data populated
+            
+        Side Effects:
+            - Updates app_state.stage to EXTRACTING
+            - Populates app_state.extracted_data with structured fields
+            - Logs extraction progress and timing
+        """
         self.logger.info(f"[{app_state.application_id}] Running Data Extraction")
         app_state.update_stage(ProcessingStage.EXTRACTING)
         

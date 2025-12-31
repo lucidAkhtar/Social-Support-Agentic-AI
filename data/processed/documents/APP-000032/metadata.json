@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000032",
+  "applicant_name": "Khalid Al Kalbani",
+  "emirates_id": "1977-0602-24228398-8",
+  "profile": {
+    "monthly_income": 2538.86,
+    "monthly_expenses": 1781.93,
+    "employment_status": "Government Employee",
+    "family_size": 7,
+    "total_assets": 24917.31,
+    "total_liabilities": 23438.4,
+    "credit_score": 638,
+    "target_score": 75.0
+  },
+  "policy_score": 75.0,
+  "tier": "HIGH"
+}

@@ -1,0 +1,29 @@
+{
+  "graph_stats": {
+    "total_nodes": 400,
+    "total_edges": 360,
+    "density": 0.002255639097744361,
+    "avg_degree": 1.8
+  },
+  "node_counts": {
+    "person_nodes": 40,
+    "application_nodes": 40,
+    "document_nodes": 240,
+    "decision_nodes": 40,
+    "recommendation_nodes": 40,
+    "edges": 360
+  },
+  "node_types": {
+    "Person": 40,
+    "Application": 40,
+    "Document": 240,
+    "Decision": 40,
+    "Recommendation": 40
+  },
+  "relationship_types": {
+    "SUBMITTED": 40,
+    "HAS_DOCUMENT": 240,
+    "REVIEWED": 40,
+    "RECOMMENDED": 40
+  }
+}

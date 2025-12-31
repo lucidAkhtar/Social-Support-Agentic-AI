@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000024",
+  "applicant_name": "Amr Al Dhaheri",
+  "emirates_id": "1953-0903-16052535-0",
+  "profile": {
+    "monthly_income": 4723.3,
+    "monthly_expenses": 2551.67,
+    "employment_status": "Private Sector",
+    "family_size": 1,
+    "total_assets": 125734.81,
+    "total_liabilities": 60210.61,
+    "credit_score": 678,
+    "target_score": 55.0
+  },
+  "policy_score": 55.0,
+  "tier": "MEDIUM"
+}

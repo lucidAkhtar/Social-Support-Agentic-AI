@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000002",
+  "applicant_name": "Kamal Al Shehhi",
+  "emirates_id": "1984-0815-68461818-8",
+  "profile": {
+    "monthly_income": 2480.82,
+    "monthly_expenses": 1303.11,
+    "employment_status": "Self-employed",
+    "family_size": 1,
+    "total_assets": 379784.87,
+    "total_liabilities": 113050.89,
+    "credit_score": 465,
+    "target_score": 30.0
+  },
+  "policy_score": 30.0,
+  "tier": "LOW"
+}

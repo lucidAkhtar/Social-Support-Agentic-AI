@@ -1,0 +1,63 @@
+{
+  "report_id": "CB-262959",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Jassem Al Memari",
+    "emirates_id": "1981-0511-48063218-3",
+    "nationality": "UAE National"
+  },
+  "credit_score": 843,
+  "credit_rating": "Poor",
+  "payment_history": {
+    "on_time_payments": 38,
+    "late_payments_30_days": 0,
+    "late_payments_60_days": 0,
+    "missed_payments": 2,
+    "payment_ratio": 95.0
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "Emirates NBD",
+      "account_status": "Active",
+      "balance": 8367.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-13",
+      "last_payment_amount": 1249.0
+    },
+    {
+      "account_type": "Personal Loan",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 38942.0,
+      "credit_limit": 40879.0,
+      "last_payment": "2025-12-21",
+      "last_payment_amount": 4704.0
+    }
+  ],
+  "total_outstanding": 79317.83,
+  "enquiries": [
+    {
+      "date": "2025-07-05",
+      "type": "Credit Card Application",
+      "institution": "Mashreq"
+    },
+    {
+      "date": "2025-10-11",
+      "type": "Loan Application",
+      "institution": "Mashreq"
+    },
+    {
+      "date": "2025-11-02",
+      "type": "Mortgage Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-11-27",
+      "type": "Credit Card Application",
+      "institution": "FAB"
+    }
+  ],
+  "remarks": "Very poor credit profile. High risk customer."
+}

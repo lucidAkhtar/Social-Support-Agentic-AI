@@ -1,0 +1,72 @@
+{
+  "report_id": "CB-515182",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Salim Al Ketbi",
+    "emirates_id": "1960-0817-72654864-1",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1120,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 42,
+    "late_payments_30_days": 2,
+    "late_payments_60_days": 0,
+    "missed_payments": 0,
+    "payment_ratio": 95.5
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 7779.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-14",
+      "last_payment_amount": 4612.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "ADIB",
+      "account_status": "Active",
+      "balance": 30772.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-27",
+      "last_payment_amount": 1658.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "Emirates NBD",
+      "account_status": "Active",
+      "balance": 10231.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-25",
+      "last_payment_amount": 3868.0
+    }
+  ],
+  "total_outstanding": 10007.12,
+  "enquiries": [
+    {
+      "date": "2025-12-17",
+      "type": "Loan Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-08-22",
+      "type": "Loan Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-08-09",
+      "type": "Mortgage Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-07-12",
+      "type": "Loan Application",
+      "institution": "FAB"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

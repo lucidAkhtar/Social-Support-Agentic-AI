@@ -13,6 +13,7 @@ __pycache__/
 .idea/
 *.swp
 *.swo
+.dockerignore
 
 # OS
 .DS_Store
@@ -29,6 +30,9 @@ htmlcov/
 # Streamlit
 .streamlit/secrets.toml
 
-*.json
-*.md 
+docs/archive
+models_archive/
+scripts/
+src_archive/
+tests/archive/
 

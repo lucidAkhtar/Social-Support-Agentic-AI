@@ -1,0 +1,53 @@
+{
+  "report_id": "CB-982464",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Amr Al Dhaheri",
+    "emirates_id": "1953-0903-16052535-0",
+    "nationality": "UAE National"
+  },
+  "credit_score": 864,
+  "credit_rating": "Poor",
+  "payment_history": {
+    "on_time_payments": 36,
+    "late_payments_30_days": 4,
+    "late_payments_60_days": 2,
+    "missed_payments": 1,
+    "payment_ratio": 87.8
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 28025.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-22",
+      "last_payment_amount": 3085.0
+    },
+    {
+      "account_type": "Personal Loan",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 21874.0,
+      "credit_limit": 91226.0,
+      "last_payment": "2025-12-14",
+      "last_payment_amount": 3370.0
+    }
+  ],
+  "total_outstanding": 60210.61,
+  "enquiries": [
+    {
+      "date": "2025-10-15",
+      "type": "Credit Card Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-08-24",
+      "type": "Mortgage Application",
+      "institution": "FAB"
+    }
+  ],
+  "remarks": "Very poor credit profile. High risk customer."
+}

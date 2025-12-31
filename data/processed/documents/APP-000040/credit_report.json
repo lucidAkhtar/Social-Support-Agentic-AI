@@ -1,0 +1,62 @@
+{
+  "report_id": "CB-481851",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Ali Al Memari",
+    "emirates_id": "1977-0512-71475863-2",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1007,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 50,
+    "late_payments_30_days": 5,
+    "late_payments_60_days": 3,
+    "missed_payments": 0,
+    "payment_ratio": 90.9
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 26388.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-17",
+      "last_payment_amount": 3693.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "ADIB",
+      "account_status": "Active",
+      "balance": 38468.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-09",
+      "last_payment_amount": 1514.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 43662.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-23",
+      "last_payment_amount": 3547.0
+    }
+  ],
+  "total_outstanding": 10582.19,
+  "enquiries": [
+    {
+      "date": "2025-08-04",
+      "type": "Loan Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-08-04",
+      "type": "Mortgage Application",
+      "institution": "Mashreq"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

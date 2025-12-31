@@ -1,0 +1,62 @@
+{
+  "report_id": "CB-201593",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Waleed Al Nuaimi",
+    "emirates_id": "1994-1107-59948088-1",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1005,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 23,
+    "late_payments_30_days": 2,
+    "late_payments_60_days": 0,
+    "missed_payments": 1,
+    "payment_ratio": 88.5
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 37021.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-24",
+      "last_payment_amount": 2279.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 13179.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-31",
+      "last_payment_amount": 1209.0
+    },
+    {
+      "account_type": "Personal Loan",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 42825.0,
+      "credit_limit": 42413.0,
+      "last_payment": "2025-12-12",
+      "last_payment_amount": 1403.0
+    }
+  ],
+  "total_outstanding": 39256.43,
+  "enquiries": [
+    {
+      "date": "2025-10-28",
+      "type": "Loan Application",
+      "institution": "Mashreq"
+    },
+    {
+      "date": "2025-10-07",
+      "type": "Loan Application",
+      "institution": "FAB"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

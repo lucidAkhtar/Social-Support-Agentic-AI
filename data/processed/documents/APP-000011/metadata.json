@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000011",
+  "applicant_name": "Reem Al Awani",
+  "emirates_id": "1959-1222-22979206-0",
+  "profile": {
+    "monthly_income": 2797.99,
+    "monthly_expenses": 2480.84,
+    "employment_status": "Government Employee",
+    "family_size": 4,
+    "total_assets": 23817.2,
+    "total_liabilities": 11105.92,
+    "credit_score": 596,
+    "target_score": 75.0
+  },
+  "policy_score": 75.0,
+  "tier": "HIGH"
+}

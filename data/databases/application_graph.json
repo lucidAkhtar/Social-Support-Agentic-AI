@@ -1,0 +1,5253 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {
+    "name": "Social Support Application Network",
+    "created_at": "2025-12-31T15:59:28.195693",
+    "description": "Graph representation of social support applications with person, document, decision nodes"
+  },
+  "nodes": [
+    {
+      "node_type": "Person",
+      "name": "Salim Al Rumaithi",
+      "nationality": "UAE National",
+      "monthly_income": 2091.44,
+      "credit_score": 1085,
+      "net_worth": 171353.0,
+      "id": "1969-0626-15354599-2"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1969-0626-15354599-2",
+      "submission_date": "2025-12-16T15:59:28.204343",
+      "status": "PROCESSED",
+      "policy_score": 40.0,
+      "id": "APP-000001"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000001/bank_statement.pdf",
+      "uploaded_at": "2025-12-16T15:59:28.204343",
+      "id": "APP-000001_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000001/emirates_id.png",
+      "uploaded_at": "2025-12-16T15:59:28.204343",
+      "id": "APP-000001_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000001/employment_letter.pdf",
+      "uploaded_at": "2025-12-16T15:59:28.204343",
+      "id": "APP-000001_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000001/resume.pdf",
+      "uploaded_at": "2025-12-16T15:59:28.204343",
+      "id": "APP-000001_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000001/assets_liabilities.xlsx",
+      "uploaded_at": "2025-12-16T15:59:28.204343",
+      "id": "APP-000001_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000001/credit_report.json",
+      "uploaded_at": "2025-12-16T15:59:28.204343",
+      "id": "APP-000001_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000001",
+      "decision": "CONDITIONAL",
+      "policy_score": 40.0,
+      "decided_at": "2025-12-20T15:59:28.204343",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000001"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000001",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 418.29,
+      "duration_months": 3,
+      "created_at": "2025-12-20T15:59:28.204343",
+      "id": "REC_APP-000001"
+    },
+    {
+      "node_type": "Person",
+      "name": "Nasser Al Ketbi",
+      "nationality": "UAE National",
+      "monthly_income": 12886.98,
+      "credit_score": 1299,
+      "net_worth": 9322.0,
+      "id": "1971-0520-47080140-2"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1971-0520-47080140-2",
+      "submission_date": "2025-11-08T15:59:28.211025",
+      "status": "PROCESSED",
+      "policy_score": 85.0,
+      "id": "APP-000002"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000002/bank_statement.pdf",
+      "uploaded_at": "2025-11-08T15:59:28.211025",
+      "id": "APP-000002_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000002/emirates_id.png",
+      "uploaded_at": "2025-11-08T15:59:28.211025",
+      "id": "APP-000002_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000002/employment_letter.pdf",
+      "uploaded_at": "2025-11-08T15:59:28.211025",
+      "id": "APP-000002_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000002/resume.pdf",
+      "uploaded_at": "2025-11-08T15:59:28.211025",
+      "id": "APP-000002_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000002/assets_liabilities.xlsx",
+      "uploaded_at": "2025-11-08T15:59:28.211025",
+      "id": "APP-000002_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000002/credit_report.json",
+      "uploaded_at": "2025-11-08T15:59:28.211025",
+      "id": "APP-000002_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000002",
+      "decision": "APPROVED",
+      "policy_score": 85.0,
+      "decided_at": "2025-11-13T15:59:28.211025",
+      "decided_by": "SYSTEM",
+      "priority": "HIGH",
+      "id": "DECISION_APP-000002"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000002",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 3000,
+      "duration_months": 6,
+      "created_at": "2025-11-13T15:59:28.211025",
+      "id": "REC_APP-000002"
+    },
+    {
+      "node_type": "Person",
+      "name": "Omar Al Mazrouei",
+      "nationality": "UAE National",
+      "monthly_income": 7168.32,
+      "credit_score": 1159,
+      "net_worth": 263709.0,
+      "id": "1965-0819-29208935-8"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1965-0819-29208935-8",
+      "submission_date": "2025-12-21T15:59:28.221949",
+      "status": "PROCESSED",
+      "policy_score": 55.0,
+      "id": "APP-000003"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000003/bank_statement.pdf",
+      "uploaded_at": "2025-12-21T15:59:28.221949",
+      "id": "APP-000003_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000003/emirates_id.png",
+      "uploaded_at": "2025-12-21T15:59:28.221949",
+      "id": "APP-000003_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000003/employment_letter.pdf",
+      "uploaded_at": "2025-12-21T15:59:28.221949",
+      "id": "APP-000003_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000003/resume.pdf",
+      "uploaded_at": "2025-12-21T15:59:28.221949",
+      "id": "APP-000003_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000003/assets_liabilities.xlsx",
+      "uploaded_at": "2025-12-21T15:59:28.221949",
+      "id": "APP-000003_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000003/credit_report.json",
+      "uploaded_at": "2025-12-21T15:59:28.221949",
+      "id": "APP-000003_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000003",
+      "decision": "APPROVED",
+      "policy_score": 55.0,
+      "decided_at": "2025-12-26T15:59:28.221949",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000003"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000003",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 2150.5,
+      "duration_months": 6,
+      "created_at": "2025-12-26T15:59:28.221949",
+      "id": "REC_APP-000003"
+    },
+    {
+      "node_type": "Person",
+      "name": "Abdullah Al Kalbani",
+      "nationality": "UAE National",
+      "monthly_income": 2120.17,
+      "credit_score": 900,
+      "net_worth": -2045.0,
+      "id": "1961-0319-98227303-7"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1961-0319-98227303-7",
+      "submission_date": "2025-10-10T15:59:28.228086",
+      "status": "PROCESSED",
+      "policy_score": 50.0,
+      "id": "APP-000004"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000004/bank_statement.pdf",
+      "uploaded_at": "2025-10-10T15:59:28.228086",
+      "id": "APP-000004_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000004/emirates_id.png",
+      "uploaded_at": "2025-10-10T15:59:28.228086",
+      "id": "APP-000004_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000004/employment_letter.pdf",
+      "uploaded_at": "2025-10-10T15:59:28.228086",
+      "id": "APP-000004_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000004/resume.pdf",
+      "uploaded_at": "2025-10-10T15:59:28.228086",
+      "id": "APP-000004_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000004/assets_liabilities.xlsx",
+      "uploaded_at": "2025-10-10T15:59:28.228086",
+      "id": "APP-000004_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000004/credit_report.json",
+      "uploaded_at": "2025-10-10T15:59:28.228086",
+      "id": "APP-000004_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000004",
+      "decision": "APPROVED",
+      "policy_score": 50.0,
+      "decided_at": "2025-10-14T15:59:28.228086",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000004"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000004",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 636.05,
+      "duration_months": 6,
+      "created_at": "2025-10-14T15:59:28.228086",
+      "id": "REC_APP-000004"
+    },
+    {
+      "node_type": "Person",
+      "name": "Waleed Al Shamsi",
+      "nationality": "UAE National",
+      "monthly_income": 29596.74,
+      "credit_score": 1280,
+      "net_worth": 234194.0,
+      "id": "1965-0504-16408822-5"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1965-0504-16408822-5",
+      "submission_date": "2025-12-08T15:59:28.232657",
+      "status": "PROCESSED",
+      "policy_score": 70.0,
+      "id": "APP-000005"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000005/bank_statement.pdf",
+      "uploaded_at": "2025-12-08T15:59:28.232657",
+      "id": "APP-000005_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000005/emirates_id.png",
+      "uploaded_at": "2025-12-08T15:59:28.232657",
+      "id": "APP-000005_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000005/employment_letter.pdf",
+      "uploaded_at": "2025-12-08T15:59:28.232657",
+      "id": "APP-000005_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000005/resume.pdf",
+      "uploaded_at": "2025-12-08T15:59:28.232657",
+      "id": "APP-000005_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000005/assets_liabilities.xlsx",
+      "uploaded_at": "2025-12-08T15:59:28.232657",
+      "id": "APP-000005_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000005/credit_report.json",
+      "uploaded_at": "2025-12-08T15:59:28.232657",
+      "id": "APP-000005_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000005",
+      "decision": "APPROVED",
+      "policy_score": 70.0,
+      "decided_at": "2025-12-12T15:59:28.232657",
+      "decided_by": "SYSTEM",
+      "priority": "HIGH",
+      "id": "DECISION_APP-000005"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000005",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 3000,
+      "duration_months": 6,
+      "created_at": "2025-12-12T15:59:28.232657",
+      "id": "REC_APP-000005"
+    },
+    {
+      "node_type": "Person",
+      "name": "Majid Al Rumaithi",
+      "nationality": "UAE National",
+      "monthly_income": 7438.54,
+      "credit_score": 979,
+      "net_worth": -72417.0,
+      "id": "2003-1122-73161098-9"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "2003-1122-73161098-9",
+      "submission_date": "2025-10-14T15:59:28.235808",
+      "status": "PROCESSED",
+      "policy_score": 65.0,
+      "id": "APP-000006"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000006/bank_statement.pdf",
+      "uploaded_at": "2025-10-14T15:59:28.235808",
+      "id": "APP-000006_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000006/emirates_id.png",
+      "uploaded_at": "2025-10-14T15:59:28.235808",
+      "id": "APP-000006_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000006/employment_letter.pdf",
+      "uploaded_at": "2025-10-14T15:59:28.235808",
+      "id": "APP-000006_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000006/resume.pdf",
+      "uploaded_at": "2025-10-14T15:59:28.235808",
+      "id": "APP-000006_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000006/assets_liabilities.xlsx",
+      "uploaded_at": "2025-10-14T15:59:28.235808",
+      "id": "APP-000006_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000006/credit_report.json",
+      "uploaded_at": "2025-10-14T15:59:28.235808",
+      "id": "APP-000006_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000006",
+      "decision": "APPROVED",
+      "policy_score": 65.0,
+      "decided_at": "2025-10-15T15:59:28.235808",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000006"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000006",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 2231.56,
+      "duration_months": 6,
+      "created_at": "2025-10-15T15:59:28.235808",
+      "id": "REC_APP-000006"
+    },
+    {
+      "node_type": "Person",
+      "name": "Mustafa Al Rumaithi",
+      "nationality": "UAE National",
+      "monthly_income": 18164.74,
+      "credit_score": 1052,
+      "net_worth": 173882.0,
+      "id": "1958-1208-10466177-6"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1958-1208-10466177-6",
+      "submission_date": "2025-10-31T15:59:28.238983",
+      "status": "PROCESSED",
+      "policy_score": 70.0,
+      "id": "APP-000007"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000007/bank_statement.pdf",
+      "uploaded_at": "2025-10-31T15:59:28.238983",
+      "id": "APP-000007_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000007/emirates_id.png",
+      "uploaded_at": "2025-10-31T15:59:28.238983",
+      "id": "APP-000007_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000007/employment_letter.pdf",
+      "uploaded_at": "2025-10-31T15:59:28.238983",
+      "id": "APP-000007_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000007/resume.pdf",
+      "uploaded_at": "2025-10-31T15:59:28.238983",
+      "id": "APP-000007_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000007/assets_liabilities.xlsx",
+      "uploaded_at": "2025-10-31T15:59:28.238983",
+      "id": "APP-000007_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000007/credit_report.json",
+      "uploaded_at": "2025-10-31T15:59:28.238983",
+      "id": "APP-000007_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000007",
+      "decision": "APPROVED",
+      "policy_score": 70.0,
+      "decided_at": "2025-11-01T15:59:28.238983",
+      "decided_by": "SYSTEM",
+      "priority": "HIGH",
+      "id": "DECISION_APP-000007"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000007",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 3000,
+      "duration_months": 6,
+      "created_at": "2025-11-01T15:59:28.238983",
+      "id": "REC_APP-000007"
+    },
+    {
+      "node_type": "Person",
+      "name": "Hana Al Mansoori",
+      "nationality": "UAE National",
+      "monthly_income": 3072.57,
+      "credit_score": 1123,
+      "net_worth": -8863.0,
+      "id": "1960-0709-66519399-9"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1960-0709-66519399-9",
+      "submission_date": "2025-11-12T15:59:28.243382",
+      "status": "PROCESSED",
+      "policy_score": 65.0,
+      "id": "APP-000008"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000008/bank_statement.pdf",
+      "uploaded_at": "2025-11-12T15:59:28.243382",
+      "id": "APP-000008_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000008/emirates_id.png",
+      "uploaded_at": "2025-11-12T15:59:28.243382",
+      "id": "APP-000008_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000008/employment_letter.pdf",
+      "uploaded_at": "2025-11-12T15:59:28.243382",
+      "id": "APP-000008_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000008/resume.pdf",
+      "uploaded_at": "2025-11-12T15:59:28.243382",
+      "id": "APP-000008_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000008/assets_liabilities.xlsx",
+      "uploaded_at": "2025-11-12T15:59:28.243382",
+      "id": "APP-000008_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000008/credit_report.json",
+      "uploaded_at": "2025-11-12T15:59:28.243382",
+      "id": "APP-000008_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000008",
+      "decision": "APPROVED",
+      "policy_score": 65.0,
+      "decided_at": "2025-11-17T15:59:28.243382",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000008"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000008",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 921.77,
+      "duration_months": 6,
+      "created_at": "2025-11-17T15:59:28.243382",
+      "id": "REC_APP-000008"
+    },
+    {
+      "node_type": "Person",
+      "name": "Anwar Al Mazrouei",
+      "nationality": "UAE National",
+      "monthly_income": 2992.81,
+      "credit_score": 1051,
+      "net_worth": 38399.0,
+      "id": "1962-1205-97241147-3"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1962-1205-97241147-3",
+      "submission_date": "2025-10-31T15:59:28.246971",
+      "status": "PROCESSED",
+      "policy_score": 50.0,
+      "id": "APP-000009"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000009/bank_statement.pdf",
+      "uploaded_at": "2025-10-31T15:59:28.246971",
+      "id": "APP-000009_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000009/emirates_id.png",
+      "uploaded_at": "2025-10-31T15:59:28.246971",
+      "id": "APP-000009_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000009/employment_letter.pdf",
+      "uploaded_at": "2025-10-31T15:59:28.246971",
+      "id": "APP-000009_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000009/resume.pdf",
+      "uploaded_at": "2025-10-31T15:59:28.246971",
+      "id": "APP-000009_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000009/assets_liabilities.xlsx",
+      "uploaded_at": "2025-10-31T15:59:28.246971",
+      "id": "APP-000009_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000009/credit_report.json",
+      "uploaded_at": "2025-10-31T15:59:28.246971",
+      "id": "APP-000009_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000009",
+      "decision": "APPROVED",
+      "policy_score": 50.0,
+      "decided_at": "2025-11-07T15:59:28.246971",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000009"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000009",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 897.84,
+      "duration_months": 6,
+      "created_at": "2025-11-07T15:59:28.246971",
+      "id": "REC_APP-000009"
+    },
+    {
+      "node_type": "Person",
+      "name": "Jassem Al Ameri",
+      "nationality": "UAE National",
+      "monthly_income": 3643.06,
+      "credit_score": 945,
+      "net_worth": 429692.0,
+      "id": "1963-0605-22242388-6"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1963-0605-22242388-6",
+      "submission_date": "2025-10-28T15:59:28.250790",
+      "status": "PROCESSED",
+      "policy_score": 55.0,
+      "id": "APP-000010"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000010/bank_statement.pdf",
+      "uploaded_at": "2025-10-28T15:59:28.250790",
+      "id": "APP-000010_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000010/emirates_id.png",
+      "uploaded_at": "2025-10-28T15:59:28.250790",
+      "id": "APP-000010_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000010/employment_letter.pdf",
+      "uploaded_at": "2025-10-28T15:59:28.250790",
+      "id": "APP-000010_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000010/resume.pdf",
+      "uploaded_at": "2025-10-28T15:59:28.250790",
+      "id": "APP-000010_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000010/assets_liabilities.xlsx",
+      "uploaded_at": "2025-10-28T15:59:28.250790",
+      "id": "APP-000010_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000010/credit_report.json",
+      "uploaded_at": "2025-10-28T15:59:28.250790",
+      "id": "APP-000010_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000010",
+      "decision": "APPROVED",
+      "policy_score": 55.0,
+      "decided_at": "2025-11-02T15:59:28.250790",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000010"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000010",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 1092.92,
+      "duration_months": 6,
+      "created_at": "2025-11-02T15:59:28.250790",
+      "id": "REC_APP-000010"
+    },
+    {
+      "node_type": "Person",
+      "name": "Nasser Al Dhaheri",
+      "nationality": "UAE National",
+      "monthly_income": 4338.08,
+      "credit_score": 1019,
+      "net_worth": 518483.0,
+      "id": "1982-1017-86703472-4"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1982-1017-86703472-4",
+      "submission_date": "2025-11-24T15:59:28.253830",
+      "status": "PROCESSED",
+      "policy_score": 55.0,
+      "id": "APP-000011"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000011/bank_statement.pdf",
+      "uploaded_at": "2025-11-24T15:59:28.253830",
+      "id": "APP-000011_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000011/emirates_id.png",
+      "uploaded_at": "2025-11-24T15:59:28.253830",
+      "id": "APP-000011_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000011/employment_letter.pdf",
+      "uploaded_at": "2025-11-24T15:59:28.253830",
+      "id": "APP-000011_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000011/resume.pdf",
+      "uploaded_at": "2025-11-24T15:59:28.253830",
+      "id": "APP-000011_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000011/assets_liabilities.xlsx",
+      "uploaded_at": "2025-11-24T15:59:28.253830",
+      "id": "APP-000011_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000011/credit_report.json",
+      "uploaded_at": "2025-11-24T15:59:28.253830",
+      "id": "APP-000011_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000011",
+      "decision": "APPROVED",
+      "policy_score": 55.0,
+      "decided_at": "2025-11-30T15:59:28.253830",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000011"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000011",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 1301.42,
+      "duration_months": 6,
+      "created_at": "2025-11-30T15:59:28.253830",
+      "id": "REC_APP-000011"
+    },
+    {
+      "node_type": "Person",
+      "name": "Khalid Al Qubaisi",
+      "nationality": "UAE National",
+      "monthly_income": 20698.91,
+      "credit_score": 1330,
+      "net_worth": 169085.0,
+      "id": "1952-0510-71193393-1"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1952-0510-71193393-1",
+      "submission_date": "2025-11-10T15:59:28.257458",
+      "status": "PROCESSED",
+      "policy_score": 70.0,
+      "id": "APP-000012"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000012/bank_statement.pdf",
+      "uploaded_at": "2025-11-10T15:59:28.257458",
+      "id": "APP-000012_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000012/emirates_id.png",
+      "uploaded_at": "2025-11-10T15:59:28.257458",
+      "id": "APP-000012_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000012/employment_letter.pdf",
+      "uploaded_at": "2025-11-10T15:59:28.257458",
+      "id": "APP-000012_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000012/resume.pdf",
+      "uploaded_at": "2025-11-10T15:59:28.257458",
+      "id": "APP-000012_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000012/assets_liabilities.xlsx",
+      "uploaded_at": "2025-11-10T15:59:28.257458",
+      "id": "APP-000012_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000012/credit_report.json",
+      "uploaded_at": "2025-11-10T15:59:28.257458",
+      "id": "APP-000012_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000012",
+      "decision": "APPROVED",
+      "policy_score": 70.0,
+      "decided_at": "2025-11-12T15:59:28.257458",
+      "decided_by": "SYSTEM",
+      "priority": "HIGH",
+      "id": "DECISION_APP-000012"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000012",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 3000,
+      "duration_months": 6,
+      "created_at": "2025-11-12T15:59:28.257458",
+      "id": "REC_APP-000012"
+    },
+    {
+      "node_type": "Person",
+      "name": "Noura Al Mazrouei",
+      "nationality": "UAE National",
+      "monthly_income": 3573.62,
+      "credit_score": 846,
+      "net_worth": 17676.0,
+      "id": "1953-1226-49613096-9"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1953-1226-49613096-9",
+      "submission_date": "2025-11-21T15:59:28.260598",
+      "status": "PROCESSED",
+      "policy_score": 65.0,
+      "id": "APP-000013"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000013/bank_statement.pdf",
+      "uploaded_at": "2025-11-21T15:59:28.260598",
+      "id": "APP-000013_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000013/emirates_id.png",
+      "uploaded_at": "2025-11-21T15:59:28.260598",
+      "id": "APP-000013_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000013/employment_letter.pdf",
+      "uploaded_at": "2025-11-21T15:59:28.260598",
+      "id": "APP-000013_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000013/resume.pdf",
+      "uploaded_at": "2025-11-21T15:59:28.260598",
+      "id": "APP-000013_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000013/assets_liabilities.xlsx",
+      "uploaded_at": "2025-11-21T15:59:28.260598",
+      "id": "APP-000013_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000013/credit_report.json",
+      "uploaded_at": "2025-11-21T15:59:28.260598",
+      "id": "APP-000013_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000013",
+      "decision": "APPROVED",
+      "policy_score": 65.0,
+      "decided_at": "2025-11-26T15:59:28.260598",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000013"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000013",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 1072.09,
+      "duration_months": 6,
+      "created_at": "2025-11-26T15:59:28.260598",
+      "id": "REC_APP-000013"
+    },
+    {
+      "node_type": "Person",
+      "name": "Yasmin Al Kaabi",
+      "nationality": "UAE National",
+      "monthly_income": 6724.2,
+      "credit_score": 993,
+      "net_worth": 46501.0,
+      "id": "1973-0716-71021210-2"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1973-0716-71021210-2",
+      "submission_date": "2025-12-06T15:59:28.263647",
+      "status": "PROCESSED",
+      "policy_score": 65.0,
+      "id": "APP-000014"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000014/bank_statement.pdf",
+      "uploaded_at": "2025-12-06T15:59:28.263647",
+      "id": "APP-000014_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000014/emirates_id.png",
+      "uploaded_at": "2025-12-06T15:59:28.263647",
+      "id": "APP-000014_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000014/employment_letter.pdf",
+      "uploaded_at": "2025-12-06T15:59:28.263647",
+      "id": "APP-000014_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000014/resume.pdf",
+      "uploaded_at": "2025-12-06T15:59:28.263647",
+      "id": "APP-000014_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000014/assets_liabilities.xlsx",
+      "uploaded_at": "2025-12-06T15:59:28.263647",
+      "id": "APP-000014_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000014/credit_report.json",
+      "uploaded_at": "2025-12-06T15:59:28.263647",
+      "id": "APP-000014_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000014",
+      "decision": "APPROVED",
+      "policy_score": 65.0,
+      "decided_at": "2025-12-12T15:59:28.263647",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000014"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000014",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 2017.26,
+      "duration_months": 6,
+      "created_at": "2025-12-12T15:59:28.263647",
+      "id": "REC_APP-000014"
+    },
+    {
+      "node_type": "Person",
+      "name": "Hazem Al Mazroui",
+      "nationality": "UAE National",
+      "monthly_income": 4986.51,
+      "credit_score": 885,
+      "net_worth": 22576.0,
+      "id": "2010-0902-77441081-9"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "2010-0902-77441081-9",
+      "submission_date": "2025-11-01T15:59:28.266765",
+      "status": "PROCESSED",
+      "policy_score": 65.0,
+      "id": "APP-000015"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000015/bank_statement.pdf",
+      "uploaded_at": "2025-11-01T15:59:28.266765",
+      "id": "APP-000015_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000015/emirates_id.png",
+      "uploaded_at": "2025-11-01T15:59:28.266765",
+      "id": "APP-000015_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000015/employment_letter.pdf",
+      "uploaded_at": "2025-11-01T15:59:28.266765",
+      "id": "APP-000015_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000015/resume.pdf",
+      "uploaded_at": "2025-11-01T15:59:28.266765",
+      "id": "APP-000015_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000015/assets_liabilities.xlsx",
+      "uploaded_at": "2025-11-01T15:59:28.266765",
+      "id": "APP-000015_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000015/credit_report.json",
+      "uploaded_at": "2025-11-01T15:59:28.266765",
+      "id": "APP-000015_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000015",
+      "decision": "APPROVED",
+      "policy_score": 65.0,
+      "decided_at": "2025-11-08T15:59:28.266765",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000015"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000015",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 1495.95,
+      "duration_months": 6,
+      "created_at": "2025-11-08T15:59:28.266765",
+      "id": "REC_APP-000015"
+    },
+    {
+      "node_type": "Person",
+      "name": "Mohammed Al Rumaithi",
+      "nationality": "UAE National",
+      "monthly_income": 2146.86,
+      "credit_score": 804,
+      "net_worth": -22607.0,
+      "id": "1958-0808-52512063-9"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1958-0808-52512063-9",
+      "submission_date": "2025-11-30T15:59:28.270427",
+      "status": "PROCESSED",
+      "policy_score": 50.0,
+      "id": "APP-000016"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000016/bank_statement.pdf",
+      "uploaded_at": "2025-11-30T15:59:28.270427",
+      "id": "APP-000016_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000016/emirates_id.png",
+      "uploaded_at": "2025-11-30T15:59:28.270427",
+      "id": "APP-000016_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000016/employment_letter.pdf",
+      "uploaded_at": "2025-11-30T15:59:28.270427",
+      "id": "APP-000016_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000016/resume.pdf",
+      "uploaded_at": "2025-11-30T15:59:28.270427",
+      "id": "APP-000016_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000016/assets_liabilities.xlsx",
+      "uploaded_at": "2025-11-30T15:59:28.270427",
+      "id": "APP-000016_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000016/credit_report.json",
+      "uploaded_at": "2025-11-30T15:59:28.270427",
+      "id": "APP-000016_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000016",
+      "decision": "APPROVED",
+      "policy_score": 50.0,
+      "decided_at": "2025-12-04T15:59:28.270427",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000016"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000016",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 644.06,
+      "duration_months": 6,
+      "created_at": "2025-12-04T15:59:28.270427",
+      "id": "REC_APP-000016"
+    },
+    {
+      "node_type": "Person",
+      "name": "Yasmin Al Jabri",
+      "nationality": "UAE National",
+      "monthly_income": 15375.16,
+      "credit_score": 1110,
+      "net_worth": 67500.0,
+      "id": "1967-0121-44585138-6"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1967-0121-44585138-6",
+      "submission_date": "2025-11-05T15:59:28.273466",
+      "status": "PROCESSED",
+      "policy_score": 75.0,
+      "id": "APP-000017"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000017/bank_statement.pdf",
+      "uploaded_at": "2025-11-05T15:59:28.273466",
+      "id": "APP-000017_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000017/emirates_id.png",
+      "uploaded_at": "2025-11-05T15:59:28.273466",
+      "id": "APP-000017_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000017/employment_letter.pdf",
+      "uploaded_at": "2025-11-05T15:59:28.273466",
+      "id": "APP-000017_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000017/resume.pdf",
+      "uploaded_at": "2025-11-05T15:59:28.273466",
+      "id": "APP-000017_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000017/assets_liabilities.xlsx",
+      "uploaded_at": "2025-11-05T15:59:28.273466",
+      "id": "APP-000017_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000017/credit_report.json",
+      "uploaded_at": "2025-11-05T15:59:28.273466",
+      "id": "APP-000017_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000017",
+      "decision": "APPROVED",
+      "policy_score": 75.0,
+      "decided_at": "2025-11-11T15:59:28.273466",
+      "decided_by": "SYSTEM",
+      "priority": "HIGH",
+      "id": "DECISION_APP-000017"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000017",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 3000,
+      "duration_months": 6,
+      "created_at": "2025-11-11T15:59:28.273466",
+      "id": "REC_APP-000017"
+    },
+    {
+      "node_type": "Person",
+      "name": "Noura Al Maktoum",
+      "nationality": "UAE National",
+      "monthly_income": 5393.67,
+      "credit_score": 1084,
+      "net_worth": 150521.0,
+      "id": "1986-1001-33572537-4"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1986-1001-33572537-4",
+      "submission_date": "2025-10-12T15:59:28.276687",
+      "status": "PROCESSED",
+      "policy_score": 55.0,
+      "id": "APP-000018"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000018/bank_statement.pdf",
+      "uploaded_at": "2025-10-12T15:59:28.276687",
+      "id": "APP-000018_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000018/emirates_id.png",
+      "uploaded_at": "2025-10-12T15:59:28.276687",
+      "id": "APP-000018_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000018/employment_letter.pdf",
+      "uploaded_at": "2025-10-12T15:59:28.276687",
+      "id": "APP-000018_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000018/resume.pdf",
+      "uploaded_at": "2025-10-12T15:59:28.276687",
+      "id": "APP-000018_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000018/assets_liabilities.xlsx",
+      "uploaded_at": "2025-10-12T15:59:28.276687",
+      "id": "APP-000018_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000018/credit_report.json",
+      "uploaded_at": "2025-10-12T15:59:28.276687",
+      "id": "APP-000018_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000018",
+      "decision": "APPROVED",
+      "policy_score": 55.0,
+      "decided_at": "2025-10-13T15:59:28.276687",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000018"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000018",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 1618.1,
+      "duration_months": 6,
+      "created_at": "2025-10-13T15:59:28.276687",
+      "id": "REC_APP-000018"
+    },
+    {
+      "node_type": "Person",
+      "name": "Huda Al Memari",
+      "nationality": "UAE National",
+      "monthly_income": 3034.37,
+      "credit_score": 1117,
+      "net_worth": -5215.0,
+      "id": "1980-1212-25188664-5"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1980-1212-25188664-5",
+      "submission_date": "2025-10-19T15:59:28.279763",
+      "status": "PROCESSED",
+      "policy_score": 65.0,
+      "id": "APP-000019"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000019/bank_statement.pdf",
+      "uploaded_at": "2025-10-19T15:59:28.279763",
+      "id": "APP-000019_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000019/emirates_id.png",
+      "uploaded_at": "2025-10-19T15:59:28.279763",
+      "id": "APP-000019_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000019/employment_letter.pdf",
+      "uploaded_at": "2025-10-19T15:59:28.279763",
+      "id": "APP-000019_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000019/resume.pdf",
+      "uploaded_at": "2025-10-19T15:59:28.279763",
+      "id": "APP-000019_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000019/assets_liabilities.xlsx",
+      "uploaded_at": "2025-10-19T15:59:28.279763",
+      "id": "APP-000019_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000019/credit_report.json",
+      "uploaded_at": "2025-10-19T15:59:28.279763",
+      "id": "APP-000019_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000019",
+      "decision": "APPROVED",
+      "policy_score": 65.0,
+      "decided_at": "2025-10-24T15:59:28.279763",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000019"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000019",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 910.31,
+      "duration_months": 6,
+      "created_at": "2025-10-24T15:59:28.279763",
+      "id": "REC_APP-000019"
+    },
+    {
+      "node_type": "Person",
+      "name": "Ahmed Al Mazrouei",
+      "nationality": "UAE National",
+      "monthly_income": 4816.3,
+      "credit_score": 889,
+      "net_worth": 35165.0,
+      "id": "1956-0820-32909541-0"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1956-0820-32909541-0",
+      "submission_date": "2025-12-23T15:59:28.283524",
+      "status": "PROCESSED",
+      "policy_score": 65.0,
+      "id": "APP-000020"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000020/bank_statement.pdf",
+      "uploaded_at": "2025-12-23T15:59:28.283524",
+      "id": "APP-000020_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000020/emirates_id.png",
+      "uploaded_at": "2025-12-23T15:59:28.283524",
+      "id": "APP-000020_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000020/employment_letter.pdf",
+      "uploaded_at": "2025-12-23T15:59:28.283524",
+      "id": "APP-000020_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000020/resume.pdf",
+      "uploaded_at": "2025-12-23T15:59:28.283524",
+      "id": "APP-000020_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000020/assets_liabilities.xlsx",
+      "uploaded_at": "2025-12-23T15:59:28.283524",
+      "id": "APP-000020_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000020/credit_report.json",
+      "uploaded_at": "2025-12-23T15:59:28.283524",
+      "id": "APP-000020_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000020",
+      "decision": "APPROVED",
+      "policy_score": 65.0,
+      "decided_at": "2025-12-26T15:59:28.283524",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000020"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000020",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 1444.89,
+      "duration_months": 6,
+      "created_at": "2025-12-26T15:59:28.283524",
+      "id": "REC_APP-000020"
+    },
+    {
+      "node_type": "Person",
+      "name": "Rana Al Jabri",
+      "nationality": "UAE National",
+      "monthly_income": 13012.14,
+      "credit_score": 1230,
+      "net_worth": 140188.0,
+      "id": "1983-0915-71472671-6"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1983-0915-71472671-6",
+      "submission_date": "2025-11-27T15:59:28.286480",
+      "status": "PROCESSED",
+      "policy_score": 80.0,
+      "id": "APP-000021"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000021/bank_statement.pdf",
+      "uploaded_at": "2025-11-27T15:59:28.286480",
+      "id": "APP-000021_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000021/emirates_id.png",
+      "uploaded_at": "2025-11-27T15:59:28.286480",
+      "id": "APP-000021_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000021/employment_letter.pdf",
+      "uploaded_at": "2025-11-27T15:59:28.286480",
+      "id": "APP-000021_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000021/resume.pdf",
+      "uploaded_at": "2025-11-27T15:59:28.286480",
+      "id": "APP-000021_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000021/assets_liabilities.xlsx",
+      "uploaded_at": "2025-11-27T15:59:28.286480",
+      "id": "APP-000021_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000021/credit_report.json",
+      "uploaded_at": "2025-11-27T15:59:28.286480",
+      "id": "APP-000021_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000021",
+      "decision": "APPROVED",
+      "policy_score": 80.0,
+      "decided_at": "2025-11-28T15:59:28.286480",
+      "decided_by": "SYSTEM",
+      "priority": "HIGH",
+      "id": "DECISION_APP-000021"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000021",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 3000,
+      "duration_months": 6,
+      "created_at": "2025-11-28T15:59:28.286480",
+      "id": "REC_APP-000021"
+    },
+    {
+      "node_type": "Person",
+      "name": "Tariq Al Kaabi",
+      "nationality": "UAE National",
+      "monthly_income": 23857.39,
+      "credit_score": 1096,
+      "net_worth": 718268.0,
+      "id": "1979-0217-28241849-7"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1979-0217-28241849-7",
+      "submission_date": "2025-12-25T15:59:28.290074",
+      "status": "PROCESSED",
+      "policy_score": 70.0,
+      "id": "APP-000022"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000022/bank_statement.pdf",
+      "uploaded_at": "2025-12-25T15:59:28.290074",
+      "id": "APP-000022_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000022/emirates_id.png",
+      "uploaded_at": "2025-12-25T15:59:28.290074",
+      "id": "APP-000022_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000022/employment_letter.pdf",
+      "uploaded_at": "2025-12-25T15:59:28.290074",
+      "id": "APP-000022_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000022/resume.pdf",
+      "uploaded_at": "2025-12-25T15:59:28.290074",
+      "id": "APP-000022_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000022/assets_liabilities.xlsx",
+      "uploaded_at": "2025-12-25T15:59:28.290074",
+      "id": "APP-000022_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000022/credit_report.json",
+      "uploaded_at": "2025-12-25T15:59:28.290074",
+      "id": "APP-000022_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000022",
+      "decision": "APPROVED",
+      "policy_score": 70.0,
+      "decided_at": "2025-12-31T15:59:28.290074",
+      "decided_by": "SYSTEM",
+      "priority": "HIGH",
+      "id": "DECISION_APP-000022"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000022",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 3000,
+      "duration_months": 6,
+      "created_at": "2025-12-31T15:59:28.290074",
+      "id": "REC_APP-000022"
+    },
+    {
+      "node_type": "Person",
+      "name": "Hamad Al Hosani",
+      "nationality": "UAE National",
+      "monthly_income": 7304.85,
+      "credit_score": 1058,
+      "net_worth": -32255.0,
+      "id": "2007-1002-98882124-0"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "2007-1002-98882124-0",
+      "submission_date": "2025-11-27T15:59:28.293256",
+      "status": "PROCESSED",
+      "policy_score": 65.0,
+      "id": "APP-000023"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000023/bank_statement.pdf",
+      "uploaded_at": "2025-11-27T15:59:28.293256",
+      "id": "APP-000023_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000023/emirates_id.png",
+      "uploaded_at": "2025-11-27T15:59:28.293256",
+      "id": "APP-000023_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000023/employment_letter.pdf",
+      "uploaded_at": "2025-11-27T15:59:28.293256",
+      "id": "APP-000023_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000023/resume.pdf",
+      "uploaded_at": "2025-11-27T15:59:28.293256",
+      "id": "APP-000023_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000023/assets_liabilities.xlsx",
+      "uploaded_at": "2025-11-27T15:59:28.293256",
+      "id": "APP-000023_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000023/credit_report.json",
+      "uploaded_at": "2025-11-27T15:59:28.293256",
+      "id": "APP-000023_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000023",
+      "decision": "APPROVED",
+      "policy_score": 65.0,
+      "decided_at": "2025-11-29T15:59:28.293256",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000023"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000023",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 2191.45,
+      "duration_months": 6,
+      "created_at": "2025-11-29T15:59:28.293256",
+      "id": "REC_APP-000023"
+    },
+    {
+      "node_type": "Person",
+      "name": "Amr Al Dhaheri",
+      "nationality": "UAE National",
+      "monthly_income": 8443.12,
+      "credit_score": 1014,
+      "net_worth": 78088.0,
+      "id": "1953-0903-16052535-0"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1953-0903-16052535-0",
+      "submission_date": "2025-12-14T15:59:28.297149",
+      "status": "PROCESSED",
+      "policy_score": 70.0,
+      "id": "APP-000024"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000024/bank_statement.pdf",
+      "uploaded_at": "2025-12-14T15:59:28.297149",
+      "id": "APP-000024_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000024/emirates_id.png",
+      "uploaded_at": "2025-12-14T15:59:28.297149",
+      "id": "APP-000024_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000024/employment_letter.pdf",
+      "uploaded_at": "2025-12-14T15:59:28.297149",
+      "id": "APP-000024_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000024/resume.pdf",
+      "uploaded_at": "2025-12-14T15:59:28.297149",
+      "id": "APP-000024_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000024/assets_liabilities.xlsx",
+      "uploaded_at": "2025-12-14T15:59:28.297149",
+      "id": "APP-000024_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000024/credit_report.json",
+      "uploaded_at": "2025-12-14T15:59:28.297149",
+      "id": "APP-000024_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000024",
+      "decision": "APPROVED",
+      "policy_score": 70.0,
+      "decided_at": "2025-12-16T15:59:28.297149",
+      "decided_by": "SYSTEM",
+      "priority": "HIGH",
+      "id": "DECISION_APP-000024"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000024",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 2532.94,
+      "duration_months": 6,
+      "created_at": "2025-12-16T15:59:28.297149",
+      "id": "REC_APP-000024"
+    },
+    {
+      "node_type": "Person",
+      "name": "Amira Al Jabri",
+      "nationality": "UAE National",
+      "monthly_income": 3075.27,
+      "credit_score": 1052,
+      "net_worth": 133926.0,
+      "id": "2010-0215-49991663-6"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "2010-0215-49991663-6",
+      "submission_date": "2025-11-16T15:59:28.300409",
+      "status": "PROCESSED",
+      "policy_score": 60.0,
+      "id": "APP-000025"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000025/bank_statement.pdf",
+      "uploaded_at": "2025-11-16T15:59:28.300409",
+      "id": "APP-000025_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000025/emirates_id.png",
+      "uploaded_at": "2025-11-16T15:59:28.300409",
+      "id": "APP-000025_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000025/employment_letter.pdf",
+      "uploaded_at": "2025-11-16T15:59:28.300409",
+      "id": "APP-000025_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000025/resume.pdf",
+      "uploaded_at": "2025-11-16T15:59:28.300409",
+      "id": "APP-000025_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000025/assets_liabilities.xlsx",
+      "uploaded_at": "2025-11-16T15:59:28.300409",
+      "id": "APP-000025_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000025/credit_report.json",
+      "uploaded_at": "2025-11-16T15:59:28.300409",
+      "id": "APP-000025_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000025",
+      "decision": "APPROVED",
+      "policy_score": 60.0,
+      "decided_at": "2025-11-19T15:59:28.300409",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000025"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000025",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 922.58,
+      "duration_months": 6,
+      "created_at": "2025-11-19T15:59:28.300409",
+      "id": "REC_APP-000025"
+    },
+    {
+      "node_type": "Person",
+      "name": "Kamal Al Suwaidi",
+      "nationality": "UAE National",
+      "monthly_income": 2876.37,
+      "credit_score": 1001,
+      "net_worth": 677924.0,
+      "id": "2006-0924-46819677-4"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "2006-0924-46819677-4",
+      "submission_date": "2025-12-24T15:59:28.303865",
+      "status": "PROCESSED",
+      "policy_score": 40.0,
+      "id": "APP-000026"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000026/bank_statement.pdf",
+      "uploaded_at": "2025-12-24T15:59:28.303865",
+      "id": "APP-000026_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000026/emirates_id.png",
+      "uploaded_at": "2025-12-24T15:59:28.303865",
+      "id": "APP-000026_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000026/employment_letter.pdf",
+      "uploaded_at": "2025-12-24T15:59:28.303865",
+      "id": "APP-000026_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000026/resume.pdf",
+      "uploaded_at": "2025-12-24T15:59:28.303865",
+      "id": "APP-000026_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000026/assets_liabilities.xlsx",
+      "uploaded_at": "2025-12-24T15:59:28.303865",
+      "id": "APP-000026_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000026/credit_report.json",
+      "uploaded_at": "2025-12-24T15:59:28.303865",
+      "id": "APP-000026_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000026",
+      "decision": "CONDITIONAL",
+      "policy_score": 40.0,
+      "decided_at": "2025-12-27T15:59:28.303865",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000026"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000026",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 575.27,
+      "duration_months": 3,
+      "created_at": "2025-12-27T15:59:28.303865",
+      "id": "REC_APP-000026"
+    },
+    {
+      "node_type": "Person",
+      "name": "Rashid Al Shehhi",
+      "nationality": "UAE National",
+      "monthly_income": 8063.34,
+      "credit_score": 1061,
+      "net_worth": -14752.0,
+      "id": "2009-0404-25916596-7"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "2009-0404-25916596-7",
+      "submission_date": "2025-12-29T15:59:28.306933",
+      "status": "PROCESSED",
+      "policy_score": 75.0,
+      "id": "APP-000027"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000027/bank_statement.pdf",
+      "uploaded_at": "2025-12-29T15:59:28.306933",
+      "id": "APP-000027_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000027/emirates_id.png",
+      "uploaded_at": "2025-12-29T15:59:28.306933",
+      "id": "APP-000027_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000027/employment_letter.pdf",
+      "uploaded_at": "2025-12-29T15:59:28.306933",
+      "id": "APP-000027_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000027/resume.pdf",
+      "uploaded_at": "2025-12-29T15:59:28.306933",
+      "id": "APP-000027_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000027/assets_liabilities.xlsx",
+      "uploaded_at": "2025-12-29T15:59:28.306933",
+      "id": "APP-000027_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000027/credit_report.json",
+      "uploaded_at": "2025-12-29T15:59:28.306933",
+      "id": "APP-000027_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000027",
+      "decision": "APPROVED",
+      "policy_score": 75.0,
+      "decided_at": "2025-12-30T15:59:28.306933",
+      "decided_by": "SYSTEM",
+      "priority": "HIGH",
+      "id": "DECISION_APP-000027"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000027",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 2419.0,
+      "duration_months": 6,
+      "created_at": "2025-12-30T15:59:28.306933",
+      "id": "REC_APP-000027"
+    },
+    {
+      "node_type": "Person",
+      "name": "Salem Al Mazrouei",
+      "nationality": "UAE National",
+      "monthly_income": 6692.55,
+      "credit_score": 971,
+      "net_worth": 191257.0,
+      "id": "2004-1116-19061506-1"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "2004-1116-19061506-1",
+      "submission_date": "2025-11-28T15:59:28.313301",
+      "status": "PROCESSED",
+      "policy_score": 55.0,
+      "id": "APP-000028"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000028/bank_statement.pdf",
+      "uploaded_at": "2025-11-28T15:59:28.313301",
+      "id": "APP-000028_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000028/emirates_id.png",
+      "uploaded_at": "2025-11-28T15:59:28.313301",
+      "id": "APP-000028_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000028/employment_letter.pdf",
+      "uploaded_at": "2025-11-28T15:59:28.313301",
+      "id": "APP-000028_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000028/resume.pdf",
+      "uploaded_at": "2025-11-28T15:59:28.313301",
+      "id": "APP-000028_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000028/assets_liabilities.xlsx",
+      "uploaded_at": "2025-11-28T15:59:28.313301",
+      "id": "APP-000028_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000028/credit_report.json",
+      "uploaded_at": "2025-11-28T15:59:28.313301",
+      "id": "APP-000028_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000028",
+      "decision": "APPROVED",
+      "policy_score": 55.0,
+      "decided_at": "2025-11-30T15:59:28.313301",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000028"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000028",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 2007.76,
+      "duration_months": 6,
+      "created_at": "2025-11-30T15:59:28.313301",
+      "id": "REC_APP-000028"
+    },
+    {
+      "node_type": "Person",
+      "name": "Kamal Al Qubaisi",
+      "nationality": "UAE National",
+      "monthly_income": 3010.65,
+      "credit_score": 1003,
+      "net_worth": -8256.0,
+      "id": "1983-1026-77731180-7"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1983-1026-77731180-7",
+      "submission_date": "2025-12-06T15:59:28.316772",
+      "status": "PROCESSED",
+      "policy_score": 65.0,
+      "id": "APP-000029"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000029/bank_statement.pdf",
+      "uploaded_at": "2025-12-06T15:59:28.316772",
+      "id": "APP-000029_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000029/emirates_id.png",
+      "uploaded_at": "2025-12-06T15:59:28.316772",
+      "id": "APP-000029_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000029/employment_letter.pdf",
+      "uploaded_at": "2025-12-06T15:59:28.316772",
+      "id": "APP-000029_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000029/resume.pdf",
+      "uploaded_at": "2025-12-06T15:59:28.316772",
+      "id": "APP-000029_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000029/assets_liabilities.xlsx",
+      "uploaded_at": "2025-12-06T15:59:28.316772",
+      "id": "APP-000029_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000029/credit_report.json",
+      "uploaded_at": "2025-12-06T15:59:28.316772",
+      "id": "APP-000029_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000029",
+      "decision": "APPROVED",
+      "policy_score": 65.0,
+      "decided_at": "2025-12-10T15:59:28.316772",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000029"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000029",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 903.2,
+      "duration_months": 6,
+      "created_at": "2025-12-10T15:59:28.316772",
+      "id": "REC_APP-000029"
+    },
+    {
+      "node_type": "Person",
+      "name": "Zainab Al Maktoum",
+      "nationality": "UAE National",
+      "monthly_income": 18428.52,
+      "credit_score": 1143,
+      "net_worth": 81546.0,
+      "id": "1984-0222-83600812-5"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1984-0222-83600812-5",
+      "submission_date": "2025-11-12T15:59:28.320907",
+      "status": "PROCESSED",
+      "policy_score": 75.0,
+      "id": "APP-000030"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000030/bank_statement.pdf",
+      "uploaded_at": "2025-11-12T15:59:28.320907",
+      "id": "APP-000030_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000030/emirates_id.png",
+      "uploaded_at": "2025-11-12T15:59:28.320907",
+      "id": "APP-000030_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000030/employment_letter.pdf",
+      "uploaded_at": "2025-11-12T15:59:28.320907",
+      "id": "APP-000030_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000030/resume.pdf",
+      "uploaded_at": "2025-11-12T15:59:28.320907",
+      "id": "APP-000030_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000030/assets_liabilities.xlsx",
+      "uploaded_at": "2025-11-12T15:59:28.320907",
+      "id": "APP-000030_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000030/credit_report.json",
+      "uploaded_at": "2025-11-12T15:59:28.320907",
+      "id": "APP-000030_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000030",
+      "decision": "APPROVED",
+      "policy_score": 75.0,
+      "decided_at": "2025-11-19T15:59:28.320907",
+      "decided_by": "SYSTEM",
+      "priority": "HIGH",
+      "id": "DECISION_APP-000030"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000030",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 3000,
+      "duration_months": 6,
+      "created_at": "2025-11-19T15:59:28.320907",
+      "id": "REC_APP-000030"
+    },
+    {
+      "node_type": "Person",
+      "name": "Leila Al Jabri",
+      "nationality": "UAE National",
+      "monthly_income": 4896.47,
+      "credit_score": 920,
+      "net_worth": -72057.0,
+      "id": "1956-0321-90776943-0"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1956-0321-90776943-0",
+      "submission_date": "2025-11-20T15:59:28.324524",
+      "status": "PROCESSED",
+      "policy_score": 65.0,
+      "id": "APP-000031"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000031/bank_statement.pdf",
+      "uploaded_at": "2025-11-20T15:59:28.324524",
+      "id": "APP-000031_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000031/emirates_id.png",
+      "uploaded_at": "2025-11-20T15:59:28.324524",
+      "id": "APP-000031_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000031/employment_letter.pdf",
+      "uploaded_at": "2025-11-20T15:59:28.324524",
+      "id": "APP-000031_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000031/resume.pdf",
+      "uploaded_at": "2025-11-20T15:59:28.324524",
+      "id": "APP-000031_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000031/assets_liabilities.xlsx",
+      "uploaded_at": "2025-11-20T15:59:28.324524",
+      "id": "APP-000031_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000031/credit_report.json",
+      "uploaded_at": "2025-11-20T15:59:28.324524",
+      "id": "APP-000031_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000031",
+      "decision": "APPROVED",
+      "policy_score": 65.0,
+      "decided_at": "2025-11-26T15:59:28.324524",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000031"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000031",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 1468.94,
+      "duration_months": 6,
+      "created_at": "2025-11-26T15:59:28.324524",
+      "id": "REC_APP-000031"
+    },
+    {
+      "node_type": "Person",
+      "name": "Khalid Al Kalbani",
+      "nationality": "UAE National",
+      "monthly_income": 7989.3,
+      "credit_score": 1032,
+      "net_worth": -13815.0,
+      "id": "1977-0602-24228398-8"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1977-0602-24228398-8",
+      "submission_date": "2025-12-09T15:59:28.328428",
+      "status": "PROCESSED",
+      "policy_score": 65.0,
+      "id": "APP-000032"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000032/bank_statement.pdf",
+      "uploaded_at": "2025-12-09T15:59:28.328428",
+      "id": "APP-000032_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000032/emirates_id.png",
+      "uploaded_at": "2025-12-09T15:59:28.328428",
+      "id": "APP-000032_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000032/employment_letter.pdf",
+      "uploaded_at": "2025-12-09T15:59:28.328428",
+      "id": "APP-000032_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000032/resume.pdf",
+      "uploaded_at": "2025-12-09T15:59:28.328428",
+      "id": "APP-000032_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000032/assets_liabilities.xlsx",
+      "uploaded_at": "2025-12-09T15:59:28.328428",
+      "id": "APP-000032_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000032/credit_report.json",
+      "uploaded_at": "2025-12-09T15:59:28.328428",
+      "id": "APP-000032_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000032",
+      "decision": "APPROVED",
+      "policy_score": 65.0,
+      "decided_at": "2025-12-13T15:59:28.328428",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000032"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000032",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 2396.79,
+      "duration_months": 6,
+      "created_at": "2025-12-13T15:59:28.328428",
+      "id": "REC_APP-000032"
+    },
+    {
+      "node_type": "Person",
+      "name": "Faisal Al Mansoori",
+      "nationality": "UAE National",
+      "monthly_income": 4611.36,
+      "credit_score": 833,
+      "net_worth": -9238.0,
+      "id": "1952-0424-35186888-7"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1952-0424-35186888-7",
+      "submission_date": "2025-12-02T15:59:28.332054",
+      "status": "PROCESSED",
+      "policy_score": 65.0,
+      "id": "APP-000033"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000033/bank_statement.pdf",
+      "uploaded_at": "2025-12-02T15:59:28.332054",
+      "id": "APP-000033_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000033/emirates_id.png",
+      "uploaded_at": "2025-12-02T15:59:28.332054",
+      "id": "APP-000033_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000033/employment_letter.pdf",
+      "uploaded_at": "2025-12-02T15:59:28.332054",
+      "id": "APP-000033_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000033/resume.pdf",
+      "uploaded_at": "2025-12-02T15:59:28.332054",
+      "id": "APP-000033_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000033/assets_liabilities.xlsx",
+      "uploaded_at": "2025-12-02T15:59:28.332054",
+      "id": "APP-000033_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000033/credit_report.json",
+      "uploaded_at": "2025-12-02T15:59:28.332054",
+      "id": "APP-000033_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000033",
+      "decision": "APPROVED",
+      "policy_score": 65.0,
+      "decided_at": "2025-12-09T15:59:28.332054",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000033"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000033",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 1383.41,
+      "duration_months": 6,
+      "created_at": "2025-12-09T15:59:28.332054",
+      "id": "REC_APP-000033"
+    },
+    {
+      "node_type": "Person",
+      "name": "Karim Al Ketbi",
+      "nationality": "UAE National",
+      "monthly_income": 6901.61,
+      "credit_score": 1216,
+      "net_worth": 281541.0,
+      "id": "1951-1126-87277029-1"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1951-1126-87277029-1",
+      "submission_date": "2025-12-20T15:59:28.335239",
+      "status": "PROCESSED",
+      "policy_score": 55.0,
+      "id": "APP-000034"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000034/bank_statement.pdf",
+      "uploaded_at": "2025-12-20T15:59:28.335239",
+      "id": "APP-000034_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000034/emirates_id.png",
+      "uploaded_at": "2025-12-20T15:59:28.335239",
+      "id": "APP-000034_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000034/employment_letter.pdf",
+      "uploaded_at": "2025-12-20T15:59:28.335239",
+      "id": "APP-000034_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000034/resume.pdf",
+      "uploaded_at": "2025-12-20T15:59:28.335239",
+      "id": "APP-000034_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000034/assets_liabilities.xlsx",
+      "uploaded_at": "2025-12-20T15:59:28.335239",
+      "id": "APP-000034_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000034/credit_report.json",
+      "uploaded_at": "2025-12-20T15:59:28.335239",
+      "id": "APP-000034_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000034",
+      "decision": "APPROVED",
+      "policy_score": 55.0,
+      "decided_at": "2025-12-26T15:59:28.335239",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000034"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000034",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 2070.48,
+      "duration_months": 6,
+      "created_at": "2025-12-26T15:59:28.335239",
+      "id": "REC_APP-000034"
+    },
+    {
+      "node_type": "Person",
+      "name": "Hassan Al Dhaheri",
+      "nationality": "UAE National",
+      "monthly_income": 1069.18,
+      "credit_score": 1055,
+      "net_worth": 554099.0,
+      "id": "1950-0712-98617699-7"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1950-0712-98617699-7",
+      "submission_date": "2025-12-18T15:59:28.338450",
+      "status": "PROCESSED",
+      "policy_score": 40.0,
+      "id": "APP-000035"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000035/bank_statement.pdf",
+      "uploaded_at": "2025-12-18T15:59:28.338450",
+      "id": "APP-000035_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000035/emirates_id.png",
+      "uploaded_at": "2025-12-18T15:59:28.338450",
+      "id": "APP-000035_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000035/employment_letter.pdf",
+      "uploaded_at": "2025-12-18T15:59:28.338450",
+      "id": "APP-000035_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000035/resume.pdf",
+      "uploaded_at": "2025-12-18T15:59:28.338450",
+      "id": "APP-000035_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000035/assets_liabilities.xlsx",
+      "uploaded_at": "2025-12-18T15:59:28.338450",
+      "id": "APP-000035_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000035/credit_report.json",
+      "uploaded_at": "2025-12-18T15:59:28.338450",
+      "id": "APP-000035_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000035",
+      "decision": "CONDITIONAL",
+      "policy_score": 40.0,
+      "decided_at": "2025-12-20T15:59:28.338450",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000035"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000035",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 213.84,
+      "duration_months": 3,
+      "created_at": "2025-12-20T15:59:28.338450",
+      "id": "REC_APP-000035"
+    },
+    {
+      "node_type": "Person",
+      "name": "Mohammed Al Ketbi",
+      "nationality": "UAE National",
+      "monthly_income": 2369.32,
+      "credit_score": 926,
+      "net_worth": -13125.0,
+      "id": "1953-0307-83428820-6"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1953-0307-83428820-6",
+      "submission_date": "2025-12-21T15:59:28.342140",
+      "status": "PROCESSED",
+      "policy_score": 50.0,
+      "id": "APP-000036"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000036/bank_statement.pdf",
+      "uploaded_at": "2025-12-21T15:59:28.342140",
+      "id": "APP-000036_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000036/emirates_id.png",
+      "uploaded_at": "2025-12-21T15:59:28.342140",
+      "id": "APP-000036_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000036/employment_letter.pdf",
+      "uploaded_at": "2025-12-21T15:59:28.342140",
+      "id": "APP-000036_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000036/resume.pdf",
+      "uploaded_at": "2025-12-21T15:59:28.342140",
+      "id": "APP-000036_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000036/assets_liabilities.xlsx",
+      "uploaded_at": "2025-12-21T15:59:28.342140",
+      "id": "APP-000036_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000036/credit_report.json",
+      "uploaded_at": "2025-12-21T15:59:28.342140",
+      "id": "APP-000036_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000036",
+      "decision": "APPROVED",
+      "policy_score": 50.0,
+      "decided_at": "2025-12-24T15:59:28.342140",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000036"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000036",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 710.8,
+      "duration_months": 6,
+      "created_at": "2025-12-24T15:59:28.342140",
+      "id": "REC_APP-000036"
+    },
+    {
+      "node_type": "Person",
+      "name": "Maya Al Shamsi",
+      "nationality": "UAE National",
+      "monthly_income": 15687.37,
+      "credit_score": 1085,
+      "net_worth": 128362.0,
+      "id": "2006-0712-20695820-0"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "2006-0712-20695820-0",
+      "submission_date": "2025-10-09T15:59:28.345333",
+      "status": "PROCESSED",
+      "policy_score": 75.0,
+      "id": "APP-000037"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000037/bank_statement.pdf",
+      "uploaded_at": "2025-10-09T15:59:28.345333",
+      "id": "APP-000037_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000037/emirates_id.png",
+      "uploaded_at": "2025-10-09T15:59:28.345333",
+      "id": "APP-000037_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000037/employment_letter.pdf",
+      "uploaded_at": "2025-10-09T15:59:28.345333",
+      "id": "APP-000037_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000037/resume.pdf",
+      "uploaded_at": "2025-10-09T15:59:28.345333",
+      "id": "APP-000037_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000037/assets_liabilities.xlsx",
+      "uploaded_at": "2025-10-09T15:59:28.345333",
+      "id": "APP-000037_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000037/credit_report.json",
+      "uploaded_at": "2025-10-09T15:59:28.345333",
+      "id": "APP-000037_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000037",
+      "decision": "APPROVED",
+      "policy_score": 75.0,
+      "decided_at": "2025-10-12T15:59:28.345333",
+      "decided_by": "SYSTEM",
+      "priority": "HIGH",
+      "id": "DECISION_APP-000037"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000037",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 3000,
+      "duration_months": 6,
+      "created_at": "2025-10-12T15:59:28.345333",
+      "id": "REC_APP-000037"
+    },
+    {
+      "node_type": "Person",
+      "name": "Omar Al Memari",
+      "nationality": "UAE National",
+      "monthly_income": 916.96,
+      "credit_score": 1067,
+      "net_worth": -34191.0,
+      "id": "1960-0611-65484975-6"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1960-0611-65484975-6",
+      "submission_date": "2025-11-25T15:59:28.348330",
+      "status": "PROCESSED",
+      "policy_score": 50.0,
+      "id": "APP-000038"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000038/bank_statement.pdf",
+      "uploaded_at": "2025-11-25T15:59:28.348330",
+      "id": "APP-000038_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000038/emirates_id.png",
+      "uploaded_at": "2025-11-25T15:59:28.348330",
+      "id": "APP-000038_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000038/employment_letter.pdf",
+      "uploaded_at": "2025-11-25T15:59:28.348330",
+      "id": "APP-000038_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000038/resume.pdf",
+      "uploaded_at": "2025-11-25T15:59:28.348330",
+      "id": "APP-000038_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000038/assets_liabilities.xlsx",
+      "uploaded_at": "2025-11-25T15:59:28.348330",
+      "id": "APP-000038_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000038/credit_report.json",
+      "uploaded_at": "2025-11-25T15:59:28.348330",
+      "id": "APP-000038_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000038",
+      "decision": "APPROVED",
+      "policy_score": 50.0,
+      "decided_at": "2025-11-28T15:59:28.348330",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000038"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000038",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 275.09,
+      "duration_months": 6,
+      "created_at": "2025-11-28T15:59:28.348330",
+      "id": "REC_APP-000038"
+    },
+    {
+      "node_type": "Person",
+      "name": "Aisha Al Jabri",
+      "nationality": "UAE National",
+      "monthly_income": 6360.7,
+      "credit_score": 954,
+      "net_worth": 108224.0,
+      "id": "1994-1209-46798988-4"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1994-1209-46798988-4",
+      "submission_date": "2025-12-29T15:59:28.351798",
+      "status": "PROCESSED",
+      "policy_score": 60.0,
+      "id": "APP-000039"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000039/bank_statement.pdf",
+      "uploaded_at": "2025-12-29T15:59:28.351798",
+      "id": "APP-000039_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000039/emirates_id.png",
+      "uploaded_at": "2025-12-29T15:59:28.351798",
+      "id": "APP-000039_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000039/employment_letter.pdf",
+      "uploaded_at": "2025-12-29T15:59:28.351798",
+      "id": "APP-000039_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000039/resume.pdf",
+      "uploaded_at": "2025-12-29T15:59:28.351798",
+      "id": "APP-000039_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000039/assets_liabilities.xlsx",
+      "uploaded_at": "2025-12-29T15:59:28.351798",
+      "id": "APP-000039_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000039/credit_report.json",
+      "uploaded_at": "2025-12-29T15:59:28.351798",
+      "id": "APP-000039_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000039",
+      "decision": "APPROVED",
+      "policy_score": 60.0,
+      "decided_at": "2025-12-30T15:59:28.351798",
+      "decided_by": "SYSTEM",
+      "priority": "MEDIUM",
+      "id": "DECISION_APP-000039"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000039",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 1908.21,
+      "duration_months": 6,
+      "created_at": "2025-12-30T15:59:28.351798",
+      "id": "REC_APP-000039"
+    },
+    {
+      "node_type": "Person",
+      "name": "Salma Al Ketbi",
+      "nationality": "UAE National",
+      "monthly_income": 17018.2,
+      "credit_score": 1113,
+      "net_worth": 118670.0,
+      "id": "1961-0718-61468716-8"
+    },
+    {
+      "node_type": "Application",
+      "submitted_by": "1961-0718-61468716-8",
+      "submission_date": "2025-10-30T15:59:28.355574",
+      "status": "PROCESSED",
+      "policy_score": 75.0,
+      "id": "APP-000040"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "bank_statement",
+      "filename": "bank_statement.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000040/bank_statement.pdf",
+      "uploaded_at": "2025-10-30T15:59:28.355574",
+      "id": "APP-000040_bank_statement"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "emirates_id",
+      "filename": "emirates_id.png",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000040/emirates_id.png",
+      "uploaded_at": "2025-10-30T15:59:28.355574",
+      "id": "APP-000040_emirates_id"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "employment_letter",
+      "filename": "employment_letter.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000040/employment_letter.pdf",
+      "uploaded_at": "2025-10-30T15:59:28.355574",
+      "id": "APP-000040_employment_letter"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "resume",
+      "filename": "resume.pdf",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000040/resume.pdf",
+      "uploaded_at": "2025-10-30T15:59:28.355574",
+      "id": "APP-000040_resume"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "assets_liabilities",
+      "filename": "assets_liabilities.xlsx",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000040/assets_liabilities.xlsx",
+      "uploaded_at": "2025-10-30T15:59:28.355574",
+      "id": "APP-000040_assets_liabilities"
+    },
+    {
+      "node_type": "Document",
+      "document_type": "credit_report",
+      "filename": "credit_report.json",
+      "file_path": "/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000040/credit_report.json",
+      "uploaded_at": "2025-10-30T15:59:28.355574",
+      "id": "APP-000040_credit_report"
+    },
+    {
+      "node_type": "Decision",
+      "application_id": "APP-000040",
+      "decision": "APPROVED",
+      "policy_score": 75.0,
+      "decided_at": "2025-11-03T15:59:28.355574",
+      "decided_by": "SYSTEM",
+      "priority": "HIGH",
+      "id": "DECISION_APP-000040"
+    },
+    {
+      "node_type": "Recommendation",
+      "application_id": "APP-000040",
+      "support_type": "FINANCIAL_ASSISTANCE",
+      "support_amount": 3000,
+      "duration_months": 6,
+      "created_at": "2025-11-03T15:59:28.355574",
+      "id": "REC_APP-000040"
+    }
+  ],
+  "edges": [
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-12-16T15:59:28.204343",
+      "source": "1969-0626-15354599-2",
+      "target": "APP-000001"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000001",
+      "target": "APP-000001_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000001",
+      "target": "APP-000001_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000001",
+      "target": "APP-000001_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000001",
+      "target": "APP-000001_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000001",
+      "target": "APP-000001_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000001",
+      "target": "APP-000001_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-12-20T15:59:28.204343",
+      "source": "APP-000001",
+      "target": "DECISION_APP-000001"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000001",
+      "target": "REC_APP-000001"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-11-08T15:59:28.211025",
+      "source": "1971-0520-47080140-2",
+      "target": "APP-000002"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000002",
+      "target": "APP-000002_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000002",
+      "target": "APP-000002_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000002",
+      "target": "APP-000002_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000002",
+      "target": "APP-000002_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000002",
+      "target": "APP-000002_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000002",
+      "target": "APP-000002_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-13T15:59:28.211025",
+      "source": "APP-000002",
+      "target": "DECISION_APP-000002"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000002",
+      "target": "REC_APP-000002"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-12-21T15:59:28.221949",
+      "source": "1965-0819-29208935-8",
+      "target": "APP-000003"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000003",
+      "target": "APP-000003_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000003",
+      "target": "APP-000003_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000003",
+      "target": "APP-000003_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000003",
+      "target": "APP-000003_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000003",
+      "target": "APP-000003_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000003",
+      "target": "APP-000003_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-12-26T15:59:28.221949",
+      "source": "APP-000003",
+      "target": "DECISION_APP-000003"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000003",
+      "target": "REC_APP-000003"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-10-10T15:59:28.228086",
+      "source": "1961-0319-98227303-7",
+      "target": "APP-000004"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000004",
+      "target": "APP-000004_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000004",
+      "target": "APP-000004_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000004",
+      "target": "APP-000004_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000004",
+      "target": "APP-000004_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000004",
+      "target": "APP-000004_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000004",
+      "target": "APP-000004_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-10-14T15:59:28.228086",
+      "source": "APP-000004",
+      "target": "DECISION_APP-000004"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000004",
+      "target": "REC_APP-000004"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-12-08T15:59:28.232657",
+      "source": "1965-0504-16408822-5",
+      "target": "APP-000005"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000005",
+      "target": "APP-000005_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000005",
+      "target": "APP-000005_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000005",
+      "target": "APP-000005_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000005",
+      "target": "APP-000005_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000005",
+      "target": "APP-000005_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000005",
+      "target": "APP-000005_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-12-12T15:59:28.232657",
+      "source": "APP-000005",
+      "target": "DECISION_APP-000005"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000005",
+      "target": "REC_APP-000005"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-10-14T15:59:28.235808",
+      "source": "2003-1122-73161098-9",
+      "target": "APP-000006"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000006",
+      "target": "APP-000006_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000006",
+      "target": "APP-000006_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000006",
+      "target": "APP-000006_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000006",
+      "target": "APP-000006_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000006",
+      "target": "APP-000006_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000006",
+      "target": "APP-000006_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-10-15T15:59:28.235808",
+      "source": "APP-000006",
+      "target": "DECISION_APP-000006"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000006",
+      "target": "REC_APP-000006"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-10-31T15:59:28.238983",
+      "source": "1958-1208-10466177-6",
+      "target": "APP-000007"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000007",
+      "target": "APP-000007_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000007",
+      "target": "APP-000007_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000007",
+      "target": "APP-000007_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000007",
+      "target": "APP-000007_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000007",
+      "target": "APP-000007_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000007",
+      "target": "APP-000007_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-01T15:59:28.238983",
+      "source": "APP-000007",
+      "target": "DECISION_APP-000007"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000007",
+      "target": "REC_APP-000007"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-11-12T15:59:28.243382",
+      "source": "1960-0709-66519399-9",
+      "target": "APP-000008"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000008",
+      "target": "APP-000008_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000008",
+      "target": "APP-000008_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000008",
+      "target": "APP-000008_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000008",
+      "target": "APP-000008_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000008",
+      "target": "APP-000008_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000008",
+      "target": "APP-000008_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-17T15:59:28.243382",
+      "source": "APP-000008",
+      "target": "DECISION_APP-000008"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000008",
+      "target": "REC_APP-000008"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-10-31T15:59:28.246971",
+      "source": "1962-1205-97241147-3",
+      "target": "APP-000009"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000009",
+      "target": "APP-000009_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000009",
+      "target": "APP-000009_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000009",
+      "target": "APP-000009_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000009",
+      "target": "APP-000009_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000009",
+      "target": "APP-000009_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000009",
+      "target": "APP-000009_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-07T15:59:28.246971",
+      "source": "APP-000009",
+      "target": "DECISION_APP-000009"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000009",
+      "target": "REC_APP-000009"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-10-28T15:59:28.250790",
+      "source": "1963-0605-22242388-6",
+      "target": "APP-000010"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000010",
+      "target": "APP-000010_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000010",
+      "target": "APP-000010_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000010",
+      "target": "APP-000010_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000010",
+      "target": "APP-000010_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000010",
+      "target": "APP-000010_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000010",
+      "target": "APP-000010_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-02T15:59:28.250790",
+      "source": "APP-000010",
+      "target": "DECISION_APP-000010"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000010",
+      "target": "REC_APP-000010"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-11-24T15:59:28.253830",
+      "source": "1982-1017-86703472-4",
+      "target": "APP-000011"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000011",
+      "target": "APP-000011_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000011",
+      "target": "APP-000011_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000011",
+      "target": "APP-000011_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000011",
+      "target": "APP-000011_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000011",
+      "target": "APP-000011_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000011",
+      "target": "APP-000011_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-30T15:59:28.253830",
+      "source": "APP-000011",
+      "target": "DECISION_APP-000011"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000011",
+      "target": "REC_APP-000011"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-11-10T15:59:28.257458",
+      "source": "1952-0510-71193393-1",
+      "target": "APP-000012"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000012",
+      "target": "APP-000012_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000012",
+      "target": "APP-000012_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000012",
+      "target": "APP-000012_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000012",
+      "target": "APP-000012_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000012",
+      "target": "APP-000012_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000012",
+      "target": "APP-000012_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-12T15:59:28.257458",
+      "source": "APP-000012",
+      "target": "DECISION_APP-000012"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000012",
+      "target": "REC_APP-000012"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-11-21T15:59:28.260598",
+      "source": "1953-1226-49613096-9",
+      "target": "APP-000013"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000013",
+      "target": "APP-000013_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000013",
+      "target": "APP-000013_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000013",
+      "target": "APP-000013_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000013",
+      "target": "APP-000013_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000013",
+      "target": "APP-000013_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000013",
+      "target": "APP-000013_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-26T15:59:28.260598",
+      "source": "APP-000013",
+      "target": "DECISION_APP-000013"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000013",
+      "target": "REC_APP-000013"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-12-06T15:59:28.263647",
+      "source": "1973-0716-71021210-2",
+      "target": "APP-000014"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000014",
+      "target": "APP-000014_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000014",
+      "target": "APP-000014_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000014",
+      "target": "APP-000014_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000014",
+      "target": "APP-000014_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000014",
+      "target": "APP-000014_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000014",
+      "target": "APP-000014_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-12-12T15:59:28.263647",
+      "source": "APP-000014",
+      "target": "DECISION_APP-000014"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000014",
+      "target": "REC_APP-000014"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-11-01T15:59:28.266765",
+      "source": "2010-0902-77441081-9",
+      "target": "APP-000015"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000015",
+      "target": "APP-000015_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000015",
+      "target": "APP-000015_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000015",
+      "target": "APP-000015_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000015",
+      "target": "APP-000015_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000015",
+      "target": "APP-000015_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000015",
+      "target": "APP-000015_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-08T15:59:28.266765",
+      "source": "APP-000015",
+      "target": "DECISION_APP-000015"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000015",
+      "target": "REC_APP-000015"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-11-30T15:59:28.270427",
+      "source": "1958-0808-52512063-9",
+      "target": "APP-000016"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000016",
+      "target": "APP-000016_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000016",
+      "target": "APP-000016_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000016",
+      "target": "APP-000016_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000016",
+      "target": "APP-000016_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000016",
+      "target": "APP-000016_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000016",
+      "target": "APP-000016_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-12-04T15:59:28.270427",
+      "source": "APP-000016",
+      "target": "DECISION_APP-000016"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000016",
+      "target": "REC_APP-000016"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-11-05T15:59:28.273466",
+      "source": "1967-0121-44585138-6",
+      "target": "APP-000017"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000017",
+      "target": "APP-000017_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000017",
+      "target": "APP-000017_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000017",
+      "target": "APP-000017_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000017",
+      "target": "APP-000017_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000017",
+      "target": "APP-000017_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000017",
+      "target": "APP-000017_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-11T15:59:28.273466",
+      "source": "APP-000017",
+      "target": "DECISION_APP-000017"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000017",
+      "target": "REC_APP-000017"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-10-12T15:59:28.276687",
+      "source": "1986-1001-33572537-4",
+      "target": "APP-000018"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000018",
+      "target": "APP-000018_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000018",
+      "target": "APP-000018_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000018",
+      "target": "APP-000018_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000018",
+      "target": "APP-000018_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000018",
+      "target": "APP-000018_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000018",
+      "target": "APP-000018_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-10-13T15:59:28.276687",
+      "source": "APP-000018",
+      "target": "DECISION_APP-000018"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000018",
+      "target": "REC_APP-000018"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-10-19T15:59:28.279763",
+      "source": "1980-1212-25188664-5",
+      "target": "APP-000019"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000019",
+      "target": "APP-000019_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000019",
+      "target": "APP-000019_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000019",
+      "target": "APP-000019_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000019",
+      "target": "APP-000019_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000019",
+      "target": "APP-000019_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000019",
+      "target": "APP-000019_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-10-24T15:59:28.279763",
+      "source": "APP-000019",
+      "target": "DECISION_APP-000019"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000019",
+      "target": "REC_APP-000019"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-12-23T15:59:28.283524",
+      "source": "1956-0820-32909541-0",
+      "target": "APP-000020"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000020",
+      "target": "APP-000020_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000020",
+      "target": "APP-000020_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000020",
+      "target": "APP-000020_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000020",
+      "target": "APP-000020_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000020",
+      "target": "APP-000020_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000020",
+      "target": "APP-000020_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-12-26T15:59:28.283524",
+      "source": "APP-000020",
+      "target": "DECISION_APP-000020"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000020",
+      "target": "REC_APP-000020"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-11-27T15:59:28.286480",
+      "source": "1983-0915-71472671-6",
+      "target": "APP-000021"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000021",
+      "target": "APP-000021_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000021",
+      "target": "APP-000021_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000021",
+      "target": "APP-000021_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000021",
+      "target": "APP-000021_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000021",
+      "target": "APP-000021_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000021",
+      "target": "APP-000021_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-28T15:59:28.286480",
+      "source": "APP-000021",
+      "target": "DECISION_APP-000021"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000021",
+      "target": "REC_APP-000021"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-12-25T15:59:28.290074",
+      "source": "1979-0217-28241849-7",
+      "target": "APP-000022"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000022",
+      "target": "APP-000022_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000022",
+      "target": "APP-000022_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000022",
+      "target": "APP-000022_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000022",
+      "target": "APP-000022_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000022",
+      "target": "APP-000022_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000022",
+      "target": "APP-000022_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-12-31T15:59:28.290074",
+      "source": "APP-000022",
+      "target": "DECISION_APP-000022"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000022",
+      "target": "REC_APP-000022"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-11-27T15:59:28.293256",
+      "source": "2007-1002-98882124-0",
+      "target": "APP-000023"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000023",
+      "target": "APP-000023_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000023",
+      "target": "APP-000023_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000023",
+      "target": "APP-000023_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000023",
+      "target": "APP-000023_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000023",
+      "target": "APP-000023_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000023",
+      "target": "APP-000023_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-29T15:59:28.293256",
+      "source": "APP-000023",
+      "target": "DECISION_APP-000023"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000023",
+      "target": "REC_APP-000023"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-12-14T15:59:28.297149",
+      "source": "1953-0903-16052535-0",
+      "target": "APP-000024"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000024",
+      "target": "APP-000024_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000024",
+      "target": "APP-000024_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000024",
+      "target": "APP-000024_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000024",
+      "target": "APP-000024_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000024",
+      "target": "APP-000024_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000024",
+      "target": "APP-000024_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-12-16T15:59:28.297149",
+      "source": "APP-000024",
+      "target": "DECISION_APP-000024"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000024",
+      "target": "REC_APP-000024"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-11-16T15:59:28.300409",
+      "source": "2010-0215-49991663-6",
+      "target": "APP-000025"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000025",
+      "target": "APP-000025_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000025",
+      "target": "APP-000025_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000025",
+      "target": "APP-000025_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000025",
+      "target": "APP-000025_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000025",
+      "target": "APP-000025_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000025",
+      "target": "APP-000025_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-19T15:59:28.300409",
+      "source": "APP-000025",
+      "target": "DECISION_APP-000025"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000025",
+      "target": "REC_APP-000025"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-12-24T15:59:28.303865",
+      "source": "2006-0924-46819677-4",
+      "target": "APP-000026"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000026",
+      "target": "APP-000026_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000026",
+      "target": "APP-000026_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000026",
+      "target": "APP-000026_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000026",
+      "target": "APP-000026_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000026",
+      "target": "APP-000026_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000026",
+      "target": "APP-000026_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-12-27T15:59:28.303865",
+      "source": "APP-000026",
+      "target": "DECISION_APP-000026"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000026",
+      "target": "REC_APP-000026"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-12-29T15:59:28.306933",
+      "source": "2009-0404-25916596-7",
+      "target": "APP-000027"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000027",
+      "target": "APP-000027_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000027",
+      "target": "APP-000027_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000027",
+      "target": "APP-000027_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000027",
+      "target": "APP-000027_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000027",
+      "target": "APP-000027_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000027",
+      "target": "APP-000027_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-12-30T15:59:28.306933",
+      "source": "APP-000027",
+      "target": "DECISION_APP-000027"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000027",
+      "target": "REC_APP-000027"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-11-28T15:59:28.313301",
+      "source": "2004-1116-19061506-1",
+      "target": "APP-000028"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000028",
+      "target": "APP-000028_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000028",
+      "target": "APP-000028_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000028",
+      "target": "APP-000028_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000028",
+      "target": "APP-000028_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000028",
+      "target": "APP-000028_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000028",
+      "target": "APP-000028_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-30T15:59:28.313301",
+      "source": "APP-000028",
+      "target": "DECISION_APP-000028"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000028",
+      "target": "REC_APP-000028"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-12-06T15:59:28.316772",
+      "source": "1983-1026-77731180-7",
+      "target": "APP-000029"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000029",
+      "target": "APP-000029_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000029",
+      "target": "APP-000029_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000029",
+      "target": "APP-000029_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000029",
+      "target": "APP-000029_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000029",
+      "target": "APP-000029_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000029",
+      "target": "APP-000029_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-12-10T15:59:28.316772",
+      "source": "APP-000029",
+      "target": "DECISION_APP-000029"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000029",
+      "target": "REC_APP-000029"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-11-12T15:59:28.320907",
+      "source": "1984-0222-83600812-5",
+      "target": "APP-000030"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000030",
+      "target": "APP-000030_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000030",
+      "target": "APP-000030_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000030",
+      "target": "APP-000030_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000030",
+      "target": "APP-000030_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000030",
+      "target": "APP-000030_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000030",
+      "target": "APP-000030_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-19T15:59:28.320907",
+      "source": "APP-000030",
+      "target": "DECISION_APP-000030"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000030",
+      "target": "REC_APP-000030"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-11-20T15:59:28.324524",
+      "source": "1956-0321-90776943-0",
+      "target": "APP-000031"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000031",
+      "target": "APP-000031_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000031",
+      "target": "APP-000031_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000031",
+      "target": "APP-000031_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000031",
+      "target": "APP-000031_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000031",
+      "target": "APP-000031_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000031",
+      "target": "APP-000031_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-26T15:59:28.324524",
+      "source": "APP-000031",
+      "target": "DECISION_APP-000031"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000031",
+      "target": "REC_APP-000031"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-12-09T15:59:28.328428",
+      "source": "1977-0602-24228398-8",
+      "target": "APP-000032"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000032",
+      "target": "APP-000032_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000032",
+      "target": "APP-000032_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000032",
+      "target": "APP-000032_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000032",
+      "target": "APP-000032_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000032",
+      "target": "APP-000032_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000032",
+      "target": "APP-000032_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-12-13T15:59:28.328428",
+      "source": "APP-000032",
+      "target": "DECISION_APP-000032"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000032",
+      "target": "REC_APP-000032"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-12-02T15:59:28.332054",
+      "source": "1952-0424-35186888-7",
+      "target": "APP-000033"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000033",
+      "target": "APP-000033_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000033",
+      "target": "APP-000033_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000033",
+      "target": "APP-000033_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000033",
+      "target": "APP-000033_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000033",
+      "target": "APP-000033_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000033",
+      "target": "APP-000033_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-12-09T15:59:28.332054",
+      "source": "APP-000033",
+      "target": "DECISION_APP-000033"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000033",
+      "target": "REC_APP-000033"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-12-20T15:59:28.335239",
+      "source": "1951-1126-87277029-1",
+      "target": "APP-000034"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000034",
+      "target": "APP-000034_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000034",
+      "target": "APP-000034_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000034",
+      "target": "APP-000034_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000034",
+      "target": "APP-000034_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000034",
+      "target": "APP-000034_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000034",
+      "target": "APP-000034_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-12-26T15:59:28.335239",
+      "source": "APP-000034",
+      "target": "DECISION_APP-000034"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000034",
+      "target": "REC_APP-000034"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-12-18T15:59:28.338450",
+      "source": "1950-0712-98617699-7",
+      "target": "APP-000035"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000035",
+      "target": "APP-000035_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000035",
+      "target": "APP-000035_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000035",
+      "target": "APP-000035_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000035",
+      "target": "APP-000035_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000035",
+      "target": "APP-000035_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000035",
+      "target": "APP-000035_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-12-20T15:59:28.338450",
+      "source": "APP-000035",
+      "target": "DECISION_APP-000035"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000035",
+      "target": "REC_APP-000035"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-12-21T15:59:28.342140",
+      "source": "1953-0307-83428820-6",
+      "target": "APP-000036"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000036",
+      "target": "APP-000036_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000036",
+      "target": "APP-000036_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000036",
+      "target": "APP-000036_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000036",
+      "target": "APP-000036_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000036",
+      "target": "APP-000036_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000036",
+      "target": "APP-000036_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-12-24T15:59:28.342140",
+      "source": "APP-000036",
+      "target": "DECISION_APP-000036"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000036",
+      "target": "REC_APP-000036"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-10-09T15:59:28.345333",
+      "source": "2006-0712-20695820-0",
+      "target": "APP-000037"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000037",
+      "target": "APP-000037_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000037",
+      "target": "APP-000037_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000037",
+      "target": "APP-000037_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000037",
+      "target": "APP-000037_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000037",
+      "target": "APP-000037_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000037",
+      "target": "APP-000037_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-10-12T15:59:28.345333",
+      "source": "APP-000037",
+      "target": "DECISION_APP-000037"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000037",
+      "target": "REC_APP-000037"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-11-25T15:59:28.348330",
+      "source": "1960-0611-65484975-6",
+      "target": "APP-000038"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000038",
+      "target": "APP-000038_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000038",
+      "target": "APP-000038_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000038",
+      "target": "APP-000038_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000038",
+      "target": "APP-000038_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000038",
+      "target": "APP-000038_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000038",
+      "target": "APP-000038_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-28T15:59:28.348330",
+      "source": "APP-000038",
+      "target": "DECISION_APP-000038"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000038",
+      "target": "REC_APP-000038"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-12-29T15:59:28.351798",
+      "source": "1994-1209-46798988-4",
+      "target": "APP-000039"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000039",
+      "target": "APP-000039_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000039",
+      "target": "APP-000039_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000039",
+      "target": "APP-000039_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000039",
+      "target": "APP-000039_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000039",
+      "target": "APP-000039_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000039",
+      "target": "APP-000039_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-12-30T15:59:28.351798",
+      "source": "APP-000039",
+      "target": "DECISION_APP-000039"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000039",
+      "target": "REC_APP-000039"
+    },
+    {
+      "relationship": "SUBMITTED",
+      "timestamp": "2025-10-30T15:59:28.355574",
+      "source": "1961-0718-61468716-8",
+      "target": "APP-000040"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000040",
+      "target": "APP-000040_bank_statement"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000040",
+      "target": "APP-000040_emirates_id"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000040",
+      "target": "APP-000040_employment_letter"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000040",
+      "target": "APP-000040_resume"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000040",
+      "target": "APP-000040_assets_liabilities"
+    },
+    {
+      "relationship": "HAS_DOCUMENT",
+      "source": "APP-000040",
+      "target": "APP-000040_credit_report"
+    },
+    {
+      "relationship": "REVIEWED",
+      "timestamp": "2025-11-03T15:59:28.355574",
+      "source": "APP-000040",
+      "target": "DECISION_APP-000040"
+    },
+    {
+      "relationship": "RECOMMENDED",
+      "source": "DECISION_APP-000040",
+      "target": "REC_APP-000040"
+    }
+  ]
+}

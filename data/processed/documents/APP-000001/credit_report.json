@@ -1,0 +1,49 @@
+{
+  "report_id": "CB-556641",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Khalid Al Suwaidi",
+    "emirates_id": "1952-0619-84158663-2",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1104,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 47,
+    "late_payments_30_days": 5,
+    "late_payments_60_days": 3,
+    "missed_payments": 2,
+    "payment_ratio": 87.0
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 20624.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-18",
+      "last_payment_amount": 3646.0
+    }
+  ],
+  "total_outstanding": 62299.88,
+  "enquiries": [
+    {
+      "date": "2025-12-28",
+      "type": "Loan Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-12-04",
+      "type": "Loan Application",
+      "institution": "Mashreq"
+    },
+    {
+      "date": "2025-07-22",
+      "type": "Loan Application",
+      "institution": "ADIB"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

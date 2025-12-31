@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000016",
+  "applicant_name": "Hamad Al Qassimi",
+  "emirates_id": "1989-0625-93903841-4",
+  "profile": {
+    "monthly_income": 2447.82,
+    "monthly_expenses": 1151.46,
+    "employment_status": "Self-employed",
+    "family_size": 1,
+    "total_assets": 311918.89,
+    "total_liabilities": 71863.8,
+    "credit_score": 469,
+    "target_score": 30.0
+  },
+  "policy_score": 30.0,
+  "tier": "LOW"
+}

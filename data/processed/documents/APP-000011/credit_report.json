@@ -1,0 +1,39 @@
+{
+  "report_id": "CB-319553",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Reem Al Awani",
+    "emirates_id": "1959-1222-22979206-0",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1084,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 24,
+    "late_payments_30_days": 2,
+    "late_payments_60_days": 0,
+    "missed_payments": 2,
+    "payment_ratio": 85.7
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 26941.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-11",
+      "last_payment_amount": 4947.0
+    }
+  ],
+  "total_outstanding": 11105.92,
+  "enquiries": [
+    {
+      "date": "2025-12-30",
+      "type": "Loan Application",
+      "institution": "Mashreq"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

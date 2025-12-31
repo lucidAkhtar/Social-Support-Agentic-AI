@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000003",
+  "applicant_name": "Leila Al Shamsi",
+  "emirates_id": "1995-0215-32329103-7",
+  "profile": {
+    "monthly_income": 4350.51,
+    "monthly_expenses": 2405.73,
+    "employment_status": "Self-employed",
+    "family_size": 3,
+    "total_assets": 133080.99,
+    "total_liabilities": 60714.07,
+    "credit_score": 598,
+    "target_score": 55.0
+  },
+  "policy_score": 55.0,
+  "tier": "MEDIUM"
+}

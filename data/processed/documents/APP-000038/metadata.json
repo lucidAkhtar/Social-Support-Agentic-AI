@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000038",
+  "applicant_name": "Rana Al Qubaisi",
+  "emirates_id": "1955-0203-77714140-3",
+  "profile": {
+    "monthly_income": 2244.15,
+    "monthly_expenses": 1759.07,
+    "employment_status": "Government Employee",
+    "family_size": 6,
+    "total_assets": 29420.01,
+    "total_liabilities": 3874.32,
+    "credit_score": 640,
+    "target_score": 75.0
+  },
+  "policy_score": 75.0,
+  "tier": "HIGH"
+}

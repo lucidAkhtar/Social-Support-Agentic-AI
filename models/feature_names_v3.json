@@ -1,0 +1,14 @@
+[
+  "monthly_income",
+  "family_size",
+  "net_worth",
+  "total_assets",
+  "total_liabilities",
+  "credit_score",
+  "employment_years",
+  "is_employed",
+  "is_unemployed",
+  "owns_property",
+  "rents",
+  "lives_with_family"
+]

@@ -1,0 +1,66 @@
+{
+  "report_id": "CB-310251",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Hassan Al Dhaheri",
+    "emirates_id": "1950-0712-98617699-7",
+    "nationality": "UAE National"
+  },
+  "credit_score": 848,
+  "credit_rating": "Poor",
+  "payment_history": {
+    "on_time_payments": 49,
+    "late_payments_30_days": 2,
+    "late_payments_60_days": 0,
+    "missed_payments": 1,
+    "payment_ratio": 94.2
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 8058.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-04",
+      "last_payment_amount": 1631.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 8365.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-13",
+      "last_payment_amount": 1966.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 22965.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-30",
+      "last_payment_amount": 3184.0
+    },
+    {
+      "account_type": "Personal Loan",
+      "institution": "Dubai Islamic Bank",
+      "account_status": "Active",
+      "balance": 57678.0,
+      "credit_limit": 93391.0,
+      "last_payment": "2025-12-23",
+      "last_payment_amount": 3613.0
+    }
+  ],
+  "total_outstanding": 93614.01,
+  "enquiries": [
+    {
+      "date": "2025-10-06",
+      "type": "Loan Application",
+      "institution": "Mashreq"
+    }
+  ],
+  "remarks": "Very poor credit profile. High risk customer."
+}

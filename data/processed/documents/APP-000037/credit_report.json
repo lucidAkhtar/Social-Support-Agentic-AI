@@ -1,0 +1,54 @@
+{
+  "report_id": "CB-952487",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Noor Al Suwaidi",
+    "emirates_id": "1981-1125-36589097-3",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1233,
+  "credit_rating": "Good",
+  "payment_history": {
+    "on_time_payments": 43,
+    "late_payments_30_days": 1,
+    "late_payments_60_days": 0,
+    "missed_payments": 0,
+    "payment_ratio": 97.7
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 38980.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-15",
+      "last_payment_amount": 1410.0
+    }
+  ],
+  "total_outstanding": 30779.07,
+  "enquiries": [
+    {
+      "date": "2025-12-21",
+      "type": "Mortgage Application",
+      "institution": "Mashreq"
+    },
+    {
+      "date": "2025-10-15",
+      "type": "Mortgage Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-07-23",
+      "type": "Credit Card Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-12-23",
+      "type": "Loan Application",
+      "institution": "FAB"
+    }
+  ],
+  "remarks": "Fair credit profile. Acceptable risk customer."
+}

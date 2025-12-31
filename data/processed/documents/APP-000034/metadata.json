@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000034",
+  "applicant_name": "Karim Al Ketbi",
+  "emirates_id": "1951-1126-87277029-1",
+  "profile": {
+    "monthly_income": 6385.24,
+    "monthly_expenses": 3747.84,
+    "employment_status": "Private Sector",
+    "family_size": 2,
+    "total_assets": 116115.92,
+    "total_liabilities": 43607.02,
+    "credit_score": 627,
+    "target_score": 60.0
+  },
+  "policy_score": 60.0,
+  "tier": "MEDIUM"
+}

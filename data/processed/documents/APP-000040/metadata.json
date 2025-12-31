@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000040",
+  "applicant_name": "Ali Al Memari",
+  "emirates_id": "1977-0512-71475863-2",
+  "profile": {
+    "monthly_income": 1579.24,
+    "monthly_expenses": 1374.8,
+    "employment_status": "Private Sector",
+    "family_size": 4,
+    "total_assets": 6754.98,
+    "total_liabilities": 10582.19,
+    "credit_score": 697,
+    "target_score": 65.0
+  },
+  "policy_score": 65.0,
+  "tier": "MEDIUM"
+}

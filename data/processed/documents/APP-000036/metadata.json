@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000036",
+  "applicant_name": "Rahma Al Qassimi",
+  "emirates_id": "1971-1102-41624005-1",
+  "profile": {
+    "monthly_income": 2604.15,
+    "monthly_expenses": 1314.09,
+    "employment_status": "Self-employed",
+    "family_size": 1,
+    "total_assets": 667057.33,
+    "total_liabilities": 43665.95,
+    "credit_score": 378,
+    "target_score": 30.0
+  },
+  "policy_score": 30.0,
+  "tier": "LOW"
+}

@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000037",
+  "applicant_name": "Noor Al Suwaidi",
+  "emirates_id": "1981-1125-36589097-3",
+  "profile": {
+    "monthly_income": 6506.58,
+    "monthly_expenses": 4396.78,
+    "employment_status": "Private Sector",
+    "family_size": 3,
+    "total_assets": 89449.36,
+    "total_liabilities": 30779.07,
+    "credit_score": 636,
+    "target_score": 60.0
+  },
+  "policy_score": 60.0,
+  "tier": "MEDIUM"
+}

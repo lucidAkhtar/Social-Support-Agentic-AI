@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000020",
+  "applicant_name": "Ahmed Al Mazrouei",
+  "emirates_id": "1956-0820-32909541-0",
+  "profile": {
+    "monthly_income": 4751.78,
+    "monthly_expenses": 3015.83,
+    "employment_status": "Private Sector",
+    "family_size": 2,
+    "total_assets": 94666.14,
+    "total_liabilities": 64553.47,
+    "credit_score": 596,
+    "target_score": 65.0
+  },
+  "policy_score": 65.0,
+  "tier": "MEDIUM"
+}

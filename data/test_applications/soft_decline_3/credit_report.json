@@ -1,0 +1,63 @@
+{
+  "report_id": "CB-373453",
+  "report_date": "2026-01-01",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Sara Al Mansoori",
+    "emirates_id": "1987-0306-98413629-5",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1184,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 40,
+    "late_payments_30_days": 2,
+    "late_payments_60_days": 0,
+    "missed_payments": 2,
+    "payment_ratio": 90.9
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 38148.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-07",
+      "last_payment_amount": 2180.0
+    },
+    {
+      "account_type": "Personal Loan",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 34040.0,
+      "credit_limit": 88492.0,
+      "last_payment": "2025-12-04",
+      "last_payment_amount": 2622.0
+    }
+  ],
+  "total_outstanding": 18000,
+  "enquiries": [
+    {
+      "date": "2025-08-23",
+      "type": "Loan Application",
+      "institution": "FAB"
+    },
+    {
+      "date": "2025-09-21",
+      "type": "Credit Card Application",
+      "institution": "FAB"
+    },
+    {
+      "date": "2025-11-15",
+      "type": "Mortgage Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-10-11",
+      "type": "Mortgage Application",
+      "institution": "FAB"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

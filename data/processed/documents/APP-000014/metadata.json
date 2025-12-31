@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000014",
+  "applicant_name": "Noura Al Mazroui",
+  "emirates_id": "2007-0916-97766064-5",
+  "profile": {
+    "monthly_income": 1627.28,
+    "monthly_expenses": 1271.37,
+    "employment_status": "Government Employee",
+    "family_size": 4,
+    "total_assets": 37422.84,
+    "total_liabilities": 17276.52,
+    "credit_score": 601,
+    "target_score": 75.0
+  },
+  "policy_score": 75.0,
+  "tier": "HIGH"
+}

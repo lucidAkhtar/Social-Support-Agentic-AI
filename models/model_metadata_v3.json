@@ -1,0 +1,31 @@
+{
+  "model_version": "v3",
+  "model_type": "RandomForestClassifier",
+  "n_features": 12,
+  "feature_names": [
+    "monthly_income",
+    "family_size",
+    "net_worth",
+    "total_assets",
+    "total_liabilities",
+    "credit_score",
+    "employment_years",
+    "is_employed",
+    "is_unemployed",
+    "owns_property",
+    "rents",
+    "lives_with_family"
+  ],
+  "training_date": "2026-01-01T02:29:56.210770",
+  "training_samples": 8,
+  "test_accuracy": 1.0,
+  "test_f1": 1.0,
+  "cv_mean_f1": 0.8,
+  "hyperparameters": {
+    "n_estimators": 200,
+    "max_depth": 10,
+    "class_weight": "balanced"
+  },
+  "label_definition": "1=APPROVE (low income, high need), 0=REJECT (high income, low need)",
+  "note": "Use FeatureExtractor.extract_features() for inference"
+}

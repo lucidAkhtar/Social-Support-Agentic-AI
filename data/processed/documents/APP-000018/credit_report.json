@@ -1,0 +1,72 @@
+{
+  "report_id": "CB-706012",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Khalid Al Ameri",
+    "emirates_id": "1951-0307-54360949-4",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1134,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 46,
+    "late_payments_30_days": 3,
+    "late_payments_60_days": 1,
+    "missed_payments": 0,
+    "payment_ratio": 93.9
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "ADIB",
+      "account_status": "Active",
+      "balance": 11042.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-29",
+      "last_payment_amount": 3594.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "ADIB",
+      "account_status": "Active",
+      "balance": 37460.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-16",
+      "last_payment_amount": 3632.0
+    },
+    {
+      "account_type": "Personal Loan",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 26773.0,
+      "credit_limit": 71379.0,
+      "last_payment": "2025-12-18",
+      "last_payment_amount": 4441.0
+    }
+  ],
+  "total_outstanding": 57661.29,
+  "enquiries": [
+    {
+      "date": "2025-07-25",
+      "type": "Mortgage Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-08-23",
+      "type": "Loan Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-09-24",
+      "type": "Loan Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-11-14",
+      "type": "Loan Application",
+      "institution": "FAB"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

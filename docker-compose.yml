@@ -1,36 +1,37 @@
 version: '3.8'
 
 services:
-  # Main application
+  # FastAPI Backend - Main Application with 6 Agents
   app:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: social-support-app
     ports:
-      - "8000:8000"
+      - "8000:8000"  # FastAPI backend
     environment:
       - ENVIRONMENT=production
       - LOG_LEVEL=info
       - DATABASE_PATH=/app/data/databases
       - OLLAMA_URL=http://ollama:11434
+      - PYTHONUNBUFFERED=1
     volumes:
       - ./data:/app/data
-      - app-logs:/app/logs
+      - ./models:/app/models
+      - ./logs:/app/logs
     depends_on:
       - ollama
-      - prometheus
     networks:
       - social-support-net
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/test/integration/verify-all"]
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 40s
 
-  # Ollama LLM service
+  # Ollama LLM service (for RAG Chatbot + AI Agents)
   ollama:
     image: ollama/ollama:latest
     container_name: social-support-ollama
@@ -41,74 +42,17 @@ services:
     networks:
       - social-support-net
     restart: unless-stopped
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: 1
-              capabilities: [gpu]
-
-  # Prometheus monitoring
-  prometheus:
-    image: prom/prometheus:latest
-    container_name: social-support-prometheus
-    ports:
-      - "9090:9090"
-    volumes:
-      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
-      - prometheus-data:/prometheus
-    command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-      - '--storage.tsdb.path=/prometheus'
-      - '--web.console.libraries=/etc/prometheus/console_libraries'
-      - '--web.console.templates=/etc/prometheus/consoles'
-      - '--web.enable-lifecycle'
-    networks:
-      - social-support-net
-    restart: unless-stopped
-
-  # Grafana dashboards
-  grafana:
-    image: grafana/grafana:latest
-    container_name: social-support-grafana
-    ports:
-      - "3000:3000"
-    environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=social_support_2024
-      - GF_USERS_ALLOW_SIGN_UP=false
-    volumes:
-      - ./monitoring/grafana-dashboards:/etc/grafana/provisioning/dashboards
-      - ./monitoring/grafana-datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml
-      - grafana-data:/var/lib/grafana
-    depends_on:
-      - prometheus
-    networks:
-      - social-support-net
-    restart: unless-stopped
-
-  # Nginx reverse proxy
-  nginx:
-    image: nginx:alpine
-    container_name: social-support-nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/ssl:/etc/nginx/ssl
-    depends_on:
-      - app
-    networks:
-      - social-support-net
-    restart: unless-stopped
+    # Uncomment if you have NVIDIA GPU
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
 
 volumes:
   ollama-data:
-  prometheus-data:
-  grafana-data:
-  app-logs:
 
 networks:
   social-support-net:

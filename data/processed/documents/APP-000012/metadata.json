@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000012",
+  "applicant_name": "Majid Al Qassimi",
+  "emirates_id": "1958-1014-95025258-4",
+  "profile": {
+    "monthly_income": 1627.94,
+    "monthly_expenses": 1201.94,
+    "employment_status": "Private Sector",
+    "family_size": 6,
+    "total_assets": 16875.59,
+    "total_liabilities": 17510.11,
+    "credit_score": 611,
+    "target_score": 65.0
+  },
+  "policy_score": 65.0,
+  "tier": "MEDIUM"
+}

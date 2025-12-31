@@ -1,0 +1,119 @@
+{
+  "trace_id": "lang_test_001",
+  "application_id": "APP_TEST_001",
+  "start_time": "2025-12-30T17:56:02.203590",
+  "metadata": {
+    "test": true
+  },
+  "spans": [
+    {
+      "span_id": "extraction_stage_1767097562203",
+      "name": "extraction_stage",
+      "type": "agent",
+      "start_time": "2025-12-30T17:56:02.203601",
+      "duration": 2.3,
+      "input": {
+        "application_id": "APP_TEST_001"
+      },
+      "output": {
+        "fields_extracted": 12,
+        "confidence": 0.95,
+        "errors": []
+      },
+      "metadata": {
+        "agent": "ExtractionAgent",
+        "model": "Mistral 7B"
+      }
+    },
+    {
+      "span_id": "validation_stage_1767097562203",
+      "name": "validation_stage",
+      "type": "agent",
+      "start_time": "2025-12-30T17:56:02.203604",
+      "duration": 1.1,
+      "input": {
+        "application_id": "APP_TEST_001"
+      },
+      "output": {
+        "quality_score": 0.92,
+        "issues_found": 1,
+        "auto_corrected": 1
+      },
+      "metadata": {
+        "agent": "ValidationAgent",
+        "validation_rules_applied": 15
+      }
+    },
+    {
+      "span_id": "ml_scoring_stage_1767097562203",
+      "name": "ml_scoring_stage",
+      "type": "model",
+      "start_time": "2025-12-30T17:56:02.203607",
+      "duration": 0.5,
+      "input": {
+        "application_id": "APP_TEST_001",
+        "features": 17
+      },
+      "output": {
+        "eligibility_score": 0.88,
+        "confidence": 0.94
+      },
+      "metadata": {
+        "model": "GradientBoostingClassifier",
+        "accuracy": 0.98,
+        "features": 17
+      }
+    },
+    {
+      "span_id": "decision_stage_1767097562203",
+      "name": "decision_stage",
+      "type": "agent",
+      "start_time": "2025-12-30T17:56:02.203610",
+      "duration": 0.8,
+      "input": {
+        "application_id": "APP_TEST_001"
+      },
+      "output": {
+        "decision": "approved",
+        "confidence": 0.91,
+        "rationale": "Income and employment meet criteria"
+      },
+      "metadata": {
+        "agent": "DecisionAgent",
+        "decision_framework": "Eligibility + Income Assessment"
+      }
+    },
+    {
+      "span_id": "recommendations_stage_1767097562203",
+      "name": "recommendations_stage",
+      "type": "agent",
+      "start_time": "2025-12-30T17:56:02.203612",
+      "duration": 0.6,
+      "input": {
+        "application_id": "APP_TEST_001"
+      },
+      "output": {
+        "recommendations_generated": 3,
+        "programs": [
+          "job_matching",
+          "upskilling",
+          "career_counseling"
+        ]
+      },
+      "metadata": {
+        "agent": "RecommendationEngine",
+        "enablement_programs": [
+          "job_matching",
+          "upskilling",
+          "career_counseling"
+        ]
+      }
+    }
+  ],
+  "metrics": {
+    "total_duration": 5.3,
+    "span_count": 5,
+    "error_count": 0
+  },
+  "end_time": "2025-12-30T17:56:02.203614"
+}

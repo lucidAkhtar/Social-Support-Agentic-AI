@@ -1,0 +1,63 @@
+{
+  "report_id": "CB-575904",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Karim Al Ketbi",
+    "emirates_id": "1951-1126-87277029-1",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1216,
+  "credit_rating": "Good",
+  "payment_history": {
+    "on_time_payments": 42,
+    "late_payments_30_days": 2,
+    "late_payments_60_days": 0,
+    "missed_payments": 2,
+    "payment_ratio": 91.3
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "Emirates NBD",
+      "account_status": "Active",
+      "balance": 40790.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-13",
+      "last_payment_amount": 4873.0
+    },
+    {
+      "account_type": "Personal Loan",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 28815.0,
+      "credit_limit": 20667.0,
+      "last_payment": "2025-12-02",
+      "last_payment_amount": 3742.0
+    }
+  ],
+  "total_outstanding": 43607.02,
+  "enquiries": [
+    {
+      "date": "2025-07-10",
+      "type": "Mortgage Application",
+      "institution": "Mashreq"
+    },
+    {
+      "date": "2025-07-25",
+      "type": "Credit Card Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-10-15",
+      "type": "Loan Application",
+      "institution": "Mashreq"
+    },
+    {
+      "date": "2025-12-15",
+      "type": "Loan Application",
+      "institution": "FAB"
+    }
+  ],
+  "remarks": "Fair credit profile. Acceptable risk customer."
+}

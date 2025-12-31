@@ -1,0 +1,67 @@
+{
+  "report_id": "CB-346174",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Kamal Al Shehhi",
+    "emirates_id": "1984-0815-68461818-8",
+    "nationality": "UAE National"
+  },
+  "credit_score": 925,
+  "credit_rating": "Poor",
+  "payment_history": {
+    "on_time_payments": 23,
+    "late_payments_30_days": 4,
+    "late_payments_60_days": 2,
+    "missed_payments": 1,
+    "payment_ratio": 82.1
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Mortgage",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 67831.0,
+      "credit_limit": 73483.0,
+      "last_payment": "2025-12-08",
+      "last_payment_amount": 5653.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "Emirates NBD",
+      "account_status": "Active",
+      "balance": 44192.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-27",
+      "last_payment_amount": 1299.0
+    },
+    {
+      "account_type": "Personal Loan",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 47085.0,
+      "credit_limit": 75416.0,
+      "last_payment": "2025-12-11",
+      "last_payment_amount": 1321.0
+    }
+  ],
+  "total_outstanding": 113050.89,
+  "enquiries": [
+    {
+      "date": "2025-07-12",
+      "type": "Credit Card Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-10-11",
+      "type": "Credit Card Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-08-15",
+      "type": "Mortgage Application",
+      "institution": "FAB"
+    }
+  ],
+  "remarks": "Very poor credit profile. High risk customer."
+}

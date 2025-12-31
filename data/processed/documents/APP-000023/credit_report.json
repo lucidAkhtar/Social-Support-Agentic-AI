@@ -1,0 +1,90 @@
+{
+  "report_id": "CB-255825",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Maha Al Ameri",
+    "emirates_id": "1959-0616-59357131-1",
+    "nationality": "UAE National"
+  },
+  "credit_score": 708,
+  "credit_rating": "Poor",
+  "payment_history": {
+    "on_time_payments": 48,
+    "late_payments_30_days": 5,
+    "late_payments_60_days": 3,
+    "missed_payments": 2,
+    "payment_ratio": 87.3
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Mortgage",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 73872.0,
+      "credit_limit": 80028.0,
+      "last_payment": "2025-12-20",
+      "last_payment_amount": 6156.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 42442.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-15",
+      "last_payment_amount": 1799.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "Emirates NBD",
+      "account_status": "Active",
+      "balance": 44844.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-16",
+      "last_payment_amount": 2074.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "Emirates NBD",
+      "account_status": "Active",
+      "balance": 9060.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-18",
+      "last_payment_amount": 4244.0
+    },
+    {
+      "account_type": "Personal Loan",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 70455.0,
+      "credit_limit": 27436.0,
+      "last_payment": "2025-12-15",
+      "last_payment_amount": 2367.0
+    }
+  ],
+  "total_outstanding": 123119.99,
+  "enquiries": [
+    {
+      "date": "2025-07-11",
+      "type": "Mortgage Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-08-27",
+      "type": "Credit Card Application",
+      "institution": "FAB"
+    },
+    {
+      "date": "2025-10-18",
+      "type": "Loan Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-12-11",
+      "type": "Loan Application",
+      "institution": "Mashreq"
+    }
+  ],
+  "remarks": "Very poor credit profile. High risk customer."
+}

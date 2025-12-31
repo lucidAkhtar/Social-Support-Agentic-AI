@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000026",
+  "applicant_name": "Kamal Al Suwaidi",
+  "emirates_id": "2006-0924-46819677-4",
+  "profile": {
+    "monthly_income": 2234.8,
+    "monthly_expenses": 1683.08,
+    "employment_status": "Private Sector",
+    "family_size": 5,
+    "total_assets": 12149.07,
+    "total_liabilities": 14891.45,
+    "credit_score": 610,
+    "target_score": 65.0
+  },
+  "policy_score": 65.0,
+  "tier": "MEDIUM"
+}

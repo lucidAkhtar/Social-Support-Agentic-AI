@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000033",
+  "applicant_name": "Faisal Al Mansoori",
+  "emirates_id": "1952-0424-35186888-7",
+  "profile": {
+    "monthly_income": 2210.64,
+    "monthly_expenses": 1054.78,
+    "employment_status": "Unemployed",
+    "family_size": 1,
+    "total_assets": 919890.2,
+    "total_liabilities": 75615.15,
+    "credit_score": 416,
+    "target_score": 25.0
+  },
+  "policy_score": 25.0,
+  "tier": "LOW"
+}

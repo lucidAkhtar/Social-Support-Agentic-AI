@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000015",
+  "applicant_name": "Ibrahim Al Shamsi",
+  "emirates_id": "2003-0427-93026670-0",
+  "profile": {
+    "monthly_income": 2083.2,
+    "monthly_expenses": 1489.65,
+    "employment_status": "Private Sector",
+    "family_size": 4,
+    "total_assets": 14749.08,
+    "total_liabilities": 6496.52,
+    "credit_score": 698,
+    "target_score": 65.0
+  },
+  "policy_score": 65.0,
+  "tier": "MEDIUM"
+}

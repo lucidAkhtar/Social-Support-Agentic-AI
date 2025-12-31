@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000017",
+  "applicant_name": "Anwar Al Shehhi",
+  "emirates_id": "1951-0622-57232974-8",
+  "profile": {
+    "monthly_income": 8298.18,
+    "monthly_expenses": 5349.59,
+    "employment_status": "Government Employee",
+    "family_size": 4,
+    "total_assets": 208531.05,
+    "total_liabilities": 63448.89,
+    "credit_score": 597,
+    "target_score": 80.0
+  },
+  "policy_score": 80.0,
+  "tier": "HIGH"
+}

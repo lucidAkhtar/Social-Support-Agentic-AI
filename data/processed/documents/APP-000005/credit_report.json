@@ -1,0 +1,62 @@
+{
+  "report_id": "CB-360330",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Salim Al Kalbani",
+    "emirates_id": "1968-0823-28628439-0",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1197,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 34,
+    "late_payments_30_days": 1,
+    "late_payments_60_days": 0,
+    "missed_payments": 1,
+    "payment_ratio": 94.4
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "ADIB",
+      "account_status": "Active",
+      "balance": 19066.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-09",
+      "last_payment_amount": 2277.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 48892.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-27",
+      "last_payment_amount": 4043.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 19360.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-17",
+      "last_payment_amount": 1490.0
+    }
+  ],
+  "total_outstanding": 37642.07,
+  "enquiries": [
+    {
+      "date": "2025-12-07",
+      "type": "Mortgage Application",
+      "institution": "Mashreq"
+    },
+    {
+      "date": "2025-09-24",
+      "type": "Credit Card Application",
+      "institution": "Emirates Islamic"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

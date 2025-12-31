@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000039",
+  "applicant_name": "Hilal Al Memari",
+  "emirates_id": "1997-0111-52477264-7",
+  "profile": {
+    "monthly_income": 2461.23,
+    "monthly_expenses": 1226.02,
+    "employment_status": "Self-employed",
+    "family_size": 1,
+    "total_assets": 389284.3,
+    "total_liabilities": 123647.12,
+    "credit_score": 513,
+    "target_score": 30.0
+  },
+  "policy_score": 30.0,
+  "tier": "LOW"
+}

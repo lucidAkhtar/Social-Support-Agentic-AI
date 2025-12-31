@@ -1,0 +1,57 @@
+{
+  "report_id": "CB-751517",
+  "report_date": "2026-01-01",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Ahmed Al Hosani",
+    "emirates_id": "1960-0827-82909480-9",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1058,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 34,
+    "late_payments_30_days": 2,
+    "late_payments_60_days": 0,
+    "missed_payments": 1,
+    "payment_ratio": 91.9
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 38840.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-06",
+      "last_payment_amount": 2686.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 26164.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-09",
+      "last_payment_amount": 3158.0
+    },
+    {
+      "account_type": "Personal Loan",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 37938.0,
+      "credit_limit": 25489.0,
+      "last_payment": "2025-12-02",
+      "last_payment_amount": 3607.0
+    }
+  ],
+  "total_outstanding": 15000,
+  "enquiries": [
+    {
+      "date": "2025-10-30",
+      "type": "Mortgage Application",
+      "institution": "FAB"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

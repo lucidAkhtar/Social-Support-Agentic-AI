@@ -1,0 +1,67 @@
+{
+  "report_id": "CB-952117",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Sama Al Qubaisi",
+    "emirates_id": "1965-0513-56017729-8",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1063,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 42,
+    "late_payments_30_days": 5,
+    "late_payments_60_days": 3,
+    "missed_payments": 2,
+    "payment_ratio": 85.7
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 42805.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-27",
+      "last_payment_amount": 3718.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 44505.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-17",
+      "last_payment_amount": 2781.0
+    },
+    {
+      "account_type": "Personal Loan",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 64134.0,
+      "credit_limit": 34062.0,
+      "last_payment": "2025-12-12",
+      "last_payment_amount": 1328.0
+    }
+  ],
+  "total_outstanding": 67873.95,
+  "enquiries": [
+    {
+      "date": "2025-11-26",
+      "type": "Credit Card Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-10-25",
+      "type": "Credit Card Application",
+      "institution": "FAB"
+    },
+    {
+      "date": "2025-12-12",
+      "type": "Mortgage Application",
+      "institution": "FAB"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

@@ -1,0 +1,81 @@
+{
+  "report_id": "CB-495490",
+  "report_date": "2026-01-01",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Khalid Al Bloushi",
+    "emirates_id": "1996-1001-45105069-3",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1040,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 37,
+    "late_payments_30_days": 2,
+    "late_payments_60_days": 0,
+    "missed_payments": 0,
+    "payment_ratio": 94.9
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Mortgage",
+      "institution": "Mashreq Bank",
+      "account_status": "Active",
+      "balance": 75000.0,
+      "credit_limit": 81250.0,
+      "last_payment": "2025-12-06",
+      "last_payment_amount": 6250.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "Emirates NBD",
+      "account_status": "Active",
+      "balance": 41278.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-03",
+      "last_payment_amount": 1717.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 28597.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-25",
+      "last_payment_amount": 1768.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 41685.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-24",
+      "last_payment_amount": 4180.0
+    }
+  ],
+  "total_outstanding": 125000,
+  "enquiries": [
+    {
+      "date": "2025-09-06",
+      "type": "Credit Card Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-07-07",
+      "type": "Mortgage Application",
+      "institution": "Mashreq"
+    },
+    {
+      "date": "2025-07-10",
+      "type": "Mortgage Application",
+      "institution": "FAB"
+    },
+    {
+      "date": "2025-12-09",
+      "type": "Loan Application",
+      "institution": "Emirates Islamic"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

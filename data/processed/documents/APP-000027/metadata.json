@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000027",
+  "applicant_name": "Rashid Al Shehhi",
+  "emirates_id": "2009-0404-25916596-7",
+  "profile": {
+    "monthly_income": 2439.27,
+    "monthly_expenses": 1189.47,
+    "employment_status": "Private Sector",
+    "family_size": 1,
+    "total_assets": 365361.0,
+    "total_liabilities": 87945.54,
+    "credit_score": 503,
+    "target_score": 35.0
+  },
+  "policy_score": 35.0,
+  "tier": "LOW"
+}

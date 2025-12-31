@@ -1,0 +1,58 @@
+{
+  "report_id": "CB-431863",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Faisal Al Ameri",
+    "emirates_id": "1974-0707-79021601-1",
+    "nationality": "UAE National"
+  },
+  "credit_score": 846,
+  "credit_rating": "Poor",
+  "payment_history": {
+    "on_time_payments": 27,
+    "late_payments_30_days": 4,
+    "late_payments_60_days": 2,
+    "missed_payments": 0,
+    "payment_ratio": 87.1
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 42455.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-08",
+      "last_payment_amount": 2560.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "ADIB",
+      "account_status": "Active",
+      "balance": 47098.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-25",
+      "last_payment_amount": 1577.0
+    }
+  ],
+  "total_outstanding": 63313.64,
+  "enquiries": [
+    {
+      "date": "2025-09-10",
+      "type": "Loan Application",
+      "institution": "Mashreq"
+    },
+    {
+      "date": "2025-08-03",
+      "type": "Mortgage Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-08-17",
+      "type": "Loan Application",
+      "institution": "FAB"
+    }
+  ],
+  "remarks": "Very poor credit profile. High risk customer."
+}

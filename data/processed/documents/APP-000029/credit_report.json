@@ -1,0 +1,72 @@
+{
+  "report_id": "CB-828252",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Mona Al Kalbani",
+    "emirates_id": "1962-1205-79800523-2",
+    "nationality": "UAE National"
+  },
+  "credit_score": 951,
+  "credit_rating": "Poor",
+  "payment_history": {
+    "on_time_payments": 42,
+    "late_payments_30_days": 2,
+    "late_payments_60_days": 0,
+    "missed_payments": 2,
+    "payment_ratio": 91.3
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "ADIB",
+      "account_status": "Active",
+      "balance": 35957.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-10",
+      "last_payment_amount": 4279.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "ADIB",
+      "account_status": "Active",
+      "balance": 6653.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-27",
+      "last_payment_amount": 2199.0
+    },
+    {
+      "account_type": "Personal Loan",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 68172.0,
+      "credit_limit": 37283.0,
+      "last_payment": "2025-12-20",
+      "last_payment_amount": 2110.0
+    }
+  ],
+  "total_outstanding": 71274.69,
+  "enquiries": [
+    {
+      "date": "2025-12-12",
+      "type": "Credit Card Application",
+      "institution": "Mashreq"
+    },
+    {
+      "date": "2025-10-26",
+      "type": "Loan Application",
+      "institution": "ADIB"
+    },
+    {
+      "date": "2025-09-20",
+      "type": "Loan Application",
+      "institution": "FAB"
+    },
+    {
+      "date": "2025-10-27",
+      "type": "Credit Card Application",
+      "institution": "Emirates Islamic"
+    }
+  ],
+  "remarks": "Very poor credit profile. High risk customer."
+}

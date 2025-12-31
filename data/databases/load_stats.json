@@ -1,0 +1,10 @@
+{
+  "total_processed": 40,
+  "successful": 40,
+  "failed": 0,
+  "start_time": "2025-12-31T02:38:44.775024",
+  "end_time": "2025-12-31T02:38:51.077697",
+  "documents_loaded": 0,
+  "embeddings_created": 40,
+  "graph_nodes_created": 40
+}

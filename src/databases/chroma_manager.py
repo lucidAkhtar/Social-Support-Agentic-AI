@@ -59,7 +59,12 @@ class ChromaDBManager:
         """Get existing collection or create new one with HNSW index."""
         try:
             collection = self.client.get_collection(name=name)
-            logger.info(f"   Found existing collection: {name} ({collection.count()} docs)")
+            doc_count = collection.count()
+            # Only log if collection has data (avoid cluttering logs on fresh systems)
+            if doc_count > 0:
+                logger.info(f"   Found collection: {name} ({doc_count} docs)")
+            else:
+                logger.debug(f"   Found collection: {name} (empty)")
             return collection
         except Exception:
             collection = self.client.create_collection(
@@ -70,7 +75,7 @@ class ChromaDBManager:
                     "hnsw:M": 16  # Higher = better recall, more memory
                 }
             )
-            logger.info(f"   Created new collection: {name}")
+            logger.debug(f"   Created collection: {name}")
             return collection
     
     def _generate_id(self, *parts: str) -> str:

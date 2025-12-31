@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000009",
+  "applicant_name": "Jassem Al Memari",
+  "emirates_id": "1981-0511-48063218-3",
+  "profile": {
+    "monthly_income": 2652.68,
+    "monthly_expenses": 1256.59,
+    "employment_status": "Private Sector",
+    "family_size": 2,
+    "total_assets": 331520.08,
+    "total_liabilities": 79317.83,
+    "credit_score": 500,
+    "target_score": 40.0
+  },
+  "policy_score": 40.0,
+  "tier": "LOW"
+}

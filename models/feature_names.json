@@ -1,0 +1,10 @@
+[
+  "monthly_income",
+  "monthly_expenses",
+  "monthly_net",
+  "family_size",
+  "total_assets",
+  "total_liabilities",
+  "net_worth",
+  "credit_score"
+]

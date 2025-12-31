@@ -1,0 +1,81 @@
+{
+  "report_id": "CB-978683",
+  "report_date": "2025-12-31",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Fatima Al Mansoori",
+    "emirates_id": "2010-0701-69586290-1",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1179,
+  "credit_rating": "Fair",
+  "payment_history": {
+    "on_time_payments": 22,
+    "late_payments_30_days": 1,
+    "late_payments_60_days": 0,
+    "missed_payments": 1,
+    "payment_ratio": 91.7
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Mortgage",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 96569.0,
+      "credit_limit": 104616.0,
+      "last_payment": "2025-12-03",
+      "last_payment_amount": 8047.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 37669.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-13",
+      "last_payment_amount": 4777.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "ADIB",
+      "account_status": "Active",
+      "balance": 14262.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-27",
+      "last_payment_amount": 3689.0
+    },
+    {
+      "account_type": "Personal Loan",
+      "institution": "FAB",
+      "account_status": "Active",
+      "balance": 70941.0,
+      "credit_limit": 61650.0,
+      "last_payment": "2025-12-15",
+      "last_payment_amount": 1410.0
+    }
+  ],
+  "total_outstanding": 160948.27,
+  "enquiries": [
+    {
+      "date": "2025-11-02",
+      "type": "Credit Card Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-10-16",
+      "type": "Mortgage Application",
+      "institution": "Emirates Islamic"
+    },
+    {
+      "date": "2025-11-22",
+      "type": "Mortgage Application",
+      "institution": "Mashreq"
+    },
+    {
+      "date": "2025-10-23",
+      "type": "Mortgage Application",
+      "institution": "Emirates Islamic"
+    }
+  ],
+  "remarks": "Poor credit profile. Monitor for payment defaults."
+}

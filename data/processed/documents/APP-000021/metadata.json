@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000021",
+  "applicant_name": "Rana Al Jabri",
+  "emirates_id": "1983-0915-71472671-6",
+  "profile": {
+    "monthly_income": 4457.81,
+    "monthly_expenses": 3100.84,
+    "employment_status": "Private Sector",
+    "family_size": 2,
+    "total_assets": 85139.21,
+    "total_liabilities": 54439.62,
+    "credit_score": 588,
+    "target_score": 65.0
+  },
+  "policy_score": 65.0,
+  "tier": "MEDIUM"
+}

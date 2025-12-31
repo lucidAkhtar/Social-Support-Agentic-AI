@@ -1,0 +1,35 @@
+{
+  "application_id": "TEST_APP_001",
+  "timestamp": "2025-12-31T00:58:22.980829",
+  "status": "completed",
+  "extraction": {
+    "applicant_name": "Applicant_1",
+    "monthly_income": 6926.98
+  },
+  "validation": {
+    "is_valid": true,
+    "issues_count": 0
+  },
+  "eligibility": {
+    "is_eligible": false,
+    "score": 0.535
+  },
+  "recommendation": {
+    "decision": "soft_declined",
+    "support_amount": null
+  },
+  "chatbot_tests": [
+    {
+      "query": "Why was I approved?",
+      "response_length": 205
+    },
+    {
+      "query": "What if income increases?",
+      "response_length": 261
+    },
+    {
+      "query": "Show inconsistencies",
+      "response_length": 289
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "trace_id": "trace_APP_2D4338A5",
+  "application_id": "APP_2D4338A5",
+  "start_time": "2025-12-30T22:57:45.386569",
+  "metadata": {
+    "applicant_name": "Ahmed Al Maktoum",
+    "submission_time": "2025-12-30T22:57:45.386561"
+  },
+  "spans": [
+    {
+      "span_id": "error_1767115665387",
+      "name": "error_processing",
+      "type": "error",
+      "timestamp": "2025-12-30T22:57:45.387605",
+      "error_type": "RuntimeError",
+      "error_message": "'NoneType' object has no attribute 'invoke'",
+      "stage": "processing",
+      "application_id": "APP_2D4338A5"
+    }
+  ],
+  "metrics": {
+    "total_duration": 0,
+    "span_count": 1,
+    "error_count": 1
+  },
+  "end_time": "2025-12-30T22:57:45.387620"
+}

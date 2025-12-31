@@ -1,0 +1,57 @@
+{
+  "report_id": "CB-633188",
+  "report_date": "2026-01-01",
+  "bureau_name": "UAE Credit Bureau",
+  "subject": {
+    "name": "Layla Al Suwaidi",
+    "emirates_id": "2008-1117-50484137-7",
+    "nationality": "UAE National"
+  },
+  "credit_score": 1248,
+  "credit_rating": "Good",
+  "payment_history": {
+    "on_time_payments": 41,
+    "late_payments_30_days": 1,
+    "late_payments_60_days": 0,
+    "missed_payments": 1,
+    "payment_ratio": 95.3
+  },
+  "credit_accounts": [
+    {
+      "account_type": "Credit Card",
+      "institution": "Emirates NBD",
+      "account_status": "Active",
+      "balance": 10803.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-10",
+      "last_payment_amount": 4752.0
+    },
+    {
+      "account_type": "Credit Card",
+      "institution": "Mashreq",
+      "account_status": "Active",
+      "balance": 30151.0,
+      "credit_limit": 100000,
+      "last_payment": "2025-12-12",
+      "last_payment_amount": 4167.0
+    },
+    {
+      "account_type": "Personal Loan",
+      "institution": "Dubai Islamic Bank",
+      "account_status": "Active",
+      "balance": 76226.0,
+      "credit_limit": 95769.0,
+      "last_payment": "2025-12-11",
+      "last_payment_amount": 4650.0
+    }
+  ],
+  "total_outstanding": 20000,
+  "enquiries": [
+    {
+      "date": "2025-07-20",
+      "type": "Credit Card Application",
+      "institution": "Emirates Islamic"
+    }
+  ],
+  "remarks": "Fair credit profile. Acceptable risk customer."
+}

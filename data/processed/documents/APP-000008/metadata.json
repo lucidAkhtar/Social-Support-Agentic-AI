@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000008",
+  "applicant_name": "Noura Al Awani",
+  "emirates_id": "1955-0618-22490873-8",
+  "profile": {
+    "monthly_income": 2509.36,
+    "monthly_expenses": 1259.1,
+    "employment_status": "Self-employed",
+    "family_size": 1,
+    "total_assets": 479683.62,
+    "total_liabilities": 77819.07,
+    "credit_score": 341,
+    "target_score": 30.0
+  },
+  "policy_score": 30.0,
+  "tier": "LOW"
+}

@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000001",
+  "applicant_name": "Khalid Al Suwaidi",
+  "emirates_id": "1952-0619-84158663-2",
+  "profile": {
+    "monthly_income": 5274.36,
+    "monthly_expenses": 2736.68,
+    "employment_status": "Private Sector",
+    "family_size": 1,
+    "total_assets": 117077.17,
+    "total_liabilities": 62299.88,
+    "credit_score": 614,
+    "target_score": 55.0
+  },
+  "policy_score": 55.0,
+  "tier": "MEDIUM"
+}

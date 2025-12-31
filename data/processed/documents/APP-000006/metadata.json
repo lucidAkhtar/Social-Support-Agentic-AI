@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000006",
+  "applicant_name": "Salim Al Ketbi",
+  "emirates_id": "1960-0817-72654864-1",
+  "profile": {
+    "monthly_income": 2342.46,
+    "monthly_expenses": 1911.06,
+    "employment_status": "Self-employed",
+    "family_size": 5,
+    "total_assets": 17216.12,
+    "total_liabilities": 10007.12,
+    "credit_score": 607,
+    "target_score": 60.0
+  },
+  "policy_score": 60.0,
+  "tier": "MEDIUM"
+}

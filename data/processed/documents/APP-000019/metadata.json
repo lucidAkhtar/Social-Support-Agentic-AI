@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000019",
+  "applicant_name": "Wafa Al Shamsi",
+  "emirates_id": "1984-1012-14491176-5",
+  "profile": {
+    "monthly_income": 2767.2,
+    "monthly_expenses": 2275.56,
+    "employment_status": "Government Employee",
+    "family_size": 7,
+    "total_assets": 18544.53,
+    "total_liabilities": 12640.06,
+    "credit_score": 697,
+    "target_score": 75.0
+  },
+  "policy_score": 75.0,
+  "tier": "HIGH"
+}

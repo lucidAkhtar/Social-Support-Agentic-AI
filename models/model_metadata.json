@@ -1,0 +1,17 @@
+{
+  "model_type": "RandomForestClassifier",
+  "n_features": 8,
+  "feature_names": [
+    "monthly_income",
+    "monthly_expenses",
+    "monthly_net",
+    "family_size",
+    "total_assets",
+    "total_liabilities",
+    "net_worth",
+    "credit_score"
+  ],
+  "training_date": "2025-12-31T16:38:16.756365",
+  "label_definition": "1 if policy_score >= 30 else 0",
+  "note": "Use FeatureExtractor.extract_features() for inference to ensure consistency"
+}

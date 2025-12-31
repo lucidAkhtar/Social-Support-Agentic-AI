@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000013",
+  "applicant_name": "Sama Al Qubaisi",
+  "emirates_id": "1965-0513-56017729-8",
+  "profile": {
+    "monthly_income": 5957.0,
+    "monthly_expenses": 3294.29,
+    "employment_status": "Private Sector",
+    "family_size": 1,
+    "total_assets": 109585.05,
+    "total_liabilities": 67873.95,
+    "credit_score": 611,
+    "target_score": 60.0
+  },
+  "policy_score": 60.0,
+  "tier": "MEDIUM"
+}

@@ -1,0 +1,17 @@
+{
+  "app_id": "APP-000028",
+  "applicant_name": "Mustafa Al Qassimi",
+  "emirates_id": "1980-0211-12368781-9",
+  "profile": {
+    "monthly_income": 1862.57,
+    "monthly_expenses": 1555.32,
+    "employment_status": "Government Employee",
+    "family_size": 5,
+    "total_assets": 39499.67,
+    "total_liabilities": 4507.47,
+    "credit_score": 637,
+    "target_score": 75.0
+  },
+  "policy_score": 75.0,
+  "tier": "HIGH"
+}

@@ -203,7 +203,7 @@ class UnifiedDatabaseManager:
         
         try:
             # ChromaDB - semantic search
-            from ..database.chromadb_manager import ChromaDBManager
+            from .chroma_manager import ChromaDBManager
             self.chromadb = ChromaDBManager()
             logger.info("✅ ChromaDB initialized")
         except Exception as e:
@@ -221,7 +221,8 @@ class UnifiedDatabaseManager:
                 self.networkx.graph = nx.read_graphml(str(graph_path))
                 logger.info(f"✅ NetworkX initialized ({self.networkx.graph.number_of_nodes()} nodes)")
             else:
-                logger.warning("⚠️ NetworkX graph file not found")
+                # Fresh system - graph will be created on first application
+                logger.debug("NetworkX graph file not found - will be created on first use")
         except Exception as e:
             logger.error(f"NetworkX init failed: {e}")
             self.networkx = None
