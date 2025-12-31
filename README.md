@@ -70,7 +70,7 @@ A production-ready, FAANG-standard platform that revolutionizes social support a
 | **Frontend** | Streamlit 1.28+ | Interactive web UI | Rapid development, Python-native, real-time updates |
 | **Backend** | FastAPI 0.104+ | REST API server | Async performance, auto-docs, type safety |
 | **Orchestration** | Custom async pattern | Agent coordination | Full control, no framework overhead, production-grade error handling |
-| **LLM** | Mistral AI| Natural language understanding | Best-in-class reasoning, JSON mode support |
+| **LLM** Ollama | Mistral AI| Natural language understanding | Best-in-class reasoning, JSON mode support |
 | **ML Model** | Random Forest | Eligibility prediction | Interpretable, handles mixed data types |
 | **OCR** | Tesseract + PyMuPDF | Document extraction | Open-source, Arabic + English support |
 | **Vector DB** | ChromaDB | Semantic search | Lightweight, embedded, fast retrieval |
@@ -684,7 +684,7 @@ social_support_agentic_ai/
 - **Language**: Python 3.11+
 - **Framework**: FastAPI 0.104+
 - **Orchestration**: Custom async/await pattern (no framework dependency)
-- **LLM**: OpenAI GPT-4
+- **LLM**: Mistral AI - Ollama
 - **ML**: scikit-learn (Random Forest)
 - **OCR**: Tesseract + PyMuPDF
 
@@ -981,7 +981,7 @@ Built with modern best practices and inspired by:
 - **Multi-agent patterns** - Custom orchestration architecture
 - **FastAPI** - High-performance backend
 - **Streamlit** - Rapid UI development
-- **OpenAI** - Mistral AI LLM capabilities
+- **LLM** - Mistral AI Ollama - LLM capabilities
 
 ---
 
