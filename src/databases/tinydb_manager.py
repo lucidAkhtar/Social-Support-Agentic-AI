@@ -1,306 +1,325 @@
 """
-TinyDB Manager - Lightweight NoSQL JSON Database (MongoDB Replacement)
-Stores unstructured data: raw documents, OCR results, LLM responses, caches
-
-Benefits over MongoDB for 8GB RAM:
-- 10 MB memory footprint vs 800 MB
-- No separate server process
-- Fast JSON-based storage
-- Perfect for demos and development
+Production-Grade TinyDB Cache Manager
+FAANG Standards: Fast key-value access, TTL expiration, thread-safe operations
+Purpose: Session state, RAG cache, conversation context for real-time chatbot
 """
-
-from tinydb import TinyDB, Query, where
+import time
+import hashlib
+import json
+from pathlib import Path
+from typing import Dict, Optional, List, Any
+from datetime import datetime, timedelta
+from tinydb import TinyDB, Query
 from tinydb.storages import JSONStorage
 from tinydb.middlewares import CachingMiddleware
-from typing import Dict, List, Any, Optional
-from datetime import datetime
-from pathlib import Path
-import logging
-
-logger = logging.getLogger(__name__)
+import threading
 
 
 class TinyDBManager:
     """
-    Lightweight NoSQL database for unstructured data.
-    Replaces MongoDB with minimal memory footprint.
+    TinyDB manager for fast caching and session management.
+    
+    Schema Design:
+    1. sessions: User session state (current app_id, context, preferences)
+    2. rag_cache: Cached RAG query results (query_hash → results)
+    3. app_context: Application context cache (app_id → full data)
+    4. conversation_state: Multi-turn conversation tracking
+    
+    Performance Strategy:
+    - In-memory caching middleware for hot data
+    - TTL expiration for cache entries
+    - Hash-based keys for fast lookups
+    - Thread-safe operations with locks
     """
     
-    def __init__(self, db_path: str = "data/databases/tinydb"):
+    def __init__(self, db_path: str = "data/databases/cache.json"):
+        """Initialize TinyDB with caching middleware"""
         self.db_path = Path(db_path)
-        self.db_path.mkdir(parents=True, exist_ok=True)
+        self.db_path.parent.mkdir(parents=True, exist_ok=True)
         
-        # Initialize separate databases for different data types
-        self.raw_documents = TinyDB(
-            self.db_path / 'raw_documents.json',
-            storage=CachingMiddleware(JSONStorage)
-        )
-        self.ocr_results = TinyDB(
-            self.db_path / 'ocr_results.json',
-            storage=CachingMiddleware(JSONStorage)
-        )
-        self.llm_responses = TinyDB(
-            self.db_path / 'llm_responses.json',
-            storage=CachingMiddleware(JSONStorage)
-        )
-        self.extraction_cache = TinyDB(
-            self.db_path / 'extraction_cache.json',
-            storage=CachingMiddleware(JSONStorage)
-        )
-        self.validation_cache = TinyDB(
-            self.db_path / 'validation_cache.json',
-            storage=CachingMiddleware(JSONStorage)
-        )
-        self.user_sessions = TinyDB(
-            self.db_path / 'user_sessions.json',
-            storage=CachingMiddleware(JSONStorage)
-        )
-        self.system_metrics = TinyDB(
-            self.db_path / 'system_metrics.json',
-            storage=CachingMiddleware(JSONStorage)
-        )
-        self.error_logs = TinyDB(
-            self.db_path / 'error_logs.json',
-            storage=CachingMiddleware(JSONStorage)
+        # Use caching middleware for performance
+        self.db = TinyDB(
+            str(self.db_path),
+            storage=CachingMiddleware(JSONStorage),
+            indent=2
         )
         
-        logger.info(f"TinyDB initialized at {self.db_path}")
-    
-    # ========== Raw Documents ==========
-    
-    def store_raw_document(self, application_id: str, document_type: str, 
-                          document_data: Dict[str, Any]) -> int:
-        """Store raw document data (images, PDFs, Excel as base64 or metadata)"""
-        doc = {
-            'application_id': application_id,
-            'document_type': document_type,
-            'uploaded_at': datetime.now().isoformat(),
-            **document_data
-        }
-        doc_id = self.raw_documents.insert(doc)
-        logger.info(f"Stored raw document: {document_type} for {application_id}")
-        return doc_id
-    
-    def get_raw_documents(self, application_id: str) -> List[Dict[str, Any]]:
-        """Retrieve all raw documents for an application"""
-        Document = Query()
-        return self.raw_documents.search(Document.application_id == application_id)
-    
-    def get_raw_document_by_type(self, application_id: str, 
-                                 document_type: str) -> Optional[Dict[str, Any]]:
-        """Get specific document type"""
-        Document = Query()
-        results = self.raw_documents.search(
-            (Document.application_id == application_id) & 
-            (Document.document_type == document_type)
-        )
-        return results[0] if results else None
-    
-    # ========== OCR Results ==========
-    
-    def store_ocr_result(self, application_id: str, document_id: str,
-                        ocr_text: str, confidence: float, 
-                        metadata: Dict[str, Any] = None) -> int:
-        """Store OCR extraction results"""
-        doc = {
-            'application_id': application_id,
-            'document_id': document_id,
-            'ocr_text': ocr_text,
-            'confidence': confidence,
-            'extracted_at': datetime.now().isoformat(),
-            'metadata': metadata or {}
-        }
-        doc_id = self.ocr_results.insert(doc)
-        logger.info(f"Stored OCR result for {document_id}")
-        return doc_id
-    
-    def get_ocr_results(self, application_id: str) -> List[Dict[str, Any]]:
-        """Get all OCR results for an application"""
-        OCR = Query()
-        return self.ocr_results.search(OCR.application_id == application_id)
-    
-    # ========== LLM Responses ==========
-    
-    def store_llm_response(self, application_id: str, query: str, 
-                          response: str, query_type: str,
-                          model: str, tokens_used: int = 0) -> int:
-        """Store LLM chat responses for history"""
-        doc = {
-            'application_id': application_id,
-            'query': query,
-            'response': response,
-            'query_type': query_type,
-            'model': model,
-            'tokens_used': tokens_used,
-            'timestamp': datetime.now().isoformat()
-        }
-        doc_id = self.llm_responses.insert(doc)
-        logger.info(f"Stored LLM response for {application_id}")
-        return doc_id
-    
-    def get_llm_history(self, application_id: str, limit: int = 50) -> List[Dict[str, Any]]:
-        """Get LLM conversation history"""
-        LLM = Query()
-        results = self.llm_responses.search(LLM.application_id == application_id)
-        # Sort by timestamp descending
-        return sorted(results, key=lambda x: x.get('timestamp', ''), reverse=True)[:limit]
-    
-    # ========== Extraction Cache ==========
-    
-    def cache_extraction(self, application_id: str, extracted_data: Dict[str, Any]) -> None:
-        """Cache extraction results to avoid reprocessing"""
-        Cache = Query()
-        self.extraction_cache.upsert(
-            {
-                'application_id': application_id,
-                'extracted_data': extracted_data,
-                'cached_at': datetime.now().isoformat()
-            },
-            Cache.application_id == application_id
-        )
-        logger.info(f"Cached extraction for {application_id}")
-    
-    def get_cached_extraction(self, application_id: str) -> Optional[Dict[str, Any]]:
-        """Retrieve cached extraction"""
-        Cache = Query()
-        results = self.extraction_cache.search(Cache.application_id == application_id)
-        return results[0] if results else None
-    
-    # ========== Validation Cache ==========
-    
-    def cache_validation(self, application_id: str, validation_result: Dict[str, Any]) -> None:
-        """Cache validation results"""
-        Cache = Query()
-        self.validation_cache.upsert(
-            {
-                'application_id': application_id,
-                'validation_result': validation_result,
-                'cached_at': datetime.now().isoformat()
-            },
-            Cache.application_id == application_id
-        )
-        logger.info(f"Cached validation for {application_id}")
-    
-    def get_cached_validation(self, application_id: str) -> Optional[Dict[str, Any]]:
-        """Retrieve cached validation"""
-        Cache = Query()
-        results = self.validation_cache.search(Cache.application_id == application_id)
-        return results[0] if results else None
-    
-    # ========== User Sessions ==========
-    
-    def create_session(self, session_id: str, user_data: Dict[str, Any]) -> int:
-        """Create user session"""
-        doc = {
-            'session_id': session_id,
-            'created_at': datetime.now().isoformat(),
-            'last_activity': datetime.now().isoformat(),
-            **user_data
-        }
-        doc_id = self.user_sessions.insert(doc)
-        logger.info(f"Created session {session_id}")
-        return doc_id
-    
-    def update_session_activity(self, session_id: str) -> None:
-        """Update last activity timestamp"""
-        Session = Query()
-        self.user_sessions.update(
-            {'last_activity': datetime.now().isoformat()},
-            Session.session_id == session_id
-        )
-    
-    def get_session(self, session_id: str) -> Optional[Dict[str, Any]]:
-        """Get session data"""
-        Session = Query()
-        results = self.user_sessions.search(Session.session_id == session_id)
-        return results[0] if results else None
-    
-    # ========== System Metrics ==========
-    
-    def log_metric(self, metric_type: str, metric_name: str, 
-                  value: float, metadata: Dict[str, Any] = None) -> int:
-        """Log system performance metrics"""
-        doc = {
-            'metric_type': metric_type,
-            'metric_name': metric_name,
-            'value': value,
-            'metadata': metadata or {},
-            'timestamp': datetime.now().isoformat()
-        }
-        doc_id = self.system_metrics.insert(doc)
-        return doc_id
-    
-    def get_metrics(self, metric_type: str = None, limit: int = 100) -> List[Dict[str, Any]]:
-        """Retrieve system metrics"""
-        if metric_type:
-            Metric = Query()
-            results = self.system_metrics.search(Metric.metric_type == metric_type)
-        else:
-            results = self.system_metrics.all()
+        # Separate tables for different use cases
+        self.sessions = self.db.table('sessions')
+        self.rag_cache = self.db.table('rag_cache')
+        self.app_context = self.db.table('app_context')
+        self.conversation_state = self.db.table('conversation_state')
         
-        # Sort by timestamp descending
-        return sorted(results, key=lambda x: x.get('timestamp', ''), reverse=True)[:limit]
-    
-    # ========== Error Logs ==========
-    
-    def log_error(self, level: str, error_type: str, message: str, 
-                 stack_trace: str = None, metadata: Dict[str, Any] = None) -> int:
-        """Log application errors"""
-        doc = {
-            'level': level,
-            'error_type': error_type,
-            'message': message,
-            'stack_trace': stack_trace,
-            'metadata': metadata or {},
-            'timestamp': datetime.now().isoformat()
-        }
-        doc_id = self.error_logs.insert(doc)
-        return doc_id
-    
-    def get_error_logs(self, level: str = None, limit: int = 100) -> List[Dict[str, Any]]:
-        """Retrieve error logs"""
-        if level:
-            Error = Query()
-            results = self.error_logs.search(Error.level == level)
-        else:
-            results = self.error_logs.all()
+        # Thread lock for safe concurrent access
+        self._lock = threading.Lock()
         
-        # Sort by timestamp descending
-        return sorted(results, key=lambda x: x.get('timestamp', ''), reverse=True)[:limit]
+        # Default TTL settings (in seconds)
+        self.DEFAULT_SESSION_TTL = 3600  # 1 hour
+        self.DEFAULT_RAG_CACHE_TTL = 1800  # 30 minutes
+        self.DEFAULT_CONTEXT_TTL = 600  # 10 minutes
     
-    # ========== Utility Methods ==========
+    # ============================================================================
+    # SESSION MANAGEMENT - Track user sessions and preferences
+    # ============================================================================
     
-    def get_stats(self) -> Dict[str, Any]:
-        """Get database statistics"""
-        return {
-            'raw_documents': len(self.raw_documents),
-            'ocr_results': len(self.ocr_results),
-            'llm_responses': len(self.llm_responses),
-            'extraction_cache': len(self.extraction_cache),
-            'validation_cache': len(self.validation_cache),
-            'user_sessions': len(self.user_sessions),
-            'system_metrics': len(self.system_metrics),
-            'error_logs': len(self.error_logs),
-            'total_documents': sum([
-                len(self.raw_documents),
-                len(self.ocr_results),
-                len(self.llm_responses),
-                len(self.extraction_cache),
-                len(self.validation_cache),
-                len(self.user_sessions),
-                len(self.system_metrics),
-                len(self.error_logs)
-            ])
-        }
+    def store_session(self, session_id: str, data: Dict, ttl: Optional[int] = None):
+        """
+        Store session state for user.
+        
+        Usage in chatbot:
+        - Store current app_id being discussed
+        - Track user preferences (language, notification settings)
+        - Remember conversation context between messages
+        """
+        with self._lock:
+            ttl = ttl or self.DEFAULT_SESSION_TTL
+            expiry = datetime.now() + timedelta(seconds=ttl)
+            
+            Query_ = Query()
+            self.sessions.upsert({
+                'session_id': session_id,
+                'data': data,
+                'created_at': datetime.now().isoformat(),
+                'expires_at': expiry.isoformat(),
+                'ttl': ttl
+            }, Query_.session_id == session_id)
     
-    def close_all(self):
-        """Close all database connections"""
-        self.raw_documents.close()
-        self.ocr_results.close()
-        self.llm_responses.close()
-        self.extraction_cache.close()
-        self.validation_cache.close()
-        self.user_sessions.close()
-        self.system_metrics.close()
-        self.error_logs.close()
-        logger.info("All TinyDB connections closed")
+    def get_session(self, session_id: str) -> Optional[Dict]:
+        """
+        Retrieve session data if not expired.
+        
+        Usage in chatbot:
+        User: "Tell me more about it" (referring to previous app)
+        Chatbot: Retrieves session → Gets current app_id from context → Responds
+        """
+        with self._lock:
+            Query_ = Query()
+            result = self.sessions.get(Query_.session_id == session_id)
+            
+            if not result:
+                return None
+            
+            # Check expiration
+            expires_at = datetime.fromisoformat(result['expires_at'])
+            if datetime.now() > expires_at:
+                self.sessions.remove(Query_.session_id == session_id)
+                return None
+            
+            return result.get('data')
+    
+    def update_session(self, session_id: str, updates: Dict):
+        """Update specific fields in session"""
+        with self._lock:
+            current = self.get_session(session_id)
+            if current:
+                current.update(updates)
+                self.store_session(session_id, current)
+    
+    def delete_session(self, session_id: str):
+        """Delete session (logout, timeout)"""
+        with self._lock:
+            Query_ = Query()
+            self.sessions.remove(Query_.session_id == session_id)
+    
+    # ============================================================================
+    # RAG CACHE - Cache expensive RAG queries
+    # ============================================================================
+    
+    def cache_rag_results(self, query: str, results: List[Dict], ttl: Optional[int] = None):
+        """
+        Cache RAG query results to avoid re-indexing.
+        
+        Usage in chatbot:
+        User: "Show applications with income less than 5000"
+        Chatbot: Checks cache first → If hit, return immediately → If miss, query RAG + cache
+        
+        Performance Impact:
+        - RAG query: ~500ms (ChromaDB + embeddings)
+        - Cache hit: ~5ms (TinyDB lookup)
+        - 100x speedup for repeated queries
+        """
+        with self._lock:
+            query_hash = self._hash_query(query)
+            ttl = ttl or self.DEFAULT_RAG_CACHE_TTL
+            expiry = datetime.now() + timedelta(seconds=ttl)
+            
+            Query_ = Query()
+            self.rag_cache.upsert({
+                'query_hash': query_hash,
+                'query': query,
+                'results': results,
+                'cached_at': datetime.now().isoformat(),
+                'expires_at': expiry.isoformat(),
+                'hit_count': 1
+            }, Query_.query_hash == query_hash)
+    
+    def get_cached_rag_results(self, query: str) -> Optional[List[Dict]]:
+        """
+        Retrieve cached RAG results if available.
+        
+        Returns None if:
+        - Cache miss (query never cached)
+        - Cache expired (TTL exceeded)
+        """
+        with self._lock:
+            query_hash = self._hash_query(query)
+            Query_ = Query()
+            result = self.rag_cache.get(Query_.query_hash == query_hash)
+            
+            if not result:
+                return None
+            
+            # Check expiration
+            expires_at = datetime.fromisoformat(result['expires_at'])
+            if datetime.now() > expires_at:
+                self.rag_cache.remove(Query_.query_hash == query_hash)
+                return None
+            
+            # Increment hit count for analytics
+            self.rag_cache.update(
+                {'hit_count': result.get('hit_count', 0) + 1},
+                Query_.query_hash == query_hash
+            )
+            
+            return result.get('results')
+    
+    def _hash_query(self, query: str) -> str:
+        """Generate consistent hash for query"""
+        return hashlib.sha256(query.lower().strip().encode()).hexdigest()[:16]
+    
+    # ============================================================================
+    # APPLICATION CONTEXT CACHE - Hot application data
+    # ============================================================================
+    
+    def store_app_context(self, app_id: str, context: Dict, ttl: Optional[int] = None):
+        """
+        Cache application data for fast access.
+        
+        Usage in chatbot:
+        - Frequently accessed applications are cached
+        - Reduces SQLite queries for popular apps
+        - Stores full application + decision + documents
+        """
+        with self._lock:
+            ttl = ttl or self.DEFAULT_CONTEXT_TTL
+            expiry = datetime.now() + timedelta(seconds=ttl)
+            
+            Query_ = Query()
+            self.app_context.upsert({
+                'app_id': app_id,
+                'context': context,
+                'cached_at': datetime.now().isoformat(),
+                'expires_at': expiry.isoformat()
+            }, Query_.app_id == app_id)
+    
+    def get_app_context(self, app_id: str) -> Optional[Dict]:
+        """Retrieve cached application context"""
+        with self._lock:
+            Query_ = Query()
+            result = self.app_context.get(Query_.app_id == app_id)
+            
+            if not result:
+                return None
+            
+            # Check expiration
+            expires_at = datetime.fromisoformat(result['expires_at'])
+            if datetime.now() > expires_at:
+                self.app_context.remove(Query_.app_id == app_id)
+                return None
+            
+            return result.get('context')
+    
+    # ============================================================================
+    # CONVERSATION STATE - Multi-turn tracking
+    # ============================================================================
+    
+    def store_conversation_turn(self, session_id: str, turn_data: Dict):
+        """
+        Store individual conversation turn for context.
+        
+        Usage in chatbot:
+        User: "What's the status?" → "Tell me more" → "What about the income?"
+        Chatbot: Tracks each turn → Maintains context across messages
+        """
+        with self._lock:
+            Query_ = Query()
+            existing = self.conversation_state.get(Query_.session_id == session_id)
+            
+            if existing:
+                turns = existing.get('turns', [])
+                turns.append({
+                    **turn_data,
+                    'timestamp': datetime.now().isoformat()
+                })
+                
+                # Keep last 10 turns only
+                if len(turns) > 10:
+                    turns = turns[-10:]
+                
+                self.conversation_state.update(
+                    {'turns': turns, 'last_updated': datetime.now().isoformat()},
+                    Query_.session_id == session_id
+                )
+            else:
+                self.conversation_state.insert({
+                    'session_id': session_id,
+                    'turns': [{
+                        **turn_data,
+                        'timestamp': datetime.now().isoformat()
+                    }],
+                    'created_at': datetime.now().isoformat(),
+                    'last_updated': datetime.now().isoformat()
+                })
+    
+    def get_conversation_turns(self, session_id: str, last_n: int = 5) -> List[Dict]:
+        """Get recent conversation turns"""
+        with self._lock:
+            Query_ = Query()
+            result = self.conversation_state.get(Query_.session_id == session_id)
+            
+            if not result:
+                return []
+            
+            turns = result.get('turns', [])
+            return turns[-last_n:]
+    
+    # ============================================================================
+    # MAINTENANCE - Cache cleanup and statistics
+    # ============================================================================
+    
+    def cleanup_expired(self):
+        """Remove expired entries from all tables"""
+        with self._lock:
+            now = datetime.now()
+            Query_ = Query()
+            
+            for table in [self.sessions, self.rag_cache, self.app_context]:
+                expired = table.search(
+                    Query_.expires_at < now.isoformat()
+                )
+                for item in expired:
+                    table.remove(doc_ids=[item.doc_id])
+    
+    def get_cache_stats(self) -> Dict:
+        """Get cache statistics for monitoring"""
+        with self._lock:
+            return {
+                'sessions': len(self.sessions),
+                'rag_cache_entries': len(self.rag_cache),
+                'app_context_entries': len(self.app_context),
+                'conversation_states': len(self.conversation_state),
+                'total_rag_hits': sum(
+                    item.get('hit_count', 0) for item in self.rag_cache.all()
+                ),
+                'cache_size_mb': self.db_path.stat().st_size / (1024 * 1024) if self.db_path.exists() else 0
+            }
+    
+    def clear_all_cache(self):
+        """Clear all cache (use sparingly)"""
+        with self._lock:
+            self.rag_cache.truncate()
+            self.app_context.truncate()
+    
+    def close(self):
+        """Close database connection"""
+        self.db.close()

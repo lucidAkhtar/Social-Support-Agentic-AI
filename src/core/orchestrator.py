@@ -224,6 +224,8 @@ class MasterOrchestrator(BaseAgent):
         """
         Handle chatbot queries using RAG-powered chatbot agent
         
+        CRITICAL FIX: Allow chatbot at ANY stage - RAG engine handles status appropriately
+        
         Query types:
         - explanation: Why was this decision made?
         - improvement: How can I improve?
@@ -236,15 +238,10 @@ class MasterOrchestrator(BaseAgent):
         if not app_state:
             return {"error": "Application not found"}
         
-        # Check if chatbot should be enabled
-        if not app_state.is_chatbot_enabled():
-            return {
-                "error": "Chatbot not available yet",
-                "message": "Please wait for document validation to complete",
-                "current_stage": app_state.stage.value
-            }
+        # REMOVED CHECK - Allow chatbot at any stage
+        # The RAG engine will detect unprocessed apps and guide users appropriately
         
-        self.logger.info(f"[{application_id}] RAG Chat query: {query_type}")
+        self.logger.info(f"[{application_id}] RAG Chat query: {query_type} (stage: {app_state.stage.value})")
         
         # Use RAG chatbot if available, fallback to explanation agent
         if self.rag_chatbot_agent:

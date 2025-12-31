@@ -1,0 +1,4154 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d28" for="edge" attr.name="timestamp" attr.type="string"/>
+<key id="d27" for="edge" attr.name="relationship" attr.type="string"/>
+<key id="d26" for="node" attr.name="support_amount" attr.type="long"/>
+<key id="d25" for="node" attr.name="created_at" attr.type="string"/>
+<key id="d24" for="node" attr.name="duration_months" attr.type="long"/>
+<key id="d23" for="node" attr.name="support_amount" attr.type="double"/>
+<key id="d22" for="node" attr.name="support_type" attr.type="string"/>
+<key id="d21" for="node" attr.name="priority" attr.type="string"/>
+<key id="d20" for="node" attr.name="decided_by" attr.type="string"/>
+<key id="d19" for="node" attr.name="decided_at" attr.type="string"/>
+<key id="d18" for="node" attr.name="decision" attr.type="string"/>
+<key id="d17" for="node" attr.name="application_id" attr.type="string"/>
+<key id="d16" for="node" attr.name="uploaded_at" attr.type="string"/>
+<key id="d15" for="node" attr.name="file_path" attr.type="string"/>
+<key id="d14" for="node" attr.name="filename" attr.type="string"/>
+<key id="d13" for="node" attr.name="document_type" attr.type="string"/>
+<key id="d12" for="node" attr.name="policy_score" attr.type="double"/>
+<key id="d11" for="node" attr.name="status" attr.type="string"/>
+<key id="d10" for="node" attr.name="submission_date" attr.type="string"/>
+<key id="d9" for="node" attr.name="submitted_by" attr.type="string"/>
+<key id="d8" for="node" attr.name="net_worth" attr.type="double"/>
+<key id="d7" for="node" attr.name="credit_score" attr.type="long"/>
+<key id="d6" for="node" attr.name="monthly_income" attr.type="double"/>
+<key id="d5" for="node" attr.name="nationality" attr.type="string"/>
+<key id="d4" for="node" attr.name="name" attr.type="string"/>
+<key id="d3" for="node" attr.name="node_type" attr.type="string"/>
+<key id="d2" for="graph" attr.name="description" attr.type="string"/>
+<key id="d1" for="graph" attr.name="created_at" attr.type="string"/>
+<key id="d0" for="graph" attr.name="name" attr.type="string"/>
+<graph edgedefault="directed"><data key="d0">Social Support Application Network</data>
+<data key="d1">2025-12-31T15:59:28.195693</data>
+<data key="d2">Graph representation of social support applications with person, document, decision nodes</data>
+<node id="1969-0626-15354599-2">
+  <data key="d3">Person</data>
+  <data key="d4">Salim Al Rumaithi</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">2091.44</data>
+  <data key="d7">1085</data>
+  <data key="d8">171353.0</data>
+</node>
+<node id="APP-000001">
+  <data key="d3">Application</data>
+  <data key="d9">1969-0626-15354599-2</data>
+  <data key="d10">2025-12-16T15:59:28.204343</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">40.0</data>
+</node>
+<node id="APP-000001_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000001/bank_statement.pdf</data>
+  <data key="d16">2025-12-16T15:59:28.204343</data>
+</node>
+<node id="APP-000001_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000001/emirates_id.png</data>
+  <data key="d16">2025-12-16T15:59:28.204343</data>
+</node>
+<node id="APP-000001_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000001/employment_letter.pdf</data>
+  <data key="d16">2025-12-16T15:59:28.204343</data>
+</node>
+<node id="APP-000001_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000001/resume.pdf</data>
+  <data key="d16">2025-12-16T15:59:28.204343</data>
+</node>
+<node id="APP-000001_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000001/assets_liabilities.xlsx</data>
+  <data key="d16">2025-12-16T15:59:28.204343</data>
+</node>
+<node id="APP-000001_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000001/credit_report.json</data>
+  <data key="d16">2025-12-16T15:59:28.204343</data>
+</node>
+<node id="DECISION_APP-000001">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000001</data>
+  <data key="d18">CONDITIONAL</data>
+  <data key="d12">40.0</data>
+  <data key="d19">2025-12-20T15:59:28.204343</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000001">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000001</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">418.29</data>
+  <data key="d24">3</data>
+  <data key="d25">2025-12-20T15:59:28.204343</data>
+</node>
+<node id="1971-0520-47080140-2">
+  <data key="d3">Person</data>
+  <data key="d4">Nasser Al Ketbi</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">12886.98</data>
+  <data key="d7">1299</data>
+  <data key="d8">9322.0</data>
+</node>
+<node id="APP-000002">
+  <data key="d3">Application</data>
+  <data key="d9">1971-0520-47080140-2</data>
+  <data key="d10">2025-11-08T15:59:28.211025</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">85.0</data>
+</node>
+<node id="APP-000002_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000002/bank_statement.pdf</data>
+  <data key="d16">2025-11-08T15:59:28.211025</data>
+</node>
+<node id="APP-000002_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000002/emirates_id.png</data>
+  <data key="d16">2025-11-08T15:59:28.211025</data>
+</node>
+<node id="APP-000002_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000002/employment_letter.pdf</data>
+  <data key="d16">2025-11-08T15:59:28.211025</data>
+</node>
+<node id="APP-000002_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000002/resume.pdf</data>
+  <data key="d16">2025-11-08T15:59:28.211025</data>
+</node>
+<node id="APP-000002_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000002/assets_liabilities.xlsx</data>
+  <data key="d16">2025-11-08T15:59:28.211025</data>
+</node>
+<node id="APP-000002_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000002/credit_report.json</data>
+  <data key="d16">2025-11-08T15:59:28.211025</data>
+</node>
+<node id="DECISION_APP-000002">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000002</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">85.0</data>
+  <data key="d19">2025-11-13T15:59:28.211025</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">HIGH</data>
+</node>
+<node id="REC_APP-000002">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000002</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d26">3000</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-13T15:59:28.211025</data>
+</node>
+<node id="1965-0819-29208935-8">
+  <data key="d3">Person</data>
+  <data key="d4">Omar Al Mazrouei</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">7168.32</data>
+  <data key="d7">1159</data>
+  <data key="d8">263709.0</data>
+</node>
+<node id="APP-000003">
+  <data key="d3">Application</data>
+  <data key="d9">1965-0819-29208935-8</data>
+  <data key="d10">2025-12-21T15:59:28.221949</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">55.0</data>
+</node>
+<node id="APP-000003_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000003/bank_statement.pdf</data>
+  <data key="d16">2025-12-21T15:59:28.221949</data>
+</node>
+<node id="APP-000003_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000003/emirates_id.png</data>
+  <data key="d16">2025-12-21T15:59:28.221949</data>
+</node>
+<node id="APP-000003_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000003/employment_letter.pdf</data>
+  <data key="d16">2025-12-21T15:59:28.221949</data>
+</node>
+<node id="APP-000003_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000003/resume.pdf</data>
+  <data key="d16">2025-12-21T15:59:28.221949</data>
+</node>
+<node id="APP-000003_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000003/assets_liabilities.xlsx</data>
+  <data key="d16">2025-12-21T15:59:28.221949</data>
+</node>
+<node id="APP-000003_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000003/credit_report.json</data>
+  <data key="d16">2025-12-21T15:59:28.221949</data>
+</node>
+<node id="DECISION_APP-000003">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000003</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">55.0</data>
+  <data key="d19">2025-12-26T15:59:28.221949</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000003">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000003</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">2150.5</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-12-26T15:59:28.221949</data>
+</node>
+<node id="1961-0319-98227303-7">
+  <data key="d3">Person</data>
+  <data key="d4">Abdullah Al Kalbani</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">2120.17</data>
+  <data key="d7">900</data>
+  <data key="d8">-2045.0</data>
+</node>
+<node id="APP-000004">
+  <data key="d3">Application</data>
+  <data key="d9">1961-0319-98227303-7</data>
+  <data key="d10">2025-10-10T15:59:28.228086</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">50.0</data>
+</node>
+<node id="APP-000004_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000004/bank_statement.pdf</data>
+  <data key="d16">2025-10-10T15:59:28.228086</data>
+</node>
+<node id="APP-000004_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000004/emirates_id.png</data>
+  <data key="d16">2025-10-10T15:59:28.228086</data>
+</node>
+<node id="APP-000004_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000004/employment_letter.pdf</data>
+  <data key="d16">2025-10-10T15:59:28.228086</data>
+</node>
+<node id="APP-000004_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000004/resume.pdf</data>
+  <data key="d16">2025-10-10T15:59:28.228086</data>
+</node>
+<node id="APP-000004_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000004/assets_liabilities.xlsx</data>
+  <data key="d16">2025-10-10T15:59:28.228086</data>
+</node>
+<node id="APP-000004_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000004/credit_report.json</data>
+  <data key="d16">2025-10-10T15:59:28.228086</data>
+</node>
+<node id="DECISION_APP-000004">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000004</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">50.0</data>
+  <data key="d19">2025-10-14T15:59:28.228086</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000004">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000004</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">636.05</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-10-14T15:59:28.228086</data>
+</node>
+<node id="1965-0504-16408822-5">
+  <data key="d3">Person</data>
+  <data key="d4">Waleed Al Shamsi</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">29596.74</data>
+  <data key="d7">1280</data>
+  <data key="d8">234194.0</data>
+</node>
+<node id="APP-000005">
+  <data key="d3">Application</data>
+  <data key="d9">1965-0504-16408822-5</data>
+  <data key="d10">2025-12-08T15:59:28.232657</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">70.0</data>
+</node>
+<node id="APP-000005_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000005/bank_statement.pdf</data>
+  <data key="d16">2025-12-08T15:59:28.232657</data>
+</node>
+<node id="APP-000005_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000005/emirates_id.png</data>
+  <data key="d16">2025-12-08T15:59:28.232657</data>
+</node>
+<node id="APP-000005_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000005/employment_letter.pdf</data>
+  <data key="d16">2025-12-08T15:59:28.232657</data>
+</node>
+<node id="APP-000005_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000005/resume.pdf</data>
+  <data key="d16">2025-12-08T15:59:28.232657</data>
+</node>
+<node id="APP-000005_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000005/assets_liabilities.xlsx</data>
+  <data key="d16">2025-12-08T15:59:28.232657</data>
+</node>
+<node id="APP-000005_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000005/credit_report.json</data>
+  <data key="d16">2025-12-08T15:59:28.232657</data>
+</node>
+<node id="DECISION_APP-000005">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000005</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">70.0</data>
+  <data key="d19">2025-12-12T15:59:28.232657</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">HIGH</data>
+</node>
+<node id="REC_APP-000005">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000005</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d26">3000</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-12-12T15:59:28.232657</data>
+</node>
+<node id="2003-1122-73161098-9">
+  <data key="d3">Person</data>
+  <data key="d4">Majid Al Rumaithi</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">7438.54</data>
+  <data key="d7">979</data>
+  <data key="d8">-72417.0</data>
+</node>
+<node id="APP-000006">
+  <data key="d3">Application</data>
+  <data key="d9">2003-1122-73161098-9</data>
+  <data key="d10">2025-10-14T15:59:28.235808</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">65.0</data>
+</node>
+<node id="APP-000006_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000006/bank_statement.pdf</data>
+  <data key="d16">2025-10-14T15:59:28.235808</data>
+</node>
+<node id="APP-000006_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000006/emirates_id.png</data>
+  <data key="d16">2025-10-14T15:59:28.235808</data>
+</node>
+<node id="APP-000006_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000006/employment_letter.pdf</data>
+  <data key="d16">2025-10-14T15:59:28.235808</data>
+</node>
+<node id="APP-000006_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000006/resume.pdf</data>
+  <data key="d16">2025-10-14T15:59:28.235808</data>
+</node>
+<node id="APP-000006_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000006/assets_liabilities.xlsx</data>
+  <data key="d16">2025-10-14T15:59:28.235808</data>
+</node>
+<node id="APP-000006_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000006/credit_report.json</data>
+  <data key="d16">2025-10-14T15:59:28.235808</data>
+</node>
+<node id="DECISION_APP-000006">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000006</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">65.0</data>
+  <data key="d19">2025-10-15T15:59:28.235808</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000006">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000006</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">2231.56</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-10-15T15:59:28.235808</data>
+</node>
+<node id="1958-1208-10466177-6">
+  <data key="d3">Person</data>
+  <data key="d4">Mustafa Al Rumaithi</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">18164.74</data>
+  <data key="d7">1052</data>
+  <data key="d8">173882.0</data>
+</node>
+<node id="APP-000007">
+  <data key="d3">Application</data>
+  <data key="d9">1958-1208-10466177-6</data>
+  <data key="d10">2025-10-31T15:59:28.238983</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">70.0</data>
+</node>
+<node id="APP-000007_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000007/bank_statement.pdf</data>
+  <data key="d16">2025-10-31T15:59:28.238983</data>
+</node>
+<node id="APP-000007_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000007/emirates_id.png</data>
+  <data key="d16">2025-10-31T15:59:28.238983</data>
+</node>
+<node id="APP-000007_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000007/employment_letter.pdf</data>
+  <data key="d16">2025-10-31T15:59:28.238983</data>
+</node>
+<node id="APP-000007_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000007/resume.pdf</data>
+  <data key="d16">2025-10-31T15:59:28.238983</data>
+</node>
+<node id="APP-000007_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000007/assets_liabilities.xlsx</data>
+  <data key="d16">2025-10-31T15:59:28.238983</data>
+</node>
+<node id="APP-000007_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000007/credit_report.json</data>
+  <data key="d16">2025-10-31T15:59:28.238983</data>
+</node>
+<node id="DECISION_APP-000007">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000007</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">70.0</data>
+  <data key="d19">2025-11-01T15:59:28.238983</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">HIGH</data>
+</node>
+<node id="REC_APP-000007">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000007</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d26">3000</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-01T15:59:28.238983</data>
+</node>
+<node id="1960-0709-66519399-9">
+  <data key="d3">Person</data>
+  <data key="d4">Hana Al Mansoori</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">3072.57</data>
+  <data key="d7">1123</data>
+  <data key="d8">-8863.0</data>
+</node>
+<node id="APP-000008">
+  <data key="d3">Application</data>
+  <data key="d9">1960-0709-66519399-9</data>
+  <data key="d10">2025-11-12T15:59:28.243382</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">65.0</data>
+</node>
+<node id="APP-000008_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000008/bank_statement.pdf</data>
+  <data key="d16">2025-11-12T15:59:28.243382</data>
+</node>
+<node id="APP-000008_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000008/emirates_id.png</data>
+  <data key="d16">2025-11-12T15:59:28.243382</data>
+</node>
+<node id="APP-000008_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000008/employment_letter.pdf</data>
+  <data key="d16">2025-11-12T15:59:28.243382</data>
+</node>
+<node id="APP-000008_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000008/resume.pdf</data>
+  <data key="d16">2025-11-12T15:59:28.243382</data>
+</node>
+<node id="APP-000008_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000008/assets_liabilities.xlsx</data>
+  <data key="d16">2025-11-12T15:59:28.243382</data>
+</node>
+<node id="APP-000008_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000008/credit_report.json</data>
+  <data key="d16">2025-11-12T15:59:28.243382</data>
+</node>
+<node id="DECISION_APP-000008">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000008</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">65.0</data>
+  <data key="d19">2025-11-17T15:59:28.243382</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000008">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000008</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">921.77</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-17T15:59:28.243382</data>
+</node>
+<node id="1962-1205-97241147-3">
+  <data key="d3">Person</data>
+  <data key="d4">Anwar Al Mazrouei</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">2992.81</data>
+  <data key="d7">1051</data>
+  <data key="d8">38399.0</data>
+</node>
+<node id="APP-000009">
+  <data key="d3">Application</data>
+  <data key="d9">1962-1205-97241147-3</data>
+  <data key="d10">2025-10-31T15:59:28.246971</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">50.0</data>
+</node>
+<node id="APP-000009_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000009/bank_statement.pdf</data>
+  <data key="d16">2025-10-31T15:59:28.246971</data>
+</node>
+<node id="APP-000009_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000009/emirates_id.png</data>
+  <data key="d16">2025-10-31T15:59:28.246971</data>
+</node>
+<node id="APP-000009_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000009/employment_letter.pdf</data>
+  <data key="d16">2025-10-31T15:59:28.246971</data>
+</node>
+<node id="APP-000009_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000009/resume.pdf</data>
+  <data key="d16">2025-10-31T15:59:28.246971</data>
+</node>
+<node id="APP-000009_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000009/assets_liabilities.xlsx</data>
+  <data key="d16">2025-10-31T15:59:28.246971</data>
+</node>
+<node id="APP-000009_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000009/credit_report.json</data>
+  <data key="d16">2025-10-31T15:59:28.246971</data>
+</node>
+<node id="DECISION_APP-000009">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000009</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">50.0</data>
+  <data key="d19">2025-11-07T15:59:28.246971</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000009">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000009</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">897.84</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-07T15:59:28.246971</data>
+</node>
+<node id="1963-0605-22242388-6">
+  <data key="d3">Person</data>
+  <data key="d4">Jassem Al Ameri</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">3643.06</data>
+  <data key="d7">945</data>
+  <data key="d8">429692.0</data>
+</node>
+<node id="APP-000010">
+  <data key="d3">Application</data>
+  <data key="d9">1963-0605-22242388-6</data>
+  <data key="d10">2025-10-28T15:59:28.250790</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">55.0</data>
+</node>
+<node id="APP-000010_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000010/bank_statement.pdf</data>
+  <data key="d16">2025-10-28T15:59:28.250790</data>
+</node>
+<node id="APP-000010_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000010/emirates_id.png</data>
+  <data key="d16">2025-10-28T15:59:28.250790</data>
+</node>
+<node id="APP-000010_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000010/employment_letter.pdf</data>
+  <data key="d16">2025-10-28T15:59:28.250790</data>
+</node>
+<node id="APP-000010_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000010/resume.pdf</data>
+  <data key="d16">2025-10-28T15:59:28.250790</data>
+</node>
+<node id="APP-000010_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000010/assets_liabilities.xlsx</data>
+  <data key="d16">2025-10-28T15:59:28.250790</data>
+</node>
+<node id="APP-000010_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000010/credit_report.json</data>
+  <data key="d16">2025-10-28T15:59:28.250790</data>
+</node>
+<node id="DECISION_APP-000010">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000010</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">55.0</data>
+  <data key="d19">2025-11-02T15:59:28.250790</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000010">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000010</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">1092.92</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-02T15:59:28.250790</data>
+</node>
+<node id="1982-1017-86703472-4">
+  <data key="d3">Person</data>
+  <data key="d4">Nasser Al Dhaheri</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">4338.08</data>
+  <data key="d7">1019</data>
+  <data key="d8">518483.0</data>
+</node>
+<node id="APP-000011">
+  <data key="d3">Application</data>
+  <data key="d9">1982-1017-86703472-4</data>
+  <data key="d10">2025-11-24T15:59:28.253830</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">55.0</data>
+</node>
+<node id="APP-000011_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000011/bank_statement.pdf</data>
+  <data key="d16">2025-11-24T15:59:28.253830</data>
+</node>
+<node id="APP-000011_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000011/emirates_id.png</data>
+  <data key="d16">2025-11-24T15:59:28.253830</data>
+</node>
+<node id="APP-000011_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000011/employment_letter.pdf</data>
+  <data key="d16">2025-11-24T15:59:28.253830</data>
+</node>
+<node id="APP-000011_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000011/resume.pdf</data>
+  <data key="d16">2025-11-24T15:59:28.253830</data>
+</node>
+<node id="APP-000011_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000011/assets_liabilities.xlsx</data>
+  <data key="d16">2025-11-24T15:59:28.253830</data>
+</node>
+<node id="APP-000011_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000011/credit_report.json</data>
+  <data key="d16">2025-11-24T15:59:28.253830</data>
+</node>
+<node id="DECISION_APP-000011">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000011</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">55.0</data>
+  <data key="d19">2025-11-30T15:59:28.253830</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000011">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000011</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">1301.42</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-30T15:59:28.253830</data>
+</node>
+<node id="1952-0510-71193393-1">
+  <data key="d3">Person</data>
+  <data key="d4">Khalid Al Qubaisi</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">20698.91</data>
+  <data key="d7">1330</data>
+  <data key="d8">169085.0</data>
+</node>
+<node id="APP-000012">
+  <data key="d3">Application</data>
+  <data key="d9">1952-0510-71193393-1</data>
+  <data key="d10">2025-11-10T15:59:28.257458</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">70.0</data>
+</node>
+<node id="APP-000012_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000012/bank_statement.pdf</data>
+  <data key="d16">2025-11-10T15:59:28.257458</data>
+</node>
+<node id="APP-000012_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000012/emirates_id.png</data>
+  <data key="d16">2025-11-10T15:59:28.257458</data>
+</node>
+<node id="APP-000012_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000012/employment_letter.pdf</data>
+  <data key="d16">2025-11-10T15:59:28.257458</data>
+</node>
+<node id="APP-000012_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000012/resume.pdf</data>
+  <data key="d16">2025-11-10T15:59:28.257458</data>
+</node>
+<node id="APP-000012_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000012/assets_liabilities.xlsx</data>
+  <data key="d16">2025-11-10T15:59:28.257458</data>
+</node>
+<node id="APP-000012_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000012/credit_report.json</data>
+  <data key="d16">2025-11-10T15:59:28.257458</data>
+</node>
+<node id="DECISION_APP-000012">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000012</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">70.0</data>
+  <data key="d19">2025-11-12T15:59:28.257458</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">HIGH</data>
+</node>
+<node id="REC_APP-000012">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000012</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d26">3000</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-12T15:59:28.257458</data>
+</node>
+<node id="1953-1226-49613096-9">
+  <data key="d3">Person</data>
+  <data key="d4">Noura Al Mazrouei</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">3573.62</data>
+  <data key="d7">846</data>
+  <data key="d8">17676.0</data>
+</node>
+<node id="APP-000013">
+  <data key="d3">Application</data>
+  <data key="d9">1953-1226-49613096-9</data>
+  <data key="d10">2025-11-21T15:59:28.260598</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">65.0</data>
+</node>
+<node id="APP-000013_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000013/bank_statement.pdf</data>
+  <data key="d16">2025-11-21T15:59:28.260598</data>
+</node>
+<node id="APP-000013_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000013/emirates_id.png</data>
+  <data key="d16">2025-11-21T15:59:28.260598</data>
+</node>
+<node id="APP-000013_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000013/employment_letter.pdf</data>
+  <data key="d16">2025-11-21T15:59:28.260598</data>
+</node>
+<node id="APP-000013_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000013/resume.pdf</data>
+  <data key="d16">2025-11-21T15:59:28.260598</data>
+</node>
+<node id="APP-000013_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000013/assets_liabilities.xlsx</data>
+  <data key="d16">2025-11-21T15:59:28.260598</data>
+</node>
+<node id="APP-000013_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000013/credit_report.json</data>
+  <data key="d16">2025-11-21T15:59:28.260598</data>
+</node>
+<node id="DECISION_APP-000013">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000013</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">65.0</data>
+  <data key="d19">2025-11-26T15:59:28.260598</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000013">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000013</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">1072.09</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-26T15:59:28.260598</data>
+</node>
+<node id="1973-0716-71021210-2">
+  <data key="d3">Person</data>
+  <data key="d4">Yasmin Al Kaabi</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">6724.2</data>
+  <data key="d7">993</data>
+  <data key="d8">46501.0</data>
+</node>
+<node id="APP-000014">
+  <data key="d3">Application</data>
+  <data key="d9">1973-0716-71021210-2</data>
+  <data key="d10">2025-12-06T15:59:28.263647</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">65.0</data>
+</node>
+<node id="APP-000014_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000014/bank_statement.pdf</data>
+  <data key="d16">2025-12-06T15:59:28.263647</data>
+</node>
+<node id="APP-000014_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000014/emirates_id.png</data>
+  <data key="d16">2025-12-06T15:59:28.263647</data>
+</node>
+<node id="APP-000014_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000014/employment_letter.pdf</data>
+  <data key="d16">2025-12-06T15:59:28.263647</data>
+</node>
+<node id="APP-000014_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000014/resume.pdf</data>
+  <data key="d16">2025-12-06T15:59:28.263647</data>
+</node>
+<node id="APP-000014_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000014/assets_liabilities.xlsx</data>
+  <data key="d16">2025-12-06T15:59:28.263647</data>
+</node>
+<node id="APP-000014_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000014/credit_report.json</data>
+  <data key="d16">2025-12-06T15:59:28.263647</data>
+</node>
+<node id="DECISION_APP-000014">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000014</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">65.0</data>
+  <data key="d19">2025-12-12T15:59:28.263647</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000014">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000014</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">2017.26</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-12-12T15:59:28.263647</data>
+</node>
+<node id="2010-0902-77441081-9">
+  <data key="d3">Person</data>
+  <data key="d4">Hazem Al Mazroui</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">4986.51</data>
+  <data key="d7">885</data>
+  <data key="d8">22576.0</data>
+</node>
+<node id="APP-000015">
+  <data key="d3">Application</data>
+  <data key="d9">2010-0902-77441081-9</data>
+  <data key="d10">2025-11-01T15:59:28.266765</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">65.0</data>
+</node>
+<node id="APP-000015_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000015/bank_statement.pdf</data>
+  <data key="d16">2025-11-01T15:59:28.266765</data>
+</node>
+<node id="APP-000015_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000015/emirates_id.png</data>
+  <data key="d16">2025-11-01T15:59:28.266765</data>
+</node>
+<node id="APP-000015_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000015/employment_letter.pdf</data>
+  <data key="d16">2025-11-01T15:59:28.266765</data>
+</node>
+<node id="APP-000015_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000015/resume.pdf</data>
+  <data key="d16">2025-11-01T15:59:28.266765</data>
+</node>
+<node id="APP-000015_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000015/assets_liabilities.xlsx</data>
+  <data key="d16">2025-11-01T15:59:28.266765</data>
+</node>
+<node id="APP-000015_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000015/credit_report.json</data>
+  <data key="d16">2025-11-01T15:59:28.266765</data>
+</node>
+<node id="DECISION_APP-000015">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000015</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">65.0</data>
+  <data key="d19">2025-11-08T15:59:28.266765</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000015">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000015</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">1495.95</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-08T15:59:28.266765</data>
+</node>
+<node id="1958-0808-52512063-9">
+  <data key="d3">Person</data>
+  <data key="d4">Mohammed Al Rumaithi</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">2146.86</data>
+  <data key="d7">804</data>
+  <data key="d8">-22607.0</data>
+</node>
+<node id="APP-000016">
+  <data key="d3">Application</data>
+  <data key="d9">1958-0808-52512063-9</data>
+  <data key="d10">2025-11-30T15:59:28.270427</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">50.0</data>
+</node>
+<node id="APP-000016_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000016/bank_statement.pdf</data>
+  <data key="d16">2025-11-30T15:59:28.270427</data>
+</node>
+<node id="APP-000016_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000016/emirates_id.png</data>
+  <data key="d16">2025-11-30T15:59:28.270427</data>
+</node>
+<node id="APP-000016_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000016/employment_letter.pdf</data>
+  <data key="d16">2025-11-30T15:59:28.270427</data>
+</node>
+<node id="APP-000016_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000016/resume.pdf</data>
+  <data key="d16">2025-11-30T15:59:28.270427</data>
+</node>
+<node id="APP-000016_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000016/assets_liabilities.xlsx</data>
+  <data key="d16">2025-11-30T15:59:28.270427</data>
+</node>
+<node id="APP-000016_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000016/credit_report.json</data>
+  <data key="d16">2025-11-30T15:59:28.270427</data>
+</node>
+<node id="DECISION_APP-000016">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000016</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">50.0</data>
+  <data key="d19">2025-12-04T15:59:28.270427</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000016">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000016</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">644.06</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-12-04T15:59:28.270427</data>
+</node>
+<node id="1967-0121-44585138-6">
+  <data key="d3">Person</data>
+  <data key="d4">Yasmin Al Jabri</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">15375.16</data>
+  <data key="d7">1110</data>
+  <data key="d8">67500.0</data>
+</node>
+<node id="APP-000017">
+  <data key="d3">Application</data>
+  <data key="d9">1967-0121-44585138-6</data>
+  <data key="d10">2025-11-05T15:59:28.273466</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">75.0</data>
+</node>
+<node id="APP-000017_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000017/bank_statement.pdf</data>
+  <data key="d16">2025-11-05T15:59:28.273466</data>
+</node>
+<node id="APP-000017_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000017/emirates_id.png</data>
+  <data key="d16">2025-11-05T15:59:28.273466</data>
+</node>
+<node id="APP-000017_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000017/employment_letter.pdf</data>
+  <data key="d16">2025-11-05T15:59:28.273466</data>
+</node>
+<node id="APP-000017_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000017/resume.pdf</data>
+  <data key="d16">2025-11-05T15:59:28.273466</data>
+</node>
+<node id="APP-000017_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000017/assets_liabilities.xlsx</data>
+  <data key="d16">2025-11-05T15:59:28.273466</data>
+</node>
+<node id="APP-000017_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000017/credit_report.json</data>
+  <data key="d16">2025-11-05T15:59:28.273466</data>
+</node>
+<node id="DECISION_APP-000017">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000017</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">75.0</data>
+  <data key="d19">2025-11-11T15:59:28.273466</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">HIGH</data>
+</node>
+<node id="REC_APP-000017">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000017</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d26">3000</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-11T15:59:28.273466</data>
+</node>
+<node id="1986-1001-33572537-4">
+  <data key="d3">Person</data>
+  <data key="d4">Noura Al Maktoum</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">5393.67</data>
+  <data key="d7">1084</data>
+  <data key="d8">150521.0</data>
+</node>
+<node id="APP-000018">
+  <data key="d3">Application</data>
+  <data key="d9">1986-1001-33572537-4</data>
+  <data key="d10">2025-10-12T15:59:28.276687</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">55.0</data>
+</node>
+<node id="APP-000018_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000018/bank_statement.pdf</data>
+  <data key="d16">2025-10-12T15:59:28.276687</data>
+</node>
+<node id="APP-000018_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000018/emirates_id.png</data>
+  <data key="d16">2025-10-12T15:59:28.276687</data>
+</node>
+<node id="APP-000018_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000018/employment_letter.pdf</data>
+  <data key="d16">2025-10-12T15:59:28.276687</data>
+</node>
+<node id="APP-000018_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000018/resume.pdf</data>
+  <data key="d16">2025-10-12T15:59:28.276687</data>
+</node>
+<node id="APP-000018_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000018/assets_liabilities.xlsx</data>
+  <data key="d16">2025-10-12T15:59:28.276687</data>
+</node>
+<node id="APP-000018_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000018/credit_report.json</data>
+  <data key="d16">2025-10-12T15:59:28.276687</data>
+</node>
+<node id="DECISION_APP-000018">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000018</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">55.0</data>
+  <data key="d19">2025-10-13T15:59:28.276687</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000018">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000018</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">1618.1</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-10-13T15:59:28.276687</data>
+</node>
+<node id="1980-1212-25188664-5">
+  <data key="d3">Person</data>
+  <data key="d4">Huda Al Memari</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">3034.37</data>
+  <data key="d7">1117</data>
+  <data key="d8">-5215.0</data>
+</node>
+<node id="APP-000019">
+  <data key="d3">Application</data>
+  <data key="d9">1980-1212-25188664-5</data>
+  <data key="d10">2025-10-19T15:59:28.279763</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">65.0</data>
+</node>
+<node id="APP-000019_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000019/bank_statement.pdf</data>
+  <data key="d16">2025-10-19T15:59:28.279763</data>
+</node>
+<node id="APP-000019_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000019/emirates_id.png</data>
+  <data key="d16">2025-10-19T15:59:28.279763</data>
+</node>
+<node id="APP-000019_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000019/employment_letter.pdf</data>
+  <data key="d16">2025-10-19T15:59:28.279763</data>
+</node>
+<node id="APP-000019_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000019/resume.pdf</data>
+  <data key="d16">2025-10-19T15:59:28.279763</data>
+</node>
+<node id="APP-000019_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000019/assets_liabilities.xlsx</data>
+  <data key="d16">2025-10-19T15:59:28.279763</data>
+</node>
+<node id="APP-000019_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000019/credit_report.json</data>
+  <data key="d16">2025-10-19T15:59:28.279763</data>
+</node>
+<node id="DECISION_APP-000019">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000019</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">65.0</data>
+  <data key="d19">2025-10-24T15:59:28.279763</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000019">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000019</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">910.31</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-10-24T15:59:28.279763</data>
+</node>
+<node id="1956-0820-32909541-0">
+  <data key="d3">Person</data>
+  <data key="d4">Ahmed Al Mazrouei</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">4816.3</data>
+  <data key="d7">889</data>
+  <data key="d8">35165.0</data>
+</node>
+<node id="APP-000020">
+  <data key="d3">Application</data>
+  <data key="d9">1956-0820-32909541-0</data>
+  <data key="d10">2025-12-23T15:59:28.283524</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">65.0</data>
+</node>
+<node id="APP-000020_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000020/bank_statement.pdf</data>
+  <data key="d16">2025-12-23T15:59:28.283524</data>
+</node>
+<node id="APP-000020_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000020/emirates_id.png</data>
+  <data key="d16">2025-12-23T15:59:28.283524</data>
+</node>
+<node id="APP-000020_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000020/employment_letter.pdf</data>
+  <data key="d16">2025-12-23T15:59:28.283524</data>
+</node>
+<node id="APP-000020_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000020/resume.pdf</data>
+  <data key="d16">2025-12-23T15:59:28.283524</data>
+</node>
+<node id="APP-000020_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000020/assets_liabilities.xlsx</data>
+  <data key="d16">2025-12-23T15:59:28.283524</data>
+</node>
+<node id="APP-000020_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000020/credit_report.json</data>
+  <data key="d16">2025-12-23T15:59:28.283524</data>
+</node>
+<node id="DECISION_APP-000020">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000020</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">65.0</data>
+  <data key="d19">2025-12-26T15:59:28.283524</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000020">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000020</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">1444.89</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-12-26T15:59:28.283524</data>
+</node>
+<node id="1983-0915-71472671-6">
+  <data key="d3">Person</data>
+  <data key="d4">Rana Al Jabri</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">13012.14</data>
+  <data key="d7">1230</data>
+  <data key="d8">140188.0</data>
+</node>
+<node id="APP-000021">
+  <data key="d3">Application</data>
+  <data key="d9">1983-0915-71472671-6</data>
+  <data key="d10">2025-11-27T15:59:28.286480</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">80.0</data>
+</node>
+<node id="APP-000021_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000021/bank_statement.pdf</data>
+  <data key="d16">2025-11-27T15:59:28.286480</data>
+</node>
+<node id="APP-000021_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000021/emirates_id.png</data>
+  <data key="d16">2025-11-27T15:59:28.286480</data>
+</node>
+<node id="APP-000021_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000021/employment_letter.pdf</data>
+  <data key="d16">2025-11-27T15:59:28.286480</data>
+</node>
+<node id="APP-000021_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000021/resume.pdf</data>
+  <data key="d16">2025-11-27T15:59:28.286480</data>
+</node>
+<node id="APP-000021_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000021/assets_liabilities.xlsx</data>
+  <data key="d16">2025-11-27T15:59:28.286480</data>
+</node>
+<node id="APP-000021_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000021/credit_report.json</data>
+  <data key="d16">2025-11-27T15:59:28.286480</data>
+</node>
+<node id="DECISION_APP-000021">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000021</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">80.0</data>
+  <data key="d19">2025-11-28T15:59:28.286480</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">HIGH</data>
+</node>
+<node id="REC_APP-000021">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000021</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d26">3000</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-28T15:59:28.286480</data>
+</node>
+<node id="1979-0217-28241849-7">
+  <data key="d3">Person</data>
+  <data key="d4">Tariq Al Kaabi</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">23857.39</data>
+  <data key="d7">1096</data>
+  <data key="d8">718268.0</data>
+</node>
+<node id="APP-000022">
+  <data key="d3">Application</data>
+  <data key="d9">1979-0217-28241849-7</data>
+  <data key="d10">2025-12-25T15:59:28.290074</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">70.0</data>
+</node>
+<node id="APP-000022_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000022/bank_statement.pdf</data>
+  <data key="d16">2025-12-25T15:59:28.290074</data>
+</node>
+<node id="APP-000022_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000022/emirates_id.png</data>
+  <data key="d16">2025-12-25T15:59:28.290074</data>
+</node>
+<node id="APP-000022_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000022/employment_letter.pdf</data>
+  <data key="d16">2025-12-25T15:59:28.290074</data>
+</node>
+<node id="APP-000022_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000022/resume.pdf</data>
+  <data key="d16">2025-12-25T15:59:28.290074</data>
+</node>
+<node id="APP-000022_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000022/assets_liabilities.xlsx</data>
+  <data key="d16">2025-12-25T15:59:28.290074</data>
+</node>
+<node id="APP-000022_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000022/credit_report.json</data>
+  <data key="d16">2025-12-25T15:59:28.290074</data>
+</node>
+<node id="DECISION_APP-000022">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000022</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">70.0</data>
+  <data key="d19">2025-12-31T15:59:28.290074</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">HIGH</data>
+</node>
+<node id="REC_APP-000022">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000022</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d26">3000</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-12-31T15:59:28.290074</data>
+</node>
+<node id="2007-1002-98882124-0">
+  <data key="d3">Person</data>
+  <data key="d4">Hamad Al Hosani</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">7304.85</data>
+  <data key="d7">1058</data>
+  <data key="d8">-32255.0</data>
+</node>
+<node id="APP-000023">
+  <data key="d3">Application</data>
+  <data key="d9">2007-1002-98882124-0</data>
+  <data key="d10">2025-11-27T15:59:28.293256</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">65.0</data>
+</node>
+<node id="APP-000023_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000023/bank_statement.pdf</data>
+  <data key="d16">2025-11-27T15:59:28.293256</data>
+</node>
+<node id="APP-000023_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000023/emirates_id.png</data>
+  <data key="d16">2025-11-27T15:59:28.293256</data>
+</node>
+<node id="APP-000023_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000023/employment_letter.pdf</data>
+  <data key="d16">2025-11-27T15:59:28.293256</data>
+</node>
+<node id="APP-000023_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000023/resume.pdf</data>
+  <data key="d16">2025-11-27T15:59:28.293256</data>
+</node>
+<node id="APP-000023_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000023/assets_liabilities.xlsx</data>
+  <data key="d16">2025-11-27T15:59:28.293256</data>
+</node>
+<node id="APP-000023_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000023/credit_report.json</data>
+  <data key="d16">2025-11-27T15:59:28.293256</data>
+</node>
+<node id="DECISION_APP-000023">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000023</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">65.0</data>
+  <data key="d19">2025-11-29T15:59:28.293256</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000023">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000023</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">2191.45</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-29T15:59:28.293256</data>
+</node>
+<node id="1953-0903-16052535-0">
+  <data key="d3">Person</data>
+  <data key="d4">Amr Al Dhaheri</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">8443.12</data>
+  <data key="d7">1014</data>
+  <data key="d8">78088.0</data>
+</node>
+<node id="APP-000024">
+  <data key="d3">Application</data>
+  <data key="d9">1953-0903-16052535-0</data>
+  <data key="d10">2025-12-14T15:59:28.297149</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">70.0</data>
+</node>
+<node id="APP-000024_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000024/bank_statement.pdf</data>
+  <data key="d16">2025-12-14T15:59:28.297149</data>
+</node>
+<node id="APP-000024_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000024/emirates_id.png</data>
+  <data key="d16">2025-12-14T15:59:28.297149</data>
+</node>
+<node id="APP-000024_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000024/employment_letter.pdf</data>
+  <data key="d16">2025-12-14T15:59:28.297149</data>
+</node>
+<node id="APP-000024_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000024/resume.pdf</data>
+  <data key="d16">2025-12-14T15:59:28.297149</data>
+</node>
+<node id="APP-000024_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000024/assets_liabilities.xlsx</data>
+  <data key="d16">2025-12-14T15:59:28.297149</data>
+</node>
+<node id="APP-000024_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000024/credit_report.json</data>
+  <data key="d16">2025-12-14T15:59:28.297149</data>
+</node>
+<node id="DECISION_APP-000024">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000024</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">70.0</data>
+  <data key="d19">2025-12-16T15:59:28.297149</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">HIGH</data>
+</node>
+<node id="REC_APP-000024">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000024</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">2532.94</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-12-16T15:59:28.297149</data>
+</node>
+<node id="2010-0215-49991663-6">
+  <data key="d3">Person</data>
+  <data key="d4">Amira Al Jabri</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">3075.27</data>
+  <data key="d7">1052</data>
+  <data key="d8">133926.0</data>
+</node>
+<node id="APP-000025">
+  <data key="d3">Application</data>
+  <data key="d9">2010-0215-49991663-6</data>
+  <data key="d10">2025-11-16T15:59:28.300409</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">60.0</data>
+</node>
+<node id="APP-000025_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000025/bank_statement.pdf</data>
+  <data key="d16">2025-11-16T15:59:28.300409</data>
+</node>
+<node id="APP-000025_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000025/emirates_id.png</data>
+  <data key="d16">2025-11-16T15:59:28.300409</data>
+</node>
+<node id="APP-000025_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000025/employment_letter.pdf</data>
+  <data key="d16">2025-11-16T15:59:28.300409</data>
+</node>
+<node id="APP-000025_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000025/resume.pdf</data>
+  <data key="d16">2025-11-16T15:59:28.300409</data>
+</node>
+<node id="APP-000025_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000025/assets_liabilities.xlsx</data>
+  <data key="d16">2025-11-16T15:59:28.300409</data>
+</node>
+<node id="APP-000025_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000025/credit_report.json</data>
+  <data key="d16">2025-11-16T15:59:28.300409</data>
+</node>
+<node id="DECISION_APP-000025">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000025</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">60.0</data>
+  <data key="d19">2025-11-19T15:59:28.300409</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000025">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000025</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">922.58</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-19T15:59:28.300409</data>
+</node>
+<node id="2006-0924-46819677-4">
+  <data key="d3">Person</data>
+  <data key="d4">Kamal Al Suwaidi</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">2876.37</data>
+  <data key="d7">1001</data>
+  <data key="d8">677924.0</data>
+</node>
+<node id="APP-000026">
+  <data key="d3">Application</data>
+  <data key="d9">2006-0924-46819677-4</data>
+  <data key="d10">2025-12-24T15:59:28.303865</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">40.0</data>
+</node>
+<node id="APP-000026_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000026/bank_statement.pdf</data>
+  <data key="d16">2025-12-24T15:59:28.303865</data>
+</node>
+<node id="APP-000026_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000026/emirates_id.png</data>
+  <data key="d16">2025-12-24T15:59:28.303865</data>
+</node>
+<node id="APP-000026_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000026/employment_letter.pdf</data>
+  <data key="d16">2025-12-24T15:59:28.303865</data>
+</node>
+<node id="APP-000026_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000026/resume.pdf</data>
+  <data key="d16">2025-12-24T15:59:28.303865</data>
+</node>
+<node id="APP-000026_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000026/assets_liabilities.xlsx</data>
+  <data key="d16">2025-12-24T15:59:28.303865</data>
+</node>
+<node id="APP-000026_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000026/credit_report.json</data>
+  <data key="d16">2025-12-24T15:59:28.303865</data>
+</node>
+<node id="DECISION_APP-000026">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000026</data>
+  <data key="d18">CONDITIONAL</data>
+  <data key="d12">40.0</data>
+  <data key="d19">2025-12-27T15:59:28.303865</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000026">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000026</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">575.27</data>
+  <data key="d24">3</data>
+  <data key="d25">2025-12-27T15:59:28.303865</data>
+</node>
+<node id="2009-0404-25916596-7">
+  <data key="d3">Person</data>
+  <data key="d4">Rashid Al Shehhi</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">8063.34</data>
+  <data key="d7">1061</data>
+  <data key="d8">-14752.0</data>
+</node>
+<node id="APP-000027">
+  <data key="d3">Application</data>
+  <data key="d9">2009-0404-25916596-7</data>
+  <data key="d10">2025-12-29T15:59:28.306933</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">75.0</data>
+</node>
+<node id="APP-000027_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000027/bank_statement.pdf</data>
+  <data key="d16">2025-12-29T15:59:28.306933</data>
+</node>
+<node id="APP-000027_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000027/emirates_id.png</data>
+  <data key="d16">2025-12-29T15:59:28.306933</data>
+</node>
+<node id="APP-000027_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000027/employment_letter.pdf</data>
+  <data key="d16">2025-12-29T15:59:28.306933</data>
+</node>
+<node id="APP-000027_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000027/resume.pdf</data>
+  <data key="d16">2025-12-29T15:59:28.306933</data>
+</node>
+<node id="APP-000027_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000027/assets_liabilities.xlsx</data>
+  <data key="d16">2025-12-29T15:59:28.306933</data>
+</node>
+<node id="APP-000027_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000027/credit_report.json</data>
+  <data key="d16">2025-12-29T15:59:28.306933</data>
+</node>
+<node id="DECISION_APP-000027">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000027</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">75.0</data>
+  <data key="d19">2025-12-30T15:59:28.306933</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">HIGH</data>
+</node>
+<node id="REC_APP-000027">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000027</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">2419.0</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-12-30T15:59:28.306933</data>
+</node>
+<node id="2004-1116-19061506-1">
+  <data key="d3">Person</data>
+  <data key="d4">Salem Al Mazrouei</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">6692.55</data>
+  <data key="d7">971</data>
+  <data key="d8">191257.0</data>
+</node>
+<node id="APP-000028">
+  <data key="d3">Application</data>
+  <data key="d9">2004-1116-19061506-1</data>
+  <data key="d10">2025-11-28T15:59:28.313301</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">55.0</data>
+</node>
+<node id="APP-000028_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000028/bank_statement.pdf</data>
+  <data key="d16">2025-11-28T15:59:28.313301</data>
+</node>
+<node id="APP-000028_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000028/emirates_id.png</data>
+  <data key="d16">2025-11-28T15:59:28.313301</data>
+</node>
+<node id="APP-000028_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000028/employment_letter.pdf</data>
+  <data key="d16">2025-11-28T15:59:28.313301</data>
+</node>
+<node id="APP-000028_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000028/resume.pdf</data>
+  <data key="d16">2025-11-28T15:59:28.313301</data>
+</node>
+<node id="APP-000028_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000028/assets_liabilities.xlsx</data>
+  <data key="d16">2025-11-28T15:59:28.313301</data>
+</node>
+<node id="APP-000028_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000028/credit_report.json</data>
+  <data key="d16">2025-11-28T15:59:28.313301</data>
+</node>
+<node id="DECISION_APP-000028">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000028</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">55.0</data>
+  <data key="d19">2025-11-30T15:59:28.313301</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000028">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000028</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">2007.76</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-30T15:59:28.313301</data>
+</node>
+<node id="1983-1026-77731180-7">
+  <data key="d3">Person</data>
+  <data key="d4">Kamal Al Qubaisi</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">3010.65</data>
+  <data key="d7">1003</data>
+  <data key="d8">-8256.0</data>
+</node>
+<node id="APP-000029">
+  <data key="d3">Application</data>
+  <data key="d9">1983-1026-77731180-7</data>
+  <data key="d10">2025-12-06T15:59:28.316772</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">65.0</data>
+</node>
+<node id="APP-000029_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000029/bank_statement.pdf</data>
+  <data key="d16">2025-12-06T15:59:28.316772</data>
+</node>
+<node id="APP-000029_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000029/emirates_id.png</data>
+  <data key="d16">2025-12-06T15:59:28.316772</data>
+</node>
+<node id="APP-000029_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000029/employment_letter.pdf</data>
+  <data key="d16">2025-12-06T15:59:28.316772</data>
+</node>
+<node id="APP-000029_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000029/resume.pdf</data>
+  <data key="d16">2025-12-06T15:59:28.316772</data>
+</node>
+<node id="APP-000029_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000029/assets_liabilities.xlsx</data>
+  <data key="d16">2025-12-06T15:59:28.316772</data>
+</node>
+<node id="APP-000029_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000029/credit_report.json</data>
+  <data key="d16">2025-12-06T15:59:28.316772</data>
+</node>
+<node id="DECISION_APP-000029">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000029</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">65.0</data>
+  <data key="d19">2025-12-10T15:59:28.316772</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000029">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000029</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">903.2</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-12-10T15:59:28.316772</data>
+</node>
+<node id="1984-0222-83600812-5">
+  <data key="d3">Person</data>
+  <data key="d4">Zainab Al Maktoum</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">18428.52</data>
+  <data key="d7">1143</data>
+  <data key="d8">81546.0</data>
+</node>
+<node id="APP-000030">
+  <data key="d3">Application</data>
+  <data key="d9">1984-0222-83600812-5</data>
+  <data key="d10">2025-11-12T15:59:28.320907</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">75.0</data>
+</node>
+<node id="APP-000030_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000030/bank_statement.pdf</data>
+  <data key="d16">2025-11-12T15:59:28.320907</data>
+</node>
+<node id="APP-000030_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000030/emirates_id.png</data>
+  <data key="d16">2025-11-12T15:59:28.320907</data>
+</node>
+<node id="APP-000030_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000030/employment_letter.pdf</data>
+  <data key="d16">2025-11-12T15:59:28.320907</data>
+</node>
+<node id="APP-000030_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000030/resume.pdf</data>
+  <data key="d16">2025-11-12T15:59:28.320907</data>
+</node>
+<node id="APP-000030_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000030/assets_liabilities.xlsx</data>
+  <data key="d16">2025-11-12T15:59:28.320907</data>
+</node>
+<node id="APP-000030_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000030/credit_report.json</data>
+  <data key="d16">2025-11-12T15:59:28.320907</data>
+</node>
+<node id="DECISION_APP-000030">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000030</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">75.0</data>
+  <data key="d19">2025-11-19T15:59:28.320907</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">HIGH</data>
+</node>
+<node id="REC_APP-000030">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000030</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d26">3000</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-19T15:59:28.320907</data>
+</node>
+<node id="1956-0321-90776943-0">
+  <data key="d3">Person</data>
+  <data key="d4">Leila Al Jabri</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">4896.47</data>
+  <data key="d7">920</data>
+  <data key="d8">-72057.0</data>
+</node>
+<node id="APP-000031">
+  <data key="d3">Application</data>
+  <data key="d9">1956-0321-90776943-0</data>
+  <data key="d10">2025-11-20T15:59:28.324524</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">65.0</data>
+</node>
+<node id="APP-000031_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000031/bank_statement.pdf</data>
+  <data key="d16">2025-11-20T15:59:28.324524</data>
+</node>
+<node id="APP-000031_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000031/emirates_id.png</data>
+  <data key="d16">2025-11-20T15:59:28.324524</data>
+</node>
+<node id="APP-000031_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000031/employment_letter.pdf</data>
+  <data key="d16">2025-11-20T15:59:28.324524</data>
+</node>
+<node id="APP-000031_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000031/resume.pdf</data>
+  <data key="d16">2025-11-20T15:59:28.324524</data>
+</node>
+<node id="APP-000031_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000031/assets_liabilities.xlsx</data>
+  <data key="d16">2025-11-20T15:59:28.324524</data>
+</node>
+<node id="APP-000031_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000031/credit_report.json</data>
+  <data key="d16">2025-11-20T15:59:28.324524</data>
+</node>
+<node id="DECISION_APP-000031">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000031</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">65.0</data>
+  <data key="d19">2025-11-26T15:59:28.324524</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000031">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000031</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">1468.94</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-26T15:59:28.324524</data>
+</node>
+<node id="1977-0602-24228398-8">
+  <data key="d3">Person</data>
+  <data key="d4">Khalid Al Kalbani</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">7989.3</data>
+  <data key="d7">1032</data>
+  <data key="d8">-13815.0</data>
+</node>
+<node id="APP-000032">
+  <data key="d3">Application</data>
+  <data key="d9">1977-0602-24228398-8</data>
+  <data key="d10">2025-12-09T15:59:28.328428</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">65.0</data>
+</node>
+<node id="APP-000032_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000032/bank_statement.pdf</data>
+  <data key="d16">2025-12-09T15:59:28.328428</data>
+</node>
+<node id="APP-000032_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000032/emirates_id.png</data>
+  <data key="d16">2025-12-09T15:59:28.328428</data>
+</node>
+<node id="APP-000032_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000032/employment_letter.pdf</data>
+  <data key="d16">2025-12-09T15:59:28.328428</data>
+</node>
+<node id="APP-000032_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000032/resume.pdf</data>
+  <data key="d16">2025-12-09T15:59:28.328428</data>
+</node>
+<node id="APP-000032_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000032/assets_liabilities.xlsx</data>
+  <data key="d16">2025-12-09T15:59:28.328428</data>
+</node>
+<node id="APP-000032_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000032/credit_report.json</data>
+  <data key="d16">2025-12-09T15:59:28.328428</data>
+</node>
+<node id="DECISION_APP-000032">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000032</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">65.0</data>
+  <data key="d19">2025-12-13T15:59:28.328428</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000032">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000032</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">2396.79</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-12-13T15:59:28.328428</data>
+</node>
+<node id="1952-0424-35186888-7">
+  <data key="d3">Person</data>
+  <data key="d4">Faisal Al Mansoori</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">4611.36</data>
+  <data key="d7">833</data>
+  <data key="d8">-9238.0</data>
+</node>
+<node id="APP-000033">
+  <data key="d3">Application</data>
+  <data key="d9">1952-0424-35186888-7</data>
+  <data key="d10">2025-12-02T15:59:28.332054</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">65.0</data>
+</node>
+<node id="APP-000033_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000033/bank_statement.pdf</data>
+  <data key="d16">2025-12-02T15:59:28.332054</data>
+</node>
+<node id="APP-000033_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000033/emirates_id.png</data>
+  <data key="d16">2025-12-02T15:59:28.332054</data>
+</node>
+<node id="APP-000033_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000033/employment_letter.pdf</data>
+  <data key="d16">2025-12-02T15:59:28.332054</data>
+</node>
+<node id="APP-000033_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000033/resume.pdf</data>
+  <data key="d16">2025-12-02T15:59:28.332054</data>
+</node>
+<node id="APP-000033_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000033/assets_liabilities.xlsx</data>
+  <data key="d16">2025-12-02T15:59:28.332054</data>
+</node>
+<node id="APP-000033_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000033/credit_report.json</data>
+  <data key="d16">2025-12-02T15:59:28.332054</data>
+</node>
+<node id="DECISION_APP-000033">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000033</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">65.0</data>
+  <data key="d19">2025-12-09T15:59:28.332054</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000033">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000033</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">1383.41</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-12-09T15:59:28.332054</data>
+</node>
+<node id="1951-1126-87277029-1">
+  <data key="d3">Person</data>
+  <data key="d4">Karim Al Ketbi</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">6901.61</data>
+  <data key="d7">1216</data>
+  <data key="d8">281541.0</data>
+</node>
+<node id="APP-000034">
+  <data key="d3">Application</data>
+  <data key="d9">1951-1126-87277029-1</data>
+  <data key="d10">2025-12-20T15:59:28.335239</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">55.0</data>
+</node>
+<node id="APP-000034_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000034/bank_statement.pdf</data>
+  <data key="d16">2025-12-20T15:59:28.335239</data>
+</node>
+<node id="APP-000034_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000034/emirates_id.png</data>
+  <data key="d16">2025-12-20T15:59:28.335239</data>
+</node>
+<node id="APP-000034_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000034/employment_letter.pdf</data>
+  <data key="d16">2025-12-20T15:59:28.335239</data>
+</node>
+<node id="APP-000034_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000034/resume.pdf</data>
+  <data key="d16">2025-12-20T15:59:28.335239</data>
+</node>
+<node id="APP-000034_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000034/assets_liabilities.xlsx</data>
+  <data key="d16">2025-12-20T15:59:28.335239</data>
+</node>
+<node id="APP-000034_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000034/credit_report.json</data>
+  <data key="d16">2025-12-20T15:59:28.335239</data>
+</node>
+<node id="DECISION_APP-000034">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000034</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">55.0</data>
+  <data key="d19">2025-12-26T15:59:28.335239</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000034">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000034</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">2070.48</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-12-26T15:59:28.335239</data>
+</node>
+<node id="1950-0712-98617699-7">
+  <data key="d3">Person</data>
+  <data key="d4">Hassan Al Dhaheri</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">1069.18</data>
+  <data key="d7">1055</data>
+  <data key="d8">554099.0</data>
+</node>
+<node id="APP-000035">
+  <data key="d3">Application</data>
+  <data key="d9">1950-0712-98617699-7</data>
+  <data key="d10">2025-12-18T15:59:28.338450</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">40.0</data>
+</node>
+<node id="APP-000035_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000035/bank_statement.pdf</data>
+  <data key="d16">2025-12-18T15:59:28.338450</data>
+</node>
+<node id="APP-000035_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000035/emirates_id.png</data>
+  <data key="d16">2025-12-18T15:59:28.338450</data>
+</node>
+<node id="APP-000035_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000035/employment_letter.pdf</data>
+  <data key="d16">2025-12-18T15:59:28.338450</data>
+</node>
+<node id="APP-000035_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000035/resume.pdf</data>
+  <data key="d16">2025-12-18T15:59:28.338450</data>
+</node>
+<node id="APP-000035_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000035/assets_liabilities.xlsx</data>
+  <data key="d16">2025-12-18T15:59:28.338450</data>
+</node>
+<node id="APP-000035_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000035/credit_report.json</data>
+  <data key="d16">2025-12-18T15:59:28.338450</data>
+</node>
+<node id="DECISION_APP-000035">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000035</data>
+  <data key="d18">CONDITIONAL</data>
+  <data key="d12">40.0</data>
+  <data key="d19">2025-12-20T15:59:28.338450</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000035">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000035</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">213.84</data>
+  <data key="d24">3</data>
+  <data key="d25">2025-12-20T15:59:28.338450</data>
+</node>
+<node id="1953-0307-83428820-6">
+  <data key="d3">Person</data>
+  <data key="d4">Mohammed Al Ketbi</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">2369.32</data>
+  <data key="d7">926</data>
+  <data key="d8">-13125.0</data>
+</node>
+<node id="APP-000036">
+  <data key="d3">Application</data>
+  <data key="d9">1953-0307-83428820-6</data>
+  <data key="d10">2025-12-21T15:59:28.342140</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">50.0</data>
+</node>
+<node id="APP-000036_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000036/bank_statement.pdf</data>
+  <data key="d16">2025-12-21T15:59:28.342140</data>
+</node>
+<node id="APP-000036_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000036/emirates_id.png</data>
+  <data key="d16">2025-12-21T15:59:28.342140</data>
+</node>
+<node id="APP-000036_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000036/employment_letter.pdf</data>
+  <data key="d16">2025-12-21T15:59:28.342140</data>
+</node>
+<node id="APP-000036_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000036/resume.pdf</data>
+  <data key="d16">2025-12-21T15:59:28.342140</data>
+</node>
+<node id="APP-000036_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000036/assets_liabilities.xlsx</data>
+  <data key="d16">2025-12-21T15:59:28.342140</data>
+</node>
+<node id="APP-000036_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000036/credit_report.json</data>
+  <data key="d16">2025-12-21T15:59:28.342140</data>
+</node>
+<node id="DECISION_APP-000036">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000036</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">50.0</data>
+  <data key="d19">2025-12-24T15:59:28.342140</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000036">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000036</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">710.8</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-12-24T15:59:28.342140</data>
+</node>
+<node id="2006-0712-20695820-0">
+  <data key="d3">Person</data>
+  <data key="d4">Maya Al Shamsi</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">15687.37</data>
+  <data key="d7">1085</data>
+  <data key="d8">128362.0</data>
+</node>
+<node id="APP-000037">
+  <data key="d3">Application</data>
+  <data key="d9">2006-0712-20695820-0</data>
+  <data key="d10">2025-10-09T15:59:28.345333</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">75.0</data>
+</node>
+<node id="APP-000037_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000037/bank_statement.pdf</data>
+  <data key="d16">2025-10-09T15:59:28.345333</data>
+</node>
+<node id="APP-000037_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000037/emirates_id.png</data>
+  <data key="d16">2025-10-09T15:59:28.345333</data>
+</node>
+<node id="APP-000037_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000037/employment_letter.pdf</data>
+  <data key="d16">2025-10-09T15:59:28.345333</data>
+</node>
+<node id="APP-000037_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000037/resume.pdf</data>
+  <data key="d16">2025-10-09T15:59:28.345333</data>
+</node>
+<node id="APP-000037_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000037/assets_liabilities.xlsx</data>
+  <data key="d16">2025-10-09T15:59:28.345333</data>
+</node>
+<node id="APP-000037_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000037/credit_report.json</data>
+  <data key="d16">2025-10-09T15:59:28.345333</data>
+</node>
+<node id="DECISION_APP-000037">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000037</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">75.0</data>
+  <data key="d19">2025-10-12T15:59:28.345333</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">HIGH</data>
+</node>
+<node id="REC_APP-000037">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000037</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d26">3000</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-10-12T15:59:28.345333</data>
+</node>
+<node id="1960-0611-65484975-6">
+  <data key="d3">Person</data>
+  <data key="d4">Omar Al Memari</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">916.96</data>
+  <data key="d7">1067</data>
+  <data key="d8">-34191.0</data>
+</node>
+<node id="APP-000038">
+  <data key="d3">Application</data>
+  <data key="d9">1960-0611-65484975-6</data>
+  <data key="d10">2025-11-25T15:59:28.348330</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">50.0</data>
+</node>
+<node id="APP-000038_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000038/bank_statement.pdf</data>
+  <data key="d16">2025-11-25T15:59:28.348330</data>
+</node>
+<node id="APP-000038_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000038/emirates_id.png</data>
+  <data key="d16">2025-11-25T15:59:28.348330</data>
+</node>
+<node id="APP-000038_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000038/employment_letter.pdf</data>
+  <data key="d16">2025-11-25T15:59:28.348330</data>
+</node>
+<node id="APP-000038_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000038/resume.pdf</data>
+  <data key="d16">2025-11-25T15:59:28.348330</data>
+</node>
+<node id="APP-000038_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000038/assets_liabilities.xlsx</data>
+  <data key="d16">2025-11-25T15:59:28.348330</data>
+</node>
+<node id="APP-000038_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000038/credit_report.json</data>
+  <data key="d16">2025-11-25T15:59:28.348330</data>
+</node>
+<node id="DECISION_APP-000038">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000038</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">50.0</data>
+  <data key="d19">2025-11-28T15:59:28.348330</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000038">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000038</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">275.09</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-28T15:59:28.348330</data>
+</node>
+<node id="1994-1209-46798988-4">
+  <data key="d3">Person</data>
+  <data key="d4">Aisha Al Jabri</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">6360.7</data>
+  <data key="d7">954</data>
+  <data key="d8">108224.0</data>
+</node>
+<node id="APP-000039">
+  <data key="d3">Application</data>
+  <data key="d9">1994-1209-46798988-4</data>
+  <data key="d10">2025-12-29T15:59:28.351798</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">60.0</data>
+</node>
+<node id="APP-000039_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000039/bank_statement.pdf</data>
+  <data key="d16">2025-12-29T15:59:28.351798</data>
+</node>
+<node id="APP-000039_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000039/emirates_id.png</data>
+  <data key="d16">2025-12-29T15:59:28.351798</data>
+</node>
+<node id="APP-000039_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000039/employment_letter.pdf</data>
+  <data key="d16">2025-12-29T15:59:28.351798</data>
+</node>
+<node id="APP-000039_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000039/resume.pdf</data>
+  <data key="d16">2025-12-29T15:59:28.351798</data>
+</node>
+<node id="APP-000039_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000039/assets_liabilities.xlsx</data>
+  <data key="d16">2025-12-29T15:59:28.351798</data>
+</node>
+<node id="APP-000039_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000039/credit_report.json</data>
+  <data key="d16">2025-12-29T15:59:28.351798</data>
+</node>
+<node id="DECISION_APP-000039">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000039</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">60.0</data>
+  <data key="d19">2025-12-30T15:59:28.351798</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">MEDIUM</data>
+</node>
+<node id="REC_APP-000039">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000039</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d23">1908.21</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-12-30T15:59:28.351798</data>
+</node>
+<node id="1961-0718-61468716-8">
+  <data key="d3">Person</data>
+  <data key="d4">Salma Al Ketbi</data>
+  <data key="d5">UAE National</data>
+  <data key="d6">17018.2</data>
+  <data key="d7">1113</data>
+  <data key="d8">118670.0</data>
+</node>
+<node id="APP-000040">
+  <data key="d3">Application</data>
+  <data key="d9">1961-0718-61468716-8</data>
+  <data key="d10">2025-10-30T15:59:28.355574</data>
+  <data key="d11">PROCESSED</data>
+  <data key="d12">75.0</data>
+</node>
+<node id="APP-000040_bank_statement">
+  <data key="d3">Document</data>
+  <data key="d13">bank_statement</data>
+  <data key="d14">bank_statement.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000040/bank_statement.pdf</data>
+  <data key="d16">2025-10-30T15:59:28.355574</data>
+</node>
+<node id="APP-000040_emirates_id">
+  <data key="d3">Document</data>
+  <data key="d13">emirates_id</data>
+  <data key="d14">emirates_id.png</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000040/emirates_id.png</data>
+  <data key="d16">2025-10-30T15:59:28.355574</data>
+</node>
+<node id="APP-000040_employment_letter">
+  <data key="d3">Document</data>
+  <data key="d13">employment_letter</data>
+  <data key="d14">employment_letter.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000040/employment_letter.pdf</data>
+  <data key="d16">2025-10-30T15:59:28.355574</data>
+</node>
+<node id="APP-000040_resume">
+  <data key="d3">Document</data>
+  <data key="d13">resume</data>
+  <data key="d14">resume.pdf</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000040/resume.pdf</data>
+  <data key="d16">2025-10-30T15:59:28.355574</data>
+</node>
+<node id="APP-000040_assets_liabilities">
+  <data key="d3">Document</data>
+  <data key="d13">assets_liabilities</data>
+  <data key="d14">assets_liabilities.xlsx</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000040/assets_liabilities.xlsx</data>
+  <data key="d16">2025-10-30T15:59:28.355574</data>
+</node>
+<node id="APP-000040_credit_report">
+  <data key="d3">Document</data>
+  <data key="d13">credit_report</data>
+  <data key="d14">credit_report.json</data>
+  <data key="d15">/Users/marghubakhtar/Documents/social_support_agentic_ai/data/processed/documents/APP-000040/credit_report.json</data>
+  <data key="d16">2025-10-30T15:59:28.355574</data>
+</node>
+<node id="DECISION_APP-000040">
+  <data key="d3">Decision</data>
+  <data key="d17">APP-000040</data>
+  <data key="d18">APPROVED</data>
+  <data key="d12">75.0</data>
+  <data key="d19">2025-11-03T15:59:28.355574</data>
+  <data key="d20">SYSTEM</data>
+  <data key="d21">HIGH</data>
+</node>
+<node id="REC_APP-000040">
+  <data key="d3">Recommendation</data>
+  <data key="d17">APP-000040</data>
+  <data key="d22">FINANCIAL_ASSISTANCE</data>
+  <data key="d26">3000</data>
+  <data key="d24">6</data>
+  <data key="d25">2025-11-03T15:59:28.355574</data>
+</node>
+<edge source="1969-0626-15354599-2" target="APP-000001">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-12-16T15:59:28.204343</data>
+</edge>
+<edge source="APP-000001" target="APP-000001_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000001" target="APP-000001_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000001" target="APP-000001_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000001" target="APP-000001_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000001" target="APP-000001_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000001" target="APP-000001_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000001" target="DECISION_APP-000001">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-12-20T15:59:28.204343</data>
+</edge>
+<edge source="DECISION_APP-000001" target="REC_APP-000001">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1971-0520-47080140-2" target="APP-000002">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-11-08T15:59:28.211025</data>
+</edge>
+<edge source="APP-000002" target="APP-000002_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000002" target="APP-000002_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000002" target="APP-000002_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000002" target="APP-000002_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000002" target="APP-000002_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000002" target="APP-000002_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000002" target="DECISION_APP-000002">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-13T15:59:28.211025</data>
+</edge>
+<edge source="DECISION_APP-000002" target="REC_APP-000002">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1965-0819-29208935-8" target="APP-000003">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-12-21T15:59:28.221949</data>
+</edge>
+<edge source="APP-000003" target="APP-000003_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000003" target="APP-000003_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000003" target="APP-000003_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000003" target="APP-000003_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000003" target="APP-000003_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000003" target="APP-000003_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000003" target="DECISION_APP-000003">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-12-26T15:59:28.221949</data>
+</edge>
+<edge source="DECISION_APP-000003" target="REC_APP-000003">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1961-0319-98227303-7" target="APP-000004">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-10-10T15:59:28.228086</data>
+</edge>
+<edge source="APP-000004" target="APP-000004_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000004" target="APP-000004_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000004" target="APP-000004_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000004" target="APP-000004_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000004" target="APP-000004_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000004" target="APP-000004_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000004" target="DECISION_APP-000004">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-10-14T15:59:28.228086</data>
+</edge>
+<edge source="DECISION_APP-000004" target="REC_APP-000004">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1965-0504-16408822-5" target="APP-000005">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-12-08T15:59:28.232657</data>
+</edge>
+<edge source="APP-000005" target="APP-000005_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000005" target="APP-000005_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000005" target="APP-000005_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000005" target="APP-000005_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000005" target="APP-000005_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000005" target="APP-000005_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000005" target="DECISION_APP-000005">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-12-12T15:59:28.232657</data>
+</edge>
+<edge source="DECISION_APP-000005" target="REC_APP-000005">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="2003-1122-73161098-9" target="APP-000006">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-10-14T15:59:28.235808</data>
+</edge>
+<edge source="APP-000006" target="APP-000006_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000006" target="APP-000006_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000006" target="APP-000006_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000006" target="APP-000006_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000006" target="APP-000006_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000006" target="APP-000006_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000006" target="DECISION_APP-000006">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-10-15T15:59:28.235808</data>
+</edge>
+<edge source="DECISION_APP-000006" target="REC_APP-000006">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1958-1208-10466177-6" target="APP-000007">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-10-31T15:59:28.238983</data>
+</edge>
+<edge source="APP-000007" target="APP-000007_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000007" target="APP-000007_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000007" target="APP-000007_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000007" target="APP-000007_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000007" target="APP-000007_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000007" target="APP-000007_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000007" target="DECISION_APP-000007">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-01T15:59:28.238983</data>
+</edge>
+<edge source="DECISION_APP-000007" target="REC_APP-000007">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1960-0709-66519399-9" target="APP-000008">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-11-12T15:59:28.243382</data>
+</edge>
+<edge source="APP-000008" target="APP-000008_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000008" target="APP-000008_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000008" target="APP-000008_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000008" target="APP-000008_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000008" target="APP-000008_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000008" target="APP-000008_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000008" target="DECISION_APP-000008">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-17T15:59:28.243382</data>
+</edge>
+<edge source="DECISION_APP-000008" target="REC_APP-000008">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1962-1205-97241147-3" target="APP-000009">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-10-31T15:59:28.246971</data>
+</edge>
+<edge source="APP-000009" target="APP-000009_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000009" target="APP-000009_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000009" target="APP-000009_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000009" target="APP-000009_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000009" target="APP-000009_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000009" target="APP-000009_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000009" target="DECISION_APP-000009">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-07T15:59:28.246971</data>
+</edge>
+<edge source="DECISION_APP-000009" target="REC_APP-000009">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1963-0605-22242388-6" target="APP-000010">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-10-28T15:59:28.250790</data>
+</edge>
+<edge source="APP-000010" target="APP-000010_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000010" target="APP-000010_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000010" target="APP-000010_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000010" target="APP-000010_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000010" target="APP-000010_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000010" target="APP-000010_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000010" target="DECISION_APP-000010">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-02T15:59:28.250790</data>
+</edge>
+<edge source="DECISION_APP-000010" target="REC_APP-000010">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1982-1017-86703472-4" target="APP-000011">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-11-24T15:59:28.253830</data>
+</edge>
+<edge source="APP-000011" target="APP-000011_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000011" target="APP-000011_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000011" target="APP-000011_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000011" target="APP-000011_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000011" target="APP-000011_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000011" target="APP-000011_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000011" target="DECISION_APP-000011">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-30T15:59:28.253830</data>
+</edge>
+<edge source="DECISION_APP-000011" target="REC_APP-000011">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1952-0510-71193393-1" target="APP-000012">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-11-10T15:59:28.257458</data>
+</edge>
+<edge source="APP-000012" target="APP-000012_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000012" target="APP-000012_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000012" target="APP-000012_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000012" target="APP-000012_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000012" target="APP-000012_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000012" target="APP-000012_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000012" target="DECISION_APP-000012">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-12T15:59:28.257458</data>
+</edge>
+<edge source="DECISION_APP-000012" target="REC_APP-000012">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1953-1226-49613096-9" target="APP-000013">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-11-21T15:59:28.260598</data>
+</edge>
+<edge source="APP-000013" target="APP-000013_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000013" target="APP-000013_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000013" target="APP-000013_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000013" target="APP-000013_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000013" target="APP-000013_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000013" target="APP-000013_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000013" target="DECISION_APP-000013">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-26T15:59:28.260598</data>
+</edge>
+<edge source="DECISION_APP-000013" target="REC_APP-000013">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1973-0716-71021210-2" target="APP-000014">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-12-06T15:59:28.263647</data>
+</edge>
+<edge source="APP-000014" target="APP-000014_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000014" target="APP-000014_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000014" target="APP-000014_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000014" target="APP-000014_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000014" target="APP-000014_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000014" target="APP-000014_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000014" target="DECISION_APP-000014">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-12-12T15:59:28.263647</data>
+</edge>
+<edge source="DECISION_APP-000014" target="REC_APP-000014">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="2010-0902-77441081-9" target="APP-000015">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-11-01T15:59:28.266765</data>
+</edge>
+<edge source="APP-000015" target="APP-000015_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000015" target="APP-000015_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000015" target="APP-000015_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000015" target="APP-000015_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000015" target="APP-000015_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000015" target="APP-000015_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000015" target="DECISION_APP-000015">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-08T15:59:28.266765</data>
+</edge>
+<edge source="DECISION_APP-000015" target="REC_APP-000015">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1958-0808-52512063-9" target="APP-000016">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-11-30T15:59:28.270427</data>
+</edge>
+<edge source="APP-000016" target="APP-000016_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000016" target="APP-000016_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000016" target="APP-000016_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000016" target="APP-000016_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000016" target="APP-000016_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000016" target="APP-000016_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000016" target="DECISION_APP-000016">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-12-04T15:59:28.270427</data>
+</edge>
+<edge source="DECISION_APP-000016" target="REC_APP-000016">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1967-0121-44585138-6" target="APP-000017">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-11-05T15:59:28.273466</data>
+</edge>
+<edge source="APP-000017" target="APP-000017_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000017" target="APP-000017_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000017" target="APP-000017_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000017" target="APP-000017_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000017" target="APP-000017_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000017" target="APP-000017_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000017" target="DECISION_APP-000017">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-11T15:59:28.273466</data>
+</edge>
+<edge source="DECISION_APP-000017" target="REC_APP-000017">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1986-1001-33572537-4" target="APP-000018">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-10-12T15:59:28.276687</data>
+</edge>
+<edge source="APP-000018" target="APP-000018_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000018" target="APP-000018_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000018" target="APP-000018_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000018" target="APP-000018_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000018" target="APP-000018_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000018" target="APP-000018_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000018" target="DECISION_APP-000018">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-10-13T15:59:28.276687</data>
+</edge>
+<edge source="DECISION_APP-000018" target="REC_APP-000018">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1980-1212-25188664-5" target="APP-000019">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-10-19T15:59:28.279763</data>
+</edge>
+<edge source="APP-000019" target="APP-000019_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000019" target="APP-000019_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000019" target="APP-000019_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000019" target="APP-000019_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000019" target="APP-000019_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000019" target="APP-000019_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000019" target="DECISION_APP-000019">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-10-24T15:59:28.279763</data>
+</edge>
+<edge source="DECISION_APP-000019" target="REC_APP-000019">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1956-0820-32909541-0" target="APP-000020">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-12-23T15:59:28.283524</data>
+</edge>
+<edge source="APP-000020" target="APP-000020_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000020" target="APP-000020_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000020" target="APP-000020_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000020" target="APP-000020_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000020" target="APP-000020_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000020" target="APP-000020_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000020" target="DECISION_APP-000020">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-12-26T15:59:28.283524</data>
+</edge>
+<edge source="DECISION_APP-000020" target="REC_APP-000020">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1983-0915-71472671-6" target="APP-000021">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-11-27T15:59:28.286480</data>
+</edge>
+<edge source="APP-000021" target="APP-000021_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000021" target="APP-000021_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000021" target="APP-000021_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000021" target="APP-000021_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000021" target="APP-000021_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000021" target="APP-000021_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000021" target="DECISION_APP-000021">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-28T15:59:28.286480</data>
+</edge>
+<edge source="DECISION_APP-000021" target="REC_APP-000021">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1979-0217-28241849-7" target="APP-000022">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-12-25T15:59:28.290074</data>
+</edge>
+<edge source="APP-000022" target="APP-000022_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000022" target="APP-000022_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000022" target="APP-000022_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000022" target="APP-000022_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000022" target="APP-000022_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000022" target="APP-000022_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000022" target="DECISION_APP-000022">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-12-31T15:59:28.290074</data>
+</edge>
+<edge source="DECISION_APP-000022" target="REC_APP-000022">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="2007-1002-98882124-0" target="APP-000023">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-11-27T15:59:28.293256</data>
+</edge>
+<edge source="APP-000023" target="APP-000023_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000023" target="APP-000023_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000023" target="APP-000023_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000023" target="APP-000023_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000023" target="APP-000023_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000023" target="APP-000023_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000023" target="DECISION_APP-000023">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-29T15:59:28.293256</data>
+</edge>
+<edge source="DECISION_APP-000023" target="REC_APP-000023">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1953-0903-16052535-0" target="APP-000024">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-12-14T15:59:28.297149</data>
+</edge>
+<edge source="APP-000024" target="APP-000024_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000024" target="APP-000024_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000024" target="APP-000024_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000024" target="APP-000024_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000024" target="APP-000024_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000024" target="APP-000024_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000024" target="DECISION_APP-000024">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-12-16T15:59:28.297149</data>
+</edge>
+<edge source="DECISION_APP-000024" target="REC_APP-000024">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="2010-0215-49991663-6" target="APP-000025">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-11-16T15:59:28.300409</data>
+</edge>
+<edge source="APP-000025" target="APP-000025_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000025" target="APP-000025_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000025" target="APP-000025_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000025" target="APP-000025_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000025" target="APP-000025_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000025" target="APP-000025_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000025" target="DECISION_APP-000025">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-19T15:59:28.300409</data>
+</edge>
+<edge source="DECISION_APP-000025" target="REC_APP-000025">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="2006-0924-46819677-4" target="APP-000026">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-12-24T15:59:28.303865</data>
+</edge>
+<edge source="APP-000026" target="APP-000026_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000026" target="APP-000026_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000026" target="APP-000026_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000026" target="APP-000026_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000026" target="APP-000026_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000026" target="APP-000026_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000026" target="DECISION_APP-000026">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-12-27T15:59:28.303865</data>
+</edge>
+<edge source="DECISION_APP-000026" target="REC_APP-000026">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="2009-0404-25916596-7" target="APP-000027">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-12-29T15:59:28.306933</data>
+</edge>
+<edge source="APP-000027" target="APP-000027_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000027" target="APP-000027_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000027" target="APP-000027_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000027" target="APP-000027_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000027" target="APP-000027_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000027" target="APP-000027_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000027" target="DECISION_APP-000027">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-12-30T15:59:28.306933</data>
+</edge>
+<edge source="DECISION_APP-000027" target="REC_APP-000027">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="2004-1116-19061506-1" target="APP-000028">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-11-28T15:59:28.313301</data>
+</edge>
+<edge source="APP-000028" target="APP-000028_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000028" target="APP-000028_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000028" target="APP-000028_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000028" target="APP-000028_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000028" target="APP-000028_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000028" target="APP-000028_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000028" target="DECISION_APP-000028">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-30T15:59:28.313301</data>
+</edge>
+<edge source="DECISION_APP-000028" target="REC_APP-000028">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1983-1026-77731180-7" target="APP-000029">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-12-06T15:59:28.316772</data>
+</edge>
+<edge source="APP-000029" target="APP-000029_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000029" target="APP-000029_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000029" target="APP-000029_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000029" target="APP-000029_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000029" target="APP-000029_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000029" target="APP-000029_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000029" target="DECISION_APP-000029">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-12-10T15:59:28.316772</data>
+</edge>
+<edge source="DECISION_APP-000029" target="REC_APP-000029">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1984-0222-83600812-5" target="APP-000030">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-11-12T15:59:28.320907</data>
+</edge>
+<edge source="APP-000030" target="APP-000030_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000030" target="APP-000030_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000030" target="APP-000030_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000030" target="APP-000030_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000030" target="APP-000030_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000030" target="APP-000030_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000030" target="DECISION_APP-000030">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-19T15:59:28.320907</data>
+</edge>
+<edge source="DECISION_APP-000030" target="REC_APP-000030">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1956-0321-90776943-0" target="APP-000031">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-11-20T15:59:28.324524</data>
+</edge>
+<edge source="APP-000031" target="APP-000031_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000031" target="APP-000031_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000031" target="APP-000031_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000031" target="APP-000031_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000031" target="APP-000031_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000031" target="APP-000031_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000031" target="DECISION_APP-000031">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-26T15:59:28.324524</data>
+</edge>
+<edge source="DECISION_APP-000031" target="REC_APP-000031">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1977-0602-24228398-8" target="APP-000032">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-12-09T15:59:28.328428</data>
+</edge>
+<edge source="APP-000032" target="APP-000032_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000032" target="APP-000032_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000032" target="APP-000032_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000032" target="APP-000032_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000032" target="APP-000032_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000032" target="APP-000032_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000032" target="DECISION_APP-000032">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-12-13T15:59:28.328428</data>
+</edge>
+<edge source="DECISION_APP-000032" target="REC_APP-000032">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1952-0424-35186888-7" target="APP-000033">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-12-02T15:59:28.332054</data>
+</edge>
+<edge source="APP-000033" target="APP-000033_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000033" target="APP-000033_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000033" target="APP-000033_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000033" target="APP-000033_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000033" target="APP-000033_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000033" target="APP-000033_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000033" target="DECISION_APP-000033">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-12-09T15:59:28.332054</data>
+</edge>
+<edge source="DECISION_APP-000033" target="REC_APP-000033">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1951-1126-87277029-1" target="APP-000034">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-12-20T15:59:28.335239</data>
+</edge>
+<edge source="APP-000034" target="APP-000034_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000034" target="APP-000034_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000034" target="APP-000034_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000034" target="APP-000034_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000034" target="APP-000034_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000034" target="APP-000034_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000034" target="DECISION_APP-000034">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-12-26T15:59:28.335239</data>
+</edge>
+<edge source="DECISION_APP-000034" target="REC_APP-000034">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1950-0712-98617699-7" target="APP-000035">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-12-18T15:59:28.338450</data>
+</edge>
+<edge source="APP-000035" target="APP-000035_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000035" target="APP-000035_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000035" target="APP-000035_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000035" target="APP-000035_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000035" target="APP-000035_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000035" target="APP-000035_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000035" target="DECISION_APP-000035">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-12-20T15:59:28.338450</data>
+</edge>
+<edge source="DECISION_APP-000035" target="REC_APP-000035">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1953-0307-83428820-6" target="APP-000036">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-12-21T15:59:28.342140</data>
+</edge>
+<edge source="APP-000036" target="APP-000036_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000036" target="APP-000036_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000036" target="APP-000036_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000036" target="APP-000036_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000036" target="APP-000036_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000036" target="APP-000036_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000036" target="DECISION_APP-000036">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-12-24T15:59:28.342140</data>
+</edge>
+<edge source="DECISION_APP-000036" target="REC_APP-000036">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="2006-0712-20695820-0" target="APP-000037">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-10-09T15:59:28.345333</data>
+</edge>
+<edge source="APP-000037" target="APP-000037_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000037" target="APP-000037_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000037" target="APP-000037_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000037" target="APP-000037_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000037" target="APP-000037_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000037" target="APP-000037_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000037" target="DECISION_APP-000037">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-10-12T15:59:28.345333</data>
+</edge>
+<edge source="DECISION_APP-000037" target="REC_APP-000037">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1960-0611-65484975-6" target="APP-000038">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-11-25T15:59:28.348330</data>
+</edge>
+<edge source="APP-000038" target="APP-000038_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000038" target="APP-000038_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000038" target="APP-000038_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000038" target="APP-000038_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000038" target="APP-000038_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000038" target="APP-000038_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000038" target="DECISION_APP-000038">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-28T15:59:28.348330</data>
+</edge>
+<edge source="DECISION_APP-000038" target="REC_APP-000038">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1994-1209-46798988-4" target="APP-000039">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-12-29T15:59:28.351798</data>
+</edge>
+<edge source="APP-000039" target="APP-000039_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000039" target="APP-000039_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000039" target="APP-000039_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000039" target="APP-000039_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000039" target="APP-000039_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000039" target="APP-000039_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000039" target="DECISION_APP-000039">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-12-30T15:59:28.351798</data>
+</edge>
+<edge source="DECISION_APP-000039" target="REC_APP-000039">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+<edge source="1961-0718-61468716-8" target="APP-000040">
+  <data key="d27">SUBMITTED</data>
+  <data key="d28">2025-10-30T15:59:28.355574</data>
+</edge>
+<edge source="APP-000040" target="APP-000040_bank_statement">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000040" target="APP-000040_emirates_id">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000040" target="APP-000040_employment_letter">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000040" target="APP-000040_resume">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000040" target="APP-000040_assets_liabilities">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000040" target="APP-000040_credit_report">
+  <data key="d27">HAS_DOCUMENT</data>
+</edge>
+<edge source="APP-000040" target="DECISION_APP-000040">
+  <data key="d27">REVIEWED</data>
+  <data key="d28">2025-11-03T15:59:28.355574</data>
+</edge>
+<edge source="DECISION_APP-000040" target="REC_APP-000040">
+  <data key="d27">RECOMMENDED</data>
+</edge>
+</graph></graphml>

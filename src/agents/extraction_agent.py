@@ -74,6 +74,10 @@ class DataExtractionAgent(BaseAgent):
                 elif doc_type == "credit_report":
                     result = await self._extract_credit_report(file_path)
                     extracted_data.credit_data.update(result)
+                    
+                elif doc_type == "employment_letter":
+                    result = await self._extract_employment_letter(file_path)
+                    extracted_data.employment_data.update(result)
                 
                 self.logger.info(f"[{application_id}] Extracted {doc_type}")
                 
@@ -127,4 +131,12 @@ class DataExtractionAgent(BaseAgent):
             return self.extractor.extract_credit_report(file_path)
         except Exception as e:
             self.logger.error(f"Credit report extraction failed: {e}")
+            return {}
+    
+    async def _extract_employment_letter(self, file_path: str) -> Dict[str, Any]:
+        """Extract employment details from employment letter"""
+        try:
+            return self.extractor.extract_employment_letter(file_path)
+        except Exception as e:
+            self.logger.error(f"Employment letter extraction failed: {e}")
             return {}

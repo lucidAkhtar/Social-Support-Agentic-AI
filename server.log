@@ -1,0 +1,74 @@
+INFO:src.databases.unified_database_manager:✅ SQLite initialized
+INFO:src.databases.unified_database_manager:✅ TinyDB initialized
+INFO:chromadb.telemetry.product.posthog:Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:src.databases.unified_database_manager:✅ ChromaDB initialized
+INFO:src.databases.networkx_manager:NetworkX graph database initialized
+INFO:src.databases.unified_database_manager:✅ NetworkX initialized (200 nodes)
+INFO:src.databases.unified_database_manager:Unified Database Manager initialized (FAANG production-grade)
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+INFO:src.databases.chroma_manager:   Found existing collection: application_summaries (40 docs)
+INFO:src.databases.chroma_manager:   Found existing collection: resumes (0 docs)
+INFO:src.databases.chroma_manager:   Found existing collection: income_patterns (40 docs)
+INFO:src.databases.chroma_manager:   Found existing collection: case_decisions (40 docs)
+INFO:src.databases.chroma_manager:✅ ChromaDB initialized at data/databases/chromadb_rag
+INFO:src.databases.chroma_manager:   Collections: application_summaries, resumes, income_patterns, case_decisions
+INFO:src.databases.networkx_manager:NetworkX graph database initialized
+INFO:src.api.main:✅ NetworkX loaded: 200 nodes, 160 edges
+INFO:DocumentExtractor:Document extractor initialized
+INFO:DataExtractionAgent:Document extractor initialized
+INFO:EligibilityAgent:ML model loaded successfully
+INFO:src.databases.unified_database_manager:✅ SQLite initialized
+INFO:src.databases.unified_database_manager:✅ TinyDB initialized
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientStartEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event ClientCreateCollectionEvent: capture() takes 1 positional argument but 3 were given
+INFO:src.databases.unified_database_manager:✅ ChromaDB initialized
+INFO:src.databases.networkx_manager:NetworkX graph database initialized
+INFO:src.databases.unified_database_manager:✅ NetworkX initialized (200 nodes)
+INFO:src.databases.unified_database_manager:Unified Database Manager initialized (FAANG production-grade)
+INFO:RAGChatbotAgent:RAG Chatbot initialized: 4 DBs + caching + sessions (M1 8GB optimized)
+INFO:MasterOrchestrator:All agents registered
+INFO:src.api.main:✅ All 6 agents initialized and registered (including RAG chatbot)
+INFO:     Started server process [68839]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:MasterOrchestrator:[APP-000017] RAG Chat query: general
+INFO:RAGChatbotAgent:Using full ApplicationState for APP-000017: stage=completed
+INFO:RAGChatbotAgent:Cache MISS for session APP-000017 (hits: 0, misses: 1)
+ERROR:src.databases.unified_database_manager:SQLite query failed (get_decision_history): datatype mismatch
+ERROR:src.databases.unified_database_manager:SQLite query failed (get_validation_history): 'SQLiteManager' object has no attribute 'get_validation_history'
+WARNING:RAGChatbotAgent:SQLite validation query failed: 'SQLiteManager' object has no attribute 'get_validation_history'
+WARNING:RAGChatbotAgent:TinyDB cache query failed: 'TinyDBManager' object has no attribute 'get_cached_extraction'
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+ERROR:chromadb.telemetry.product.posthog:Failed to send telemetry event CollectionQueryEvent: capture() takes 1 positional argument but 3 were given
+INFO:RAGChatbotAgent:RAG Context built: app_data=691, decision=272, extracted=269 chars
+WARNING:RAGChatbotAgent:Failed to store conversation in TinyDB: 'TinyDBManager' object has no attribute 'store_llm_response'
+INFO:     127.0.0.1:55174 - "POST /api/applications/APP-000017/chat HTTP/1.1" 200 OK
+INFO:MasterOrchestrator:[APP-000017] RAG Chat query: explanation
+INFO:RAGChatbotAgent:Using full ApplicationState for APP-000017: stage=completed
+INFO:RAGChatbotAgent:Cache MISS for session APP-000017 (hits: 0, misses: 2)
+WARNING:RAGChatbotAgent:SQLite validation query failed: 'SQLiteManager' object has no attribute 'get_validation_history'
+WARNING:RAGChatbotAgent:TinyDB cache query failed: 'TinyDBManager' object has no attribute 'get_cached_extraction'
+INFO:RAGChatbotAgent:RAG Context built: app_data=691, decision=272, extracted=269 chars
+WARNING:RAGChatbotAgent:Failed to store conversation in TinyDB: 'TinyDBManager' object has no attribute 'store_llm_response'
+INFO:     127.0.0.1:55187 - "POST /api/applications/APP-000017/chat HTTP/1.1" 200 OK
+INFO:MasterOrchestrator:[APP-000004] RAG Chat query: general
+INFO:RAGChatbotAgent:Using full ApplicationState for APP-000004: stage=completed
+INFO:RAGChatbotAgent:Cache MISS for session APP-000004 (hits: 0, misses: 3)
+WARNING:RAGChatbotAgent:SQLite validation query failed: 'SQLiteManager' object has no attribute 'get_validation_history'
+WARNING:RAGChatbotAgent:TinyDB cache query failed: 'TinyDBManager' object has no attribute 'get_cached_extraction'
+WARNING:RAGChatbotAgent:Failed to store conversation in TinyDB: 'TinyDBManager' object has no attribute 'store_llm_response'
+INFO:     127.0.0.1:55195 - "POST /api/applications/APP-000004/chat HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [68839]

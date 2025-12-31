@@ -78,6 +78,8 @@ python-jose = {extras = ["cryptography"], version = "^3.3.0"}
 loguru = "^0.7.2"
 plotly = "^6.5.0"
 pymongo = "^4.15.5"
+sentence-transformers = "^5.2.0"
+torch = "2.2.0"
 
 [tool.poetry.group.multimodal.dependencies]
 opencv-python = "^4.9.0"

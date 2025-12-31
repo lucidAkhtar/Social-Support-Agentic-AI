@@ -4,6 +4,8 @@ Uses proper libraries for each document type - NO LLM for basic extraction
 """
 import logging
 import re
+import os
+import json
 from typing import Dict, Any, Optional, List
 from pathlib import Path
 from datetime import datetime
@@ -274,7 +276,96 @@ class DocumentExtractor:
             
         except Exception as e:
             self.logger.error(f"Resume extraction failed: {e}")
-            raise
+            return {}
+    
+    # ========== Employment Letter Extraction (NEW) ==========
+    
+    def extract_employment_letter(self, file_path: str) -> Dict[str, Any]:
+        """Extract employment details from employment letter"""
+        try:
+            text = self._extract_pdf_text(str(file_path))
+            self.logger.info(f"Extracted {len(text)} chars from employment letter")
+            return self._parse_employment_letter(text)
+        except Exception as e:
+            self.logger.error(f"Employment letter extraction failed: {e}")
+            return {}
+    
+    def _parse_employment_letter(self, text: str) -> Dict[str, Any]:
+        """Parse employment letter for company, position, salary, start date"""
+        data = {
+            "company_name": None,
+            "current_position": None,
+            "monthly_salary": 0.0,
+            "join_date": None,
+            "employment_type": None,
+            "employment_status": "employed"
+        }
+        
+        lines = text.split('\n')
+        text_lower = text.lower()
+        
+        # Extract company name (usually at top)
+        for line in lines[:10]:
+            if line.strip() and not any(x in line.lower() for x in ['date:', 'to whom', 'hr', 'human resources', 'department']):
+                if len(line.strip()) < 50 and len(line.strip()) > 3:
+                    data['company_name'] = line.strip()
+                    break
+        
+        # Extract position/job title
+        position_patterns = [
+            r'employed as\s+(?:a|an)?\s*([\w\s]+?)(?:\s+in|\.|,|$)',
+            r'position[:\s]+([\w\s]+?)(?:\.|,|$)',
+            r'works? as\s+(?:a|an)?\s*([\w\s]+?)(?:\s+in|\.|,|$)',
+            r'serving.*?as\s+(?:a|an)?\s*([\w\s]+?)(?:\s+in|\.|,|$)'
+        ]
+        for pattern in position_patterns:
+            match = re.search(pattern, text_lower, re.IGNORECASE)
+            if match:
+                data['current_position'] = match.group(1).strip().title()
+                break
+        
+        # Extract monthly salary
+        salary_patterns = [
+            r'salary of[:\s]+(?:AED|aed)?[\s]?([\d,]+\.?\d*)',
+            r'monthly salary[:\s]+(?:AED|aed)?[\s]?([\d,]+\.?\d*)',
+            r'earns[:\s]+(?:AED|aed)?[\s]?([\d,]+\.?\d*)',
+            r'compensation[:\s]+(?:AED|aed)?[\s]?([\d,]+\.?\d*)'
+        ]
+        for pattern in salary_patterns:
+            match = re.search(pattern, text_lower, re.IGNORECASE)
+            if match:
+                salary_str = match.group(1).replace(',', '')
+                try:
+                    data['monthly_salary'] = float(salary_str)
+                    break
+                except:
+                    pass
+        
+        # Extract join date
+        date_patterns = [
+            r'joined.*?on[:\s]+(\w+\s+\d+,?\s+\d{4})',
+            r'employment.*?from[:\s]+(\w+\s+\d+,?\s+\d{4})',
+            r'start(?:ed|ing)?.*?(?:date|on)[:\s]+(\w+\s+\d+,?\s+\d{4})'
+        ]
+        for pattern in date_patterns:
+            match = re.search(pattern, text_lower, re.IGNORECASE)
+            if match:
+                data['join_date'] = match.group(1).strip()
+                break
+        
+        # Extract employment type
+        if 'full-time' in text_lower or 'full time' in text_lower:
+            data['employment_type'] = 'Full-time'
+        elif 'part-time' in text_lower or 'part time' in text_lower:
+            data['employment_type'] = 'Part-time'
+        elif 'contract' in text_lower:
+            data['employment_type'] = 'Contract'
+        elif 'permanent' in text_lower:
+            data['employment_type'] = 'Permanent'
+        
+        self.logger.info(f"✅ Employment letter: company={data['company_name']}, position={data['current_position']}, salary={data['monthly_salary']} AED")
+        
+        return data
     
     def _parse_resume(self, text: str) -> Dict[str, Any]:
         """Parse resume fields"""
@@ -347,7 +438,14 @@ class DocumentExtractor:
             raise
     
     def _parse_assets_liabilities(self, df: pd.DataFrame) -> Dict[str, Any]:
-        """Parse assets and liabilities from DataFrame"""
+        """
+        Parse assets and liabilities from DataFrame - PRODUCTION GRADE
+        
+        Handles multiple Excel formats:
+        1. Vertical format: Labels in first column, values in second
+        2. Horizontal format: Labels as column headers
+        3. Multiple sheets with summary rows
+        """
         data = {
             "total_assets": 0.0,
             "total_liabilities": 0.0,
@@ -356,43 +454,199 @@ class DocumentExtractor:
             "liabilities_breakdown": {}
         }
         
-        # Look for columns with financial data
-        for col in df.columns:
-            col_lower = str(col).lower()
-            
-            # Assets
-            if 'asset' in col_lower or 'savings' in col_lower or 'property' in col_lower:
-                values = pd.to_numeric(df[col], errors='coerce').fillna(0)
-                total = values.sum()
-                if total > 0:
-                    data['assets_breakdown'][str(col)] = float(total)
-                    data['total_assets'] += total
-            
-            # Liabilities
-            if 'liabil' in col_lower or 'debt' in col_lower or 'loan' in col_lower:
-                values = pd.to_numeric(df[col], errors='coerce').fillna(0)
-                total = values.sum()
-                if total > 0:
-                    data['liabilities_breakdown'][str(col)] = float(total)
-                    data['total_liabilities'] += total
+        self.logger.info(f"Parsing Excel with shape {df.shape}, columns: {list(df.columns)}")
         
+        # Strategy 1: Vertical format (labels in rows, values in adjacent column)
+        # Common format: "Total Assets (AED):" in column 0, value in column 1
+        for idx, row in df.iterrows():
+            try:
+                # Get first non-null column value as label
+                label = None
+                value_col = None
+                
+                for col_idx, col in enumerate(df.columns):
+                    cell_value = row[col]
+                    if pd.notna(cell_value) and str(cell_value).strip():
+                        if label is None:
+                            label = str(cell_value).strip()
+                        elif value_col is None and col_idx > 0:
+                            # This is the value column
+                            value_col = cell_value
+                            break
+                
+                if label and value_col is not None:
+                    label_lower = label.lower()
+                    
+                    # Try to convert value to numeric
+                    try:
+                        numeric_value = float(str(value_col).replace(',', '').replace(' ', ''))
+                    except (ValueError, AttributeError):
+                        continue
+                    
+                    # Match Total Assets
+                    if 'total' in label_lower and 'asset' in label_lower:
+                        data['total_assets'] = numeric_value
+                        self.logger.info(f"Found Total Assets (vertical): {numeric_value} AED")
+                    
+                    # Match Total Liabilities
+                    elif 'total' in label_lower and ('liabilit' in label_lower or 'debt' in label_lower):
+                        data['total_liabilities'] = numeric_value
+                        self.logger.info(f"Found Total Liabilities (vertical): {numeric_value} AED")
+                    
+                    # Individual asset categories
+                    elif any(kw in label_lower for kw in ['savings', 'property', 'cash', 'investment', 'vehicle', 'real estate']):
+                        if 'asset' in label_lower or numeric_value > 0:
+                            data['assets_breakdown'][label] = numeric_value
+                    
+                    # Individual liability categories
+                    elif any(kw in label_lower for kw in ['loan', 'mortgage', 'credit card', 'debt']):
+                        data['liabilities_breakdown'][label] = numeric_value
+                        
+            except Exception as e:
+                self.logger.debug(f"Skipping row {idx}: {e}")
+                continue
+        
+        # Strategy 2: Horizontal format (column headers with "Total Assets", "Total Liabilities")
+        if data['total_assets'] == 0 and data['total_liabilities'] == 0:
+            for col in df.columns:
+                col_str = str(col).strip()
+                col_lower = col_str.lower()
+                
+                try:
+                    # Exact match for "Total Assets"
+                    if 'total' in col_lower and 'asset' in col_lower:
+                        values = pd.to_numeric(df[col], errors='coerce').dropna()
+                        if len(values) > 0:
+                            data['total_assets'] = float(values.iloc[0])
+                            self.logger.info(f"Found Total Assets (horizontal): {data['total_assets']} AED")
+                    
+                    # Exact match for "Total Liabilities"
+                    elif 'total' in col_lower and ('liabilit' in col_lower or 'debt' in col_lower):
+                        values = pd.to_numeric(df[col], errors='coerce').dropna()
+                        if len(values) > 0:
+                            data['total_liabilities'] = float(values.iloc[0])
+                            self.logger.info(f"Found Total Liabilities (horizontal): {data['total_liabilities']} AED")
+                    
+                    # Individual asset columns
+                    elif any(kw in col_lower for kw in ['asset', 'savings', 'property', 'cash', 'investment']):
+                        if 'total' not in col_lower:
+                            values = pd.to_numeric(df[col], errors='coerce').fillna(0)
+                            total = values.sum()
+                            if total > 0:
+                                data['assets_breakdown'][col_str] = float(total)
+                    
+                    # Individual liability columns
+                    elif any(kw in col_lower for kw in ['liabil', 'debt', 'loan', 'mortgage', 'credit']):
+                        if 'total' not in col_lower:
+                            values = pd.to_numeric(df[col], errors='coerce').fillna(0)
+                            total = values.sum()
+                            if total > 0:
+                                data['liabilities_breakdown'][col_str] = float(total)
+                except Exception as e:
+                    self.logger.debug(f"Error processing column {col}: {e}")
+                    continue
+        
+        # Strategy 3: Aggregate from breakdown if totals still not found
+        if data['total_assets'] == 0 and data['assets_breakdown']:
+            data['total_assets'] = sum(data['assets_breakdown'].values())
+            self.logger.info(f"Calculated Total Assets from breakdown: {data['total_assets']} AED")
+        
+        if data['total_liabilities'] == 0 and data['liabilities_breakdown']:
+            data['total_liabilities'] = sum(data['liabilities_breakdown'].values())
+            self.logger.info(f"Calculated Total Liabilities from breakdown: {data['total_liabilities']} AED")
+        
+        # Calculate net worth
         data['net_worth'] = data['total_assets'] - data['total_liabilities']
+        
+        # Validation
+        if data['total_assets'] == 0 and data['total_liabilities'] == 0:
+            self.logger.warning("No assets or liabilities extracted - check Excel format")
+        
+        self.logger.info(
+            f"✅ EXTRACTION COMPLETE: Assets={data['total_assets']:.2f} AED, "
+            f"Liabilities={data['total_liabilities']:.2f} AED, "
+            f"Net Worth={data['net_worth']:.2f} AED"
+        )
         
         return data
     
     # ========== Credit Report ==========
     
     def extract_credit_report(self, file_path: str) -> Dict[str, Any]:
-        """Extract credit information from PDF"""
+        """Extract credit information from JSON or PDF"""
         try:
+            # Check if file is JSON
+            if file_path.endswith('.json'):
+                self.logger.info(f"Processing JSON credit report: {file_path}")
+                return self._parse_credit_report_json(file_path)
+            
+            # Check if JSON file exists alongside PDF
+            json_path = file_path.replace('.pdf', '.json')
+            if os.path.exists(json_path):
+                self.logger.info(f"Found JSON credit report: {json_path}")
+                return self._parse_credit_report_json(json_path)
+            
+            # Fallback to PDF extraction
             text = self._extract_pdf_text(file_path)
-            self.logger.info(f"Extracted {len(text)} chars from credit report")
-            return self._parse_credit_report(text)
+            self.logger.info(f"Extracted {len(text)} chars from credit report PDF")
+            return self._parse_credit_report_text(text)
         except Exception as e:
             self.logger.error(f"Credit report extraction failed: {e}")
-            raise
+            return {}
     
-    def _parse_credit_report(self, text: str) -> Dict[str, Any]:
+    def _parse_credit_report_json(self, json_path: str) -> Dict[str, Any]:
+        """Parse structured JSON credit report (UAE Credit Bureau format)"""
+        try:
+            with open(json_path, 'r') as f:
+                data = json.load(f)
+            
+            # Extract comprehensive credit information
+            result = {
+                "credit_score": data.get("credit_score"),
+                "credit_rating": data.get("credit_rating"),
+                "report_id": data.get("report_id"),
+                "report_date": data.get("report_date"),
+                "bureau_name": data.get("bureau_name", "UAE Credit Bureau"),
+                
+                # Payment history
+                "payment_history": data.get("payment_history", {}),
+                "on_time_payments": data.get("payment_history", {}).get("on_time_payments", 0),
+                "late_payments": data.get("payment_history", {}).get("late_payments_30_days", 0),
+                "missed_payments": data.get("payment_history", {}).get("missed_payments", 0),
+                "payment_ratio": data.get("payment_history", {}).get("payment_ratio", 0),
+                
+                # Outstanding debt
+                "total_outstanding": data.get("total_outstanding", 0),
+                "outstanding_debt": data.get("total_outstanding", 0),
+                
+                # Credit accounts (detailed)
+                "credit_accounts": data.get("credit_accounts", []),
+                "active_accounts": len([acc for acc in data.get("credit_accounts", []) if acc.get("account_status") == "Active"]),
+                
+                # Credit utilization
+                "total_credit_limit": sum(acc.get("credit_limit", 0) for acc in data.get("credit_accounts", [])),
+                "total_balance": sum(acc.get("balance", 0) for acc in data.get("credit_accounts", [])),
+            }
+            
+            # Calculate credit utilization percentage
+            if result["total_credit_limit"] > 0:
+                result["credit_utilization"] = (result["total_balance"] / result["total_credit_limit"]) * 100
+            else:
+                result["credit_utilization"] = 0
+            
+            # Recent enquiries
+            result["enquiries"] = data.get("enquiries", [])
+            result["recent_enquiries"] = len(data.get("enquiries", []))
+            
+            self.logger.info(f"✅ Extracted credit data: score={result['credit_score']}, accounts={len(result['credit_accounts'])}, outstanding={result['outstanding_debt']:.2f} AED")
+            
+            return result
+            
+        except Exception as e:
+            self.logger.error(f"JSON credit report parsing failed: {e}")
+            return {}
+    
+    def _parse_credit_report_text(self, text: str) -> Dict[str, Any]:
         """Parse credit report fields"""
         data = {
             "credit_score": None,
