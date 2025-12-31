@@ -70,7 +70,7 @@ A production-ready, FAANG-standard platform that revolutionizes social support a
 | **Frontend** | Streamlit 1.28+ | Interactive web UI | Rapid development, Python-native, real-time updates |
 | **Backend** | FastAPI 0.104+ | REST API server | Async performance, auto-docs, type safety |
 | **Orchestration** | Custom async pattern | Agent coordination | Full control, no framework overhead, production-grade error handling |
-| **LLM** | OpenAI GPT-4 | Natural language understanding | Best-in-class reasoning, JSON mode support |
+| **LLM** | Mistral AI| Natural language understanding | Best-in-class reasoning, JSON mode support |
 | **ML Model** | Random Forest | Eligibility prediction | Interpretable, handles mixed data types |
 | **OCR** | Tesseract + PyMuPDF | Document extraction | Open-source, Arabic + English support |
 | **Vector DB** | ChromaDB | Semantic search | Lightweight, embedded, fast retrieval |
@@ -91,7 +91,7 @@ A production-ready, FAANG-standard platform that revolutionizes social support a
   - Dual-language extraction (Arabic + English)
   - Field extraction: name, income, assets, liabilities, family size
   - Confidence scoring for each extracted field
-- **Technology**: PyMuPDF + Tesseract OCR + GPT-4 for entity recognition
+- **Technology**: PyMuPDF + Tesseract OCR for entity recognition
 - **Performance**: 5-10 documents in ~30 seconds
 
 #### 2. **Data Validation Agent** 
@@ -144,7 +144,7 @@ A production-ready, FAANG-standard platform that revolutionizes social support a
 - **Architecture**:
   - Retrieval: ChromaDB vector search (top-5 similar cases)
   - Augmentation: Context from 4 databases
-  - Generation: GPT-4 with grounded responses
+  - Generation: Mistral AI with grounded responses
 - **Features**:
   - Application-specific context
   - Historical case references
@@ -981,7 +981,7 @@ Built with modern best practices and inspired by:
 - **Multi-agent patterns** - Custom orchestration architecture
 - **FastAPI** - High-performance backend
 - **Streamlit** - Rapid UI development
-- **OpenAI** - GPT-4 LLM capabilities
+- **OpenAI** - Mistral AI LLM capabilities
 
 ---
 
