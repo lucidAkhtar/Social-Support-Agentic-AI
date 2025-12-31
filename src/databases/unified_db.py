@@ -207,7 +207,7 @@ class UnifiedDatabaseManager:
             # Structured data from SQLite
             "application": self.sqlite.get_application(application_id),
             "profile": self.sqlite.get_applicant_profile(application_id),
-            "validation_history": self.sqlite.get_validation_history(application_id),
+            # "validation_history": self.sqlite.get_validation_history(application_id),  # REMOVED: Method doesn't exist
             "decision_history": self.sqlite.get_decision_history(application_id),
             "audit_trail": self.sqlite.get_audit_trail(application_id),
             
@@ -268,7 +268,8 @@ class UnifiedDatabaseManager:
     def get_validation_insights(self, application_id: str) -> Dict[str, Any]:
         """Get validation insights using multi-modal data."""
         # Get validation history from SQLite
-        validation_history = self.sqlite.get_validation_history(application_id)
+        # validation_history = self.sqlite.get_validation_history(application_id)  # REMOVED: Method doesn't exist
+        validation_history = []  # Placeholder
         
         # Find potentially conflicting information using ChromaDB
         profile = self.sqlite.get_applicant_profile(application_id)

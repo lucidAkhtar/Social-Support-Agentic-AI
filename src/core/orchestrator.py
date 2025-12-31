@@ -110,6 +110,11 @@ class MasterOrchestrator(BaseAgent):
         self.logger.info(f"[{app_state.application_id}] Running Data Extraction")
         app_state.update_stage(ProcessingStage.EXTRACTING)
         
+        # DEBUG: Log documents being passed to extraction
+        self.logger.info(f"[{app_state.application_id}] DEBUG - Documents to extract: {len(app_state.documents)}")
+        for doc in app_state.documents:
+            self.logger.info(f"[{app_state.application_id}] DEBUG - Doc type: {doc.document_type}, path: {doc.file_path}")
+        
         input_data = {
             "application_id": app_state.application_id,
             "documents": [doc.__dict__ for doc in app_state.documents]
@@ -117,6 +122,10 @@ class MasterOrchestrator(BaseAgent):
         
         result = await self.extraction_agent.execute(input_data)
         app_state.extracted_data = result["extracted_data"]
+        
+        # DEBUG: Log what was extracted
+        self.logger.info(f"[{app_state.application_id}] DEBUG - Extracted credit_score: {app_state.extracted_data.credit_data.get('credit_score')}")
+        self.logger.info(f"[{app_state.application_id}] DEBUG - Extracted company_name: {app_state.extracted_data.employment_data.get('company_name')}")
         
         self.logger.info(f"[{app_state.application_id}] Extraction complete")
         return app_state

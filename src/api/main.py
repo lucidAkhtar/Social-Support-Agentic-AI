@@ -554,36 +554,55 @@ async def process_application(
         
         # Save all results to database
         if final_state.extracted_data:
+            # CRITICAL FIX: Add None checks for nested dictionaries
+            credit_data = final_state.extracted_data.credit_data if final_state.extracted_data.credit_data else {}
+            employment_data = final_state.extracted_data.employment_data if final_state.extracted_data.employment_data else {}
+            income_data = final_state.extracted_data.income_data if final_state.extracted_data.income_data else {}
+            applicant_info = final_state.extracted_data.applicant_info if final_state.extracted_data.applicant_info else {}
+            family_info = final_state.extracted_data.family_info if final_state.extracted_data.family_info else {}
+            assets_liabilities = final_state.extracted_data.assets_liabilities if final_state.extracted_data.assets_liabilities else {}
+            
+            # DEBUG: Log extracted data before saving
+            logger.info(f"[{application_id}] DEBUG - credit_data keys: {list(credit_data.keys())}")
+            logger.info(f"[{application_id}] DEBUG - credit_score value: {credit_data.get('credit_score')}")
+            logger.info(f"[{application_id}] DEBUG - employment_data keys: {list(employment_data.keys())}")
+            logger.info(f"[{application_id}] DEBUG - company_name value: {employment_data.get('company_name')}")
+            
             # Prepare application data for database
+            # CRITICAL: Ensure all NOT NULL fields have valid defaults
             app_data = {
                 "app_id": application_id,
-                "applicant_name": final_state.extracted_data.applicant_info.get("full_name", "Unknown"),
-                "emirates_id": final_state.extracted_data.applicant_info.get("id_number", ""),
+                "applicant_name": applicant_info.get("full_name", "Unknown"),
+                "emirates_id": applicant_info.get("id_number", ""),
                 "submission_date": datetime.now().strftime("%Y-%m-%d"),
                 "status": final_state.stage.value,
-                "monthly_income": final_state.extracted_data.income_data.get("monthly_income", 0),
-                "monthly_expenses": final_state.extracted_data.income_data.get("monthly_expenses", 0),
-                "family_size": final_state.extracted_data.family_info.get("family_size", 1),
-                "employment_status": final_state.extracted_data.employment_data.get("employment_status", "Unknown"),
-                "total_assets": final_state.extracted_data.assets_liabilities.get("total_assets", 0),
-                "total_liabilities": final_state.extracted_data.assets_liabilities.get("total_liabilities", 0),
-                "credit_score": final_state.extracted_data.credit_data.get("credit_score", 0),
+                "monthly_income": float(income_data.get("monthly_income") or 0),
+                "monthly_expenses": float(income_data.get("monthly_expenses") or 0),
+                "family_size": int(family_info.get("family_size") or 1),
+                "employment_status": employment_data.get("employment_status") or "Unknown",
+                "total_assets": float(assets_liabilities.get("total_assets") or 0),
+                "total_liabilities": float(assets_liabilities.get("total_liabilities") or 0),
+                "credit_score": int(credit_data.get("credit_score") or 0),  # FIXED: Convert to int, default 0
                 "policy_score": final_state.eligibility_result.eligibility_score if final_state.eligibility_result else None,
                 "ml_prediction": str(final_state.eligibility_result.ml_prediction) if final_state.eligibility_result else None,
                 "ml_confidence": None,
                 "eligibility": "ELIGIBLE" if (final_state.eligibility_result and final_state.eligibility_result.is_eligible) else "NOT_ELIGIBLE",
-                "support_amount": final_state.recommendation.financial_support_amount if final_state.recommendation else 0,
-                # New fields from enhanced extraction
-                "company_name": final_state.extracted_data.employment_data.get("company_name"),
-                "current_position": final_state.extracted_data.employment_data.get("current_position"),
-                "join_date": final_state.extracted_data.employment_data.get("join_date"),
-                "credit_rating": final_state.extracted_data.credit_data.get("credit_rating"),
-                "credit_accounts": json.dumps(final_state.extracted_data.credit_data.get("credit_accounts", [])),
-                "payment_ratio": final_state.extracted_data.credit_data.get("payment_history", {}).get("payment_ratio"),
-                "total_outstanding": final_state.extracted_data.credit_data.get("total_outstanding"),
-                "work_experience_years": final_state.extracted_data.employment_data.get("experience_years"),
-                "education_level": final_state.extracted_data.employment_data.get("education_level")
+                "support_amount": float(final_state.recommendation.financial_support_amount) if final_state.recommendation else 0.0,
+                # New fields from enhanced extraction (nullable fields can be None)
+                "company_name": employment_data.get("company_name"),
+                "current_position": employment_data.get("current_position"),
+                "join_date": employment_data.get("join_date"),
+                "credit_rating": credit_data.get("credit_rating"),
+                "credit_accounts": json.dumps(credit_data.get("credit_accounts", [])),
+                "payment_ratio": float(credit_data.get("payment_history", {}).get("payment_ratio")) if (credit_data.get("payment_history") and credit_data.get("payment_history", {}).get("payment_ratio") is not None) else None,
+                "total_outstanding": float(credit_data.get("total_outstanding")) if credit_data.get("total_outstanding") is not None else None,
+                "work_experience_years": int(employment_data.get("experience_years")) if employment_data.get("experience_years") is not None else None,
+                "education_level": employment_data.get("education_level")
             }
+            # DEBUG: Log prepared app_data before DB insert
+            logger.info(f"[{application_id}] DEBUG - app_data credit_score: {app_data.get('credit_score')}")
+            logger.info(f"[{application_id}] DEBUG - app_data company_name: {app_data.get('company_name')}")
+            logger.info(f"[{application_id}] DEBUG - app_data credit_rating: {app_data.get('credit_rating')}")
             # Save to SQLite
             unified_db.sqlite.insert_application(app_data)
             logger.info(f"✅ Saved application data to SQLite for {application_id}")
@@ -612,7 +631,7 @@ async def process_application(
                 "decision_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                 "decided_by": "SYSTEM",
                 "policy_score": final_state.eligibility_result.eligibility_score,
-                "ml_score": final_state.eligibility_result.ml_prediction.get("probability") if isinstance(final_state.eligibility_result.ml_prediction, dict) else None,
+                "ml_score": final_state.eligibility_result.ml_prediction.get("probability") if (final_state.eligibility_result and final_state.eligibility_result.ml_prediction and isinstance(final_state.eligibility_result.ml_prediction, dict)) else None,
                 "priority": "high" if final_state.eligibility_result.is_eligible else "low",
                 "reasoning": json.dumps(final_state.eligibility_result.reasoning),
                 "support_type": final_state.recommendation.financial_support_type,
@@ -990,6 +1009,7 @@ async def chat_with_agent(chat_query: ChatQuery):
             # CRITICAL FIX: Store extracted data as dict (RAG engine expects dict, not ExtractedData object)
             # This is passed to chatbot which converts to proper format internally
             extracted_data_dict = {
+                # Basic info
                 'monthly_income': db_data.get('monthly_income', 0),
                 'monthly_expenses': db_data.get('monthly_expenses', 0),
                 'family_size': db_data.get('family_size', 1),
@@ -999,7 +1019,18 @@ async def chat_with_agent(chat_query: ChatQuery):
                 'credit_score': db_data.get('credit_score', 0),
                 'net_worth': db_data.get('net_worth', 0),
                 'emirates_id': db_data.get('emirates_id', ''),
-                'applicant_name': db_data.get('applicant_name', 'Unknown')
+                'applicant_name': db_data.get('applicant_name', 'Unknown'),
+                # NEW FIELDS - Employment details
+                'company_name': db_data.get('company_name'),
+                'current_position': db_data.get('current_position'),
+                'join_date': db_data.get('join_date'),
+                'work_experience_years': db_data.get('work_experience_years'),
+                'education_level': db_data.get('education_level'),
+                # NEW FIELDS - Credit details
+                'credit_rating': db_data.get('credit_rating'),
+                'payment_ratio': db_data.get('payment_ratio'),
+                'total_outstanding': db_data.get('total_outstanding'),
+                'credit_accounts': db_data.get('credit_accounts')
             }
             
             # Store as simple attribute (not ExtractedData object)

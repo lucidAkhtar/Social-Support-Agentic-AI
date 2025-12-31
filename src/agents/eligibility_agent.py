@@ -139,7 +139,13 @@ class EligibilityAgent(BaseAgent):
             "years_of_experience": data.employment_data.get("years_of_experience", 0),
             "family_size": data.family_info.get("family_size", 1),
             "credit_score": self._parse_credit_score(data.credit_data.get("credit_score", "0")),
-            "outstanding_debt": data.credit_data.get("outstanding_debt", 0)
+            "outstanding_debt": data.credit_data.get("outstanding_debt", 0),
+            "credit_rating": data.credit_data.get("credit_rating", "Unknown"),
+            "payment_ratio": data.credit_data.get("payment_ratio", 0),
+            "total_outstanding": data.credit_data.get("total_outstanding", 0),
+            "monthly_salary": data.employment_data.get("monthly_salary", 0),
+            "company_name": data.employment_data.get("company_name", "Unknown"),
+            "current_position": data.employment_data.get("current_position", "Unknown")
         }
     
     def _parse_credit_score(self, score_str: str) -> float:

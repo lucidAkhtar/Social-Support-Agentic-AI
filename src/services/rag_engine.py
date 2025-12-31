@@ -466,9 +466,15 @@ Income: {app.get('monthly_income', 0)} AED/month
 Expenses: {app.get('monthly_expenses', 0)} AED/month
 Family Size: {app.get('family_size', 0)} members
 Employment: {app.get('employment_status', 'N/A')}
+Company: {app.get('company_name', 'N/A')}
+Position: {app.get('current_position', 'N/A')}
+Monthly Salary: {app.get('monthly_salary', 0)} AED
 Assets: {app.get('total_assets', 0)} AED
 Liabilities: {app.get('total_liabilities', 0)} AED
 Credit Score: {app.get('credit_score', 0)}
+Credit Rating: {app.get('credit_rating', 'N/A')}
+Payment History: {app.get('payment_ratio', 0)}% on-time
+Outstanding Debt: {app.get('total_outstanding', 0)} AED
 Decision: {app.get('decision', app.get('eligibility', 'PENDING'))}
 """
         

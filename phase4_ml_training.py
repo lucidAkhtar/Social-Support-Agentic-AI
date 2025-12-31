@@ -152,6 +152,11 @@ class MLTrainingPipeline:
             features['income_score'] = scores.get('income', 0.0)
             features['assets_score'] = scores.get('assets', 0.0)
             features['credit_score'] = scores.get('credit', 0.0)
+            features['payment_ratio'] = scores.get('payment_ratio', 0.0)
+            features['credit_rating_numeric'] = {'Excellent': 5, 'Good': 4, 'Fair': 3, 'Poor': 2, 'Very Poor': 1}.get(scores.get('credit_rating', 'Fair'), 3)
+            features['has_company'] = 1 if scores.get('company_name') else 0
+            features['monthly_salary'] = scores.get('monthly_salary', 0.0)
+            features['total_outstanding_debt'] = scores.get('total_outstanding', 0.0)
             
             # 3. Validation metrics (4 features)
             features['findings_count'] = app['findings_count']

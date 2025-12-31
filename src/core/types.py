@@ -39,12 +39,21 @@ class Document:
 
 @dataclass
 class ExtractedData:
-    """Data extracted from all documents"""
+    """Data extracted from all documents
+    
+    Fields:
+    - applicant_info: full_name, id_number, nationality, dob
+    - income_data: monthly_income, monthly_expenses, account_number
+    - employment_data: company_name, current_position, join_date, monthly_salary, years_of_experience, employment_status
+    - assets_liabilities: total_assets, total_liabilities, assets_breakdown, liabilities_breakdown
+    - credit_data: credit_score, credit_rating, payment_ratio, total_outstanding, credit_accounts[], payment_history{}
+    - family_info: family_size, dependents, children_count
+    """
     applicant_info: Dict[str, Any] = field(default_factory=dict)  # Name, ID, contact
     income_data: Dict[str, Any] = field(default_factory=dict)  # From bank statements
-    employment_data: Dict[str, Any] = field(default_factory=dict)  # From resume
+    employment_data: Dict[str, Any] = field(default_factory=dict)  # From resume + employment letter
     assets_liabilities: Dict[str, Any] = field(default_factory=dict)  # From Excel
-    credit_data: Dict[str, Any] = field(default_factory=dict)  # From credit report
+    credit_data: Dict[str, Any] = field(default_factory=dict)  # From credit report (JSON or PDF)
     family_info: Dict[str, Any] = field(default_factory=dict)  # Family size, dependents
     raw_ocr_text: Dict[str, str] = field(default_factory=dict)  # Document type -> raw text
     extraction_timestamp: datetime = field(default_factory=datetime.now)

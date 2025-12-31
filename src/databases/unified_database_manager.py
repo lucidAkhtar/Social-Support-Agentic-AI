@@ -485,7 +485,8 @@ class UnifiedDatabaseManager:
         if self.sqlite:
             result['application'] = self._query_sqlite_with_timing('get_application', app_id)
             result['decision'] = self._query_sqlite_with_timing('get_decision_by_app_id', app_id)  # FIXED: Use correct method
-            result['validation'] = self._query_sqlite_with_timing('get_validation_history', app_id)
+            # REMOVED: get_validation_history doesn't exist in SQLiteManager
+            # result['validation'] = self._query_sqlite_with_timing('get_validation_history', app_id)
             
             if full_context:
                 result['documents'] = self._query_sqlite_with_timing('get_documents', app_id)
