@@ -461,40 +461,6 @@ graph TB
     class PG,Chroma,Neo4j data
     class Prom,Graf,ELK monitor
 ```
-
----
-
-## How to Use These Diagrams
-
-### Option 1: Render in GitHub
-1. Create a file `ARCHITECTURE_DIAGRAM.md` in your repository
-2. Copy the Mermaid code blocks above
-3. Push to GitHub - it will render automatically
-
-### Option 2: Export to PNG/PDF
-```bash
-# Install mermaid-cli
-npm install -g @mermaid-js/mermaid-cli
-
-# Export to PNG
-mmdc -i ARCHITECTURE_DIAGRAM.md -o architecture.png -w 2400
-
-# Export to PDF
-mmdc -i ARCHITECTURE_DIAGRAM.md -o architecture.pdf -w 2400
-```
-
-### Option 3: Use Online Renderer
-1. Visit https://mermaid.live
-2. Paste the Mermaid code
-3. Download as SVG, PNG, or PDF
-4. Customize styling and colors as needed
-
-### Option 4: VS Code Preview
-1. Install "Markdown Preview Mermaid Support" extension
-2. Open this file in VS Code
-3. Press `Ctrl+Shift+V` (Windows/Linux) or `Cmd+Shift+V` (Mac)
-4. View rendered diagrams in preview pane
-
 ---
 
 ## Diagram Descriptions
