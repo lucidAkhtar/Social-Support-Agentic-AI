@@ -2,12 +2,7 @@
 
 ## Overview
 
-This document contains the system architecture diagram for the UAE Social Support AI Platform in Mermaid format. You can render this in multiple ways:
-
-1. **GitHub**: Paste the Mermaid code directly in a .md file - GitHub will render it automatically
-2. **Online Renderer**: Visit https://mermaid.live and paste the code below
-3. **VS Code**: Install "Markdown Preview Mermaid Support" extension
-4. **Export to PNG/PDF**: Use mermaid-cli (`mmdc -i ARCHITECTURE_DIAGRAM.md -o architecture.png`)
+> This document contains the system architecture diagram for the UAE Social Support AI Platform.
 
 ---
 
