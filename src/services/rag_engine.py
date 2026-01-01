@@ -1,5 +1,5 @@
 """
-FAANG-Grade RAG Engine for Social Support Chatbot
+RAG Engine for Social Support Chatbot
 ==================================================
 Production-ready RAG with advanced features:
 - Multi-source context retrieval (4 databases)
@@ -8,10 +8,7 @@ Production-ready RAG with advanced features:
 - Response caching & streaming
 - Error handling & fallbacks
 - Performance monitoring
-- M1 8GB optimized
 
-Author: Production Team
-Date: December 31, 2025
 """
 import logging
 import json
@@ -147,9 +144,6 @@ class LRUCache:
 
 class RAGEngine:
     """
-    FAANG-Grade Retrieval-Augmented Generation Engine
-    ================================================
-    
     Features:
     - Multi-database context retrieval with fallbacks
     - Intelligent context ranking & filtering

@@ -28,8 +28,13 @@ import shutil
 import uuid
 import json
 from datetime import datetime
+import os
 
-from src.core.orchestrator import MasterOrchestrator
+# Langfuse for production-grade observability
+from langfuse import Langfuse
+
+from src.core.langgraph_orchestrator import LangGraphOrchestrator
+from src.core.langgraph_state import ApplicationGraphState
 from src.core.types import ApplicationState, ProcessingStage
 from src.databases import UnifiedDatabaseManager
 from src.databases.prod_sqlite_manager import SQLiteManager
@@ -56,6 +61,15 @@ audit_logger = get_audit_logger()
 structured_logger = get_structured_logger("social_support_api")
 conversation_manager = get_conversation_manager()
 
+# Initialize Langfuse for FastAPI endpoint tracing
+langfuse_client = Langfuse(
+    public_key=os.getenv("LANGFUSE_PUBLIC_KEY", "local-dev-key"),
+    secret_key=os.getenv("LANGFUSE_SECRET_KEY", "local-dev-secret"),
+    host=os.getenv("LANGFUSE_HOST", "http://localhost:3000"),
+    enabled=True
+)
+logger.info("Langfuse initialized for FastAPI observability")
+
 # Initialize FastAPI with comprehensive metadata
 app = FastAPI(
     title="Social Support System API",
@@ -65,36 +79,29 @@ app = FastAPI(
 ## Core Features
 
 ### Application Processing
-- 📄 **Document Upload & OCR** - Automated document processing with text extraction
-- 🤖 **6-Agent Pipeline** - Extraction, Validation, Eligibility, Recommendation, Explanation, RAG Chatbot
-- 📊 **Real-time Status** - Track application progress through all stages
-- 💰 **Support Calculation** - Automated financial support amount determination
+- **Document Upload & OCR** - Automated document processing with text extraction
+- **6-Agent Pipeline** - Extraction, Validation, Eligibility, Recommendation, Explanation, RAG Chatbot
+- **Real-time Status** - Track application progress through all stages
+- **Support Calculation** - Automated financial support amount determination
 
 ### Intelligent Systems
-- 💬 **RAG Chatbot** - Ask questions about your application using natural language
-- 🔍 **What-If Simulator** - Explore how changes affect eligibility and support
-- 🎯 **Smart Recommendations** - AI-powered program suggestions based on profile
-- 📈 **Similar Cases** - Find applications with similar characteristics
+- **RAG Chatbot** - Ask questions about your application using natural language
+- **What-If Simulator** - Explore how changes affect eligibility and support
+- **Smart Recommendations** - AI-powered program suggestions based on profile
+- **Similar Cases** - Find applications with similar characteristics
 
 ### Database Architecture
-- 🗄️ **SQLite** - Structured application data with FTS5 full-text search
-- 💾 **TinyDB** - Session management and caching with TTL
-- 🧠 **ChromaDB** - Vector embeddings for semantic search (120 documents indexed)
-- 🕸️ **NetworkX** - Graph relationships (200 nodes, 160 edges)
+- **SQLite** - Structured application data with FTS5 full-text search
+- **TinyDB** - Session management and caching with TTL
+- **ChromaDB** - Vector embeddings for semantic search (120 documents indexed)
+- **NetworkX** - Graph relationships (200 nodes, 160 edges)
 
 ### Testing Endpoints
 Comprehensive testing endpoints for all 4 databases with example data in Swagger UI.
 
 ---
+"""
 
-**Version:** 2.0.0 | **Status:** Production Ready  
-**Contact:** support@socialsupport.ae
-    """,
-    version="2.0.0",
-    contact={
-        "name": "Social Support System",
-        "email": "support@socialsupport.ae"
-    }
 )
 
 # CORS middleware for Streamlit and web clients
@@ -171,13 +178,13 @@ async def audit_middleware(request: Request, call_next):
         raise
 
 # Initialize orchestrator and unified database manager
-orchestrator = MasterOrchestrator()
+orchestrator = LangGraphOrchestrator()
 unified_db = UnifiedDatabaseManager()
 
 # Initialize individual database managers for testing endpoints
 sqlite_db = SQLiteManager("data/databases/applications.db")
 tinydb_cache = TinyDBManager("data/databases/cache.json")
-chroma_db = ChromaDBManager("data/databases/chromadb_rag")
+chroma_db = ChromaDBManager("data/databases/chromadb")  # Updated to use main chromadb with 828 documents
 networkx_db = NetworkXManager()
 
 # Load NetworkX graph from file
@@ -186,12 +193,12 @@ try:
     graph_path = Path("application_graph.graphml")
     if graph_path.exists():
         networkx_db.graph = nx.read_graphml(str(graph_path))
-        logger.info(f"✅ NetworkX loaded: {networkx_db.graph.number_of_nodes()} nodes, {networkx_db.graph.number_of_edges()} edges")
+        logger.info(f"NetworkX loaded: {networkx_db.graph.number_of_nodes()} nodes, {networkx_db.graph.number_of_edges()} edges")
     else:
         # Fresh system - graph will be created on first application
         logger.debug("NetworkX graph file not found - will be created on first use")
 except Exception as e:
-    logger.error(f"⚠️  NetworkX load failed: {e}")
+    logger.error(f"NetworkX load failed: {e}")
 
 
 # Initialize and register all agents with comprehensive configuration
@@ -214,7 +221,7 @@ orchestrator.register_agents(
     explanation_agent=explanation_agent,
     rag_chatbot_agent=rag_chatbot_agent
 )
-logger.info("✅ All 6 agents initialized and registered (including RAG chatbot)")
+logger.info("All 6 agents initialized and registered (including RAG chatbot)")
 
 # In-memory state storage (production: use Redis/Memcached with TTL)
 active_applications: Dict[str, ApplicationState] = {}
@@ -394,7 +401,7 @@ async def create_application(applicant_name: str = Form(..., example="Ahmed Hass
         )
         active_applications[application_id] = state
         
-        logger.info(f"✅ Created application {application_id} for {applicant_name}")
+        logger.info(f"Created application {application_id} for {applicant_name}")
         
         return ApplicationResponse(
             application_id=application_id,
@@ -404,7 +411,7 @@ async def create_application(applicant_name: str = Form(..., example="Ahmed Hass
         )
     
     except Exception as e:
-        logger.error(f"❌ Error creating application: {e}")
+        logger.error(f"Error creating application: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -521,7 +528,7 @@ async def process_application(
     application_id: str = PathParam(..., example="APP-000001", description="Application ID to process")
 ):
     """
-    Process application through all 6 agents.
+    Process application through all 6 agents with full Langfuse observability.
     
     **TEST DATA:**
     ```
@@ -542,10 +549,27 @@ async def process_application(
     
     **Processing Time:** 30-60 seconds for full pipeline
     
+    **Langfuse Tracing:** Full trace exported to data/observability/langfuse_trace_{app_id}.json
+    
     **Next Step:** Check results using `/api/applications/{application_id}/results`
     """
+    # Start Langfuse trace for entire HTTP request
+    request_trace = langfuse_client.trace(
+        name="fastapi_process_application",
+        id=f"api_trace_{application_id}_{int(datetime.now().timestamp())}",
+        metadata={
+            "endpoint": "/api/applications/{id}/process",
+            "application_id": application_id,
+            "timestamp": datetime.now().isoformat()
+        }
+    )
+    
+    request_span = request_trace.span(name="process_application_endpoint")
+    
     try:
         if application_id not in active_applications:
+            request_span.end(output={"success": False, "error": "Application not found"}, level="ERROR")
+            langfuse_client.flush()
             raise HTTPException(status_code=404, detail="Application not found")
         
         state = active_applications[application_id]
@@ -554,18 +578,55 @@ async def process_application(
         if application_id not in orchestrator.applications:
             orchestrator.applications[application_id] = state
         
-        # Process through orchestrator
-        final_state = await orchestrator.process_application(application_id)
+        # Process through orchestrator (this will create its own nested Langfuse trace)
+        langgraph_span = request_trace.span(name="langgraph_orchestrator_execution")
+        
+        # Convert documents from ApplicationState to list format required by LangGraphOrchestrator
+        documents_list = []
+        if hasattr(state, 'documents') and state.documents:
+            documents_list = [
+                {
+                    "id": doc.document_id,
+                    "type": doc.document_type,
+                    "path": doc.file_path,
+                    "filename": doc.filename
+                }
+                for doc in state.documents
+            ]
+        
+        try:
+            final_state = await orchestrator.process_application(
+                application_id=application_id,
+                applicant_name=state.applicant_name,
+                documents=documents_list
+            )
+            
+            if final_state is None:
+                raise ValueError("Orchestrator returned None - workflow failed")
+            
+            langgraph_span.end(output={
+                "success": True,
+                "final_stage": final_state.get("stage") if final_state else "UNKNOWN",
+                "is_eligible": final_state.get("eligibility_result").is_eligible if (final_state and final_state.get("eligibility_result")) else False
+            })
+            
+        except Exception as workflow_error:
+            langgraph_span.end(output={"success": False, "error": str(workflow_error)}, level="ERROR")
+            raise
         
         # Save all results to database
-        if final_state.extracted_data:
+        db_span = request_trace.span(name="database_persistence")
+        
+        # Check if we have valid extracted data before accessing attributes
+        if final_state and final_state.get("extracted_data"):
+            extracted_data = final_state["extracted_data"]
             # CRITICAL FIX: Add None checks for nested dictionaries
-            credit_data = final_state.extracted_data.credit_data if final_state.extracted_data.credit_data else {}
-            employment_data = final_state.extracted_data.employment_data if final_state.extracted_data.employment_data else {}
-            income_data = final_state.extracted_data.income_data if final_state.extracted_data.income_data else {}
-            applicant_info = final_state.extracted_data.applicant_info if final_state.extracted_data.applicant_info else {}
-            family_info = final_state.extracted_data.family_info if final_state.extracted_data.family_info else {}
-            assets_liabilities = final_state.extracted_data.assets_liabilities if final_state.extracted_data.assets_liabilities else {}
+            credit_data = extracted_data.credit_data if extracted_data.credit_data else {}
+            employment_data = extracted_data.employment_data if extracted_data.employment_data else {}
+            income_data = extracted_data.income_data if extracted_data.income_data else {}
+            applicant_info = extracted_data.applicant_info if extracted_data.applicant_info else {}
+            family_info = extracted_data.family_info if extracted_data.family_info else {}
+            assets_liabilities = extracted_data.assets_liabilities if extracted_data.assets_liabilities else {}
             
             # DEBUG: Log extracted data before saving
             logger.info(f"[{application_id}] DEBUG - credit_data keys: {list(credit_data.keys())}")
@@ -580,7 +641,7 @@ async def process_application(
                 "applicant_name": applicant_info.get("full_name", "Unknown"),
                 "emirates_id": applicant_info.get("id_number", ""),
                 "submission_date": datetime.now().strftime("%Y-%m-%d"),
-                "status": final_state.stage.value,
+                "status": final_state["stage"].value,
                 "monthly_income": float(income_data.get("monthly_income") or 0),
                 "monthly_expenses": float(income_data.get("monthly_expenses") or 0),
                 "family_size": int(family_info.get("family_size") or 1),
@@ -588,11 +649,11 @@ async def process_application(
                 "total_assets": float(assets_liabilities.get("total_assets") or 0),
                 "total_liabilities": float(assets_liabilities.get("total_liabilities") or 0),
                 "credit_score": int(credit_data.get("credit_score") or 0),  # FIXED: Convert to int, default 0
-                "policy_score": final_state.eligibility_result.eligibility_score if final_state.eligibility_result else None,
-                "ml_prediction": str(final_state.eligibility_result.ml_prediction) if final_state.eligibility_result else None,
+                "policy_score": final_state["eligibility_result"].eligibility_score if final_state.get("eligibility_result") else None,
+                "ml_prediction": str(final_state["eligibility_result"].ml_prediction) if final_state.get("eligibility_result") else None,
                 "ml_confidence": None,
-                "eligibility": "ELIGIBLE" if (final_state.eligibility_result and final_state.eligibility_result.is_eligible) else "NOT_ELIGIBLE",
-                "support_amount": float(final_state.recommendation.financial_support_amount) if final_state.recommendation else 0.0,
+                "eligibility": "ELIGIBLE" if (final_state.get("eligibility_result") and final_state["eligibility_result"].is_eligible) else "NOT_ELIGIBLE",
+                "support_amount": float(final_state["recommendation"].financial_support_amount) if final_state.get("recommendation") else 0.0,
                 # New fields from enhanced extraction (nullable fields can be None)
                 "company_name": employment_data.get("company_name"),
                 "current_position": employment_data.get("current_position"),
@@ -610,82 +671,105 @@ async def process_application(
             logger.info(f"[{application_id}] DEBUG - app_data credit_rating: {app_data.get('credit_rating')}")
             # Save to SQLite
             unified_db.sqlite.insert_application(app_data)
-            logger.info(f"✅ Saved application data to SQLite for {application_id}")
+            logger.info(f"Saved application data to SQLite for {application_id}")
         
-        if final_state.validation_report:
+        if final_state.get("validation_report"):
+            validation_report = final_state["validation_report"]
             validation_data = {
-                "is_valid": final_state.validation_report.is_valid,
-                "completeness_score": final_state.validation_report.data_completeness_score,
-                "confidence_score": final_state.validation_report.confidence_score,
+                "is_valid": validation_report.is_valid,
+                "completeness_score": validation_report.data_completeness_score,
+                "confidence_score": validation_report.confidence_score,
                 "issues": [{"field": i.field, "severity": i.severity, "message": i.message} 
-                          for i in final_state.validation_report.issues]
+                          for i in validation_report.issues]
             }
             # Store validation metrics in analytics
             unified_db.sqlite.update_analytics(
                 f"{application_id}_validation",
-                final_state.validation_report.data_completeness_score,
+                validation_report.data_completeness_score,
                 validation_data
             )
-            logger.info(f"✅ Saved validation data for {application_id}")
+            logger.info(f"Saved validation data for {application_id}")
         
-        if final_state.eligibility_result and final_state.recommendation:
+        if final_state.get("eligibility_result") and final_state.get("recommendation"):
+            eligibility = final_state["eligibility_result"]
+            recommendation = final_state["recommendation"]
             decision_data = {
                 "decision_id": f"DEC_{application_id}",
                 "app_id": application_id,
-                "decision": final_state.recommendation.decision.value,
+                "decision": recommendation.decision.value,
                 "decision_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                 "decided_by": "SYSTEM",
-                "policy_score": final_state.eligibility_result.eligibility_score,
-                "ml_score": final_state.eligibility_result.ml_prediction.get("probability") if (final_state.eligibility_result and final_state.eligibility_result.ml_prediction and isinstance(final_state.eligibility_result.ml_prediction, dict)) else None,
-                "priority": "high" if final_state.eligibility_result.is_eligible else "low",
-                "reasoning": json.dumps(final_state.eligibility_result.reasoning),
-                "support_type": final_state.recommendation.financial_support_type,
-                "support_amount": final_state.recommendation.financial_support_amount,
+                "policy_score": eligibility.eligibility_score,
+                "ml_score": eligibility.ml_prediction.get("probability") if (eligibility.ml_prediction and isinstance(eligibility.ml_prediction, dict)) else None,
+                "priority": "high" if eligibility.is_eligible else "low",
+                "reasoning": json.dumps(eligibility.reasoning),
+                "support_type": recommendation.financial_support_type,
+                "support_amount": recommendation.financial_support_amount,
                 "duration_months": None,  # Duration not in Recommendation dataclass - set NULL
-                "conditions": json.dumps([prog.get("program_name") for prog in final_state.recommendation.economic_enablement_programs]) if final_state.recommendation.economic_enablement_programs else None
+                "conditions": json.dumps([prog.get("program_name") if isinstance(prog, dict) else prog for prog in recommendation.economic_enablement_programs]) if recommendation.economic_enablement_programs else None
             }
             # Save decision to SQLite
             unified_db.sqlite.insert_decision(decision_data)
-            logger.info(f"✅ Saved decision data to SQLite for {application_id}")
+            logger.info(f"Saved decision data to SQLite for {application_id}")
         
-        if final_state.recommendation:
+        if final_state.get("recommendation"):
+            recommendation = final_state["recommendation"]
             recommendation_data = {
-                "decision_type": final_state.recommendation.decision.value,
-                "financial_support_amount": final_state.recommendation.financial_support_amount,
-                "financial_support_type": final_state.recommendation.financial_support_type,
-                "programs": final_state.recommendation.economic_enablement_programs,
-                "reasoning": final_state.recommendation.reasoning
+                "decision_type": recommendation.decision.value,
+                "financial_support_amount": recommendation.financial_support_amount,
+                "financial_support_type": recommendation.financial_support_type,
+                "programs": recommendation.economic_enablement_programs,
+                "reasoning": recommendation.reasoning
             }
             # Store recommendation summary in analytics
             unified_db.sqlite.update_analytics(
                 f"{application_id}_recommendation",
-                final_state.recommendation.financial_support_amount,
+                recommendation.financial_support_amount,
                 recommendation_data
             )
-            logger.info(f"✅ Saved recommendation data for {application_id}")
+            logger.info(f"Saved recommendation data for {application_id}")
+        
+        db_span.end(output={"success": True, "records_saved": "application, validation, decision, recommendation"})
         
         # Update state
         active_applications[application_id] = final_state
-        logger.info(f"🎉 Application {application_id} processing complete - all data saved to database")
+        logger.info(f"Application {application_id} processing complete - all data saved to database")
         
         # Prepare response
-        progress = 100 if final_state.stage == ProcessingStage.COMPLETED else 50
+        progress = 100 if final_state["stage"] == ProcessingStage.COMPLETED else 50
         
-        return ProcessingStatusResponse(
+        response_data = ProcessingStatusResponse(
             application_id=application_id,
-            current_stage=final_state.stage.value,
+            current_stage=final_state["stage"].value,
             progress_percentage=progress,
             message="Application processing completed",
             data={
-                "extracted_data": final_state.extracted_data is not None,
-                "validation_valid": final_state.validation_report.is_valid if final_state.validation_report else False,
-                "eligibility_score": final_state.eligibility_result.eligibility_score if final_state.eligibility_result else 0,
-                "decision": final_state.recommendation.decision.value if final_state.recommendation else "PENDING"
+                "extracted_data": final_state.get("extracted_data") is not None,
+                "validation_valid": final_state["validation_report"].is_valid if final_state.get("validation_report") else False,
+                "eligibility_score": final_state["eligibility_result"].eligibility_score if final_state.get("eligibility_result") else 0,
+                "decision": final_state["recommendation"].decision.value if final_state.get("recommendation") else "PENDING"
             }
         )
+        
+        # End request span with successful response
+        request_span.end(output={
+            "success": True,
+            "stage": final_state["stage"].value,
+            "is_eligible": final_state["eligibility_result"].is_eligible if final_state.get("eligibility_result") else False,
+            "support_amount": final_state["recommendation"].financial_support_amount if final_state.get("recommendation") else 0
+        })
+        
+        # Flush Langfuse to ensure trace is written
+        langfuse_client.flush()
+        
+        logger.info(f"Langfuse trace completed for API request: {application_id}")
+        
+        return response_data
     
     except Exception as e:
         logger.error(f"Error processing application: {e}")
+        request_span.end(output={"success": False, "error": str(e)}, level="ERROR")
+        langfuse_client.flush()
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -926,7 +1010,7 @@ async def get_application_results(
 @app.post("/api/applications/{application_id}/chat", tags=["Applications"])
 async def chat_with_agent(chat_query: ChatQuery):
     """
-    Chat with RAG-powered explanation agent.
+    Chat with RAG-powered explanation agent with Langfuse tracing.
     
     **TEST DATA (Copy for Swagger UI - Request Body):**
     
@@ -989,8 +1073,24 @@ async def chat_with_agent(chat_query: ChatQuery):
     4. Caches in TinyDB for fast repeated queries
     5. Saves conversation history
     
+    **Langfuse Tracing:** Full chat trace exported
+    
     **Response Time:** 1-3 seconds (with ChromaDB + GPT-4)
     """
+    # Start Langfuse trace for chat request
+    chat_trace = langfuse_client.trace(
+        name="fastapi_chat_request",
+        id=f"chat_trace_{chat_query.application_id}_{int(datetime.now().timestamp())}",
+        metadata={
+            "endpoint": "/api/applications/{id}/chat",
+            "application_id": chat_query.application_id,
+            "query_type": chat_query.query_type,
+            "timestamp": datetime.now().isoformat()
+        }
+    )
+    
+    chat_span = chat_trace.span(name="rag_chatbot_query")
+    
     try:
         application_id = chat_query.application_id
         
@@ -1066,6 +1166,8 @@ async def chat_with_agent(chat_query: ChatQuery):
         
         # Handle chat query via orchestrator (will use RAG with full database context)
         start_time = time.time()
+        
+        rag_span = chat_trace.span(name="rag_agent_execution")
         response = await orchestrator.handle_chat_query(
             application_id, chat_query.query, chat_query.query_type
         )
@@ -1074,7 +1176,15 @@ async def chat_with_agent(chat_query: ChatQuery):
         # Extract response text
         response_text = response if isinstance(response, str) else response.get("response", str(response))
         
+        rag_span.end(output={
+            "success": True,
+            "response_length": len(response_text),
+            "query_type": chat_query.query_type,
+            "response_time_ms": response_time_ms
+        })
+        
         # PRODUCTION-GRADE: Save conversation to persistent storage
+        persistence_span = chat_trace.span(name="conversation_persistence")
         conversation_manager.save_conversation(
             application_id=application_id,
             user_query=chat_query.query,
@@ -1084,6 +1194,7 @@ async def chat_with_agent(chat_query: ChatQuery):
             model_used="mistral:latest",
             from_cache=False  # Could check if from cache
         )
+        persistence_span.end(output={"success": True, "saved_to": "conversation_manager"})
         
         # Log audit event
         audit_logger.log_audit_event(
@@ -1094,6 +1205,19 @@ async def chat_with_agent(chat_query: ChatQuery):
             status="success"
         )
         
+        # End chat span successfully
+        chat_span.end(output={
+            "success": True,
+            "query": chat_query.query,
+            "response_length": len(response_text),
+            "chatbot_enabled": True
+        })
+        
+        # Flush Langfuse
+        langfuse_client.flush()
+        
+        logger.info(f"Langfuse trace completed for chat request: {application_id}")
+        
         return {
             "application_id": application_id,
             "query": chat_query.query,
@@ -1103,6 +1227,8 @@ async def chat_with_agent(chat_query: ChatQuery):
     
     except Exception as e:
         logger.error(f"Error in chat: {e}")
+        chat_span.end(output={"success": False, "error": str(e)}, level="ERROR")
+        langfuse_client.flush()
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -1274,7 +1400,7 @@ async def get_statistics():
         }
     
     except Exception as e:
-        logger.error(f"❌ Error getting statistics: {e}")
+        logger.error(f"Error getting statistics: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -1321,7 +1447,7 @@ async def get_ml_model_info():
         report_file = models_dir / "training_report_v3.json"
         training_report = {}
         if report_file.exists():
-            with open(report_file) as f:
+            with open(report_file) as f:    
                 training_report = json.load(f)
         
         return {
@@ -1342,7 +1468,7 @@ async def get_ml_model_info():
     except HTTPException:
         raise
     except Exception as e:
-        logger.error(f"❌ Error getting ML model info: {e}")
+        logger.error(f"Error getting ML model info: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -1397,7 +1523,7 @@ async def get_feature_importance():
     except HTTPException:
         raise
     except Exception as e:
-        logger.error(f"❌ Error getting feature importance: {e}")
+        logger.error(f"Error getting feature importance: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -1486,7 +1612,7 @@ async def explain_ml_decision(application_id: str):
     except HTTPException:
         raise
     except Exception as e:
-        logger.error(f"❌ Error explaining ML decision: {e}")
+        logger.error(f"Error explaining ML decision: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -2434,9 +2560,9 @@ async def get_system_metrics():
 
 if __name__ == "__main__":
     import uvicorn
-    logger.info("🚀 Starting Social Support System API - Production Grade")
-    logger.info("📊 All 4 databases initialized: SQLite, TinyDB, ChromaDB, NetworkX")
-    logger.info("🤖 All 6 agents ready: Extraction, Validation, Eligibility, Recommendation, Explanation, RAG Chatbot")
-    logger.info("🧪 Database testing endpoints available at /test/*")
-    logger.info("📖 API Documentation: http://localhost:8000/docs")
+    logger.info("Starting Social Support System API - Production Grade")
+    logger.info("All 4 databases initialized: SQLite, TinyDB, ChromaDB, NetworkX")
+    logger.info("All 6 agents ready: Extraction, Validation, Eligibility, Recommendation, Explanation, RAG Chatbot")
+    logger.info("Database testing endpoints available at /test/*")
+    logger.info("API Documentation: http://localhost:8000/docs")
     uvicorn.run(app, host="0.0.0.0", port=8000, log_level="info")

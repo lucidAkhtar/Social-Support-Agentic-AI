@@ -1,6 +1,22 @@
 """
-Production-Grade Recommendation Agent
-Intelligent decision-making with precise rules and comprehensive program matching
+Recommendation Agent - LangGraph Node 4
+
+LANGGRAPH INTEGRATION:
+    - Called by: langgraph_orchestrator._recommend_node()
+    - Position: Fourth node in LangGraph StateGraph workflow
+    - Input State: application_id, extracted_data, eligibility_result
+    - Updates State: recommendation, stage=GENERATING_RECOMMENDATION
+    - Next Node: explain_node (always)
+
+PURPOSE:
+    Production-grade recommendation generation with intelligent decision-making,
+    precise rules and comprehensive program matching. Calculates financial support
+    amount and matches to appropriate programs.
+
+ARCHITECTURE:
+    - Intelligent support amount calculation
+    - Comprehensive program matching
+    - Detailed reasoning for transparency
 """
 import logging
 from typing import Dict, Any, List, Tuple
@@ -95,8 +111,13 @@ class RecommendationAgent(BaseAgent):
     def _determine_decision_detailed(self, data: ExtractedData, 
                                      eligibility: EligibilityResult) -> Tuple[DecisionType, Dict]:
         """Determine decision with detailed factor analysis"""
+        # Safety check for None eligibility
+        if eligibility is None:
+            self.logger.error("Eligibility result is None")
+            return DecisionType.DECLINED, {"error": "No eligibility data"}
+        
         factors = {
-            "eligibility_score": eligibility.eligibility_score,
+            "eligibility_score": eligibility.eligibility_score if eligibility else 0.0,
             "has_regular_income": False,
             "income_adequate": False,
             "employment_stable": False,
@@ -104,9 +125,14 @@ class RecommendationAgent(BaseAgent):
             "financial_need": False
         }
         
+        # Safety check for None data
+        if data is None or data.income_data is None:
+            self.logger.error("Extracted data or income data is None")
+            return DecisionType.DECLINED, factors
+        
         # Income analysis
-        monthly_income = data.income_data.get("monthly_income", 0)
-        monthly_expenses = data.income_data.get("monthly_expenses", 0)
+        monthly_income = data.income_data.get("monthly_income", 0) if data.income_data else 0
+        monthly_expenses = data.income_data.get("monthly_expenses", 0) if data.income_data else 0
         
         factors["has_regular_income"] = monthly_income >= 1000
         factors["income_adequate"] = monthly_income >= 3000
@@ -115,17 +141,17 @@ class RecommendationAgent(BaseAgent):
         financial_gap = monthly_expenses - monthly_income
         factors["financial_need"] = financial_gap > 500
         
-        # Employment analysis
-        employment_status = data.employment_data.get("employment_status", "unknown")
-        years_experience = data.employment_data.get("years_of_experience", 0)
+        # Employment analysis (with None checks)
+        employment_status = data.employment_data.get("employment_status", "unknown") if data.employment_data else "unknown"
+        years_experience = data.employment_data.get("years_of_experience", 0) if data.employment_data else 0
         
         factors["employment_stable"] = (
             employment_status == "employed" and 
             years_experience >= 1
         )
         
-        # Debt analysis
-        total_liabilities = data.assets_liabilities.get("total_liabilities", 0)
+        # Debt analysis (with None checks)
+        total_liabilities = data.assets_liabilities.get("total_liabilities", 0) if data.assets_liabilities else 0
         if monthly_income > 0:
             monthly_debt = total_liabilities * 0.05
             dti = (monthly_debt / monthly_income) * 100
@@ -133,8 +159,8 @@ class RecommendationAgent(BaseAgent):
         else:
             factors["debt_manageable"] = total_liabilities < 10000
         
-        # Decision logic
-        score = eligibility.eligibility_score
+        # Decision logic (with None check for eligibility)
+        score = eligibility.eligibility_score if eligibility else 0.0
         
         if score >= 0.70 and factors["has_regular_income"]:
             decision = DecisionType.APPROVED
@@ -154,10 +180,14 @@ class RecommendationAgent(BaseAgent):
                                    decision: DecisionType) -> Tuple[float, str]:
         """Calculate precise support amount based on multiple factors"""
         
-        monthly_income = data.income_data.get("monthly_income", 0)
-        monthly_expenses = data.income_data.get("monthly_expenses", 0)
-        family_size = data.family_info.get("family_size", 1)
-        net_worth = data.assets_liabilities.get("net_worth", 0)
+        # Safety checks for None
+        if data is None:
+            return 0.0, "None"
+        
+        monthly_income = data.income_data.get("monthly_income", 0) if data.income_data else 0
+        monthly_expenses = data.income_data.get("monthly_expenses", 0) if data.income_data else 0
+        family_size = data.family_info.get("family_size", 1) if data.family_info else 1
+        net_worth = data.assets_liabilities.get("net_worth", 0) if data.assets_liabilities else 0
         
         # Calculate base need
         financial_gap = max(0, monthly_expenses - monthly_income)
@@ -165,8 +195,8 @@ class RecommendationAgent(BaseAgent):
         # Family size multiplier
         family_multiplier = 1.0 + min((family_size - 1) * 0.15, 0.5)
         
-        # Eligibility score multiplier
-        score_multiplier = eligibility.eligibility_score
+        # Eligibility score multiplier (with None check)
+        score_multiplier = eligibility.eligibility_score if eligibility else 0.0
         
         # Net worth adjustment (reduce support for those with significant assets)
         if net_worth > 50000:
@@ -345,19 +375,22 @@ class RecommendationAgent(BaseAgent):
         
         reasoning_parts = []
         
-        # Opening statement
+        # Opening statement (with None check)
         if decision == DecisionType.APPROVED:
-            reasoning_parts.append(f"✅ **Application APPROVED** (Eligibility Score: {eligibility.eligibility_score:.2%})")
+            score_text = f" (Eligibility Score: {eligibility.eligibility_score:.2%})" if eligibility else ""
+            reasoning_parts.append(f" **Application APPROVED**{score_text}")
         elif decision == DecisionType.SOFT_DECLINED:
-            reasoning_parts.append(f"⚠️ **Application SOFT DECLINED** (Eligibility Score: {eligibility.eligibility_score:.2%})")
+            score_text = f" (Eligibility Score: {eligibility.eligibility_score:.2%})" if eligibility else ""
+            reasoning_parts.append(f" **Application SOFT DECLINED**{score_text}")
         else:
-            reasoning_parts.append(f"❌ **Application DECLINED** (Eligibility Score: {eligibility.eligibility_score:.2%})")
+            score_text = f" (Eligibility Score: {eligibility.eligibility_score:.2%})" if eligibility else ""
+            reasoning_parts.append(f" **Application DECLINED**{score_text}")
         
         reasoning_parts.append("")
         
-        # Financial analysis
-        monthly_income = data.income_data.get("monthly_income", 0)
-        monthly_expenses = data.income_data.get("monthly_expenses", 0)
+        # Financial analysis (with None checks)
+        monthly_income = data.income_data.get("monthly_income", 0) if data and data.income_data else 0
+        monthly_expenses = data.income_data.get("monthly_expenses", 0) if data and data.income_data else 0
         gap = monthly_expenses - monthly_income
         
         reasoning_parts.append("**Financial Analysis:**")
@@ -383,24 +416,24 @@ class RecommendationAgent(BaseAgent):
         
         reasoning_parts.append("**Employment Status:**")
         if employment_status == "employed":
-            reasoning_parts.append(f"✓ Currently employed ({years_exp} years experience)")
+            reasoning_parts.append(f" Currently employed ({years_exp} years experience)")
         elif employment_status == "unemployed":
-            reasoning_parts.append("⚠ Currently unemployed - employment support recommended")
+            reasoning_parts.append("Currently unemployed - employment support recommended")
         else:
-            reasoning_parts.append("⚠ Employment status unclear")
+            reasoning_parts.append(" Employment status unclear")
         
         reasoning_parts.append("")
         
         # Key factors
         reasoning_parts.append("**Decision Factors:**")
         if factors["has_regular_income"]:
-            reasoning_parts.append("✓ Has regular income stream")
+            reasoning_parts.append(" Has regular income stream")
         if factors["employment_stable"]:
-            reasoning_parts.append("✓ Stable employment history")
+            reasoning_parts.append(" Stable employment history")
         if factors["debt_manageable"]:
-            reasoning_parts.append("✓ Debt levels are manageable")
+            reasoning_parts.append(" Debt levels are manageable")
         if factors["financial_need"]:
-            reasoning_parts.append("✓ Clear financial need demonstrated")
+            reasoning_parts.append(" Clear financial need demonstrated")
         
         reasoning_parts.append("")
         
@@ -427,12 +460,16 @@ class RecommendationAgent(BaseAgent):
     def _calculate_recommendation_confidence(self, eligibility: EligibilityResult,
                                             data: ExtractedData) -> float:
         """Calculate confidence in recommendation"""
+        # Safety check
+        if eligibility is None:
+            return 0.0
+        
         confidence = eligibility.eligibility_score
         
-        # Boost confidence if data is complete
-        has_income = data.income_data.get("monthly_income", 0) > 0
-        has_employment = data.employment_data.get("employment_status") in ["employed", "unemployed"]
-        has_id = data.applicant_info.get("id_number") not in [None, "Not found"]
+        # Boost confidence if data is complete (with None checks)
+        has_income = data.income_data.get("monthly_income", 0) > 0 if data and data.income_data else False
+        has_employment = data.employment_data.get("employment_status") in ["employed", "unemployed"] if data and data.employment_data else False
+        has_id = data.applicant_info.get("id_number") not in [None, "Not found"] if data and data.applicant_info else False
         
         if has_income and has_employment and has_id:
             confidence += 0.1
@@ -443,17 +480,21 @@ class RecommendationAgent(BaseAgent):
                             eligibility: EligibilityResult,
                             factors: Dict) -> List[str]:
         """Extract key decision factors"""
+        # Safety check
+        if eligibility is None or data is None:
+            return ["Insufficient data for analysis"]
+        
         key_factors = []
         
-        # Positive factors
+        # Positive factors (with None check)
         if eligibility.eligibility_score >= 0.6:
             key_factors.append(f"Strong eligibility score: {eligibility.eligibility_score:.0%}")
         
-        if factors["has_regular_income"]:
+        if factors.get("has_regular_income") and data.income_data:
             income = data.income_data.get("monthly_income", 0)
             key_factors.append(f"Regular income: AED {income:,.2f}/month")
         
-        if factors["employment_stable"]:
+        if factors.get("employment_stable") and data.employment_data:
             years = data.employment_data.get("years_of_experience", 0)
             key_factors.append(f"Stable employment: {years} years experience")
         

@@ -13,7 +13,7 @@ ARCHITECTURE:
 
 DEPENDENCIES:
     - Used by: All 6 agents (extraction, validation, eligibility, recommendation, explanation, rag_chatbot)
-    - Imported by: orchestrator.py to manage agent pipeline
+    - Imported by: langgraph_orchestrator.py to manage agent pipeline
     - Core abstraction that enables agent swapping and testing
 
 USAGE:
@@ -31,8 +31,6 @@ OBSERVABILITY:
     - Data summarization for privacy-safe logging
     - Integration with Langfuse for distributed tracing
 
-Author: Core Infrastructure Team
-Version: 2.0 - Production Grade
 """
 from abc import ABC, abstractmethod
 from typing import Any, Dict, Optional

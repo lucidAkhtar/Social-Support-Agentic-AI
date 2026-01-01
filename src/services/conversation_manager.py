@@ -1,6 +1,6 @@
 """
 Production-Grade Conversation History Manager
-FAANG Standards: Persistent storage, export formats, memory-efficient on M1 8GB
+FAANG Standards: Persistent storage, export formats
 """
 import json
 import sqlite3
@@ -389,13 +389,13 @@ class ConversationManager:
         <div class="stats">
 """
             if conv['response_time_ms']:
-                html_content += f'            <div class="stat">⏱️ {conv["response_time_ms"]}ms</div>\n'
+                html_content += f'            <div class="stat">{conv["response_time_ms"]}ms</div>\n'
             if conv['from_cache']:
-                html_content += '            <div class="stat">📦 <span class="badge cached">Cached</span></div>\n'
+                html_content += '            <div class="stat"><span class="badge cached">Cached</span></div>\n'
             if conv['model_used']:
-                html_content += f'            <div class="stat">🤖 {conv["model_used"]}</div>\n'
+                html_content += f'            <div class="stat">{conv["model_used"]}</div>\n'
             if conv['tokens_used']:
-                html_content += f'            <div class="stat">🔤 {conv["tokens_used"]} tokens</div>\n'
+                html_content += f'            <div class="stat">{conv["tokens_used"]} tokens</div>\n'
             
             html_content += """        </div>
     </div>

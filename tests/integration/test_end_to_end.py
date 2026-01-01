@@ -14,7 +14,7 @@ import asyncio
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from src.core.orchestrator import MasterOrchestrator
+from src.core.langgraph_orchestrator import LangGraphOrchestrator
 from src.agents.extraction_agent import DataExtractionAgent
 from src.agents.validation_agent import DataValidationAgent
 from src.agents.eligibility_agent import EligibilityAgent
@@ -30,16 +30,20 @@ class TestEndToEndIntegration:
     @pytest.fixture
     def orchestrator(self):
         """Setup orchestrator with all agents"""
-        orchestrator = MasterOrchestrator()
+        orchestrator = LangGraphOrchestrator()
         
         # Register all agents
         orchestrator.register_agents(
-            DataExtractionAgent(),
-            DataValidationAgent(),
-            EligibilityAgent(),
-            RecommendationAgent(),
-            ExplanationAgent(),
-            RAGChatbotAgent()
+            extraction_agent=DataExtractionAgent(),
+            validation_agent=DataValidationAgent(),
+            eligibility_agent=EligibilityAgent(),
+            recommendation_agent=RecommendationAgent(),
+            explanation_agent=ExplanationAgent(),
+            rag_chatbot_agent=RAGChatbotAgent({
+                'db_path': 'data/databases/applications.db',
+                'ollama_url': 'http://localhost:11434',
+                'ollama_model': 'mistral:latest'
+            })
         )
         
         return orchestrator

@@ -2,7 +2,7 @@
 NetworkX Manager - In-Memory Graph Database (Neo4j Replacement)
 Stores relationships: family trees, document connections, program matching
 
-Benefits over Neo4j for 8GB RAM:
+Benefits over Neo4j for Macbook M1 8GB RAM:
 - 50 MB memory footprint vs 1200 MB
 - No separate server process
 - Fast in-memory graph operations

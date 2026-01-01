@@ -1,17 +1,28 @@
 """
-FAANG-Grade RAG Chatbot Agent - Production Ready
-=================================================
-Advanced conversational AI with enterprise-grade features:
-- ✅ FAANG-level RAG engine with context ranking
-- ✅ Multi-database retrieval (SQLite, TinyDB, ChromaDB, NetworkX)
-- ✅ Intelligent caching with TTL
-- ✅ Error handling & retry logic
-- ✅ Performance monitoring
-- ✅ Session management
-- ✅ M1 8GB optimized
+RAG Chatbot Agent - Independent from Main Workflow
+===============================================================
 
-Author: Production Team
-Date: December 31, 2025
+LANGGRAPH INTEGRATION:
+    - Called by: langgraph_orchestrator.handle_chat_query() 
+    - Position: NOT part of main StateGraph workflow (user-triggered)
+    - Input: application_id, query, query_type, app_state
+    - Updates State: chat_history (appended)
+    - Routing: Independent operation (no next node)
+
+PURPOSE:
+    Advanced conversational AI with enterprise-grade features:
+    - FAANG-level RAG engine with context ranking
+    - Multi-database retrieval (SQLite, TinyDB, ChromaDB, NetworkX)
+    - Intelligent caching with TTL
+    - Error handling & retry logic
+    - Performance monitoring
+    - Session management
+    - M1 8GB optimized
+ARCHITECTURE PATTERN:
+    This agent is SEPARATE from the main StateGraph workflow.
+    It's invoked independently when users ask questions.
+    Accesses orchestrator's stored state but doesn't modify the workflow.
+
 """
 import logging
 import json
@@ -25,8 +36,8 @@ from ..services.rag_engine import RAGEngine
 
 class RAGChatbotAgent(BaseAgent):
     """
-    FAANG-Grade RAG Chatbot with Advanced Features
-    ==============================================
+    RAG Chatbot with Advanced Features
+    ==================================
     
     - Context-aware responses using all 4 databases
     - Intelligent prompt engineering
@@ -57,7 +68,7 @@ class RAGChatbotAgent(BaseAgent):
         self.active_sessions = {}
         self.max_history_per_session = 10
         
-        self.logger.info("✅ FAANG-Grade RAG Chatbot initialized: Advanced RAG + 4 DBs + Caching + Monitoring")
+        self.logger.info("RAG Chatbot initialized: Advanced RAG + 4 DBs + Caching + Monitoring")
     
     async def execute(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
         """

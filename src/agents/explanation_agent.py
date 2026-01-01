@@ -1,6 +1,16 @@
 """
-Explanation Agent
-Generates natural language explanations and handles chatbot interactions
+Explanation Agent - LangGraph Node 5 (Final)
+
+LANGGRAPH INTEGRATION:
+    - Called by: langgraph_orchestrator._explain_node()
+    - Position: Fifth and final node in LangGraph StateGraph workflow
+    - Input State: application_id, extracted_data, eligibility_result, recommendation
+    - Updates State: explanation, stage=COMPLETED, processing_end_time
+    - Next Node: END (workflow complete)
+
+PURPOSE:
+    Generates natural language explanations and handles chatbot interactions.
+    Provides transparent justification for eligibility decisions and support amounts.
 
 Chatbot Capabilities:
 1. Explanation: "Why was this decision made?"
@@ -48,7 +58,24 @@ class ExplanationAgent(BaseAgent):
             - explanation: Explanation object
         """
         start_time = datetime.now()
-        application_id = input_data["application_id"]
+        application_id = input_data.get("application_id", "unknown")
+        
+        # Check if required data is None
+        extracted_data = input_data.get("extracted_data")
+        recommendation = input_data.get("recommendation")
+        eligibility_result = input_data.get("eligibility_result")
+        
+        if extracted_data is None or recommendation is None or eligibility_result is None:
+            self.logger.warning(f"[{application_id}] Missing required data for explanation generation")
+            return {
+                "explanation": Explanation(
+                    summary="Cannot generate explanation due to missing data",
+                    detailed_reasoning="Required data (extracted_data, recommendation, or eligibility_result) is not available",
+                    factors_analysis={},
+                    what_if_scenarios=[]
+                ),
+                "explanation_time": 0.0
+            }
         
         self.logger.info(f"[{application_id}] Generating explanation")
         
@@ -140,7 +167,7 @@ Eligibility score: {score:.2f}/1.00. While financial support is not available at
         sections.append(f"- Model Version: {model_version}")
         
         if model_version == "v3":
-            sections.append(f"- Prediction: {'✅ APPROVE' if prediction == 1 else '❌ REJECT'}")
+            sections.append(f"- Prediction: {'APPROVE' if prediction == 1 else 'REJECT'}")
             sections.append(f"- Confidence: {probability:.1%} (using 12 production features)")
             sections.append(f"- Model Quality: FAANG-grade Random Forest (100% test accuracy)")
             

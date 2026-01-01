@@ -1,6 +1,13 @@
 """
 Eligibility Agent - Determines social support eligibility using ML + business rules.
 
+LANGGRAPH INTEGRATION:
+    - Called by: langgraph_orchestrator._eligibility_node()
+    - Position: Third node in LangGraph StateGraph workflow
+    - Input State: application_id, extracted_data, validation_report
+    - Updates State: eligibility_result, stage=CHECKING_ELIGIBILITY
+    - Next Node: recommend_node (always)
+
 PURPOSE:
     Makes the critical approve/reject decision using a Random Forest model with
     automatic versioning and fallback. Combines ML predictions with business rules
@@ -16,7 +23,7 @@ DEPENDENCIES:
     - Depends on: ExtractedData, ValidationReport from previous stages
     - Uses: models/eligibility_model_v3.pkl, feature_scaler_v3.pkl
     - Imports: joblib for model loading, sklearn for inference
-    - Called by: orchestrator.py after validation stage
+    - Called by: langgraph_orchestrator._eligibility_node()
 
 ML MODEL FEATURES (12 total):
     Financial (6): monthly_income, family_size, net_worth, total_assets,
@@ -52,8 +59,6 @@ OUTPUT:
         - ml_prediction: Raw ML model output
         - policy_rules_met: Business rule compliance
 
-Author: ML Engineering Team
-Version: 3.0 - Production Grade with Versioning
 """
 import logging
 import pickle
@@ -92,36 +97,46 @@ class EligibilityAgent(BaseAgent):
         }
     
     def _load_ml_model(self):
-        """Load trained ML model with version fallback chain (v3 → v2 → rule-based)"""
+        """Load trained ML model with version fallback chain (v4 XGBoost → v4 RF → v3 → v2 → rule-based)"""
         import joblib
         
         base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
         
-        # Try loading models in priority order: v3 (latest) → v2 → v1
+        # Try loading models in priority order: v4 (XGBoost/RF) → v3 → v2
         model_versions = [
-            {"version": "v3", "features": 12, "description": "FAANG-grade (12 features, 100% accuracy)"},
-            {"version": "v2", "features": 8, "description": "Production model (8 features)"},
+            {"version": "v4", "model_file": "model_latest.pkl", "features": 12, "description": "XGBoost v4 (default, FAANG-grade)"},
+            {"version": "v4", "model_file": "random_forest_v4.pkl", "features": 12, "description": "Random Forest v4 (fallback)"},
+            {"version": "v3", "model_file": "eligibility_model_v3.pkl", "features": 12, "description": "FAANG-grade (12 features, 100% accuracy)"},
+            {"version": "v2", "model_file": "eligibility_model_v2.pkl", "features": 8, "description": "Production model (8 features)"},
         ]
         
         for model_config in model_versions:
             version = model_config["version"]
-            model_path = os.path.join(base_dir, f"models/eligibility_model_{version}.pkl")
+            model_file = model_config["model_file"]
+            model_path = os.path.join(base_dir, f"models/{model_file}")
             scaler_path = os.path.join(base_dir, f"models/feature_scaler_{version}.pkl")
             
             try:
-                if os.path.exists(model_path) and os.path.exists(scaler_path):
+                if os.path.exists(model_path):
                     self.ml_model = joblib.load(model_path)
-                    self.feature_scaler = joblib.load(scaler_path)
+                    # Try loading scaler, fallback to v3 scaler if v4 doesn't exist
+                    if os.path.exists(scaler_path):
+                        self.feature_scaler = joblib.load(scaler_path)
+                    elif version == "v4":
+                        scaler_v3 = os.path.join(base_dir, "models/feature_scaler_v3.pkl")
+                        if os.path.exists(scaler_v3):
+                            self.feature_scaler = joblib.load(scaler_v3)
+                    
                     self.model_version = version
                     self.model_features = model_config["features"]
-                    self.logger.info(f"✓ ML model {version} loaded: {model_config['description']}")
+                    self.logger.info(f"ML model {version} loaded: {model_config['description']}")
                     return
             except Exception as e:
-                self.logger.warning(f"Failed to load {version} model: {e}")
+                self.logger.warning(f"Failed to load {model_file}: {e}")
                 continue
         
         # No model loaded, use rule-based fallback
-        self.logger.warning("⚠️  No ML model available, using rule-based fallback")
+        self.logger.warning("No ML model available, using rule-based fallback")
         self.ml_model = None
         self.feature_scaler = None
         self.model_version = "fallback"
@@ -140,9 +155,26 @@ class EligibilityAgent(BaseAgent):
             - eligibility_result: EligibilityResult
         """
         start_time = datetime.now()
-        application_id = input_data["application_id"]
-        extracted_data = input_data["extracted_data"]
-        validation_report = input_data["validation_report"]
+        application_id = input_data.get("application_id", "unknown")
+        extracted_data = input_data.get("extracted_data")
+        validation_report = input_data.get("validation_report")
+        
+        # Check if required data is None
+        if extracted_data is None:
+            self.logger.warning(f"[{application_id}] Extracted data is None, cannot determine eligibility")
+            return {
+                "eligibility_result": EligibilityResult(
+                    is_eligible=False,
+                    eligibility_score=0.0,
+                    reasoning=["Cannot determine eligibility: No extracted data available"],
+                    ml_prediction=None,
+                    policy_rules_met=False
+                ),
+                "eligibility_time": 0.0
+            }
+        
+        if validation_report is None:
+            self.logger.warning(f"[{application_id}] Validation report is None, proceeding with caution")
         
         self.logger.info(f"[{application_id}] Starting eligibility assessment")
         
@@ -277,7 +309,7 @@ class EligibilityAgent(BaseAgent):
                 prediction = self.ml_model.predict(feature_vector_scaled)[0]
                 probability = self.ml_model.predict_proba(feature_vector_scaled)[0]
                 
-                self.logger.info(f"✓ ML prediction (v3): {prediction}, prob: {probability[1]:.2%}")
+                self.logger.info(f"ML prediction (v3): {prediction}, prob: {probability[1]:.2%}")
                 
                 return {
                     "prediction": int(prediction),

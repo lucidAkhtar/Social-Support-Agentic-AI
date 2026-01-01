@@ -1,5 +1,5 @@
 """
-Unified Database Manager - Production-Grade FAANG Standards
+Unified Database Manager - Production-Grade 
 Intelligent query routing across 4 databases with multi-level caching
 
 Architecture:
@@ -179,7 +179,7 @@ class UnifiedDatabaseManager:
             'networkx': {'count': 0, 'total_time': 0.0}
         }
         
-        logger.info("Unified Database Manager initialized (FAANG production-grade)")
+        logger.info("Unified Database Manager initialized")
     
     def _init_databases(self):
         """Initialize all database connections"""
@@ -187,7 +187,7 @@ class UnifiedDatabaseManager:
             # SQLite - primary data store
             from .prod_sqlite_manager import SQLiteManager
             self.sqlite = SQLiteManager()
-            logger.info("✅ SQLite initialized")
+            logger.info("SQLite initialized")
         except Exception as e:
             logger.error(f"SQLite init failed: {e}")
             self.sqlite = None
@@ -196,7 +196,7 @@ class UnifiedDatabaseManager:
             # TinyDB - cache layer
             from .tinydb_manager import TinyDBManager
             self.tinydb = TinyDBManager()
-            logger.info("✅ TinyDB initialized")
+            logger.info("TinyDB initialized")
         except Exception as e:
             logger.error(f"TinyDB init failed: {e}")
             self.tinydb = None
@@ -205,7 +205,7 @@ class UnifiedDatabaseManager:
             # ChromaDB - semantic search
             from .chroma_manager import ChromaDBManager
             self.chromadb = ChromaDBManager()
-            logger.info("✅ ChromaDB initialized")
+            logger.info("ChromaDB initialized")
         except Exception as e:
             logger.error(f"ChromaDB init failed: {e}")
             self.chromadb = None
@@ -219,7 +219,7 @@ class UnifiedDatabaseManager:
             if graph_path.exists():
                 import networkx as nx
                 self.networkx.graph = nx.read_graphml(str(graph_path))
-                logger.info(f"✅ NetworkX initialized ({self.networkx.graph.number_of_nodes()} nodes)")
+                logger.info(f"NetworkX initialized ({self.networkx.graph.number_of_nodes()} nodes)")
             else:
                 # Fresh system - graph will be created on first application
                 logger.debug("NetworkX graph file not found - will be created on first use")

@@ -1,10 +1,25 @@
 """
-Data Extraction Agent
-Extracts structured data from all uploaded documents using:
-- pdfplumber for PDFs with text
-- Tesseract OCR for images and scanned documents  
-- pandas for Excel files
-- Intelligent regex-based field extraction
+Data Extraction Agent - LangGraph Node 1
+
+LANGGRAPH INTEGRATION:
+    - Called by: langgraph_orchestrator._extract_node()
+    - Position: First node in LangGraph StateGraph workflow
+    - Input State: application_id, documents, applicant_name
+    - Updates State: extracted_data, stage=EXTRACTING
+    - Next Node: validate_node (always)
+
+PURPOSE:
+    Extracts structured data from all uploaded documents using:
+    - pdfplumber for PDFs with text
+    - Tesseract OCR for images and scanned documents  
+    - pandas for Excel files
+    - Intelligent regex-based field extraction
+
+ARCHITECTURE PATTERN:
+    This agent is a pure domain logic component. It doesn't inherit from
+    LangGraph classes - instead, the LangGraph orchestrator wraps it in
+    a node function (_extract_node). This is the recommended LangGraph
+    pattern for integrating existing agents.
 """
 import asyncio
 import logging
@@ -42,8 +57,16 @@ class DataExtractionAgent(BaseAgent):
             - extracted_data: ExtractedData object
         """
         start_time = datetime.now()
-        application_id = input_data["application_id"]
-        documents = input_data["documents"]
+        application_id = input_data.get("application_id", "unknown")
+        documents = input_data.get("documents", [])
+        
+        # Check if documents list is None or empty
+        if not documents:
+            self.logger.warning(f"[{application_id}] No documents provided for extraction")
+            return {
+                "extracted_data": ExtractedData(),
+                "extraction_time": 0.0
+            }
         
         self.logger.info(f"[{application_id}] Starting extraction for {len(documents)} documents")
         

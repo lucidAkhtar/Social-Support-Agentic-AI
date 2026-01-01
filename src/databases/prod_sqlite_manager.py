@@ -318,18 +318,20 @@ class SQLiteManager:
         Chatbot: Calls this → Returns stats → Provides insights
         """
         with self.get_connection() as conn:
+            # Join with decisions table to get accurate decision counts
             cursor = conn.execute("""
                 SELECT 
                     COUNT(*) as total_applications,
-                    SUM(CASE WHEN eligibility = 'APPROVED' THEN 1 ELSE 0 END) as approved,
-                    SUM(CASE WHEN eligibility = 'DECLINED' THEN 1 ELSE 0 END) as declined,
-                    SUM(CASE WHEN eligibility = 'CONDITIONAL' THEN 1 ELSE 0 END) as conditional,
-                    AVG(policy_score) as avg_policy_score,
-                    AVG(support_amount) as avg_support_amount,
-                    AVG(monthly_income) as avg_income,
-                    AVG(family_size) as avg_family_size
-                FROM applications
-                WHERE status = 'PROCESSED'
+                    SUM(CASE WHEN d.decision = 'APPROVED' THEN 1 ELSE 0 END) as approved,
+                    SUM(CASE WHEN d.decision = 'DECLINED' THEN 1 ELSE 0 END) as declined,
+                    SUM(CASE WHEN d.decision = 'CONDITIONAL' THEN 1 ELSE 0 END) as conditional,
+                    AVG(d.policy_score) as avg_policy_score,
+                    AVG(d.support_amount) as avg_support_amount,
+                    AVG(a.monthly_income) as avg_income,
+                    AVG(a.family_size) as avg_family_size
+                FROM applications a
+                LEFT JOIN decisions d ON a.app_id = d.app_id
+                WHERE a.status IN ('COMPLETED', 'PROCESSED')
             """)
             
             return dict(cursor.fetchone())

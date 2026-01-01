@@ -363,7 +363,7 @@ class DocumentExtractor:
         elif 'permanent' in text_lower:
             data['employment_type'] = 'Permanent'
         
-        self.logger.info(f"✅ Employment letter: company={data['company_name']}, position={data['current_position']}, salary={data['monthly_salary']} AED")
+        self.logger.info(f"Employment letter: company={data['company_name']}, position={data['current_position']}, salary={data['monthly_salary']} AED")
         
         return data
     
@@ -563,7 +563,7 @@ class DocumentExtractor:
             self.logger.warning("No assets or liabilities extracted - check Excel format")
         
         self.logger.info(
-            f"✅ EXTRACTION COMPLETE: Assets={data['total_assets']:.2f} AED, "
+            f"EXTRACTION COMPLETE: Assets={data['total_assets']:.2f} AED, "
             f"Liabilities={data['total_liabilities']:.2f} AED, "
             f"Net Worth={data['net_worth']:.2f} AED"
         )
@@ -638,7 +638,7 @@ class DocumentExtractor:
             result["enquiries"] = data.get("enquiries", [])
             result["recent_enquiries"] = len(data.get("enquiries", []))
             
-            self.logger.info(f"✅ Extracted credit data: score={result['credit_score']}, accounts={len(result['credit_accounts'])}, outstanding={result['outstanding_debt']:.2f} AED")
+            self.logger.info(f"Extracted credit data: score={result['credit_score']}, accounts={len(result['credit_accounts'])}, outstanding={result['outstanding_debt']:.2f} AED")
             
             return result
             

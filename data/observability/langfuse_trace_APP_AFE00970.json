@@ -1,0 +1,37 @@
+{
+  "trace_id": "trace_APP_AFE00970",
+  "application_id": "APP_AFE00970",
+  "applicant_name": "Fatima Al Kaabi",
+  "timestamp": "2026-01-01T22:56:06.824967",
+  "processing_time_seconds": 0.032465,
+  "stages": {
+    "extraction": {
+      "success": false,
+      "has_data": false
+    },
+    "validation": {
+      "success": false,
+      "validation_score": 0.0
+    },
+    "eligibility": {
+      "success": true,
+      "is_eligible": false,
+      "eligibility_score": 0.0
+    },
+    "recommendation": {
+      "success": true,
+      "support_amount": 0.0
+    }
+  },
+  "final_decision": {
+    "is_eligible": false,
+    "support_amount": 0.0
+  },
+  "errors": [
+    "Extraction error: 'document_type'",
+    "Validation skipped: No extracted data",
+    "Eligibility error: Extracted data is None, cannot check eligibility",
+    "Recommendation error: Extracted data is None, cannot generate recommendation",
+    "Explanation skipped: Extracted data is None"
+  ]
+}

@@ -61,11 +61,11 @@ class FeatureExtractor:
     def validate_features(features: np.ndarray) -> bool:
         """Validate feature array shape and values"""
         if features.shape != (8,):
-            print(f"❌ Invalid feature shape: {features.shape}, expected (8,)")
+            print(f" Invalid feature shape: {features.shape}, expected (8,)")
             return False
         
         if np.any(np.isnan(features)):
-            print(f"❌ NaN values in features: {features}")
+            print(f" NaN values in features: {features}")
             return False
         
         return True
@@ -91,7 +91,7 @@ def load_training_data() -> Tuple[np.ndarray, np.ndarray, List[Dict]]:
         # Load metadata (has policy_score and profile)
         metadata_file = app_dir / "metadata.json"
         if not metadata_file.exists():
-            print(f"⚠️  Skipping {app_id}: metadata.json not found")
+            print(f"  Skipping {app_id}: metadata.json not found")
             continue
         
         with open(metadata_file) as f:
@@ -113,7 +113,7 @@ def load_training_data() -> Tuple[np.ndarray, np.ndarray, List[Dict]]:
         
         applications.append(app_data)
     
-    print(f"✅ Loaded {len(applications)} applications")
+    print(f" Loaded {len(applications)} applications")
     
     # Extract features using FeatureExtractor
     extractor = FeatureExtractor()
@@ -124,7 +124,7 @@ def load_training_data() -> Tuple[np.ndarray, np.ndarray, List[Dict]]:
         features = extractor.extract_features(app)
         
         if not extractor.validate_features(features):
-            print(f"⚠️  Skipping {app['app_id']}: Invalid features")
+            print(f" Skipping {app['app_id']}: Invalid features")
             continue
         
         X.append(features)
@@ -136,10 +136,10 @@ def load_training_data() -> Tuple[np.ndarray, np.ndarray, List[Dict]]:
     X = np.array(X)
     y = np.array(y)
     
-    print(f"📊 Feature matrix shape: {X.shape}")
-    print(f"📊 Label distribution: {np.bincount(y)}")
-    print(f"   - Not eligible (score < 30): {np.sum(y == 0)}")
-    print(f"   - Eligible (score >= 30): {np.sum(y == 1)}")
+    print(f" Feature matrix shape: {X.shape}")
+    print(f" Label distribution: {np.bincount(y)}")
+    print(f" - Not eligible (score < 30): {np.sum(y == 0)}")
+    print(f" - Eligible (score >= 30): {np.sum(y == 1)}")
     
     return X, y, applications
 
@@ -148,14 +148,14 @@ def train_model(X: np.ndarray, y: np.ndarray) -> RandomForestClassifier:
     """
     Train Random Forest classifier with cross-validation.
     """
-    print("\n🌲 Training Random Forest model...")
+    print("\n Training Random Forest model...")
     
     # Check class balance
     class_counts = np.bincount(y)
-    print(f"   Class distribution: {class_counts}")
+    print(f"  Class distribution: {class_counts}")
     
     if len(class_counts) < 2:
-        print("⚠️  Warning: Only one class present. Model will have 100% accuracy but is meaningless.")
+        print(" Warning: Only one class present. Model will have 100% accuracy but is meaningless.")
     
     # Train-test split
     X_train, X_test, y_train, y_test = train_test_split(
@@ -181,7 +181,7 @@ def train_model(X: np.ndarray, y: np.ndarray) -> RandomForestClassifier:
     train_score = model.score(X_train, y_train)
     test_score = model.score(X_test, y_test)
     
-    print(f"\n📈 Model Performance:")
+    print(f"\n Model Performance:")
     print(f"   Training accuracy: {train_score:.3f}")
     print(f"   Test accuracy: {test_score:.3f}")
     
@@ -194,10 +194,10 @@ def train_model(X: np.ndarray, y: np.ndarray) -> RandomForestClassifier:
     # Predictions
     y_pred = model.predict(X_test)
     
-    print(f"\n📊 Classification Report:")
+    print(f"\n Classification Report:")
     print(classification_report(y_test, y_pred, target_names=['Not Eligible', 'Eligible']))
     
-    print(f"\n🎯 Confusion Matrix:")
+    print(f"\n Confusion Matrix:")
     print(confusion_matrix(y_test, y_pred))
     
     # Feature importance
@@ -206,7 +206,7 @@ def train_model(X: np.ndarray, y: np.ndarray) -> RandomForestClassifier:
         'importance': model.feature_importances_
     }).sort_values('importance', ascending=False)
     
-    print(f"\n🔍 Feature Importance:")
+    print(f"\n Feature Importance:")
     print(feature_importance.to_string(index=False))
     
     return model
@@ -217,7 +217,7 @@ def generate_test_applications() -> List[Dict]:
     Generate 10 test applications with diverse scores.
     3 LOW (25-40), 4 MEDIUM (41-65), 3 HIGH (66-100)
     """
-    print("\n🧪 Generating 10 test applications...")
+    print("\n Generating 10 test applications...")
     
     test_apps = []
     
@@ -279,7 +279,7 @@ def generate_test_applications() -> List[Dict]:
     with open(output_file, 'w') as f:
         json.dump(test_apps, f, indent=2)
     
-    print(f"✅ Generated 10 test applications, saved to: {output_file}")
+    print(f" Generated 10 test applications, saved to: {output_file}")
     
     # Print distribution
     low_count = sum(1 for app in test_apps if app['policy_score'] < 40)
@@ -296,7 +296,7 @@ def test_inference(model: RandomForestClassifier, test_apps: List[Dict]):
     Test model inference on test applications.
     CRITICAL: Uses FeatureExtractor to ensure feature consistency.
     """
-    print("\n🔮 Testing model inference on test applications...")
+    print("\n Testing model inference on test applications...")
     
     extractor = FeatureExtractor()
     
@@ -306,7 +306,7 @@ def test_inference(model: RandomForestClassifier, test_apps: List[Dict]):
         
         # Validate
         if not extractor.validate_features(features):
-            print(f"❌ Invalid features for {app['app_id']}")
+            print(f" Invalid features for {app['app_id']}")
             continue
         
         # Predict
@@ -324,7 +324,7 @@ def test_inference(model: RandomForestClassifier, test_apps: List[Dict]):
 
 def save_model(model: RandomForestClassifier):
     """Save model and metadata"""
-    print("\n💾 Saving model...")
+    print("\n Saving model...")
     
     models_dir = Path("models")
     models_dir.mkdir(exist_ok=True)
@@ -366,7 +366,7 @@ def main():
     X, y, applications = load_training_data()
     
     if X.shape[0] < 10:
-        print(f"\n❌ Error: Insufficient training data ({X.shape[0]} samples)")
+        print(f"\n Error: Insufficient training data ({X.shape[0]} samples)")
         print("   Run: poetry run python fix_dataset_generation.py")
         return
     

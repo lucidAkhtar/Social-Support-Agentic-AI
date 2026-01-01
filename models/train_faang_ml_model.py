@@ -11,9 +11,7 @@ Features:
 - Model versioning and metadata tracking
 - Production-ready with proper error handling
 
-Author: ML Engineering Team
-Version: 3.0 - Production Grade
-Date: January 2026
+
 """
 
 import json
@@ -39,7 +37,7 @@ sys.path.insert(0, str(project_root))
 
 class FANGGradeMLTrainer:
     """
-    FAANG-grade ML trainer for social support eligibility prediction.
+    ML trainer for social support eligibility prediction.
     
     Social Support Logic:
     - LOW income + HIGH need = Label 1 (APPROVE)
@@ -319,7 +317,7 @@ class FANGGradeMLTrainer:
         print(f"✓ Training report saved: {report_path}")
         
         print(f"\n{'='*80}")
-        print("✅ MODEL TRAINING COMPLETE")
+        print("MODEL TRAINING COMPLETE")
         print(f"{'='*80}")
         print("\nModel artifacts:")
         print(f"  • eligibility_model_v3.pkl")

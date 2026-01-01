@@ -1,0 +1,41 @@
+{
+  "model_version": "v4",
+  "model_type": "RandomForest",
+  "n_features": 12,
+  "feature_names": [
+    "monthly_income",
+    "family_size",
+    "net_worth",
+    "total_assets",
+    "total_liabilities",
+    "credit_score",
+    "employment_years",
+    "is_employed",
+    "is_unemployed",
+    "owns_property",
+    "rents",
+    "lives_with_family"
+  ],
+  "metrics": {
+    "model_type": "RandomForest",
+    "accuracy": 1.0,
+    "f1_score": 1.0,
+    "roc_auc": 1.0,
+    "feature_importance": {
+      "monthly_income": 0.20468887893264703,
+      "family_size": 0.12470404218005851,
+      "net_worth": 0.22901609848463816,
+      "total_assets": 0.12680084856450682,
+      "total_liabilities": 0.004521807702729016,
+      "credit_score": 0.21270521723745756,
+      "employment_years": 0.030393648582132705,
+      "is_employed": 0.0,
+      "is_unemployed": 0.0,
+      "owns_property": 0.03869508158798835,
+      "rents": 0.028474376727842005,
+      "lives_with_family": 0.0
+    }
+  },
+  "training_date": "2026-01-01T20:37:33.688944",
+  "default": false
+}

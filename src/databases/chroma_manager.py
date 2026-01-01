@@ -51,8 +51,8 @@ class ChromaDBManager:
         self.income_patterns = self._get_or_create_collection("income_patterns")
         self.case_decisions = self._get_or_create_collection("case_decisions")
         
-        logger.info(f"✅ ChromaDB initialized at {self.persist_directory}")
-        logger.info(f"   Collections: application_summaries, resumes, income_patterns, case_decisions")
+        logger.info(f"ChromaDB initialized at {self.persist_directory}")
+        logger.info(f"Collections: application_summaries, resumes, income_patterns, case_decisions")
     
     
     def _get_or_create_collection(self, name: str):
@@ -62,9 +62,9 @@ class ChromaDBManager:
             doc_count = collection.count()
             # Only log if collection has data (avoid cluttering logs on fresh systems)
             if doc_count > 0:
-                logger.info(f"   Found collection: {name} ({doc_count} docs)")
+                logger.info(f"Found collection: {name} ({doc_count} docs)")
             else:
-                logger.debug(f"   Found collection: {name} (empty)")
+                logger.debug(f"Found collection: {name} (empty)")
             return collection
         except Exception:
             collection = self.client.create_collection(
@@ -100,10 +100,6 @@ class ChromaDBManager:
                 chunks.append(chunk)
         
         return chunks if chunks else [text]
-    
-    # ============================================================================
-    # DOCUMENT INDEXING METHODS (Used by populate_databases.py)
-    # ============================================================================
     
     def index_application_summary(self, app_id: str, summary_data: Dict[str, Any]):
         """
@@ -347,7 +343,7 @@ class ChromaDBManager:
         self.income_patterns = self._get_or_create_collection("income_patterns")
         self.case_decisions = self._get_or_create_collection("case_decisions")
         
-        logger.info("✅ All collections reset")
+        logger.info("All collections reset")
     
     def delete_application_data(self, app_id: str):
         """Delete all documents for a specific application."""

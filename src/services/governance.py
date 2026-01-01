@@ -1,6 +1,6 @@
 """
 Production-Grade Logging, Auditing & Governance System
-FAANG Standards: Structured logging, audit trails, compliance, M1 8GB optimized
+FAANG Standards: Structured logging, audit trails, compliance
 """
 import logging
 import json

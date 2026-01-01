@@ -1,6 +1,24 @@
 """
-Production-Grade Data Validation Agent
-Comprehensive validation with precise rules and intelligent cross-checks
+Data Validation Agent - LangGraph Node 2
+
+LANGGRAPH INTEGRATION:
+    - Called by: langgraph_orchestrator._validate_node()
+    - Position: Second node in LangGraph StateGraph workflow
+    - Input State: application_id, extracted_data, applicant_name
+    - Updates State: validation_report, stage=VALIDATING
+    - Next Node: eligibility_node (if valid) OR END (if critical errors)
+    - Conditional Routing: _should_continue_after_validation()
+
+PURPOSE:
+    Production-grade data validation with:
+    - Comprehensive validation with precise rules
+    - Intelligent cross-checks and fuzzy name matching
+    - Completeness scoring and confidence calculation
+    - Critical error detection for early termination
+
+ARCHITECTURE PATTERN:
+    Pure domain logic agent wrapped by LangGraph node function.
+    Validation results determine workflow routing via conditional edges.
 """
 import logging
 import re
@@ -29,8 +47,23 @@ class DataValidationAgent(BaseAgent):
     async def execute(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
         """Validate extracted data comprehensively"""
         start_time = datetime.now()
-        application_id = input_data["application_id"]
-        extracted_data = input_data["extracted_data"]
+        application_id = input_data.get("application_id", "unknown")
+        extracted_data = input_data.get("extracted_data")
+        
+        # Check if extracted_data is None
+        if extracted_data is None:
+            self.logger.warning(f"[{application_id}] Extracted data is None, skipping validation")
+            return {
+                "validation_report": ValidationReport(
+                    is_valid=False,
+                    completeness_score=0.0,
+                    confidence_score=0.0,
+                    issues=["No extracted data available for validation"],
+                    cross_document_checks={}
+                ),
+                "validation_time": 0.0
+            }
+        
         applicant_name_from_application = input_data.get("applicant_name")  # Name from application creation
         
         self.logger.info(f"[{application_id}] Starting comprehensive validation")

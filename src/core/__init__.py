@@ -1,9 +1,9 @@
 """Core orchestration components"""
 from .types import *
-from .orchestrator import MasterOrchestrator
+from .langgraph_orchestrator import LangGraphOrchestrator
 
 __all__ = [
-    'MasterOrchestrator',
+    'LangGraphOrchestrator',
     'ApplicationState',
     'ProcessingStage',
     'DecisionType',

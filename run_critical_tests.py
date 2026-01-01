@@ -38,17 +38,17 @@ def run_command(cmd, description):
             print("STDERR:", result.stderr)
         
         if result.returncode == 0:
-            print(f"\n✅ {description} - PASSED ({duration:.1f}s)")
+            print(f"\n{description} - PASSED ({duration:.1f}s)")
             return True
         else:
-            print(f"\n❌ {description} - FAILED ({duration:.1f}s)")
+            print(f"\n{description} - FAILED ({duration:.1f}s)")
             return False
             
     except subprocess.TimeoutExpired:
-        print(f"\n⏱️  {description} - TIMEOUT")
+        print(f"\n{description} - TIMEOUT")
         return False
     except Exception as e:
-        print(f"\n❌ {description} - ERROR: {e}")
+        print(f"\n{description} - ERROR: {e}")
         return False
 
 
@@ -91,7 +91,7 @@ def main():
     failed = total - passed
     
     for test_name, result in results.items():
-        status = "✅ PASS" if result else "❌ FAIL"
+        status = "PASS" if result else "FAIL"
         print(f"  {status}  {test_name}")
     
     print(f"\n{'='*80}")
@@ -99,14 +99,14 @@ def main():
     print(f"{'='*80}")
     
     if failed == 0:
-        print("\n🎉 ALL TESTS PASSED - READY FOR PRODUCTION")
+        print("\nALL TESTS PASSED - READY FOR PRODUCTION")
         print("\nCritical fixes verified:")
         print("  ✓ ML model versioning with fallback chain")
         print("  ✓ End-to-end integration workflow")
         print("  ✓ Langfuse observability with full tracing")
         return 0
     else:
-        print(f"\n⚠️  {failed} test(s) failed - review output above")
+        print(f"\n{failed} test(s) failed - review output above")
         return 1
 
 
