@@ -332,7 +332,7 @@ class LangGraphOrchestrator:
             validation_report = result.get("validation_report")
             span.end(output={
                 "success": True,
-                "validation_score": validation_report.completeness_score if validation_report else 0.0,
+                "validation_score": validation_report.data_completeness_score if validation_report else 0.0,
                 "confidence": validation_report.confidence_score if validation_report else 0.0,
                 "issues_found": len(validation_report.issues) if validation_report and validation_report.issues else 0
             })
@@ -500,11 +500,12 @@ class LangGraphOrchestrator:
             state["updated_at"] = datetime.now().isoformat()
             
             # Record explanation metrics in Langfuse
-            explanation_text = result.get("explanation", "")
+            explanation_obj = result.get("explanation")
+            explanation_summary = explanation_obj.summary if explanation_obj else ""
             span.end(output={
                 "success": True,
-                "explanation_length": len(explanation_text),
-                "has_reasoning": "reasoning" in explanation_text.lower(),
+                "explanation_length": len(explanation_summary),
+                "has_reasoning": bool(explanation_obj and explanation_obj.detailed_reasoning),
                 "stage": ProcessingStage.COMPLETED.value
             })
             
@@ -656,7 +657,7 @@ class LangGraphOrchestrator:
                     },
                     "validation": {
                         "success": final_state.get("validation_report") is not None,
-                        "validation_score": final_state.get("validation_report").completeness_score if final_state.get("validation_report") else 0.0
+                        "validation_score": final_state.get("validation_report").data_completeness_score if final_state.get("validation_report") else 0.0
                     },
                     "eligibility": {
                         "success": final_state.get("eligibility_result") is not None,
@@ -684,23 +685,6 @@ class LangGraphOrchestrator:
             
         except Exception as e:
             self.logger.error(f"Failed to export trace: {e}")
-            
-            # Update stored state
-            self.applications[application_id] = final_state
-            
-            duration = (datetime.now() - start_time).total_seconds()
-            self.logger.info(
-                f"[{application_id}]  LangGraph workflow completed in {duration:.2f}s"
-            )
-            
-            return final_state
-            
-        except Exception as e:
-            self.logger.error(f"[{application_id}] Workflow error: {e}")
-            initial_state["errors"].append(f"Workflow error: {str(e)}")
-            initial_state["stage"] = "failed"
-            self.applications[application_id] = initial_state
-            return initial_state
     
     def get_application(self, application_id: str) -> Optional[ApplicationGraphState]:
         """Retrieve application state"""

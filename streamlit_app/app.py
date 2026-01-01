@@ -16,7 +16,7 @@ API_BASE_URL = "http://localhost:8000"
 # Professional Page Configuration
 st.set_page_config(
     page_title="UAE Social Support Portal",
-    page_icon="🇦🇪",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -331,13 +331,13 @@ def chat_with_agent(application_id: str, query: str) -> Optional[str]:
         data = response.json()
         return data.get('response')
     except requests.exceptions.Timeout:
-        st.error("⏱️ Request timed out. The AI is taking longer than expected. Please try again.")
+        st.error("Request timed out. The AI is taking longer than expected. Please try again.")
         return None
-    except requests.exceptions.RequestException as e:
-        st.error(f"❌ Connection error: {str(e)}")
+    except requests.exceptions.ConnectionError as e:
+        st.error(f"Connection error: {str(e)}")
         return None
     except Exception as e:
-        st.error(f"❌ Unexpected error: {str(e)}")
+        st.error(f"Unexpected error: {str(e)}")
         return None
 
 
@@ -353,7 +353,7 @@ st.markdown("""
 
 # Sidebar - Application Status
 with st.sidebar:
-    st.markdown("### 📋 Application Status")
+    st.markdown("### Application Status")
     
     if st.session_state.application_id:
         st.success(f"**ID:** {st.session_state.application_id}")
@@ -376,21 +376,22 @@ with st.sidebar:
             
             # Show stage with icon
             stage_icons = {
-                'pending': '⏳',
-                'extracting': '🔍',
-                'validating': '✅',
-                'checking_eligibility': '📊',
-                'generating_recommendation': '💡',
-                'completed': '🎉',
-                'failed': '❌'
+                'pending': '',
+                'extracting': '',
+                'validating': '',
+                'checking_eligibility': '',
+                'generating_recommendation': '',
+                'completed': '',
+                'failed': ''
             }
-            icon = stage_icons.get(stage, '📝')
-            st.markdown(f"**Status:** {icon} {stage.replace('_', ' ').title()}")
+            icon = stage_icons.get(stage, '')
+            status_text = stage.replace('_', ' ').title()
+            st.markdown(f"**Status:** {status_text}")
         
-        if st.button("🔄 Refresh Status", use_container_width=True):
+        if st.button("Refresh Status", use_container_width=True):
             st.rerun()
         
-        if st.button("🗑️ Start New Application", use_container_width=True):
+        if st.button("Start New Application", use_container_width=True):
             for key in list(st.session_state.keys()):
                 del st.session_state[key]
             st.rerun()
@@ -452,11 +453,11 @@ if st.session_state.application_id:
 # Main Content Area
 if not st.session_state.application_id:
     # STEP 1: Create Application
-    st.markdown("## 👤 Welcome! Let's Start Your Application")
+    st.markdown("## Welcome! Let's Start Your Application")
     
     st.markdown("""
     <div class="info-box">
-        <h4>📝 What You'll Need:</h4>
+        <h4>What You'll Need:</h4>
         <ul>
             <li>Emirates ID (front image)</li>
             <li>Bank Statement (last 3-6 months, PDF)</li>
@@ -478,11 +479,11 @@ if not st.session_state.application_id:
         
         col1, col2, col3 = st.columns([1, 1, 2])
         with col2:
-            submitted = st.form_submit_button("✨ Create Application", type="primary", use_container_width=True)
+            submitted = st.form_submit_button("Create Application", type="primary", use_container_width=True)
         
         if submitted:
             if not applicant_name or len(applicant_name.strip()) < 3:
-                st.error("⚠️ Please enter your full legal name (minimum 3 characters)")
+                st.error("Please enter your full legal name (minimum 3 characters)")
             else:
                 with st.spinner("Creating your application..."):
                     app_id = create_application(applicant_name.strip())
@@ -490,17 +491,17 @@ if not st.session_state.application_id:
                         st.session_state.application_id = app_id
                         st.session_state.applicant_name = applicant_name.strip()
                         st.session_state.current_step = 2
-                        st.success(f"✅ Application created! ID: {app_id}")
+                        st.success(f"Application created! ID: {app_id}")
                         time.sleep(1)
                         st.rerun()
 
 elif st.session_state.current_step == 2:
     # STEP 2: Upload Documents
-    st.markdown("## 📄 Upload Your Documents")
+    st.markdown("## Upload Your Documents")
     
     st.markdown("""
     <div class="info-box">
-        <h4>✅ Document Requirements:</h4>
+        <h4>Document Requirements:</h4>
         <ul>
             <li><strong>Emirates ID:</strong> Clear photo showing all details</li>
             <li><strong>Bank Statement:</strong> PDF from your bank (3-6 months)</li>
@@ -522,7 +523,7 @@ elif st.session_state.current_step == 2:
         for file in uploaded_files:
             col1, col2, col3 = st.columns([3, 1, 1])
             with col1:
-                st.text(f"📄 {file.name}")
+                st.text(f"{file.name}")
             with col2:
                 st.text(f"{file.size / 1024:.1f} KB")
             with col3:
@@ -531,28 +532,28 @@ elif st.session_state.current_step == 2:
     col1, col2, col3 = st.columns([1, 1, 1])
     
     with col2:
-        if uploaded_files and st.button("📤 Upload Documents", type="primary", use_container_width=True):
+        if uploaded_files and st.button("Upload Documents", type="primary", use_container_width=True):
             with st.spinner(f"Uploading {len(uploaded_files)} file(s)..."):
                 if upload_documents(st.session_state.application_id, uploaded_files):
                     st.session_state.uploaded_files = [f.name for f in uploaded_files]
-                    st.success(f"✅ Successfully uploaded {len(uploaded_files)} document(s)!")
+                    st.success(f"Successfully uploaded {len(uploaded_files)} document(s)!")
                     time.sleep(1)
     
     if st.session_state.uploaded_files:
         st.markdown("---")
-        st.markdown("### ✅ Uploaded Documents:")
+        st.markdown("### Uploaded Documents:")
         for filename in st.session_state.uploaded_files:
-            st.text(f"✓ {filename}")
+            st.text(f"{filename}")
         
         col1, col2, col3 = st.columns([1, 1, 1])
         with col2:
-            if st.button("🚀 Process Application", type="primary", use_container_width=True):
+            if st.button("Process Application", type="primary", use_container_width=True):
                 st.session_state.current_step = 3
                 st.rerun()
 
 elif st.session_state.current_step == 3:
     # STEP 3: Processing
-    st.markdown("## ⚙️ Processing Your Application")
+    st.markdown("## Processing Your Application")
     
     status = get_application_status(st.session_state.application_id)
     
@@ -596,7 +597,7 @@ elif st.session_state.current_step == 3:
         elif stage == 'completed':
             st.markdown("""
             <div class="status-card status-success">
-                <h2>✅ Processing Complete!</h2>
+                <h2>Processing Complete!</h2>
                 <p>Your application has been successfully processed. View your results below.</p>
             </div>
             """, unsafe_allow_html=True)
@@ -604,13 +605,13 @@ elif st.session_state.current_step == 3:
             st.session_state.current_step = 4
             st.session_state.processing_complete = True
             
-            if st.button("📊 View Results", type="primary", use_container_width=True):
+            if st.button("View Results", type="primary", use_container_width=True):
                 st.rerun()
         
         elif stage == 'failed':
             st.markdown("""
             <div class="status-card status-error">
-                <h3>❌ Processing Failed</h3>
+                <h3>Processing Failed</h3>
                 <p>There was an error processing your application. Please check your documents and try again.</p>
             </div>
             """, unsafe_allow_html=True)
@@ -632,7 +633,7 @@ elif st.session_state.current_step == 4:
         if decision == 'APPROVED':
             st.markdown(f"""
             <div class="status-card status-success">
-                <h1>🎉 Congratulations! Application APPROVED</h1>
+                <h1>Congratulations! Application APPROVED</h1>
                 <h2>Monthly Support: AED {support_amount:,.2f}</h2>
                 <p>You are eligible for financial assistance and enablement programs.</p>
             </div>
@@ -640,7 +641,7 @@ elif st.session_state.current_step == 4:
         elif decision == 'SOFT_DECLINED':
             st.markdown(f"""
             <div class="status-card status-warning">
-                <h2>⚠️ Application Soft Declined</h2>
+                <h2>Application Soft Declined</h2>
                 <h3>Support Available: AED {support_amount:,.2f}</h3>
                 <p>While full support isn't available now, you qualify for enablement programs and transitional assistance.</p>
             </div>
@@ -648,13 +649,13 @@ elif st.session_state.current_step == 4:
         else:
             st.markdown("""
             <div class="status-card status-error">
-                <h2>❌ Application Not Approved</h2>
+                <h2>Application Not Approved</h2>
                 <p>Unfortunately, you don't currently meet the eligibility criteria. Review the feedback below and consider reapplying.</p>
             </div>
             """, unsafe_allow_html=True)
         
         # Tabs for detailed information
-        tab1, tab2, tab3, tab4 = st.tabs(["📊 Overview", "📋 Validation", "🎓 Programs", "💬 AI Assistant"])
+        tab1, tab2, tab3, tab4 = st.tabs(["Overview", "Validation", "Programs", "AI Assistant"])
         
         with tab1:
             st.markdown("### Financial Overview")
@@ -687,9 +688,9 @@ elif st.session_state.current_step == 4:
             issues = validation.get('issues', [])
             
             if is_valid:
-                st.success("✅ All documents validated successfully")
+                st.success("All documents validated successfully")
             else:
-                st.warning(f"⚠️ {len(issues)} validation issue(s) found")
+                st.warning(f"{len(issues)} validation issue(s) found")
             
             col1, col2 = st.columns(2)
             with col1:
@@ -700,11 +701,11 @@ elif st.session_state.current_step == 4:
             if issues:
                 st.markdown("#### Issues Detected:")
                 for issue in issues:
-                    severity_icon = {"critical": "🔴", "warning": "🟡", "info": "🔵"}.get(issue['severity'], "⚪")
+                    severity_icon = {"critical": "[CRITICAL]", "warning": "[WARNING]", "info": "[INFO]"}.get(issue['severity'], "")
                     with st.expander(f"{severity_icon} {issue['field']}"):
                         st.write(f"**Message:** {issue['message']}")
                         if issue.get('suggested_resolution'):
-                            st.info(f"💡 **Suggestion:** {issue['suggested_resolution']}")
+                            st.info(f"**Suggestion:** {issue['suggested_resolution']}")
         
         with tab3:
             st.markdown("### Recommended Programs")
@@ -713,10 +714,10 @@ elif st.session_state.current_step == 4:
             
             if programs:
                 for program in programs:
-                    priority_colors = {"high": "🔴", "medium": "🟡", "low": "🟢"}
+                    priority_colors = {"high": "[HIGH]", "medium": "[MEDIUM]", "low": "[LOW]"}
                     priority = program.get('priority', 'medium')
                     
-                    with st.expander(f"{priority_colors.get(priority, '⚪')} {program.get('name', 'Program')}"):
+                    with st.expander(f"{priority_colors.get(priority, '')} {program.get('name', 'Program')}"):
                         st.write(f"**Category:** {program.get('category', 'N/A')}")
                         st.write(f"**Description:** {program.get('description', 'No description')}")
                         st.write(f"**Duration:** {program.get('duration', 'N/A')}")
@@ -726,9 +727,9 @@ elif st.session_state.current_step == 4:
                 st.info("No specific programs recommended at this time.")
         
         with tab4:
-            st.markdown("### 🤖 AI Assistant")
+            st.markdown("### AI Assistant")
             
-            st.info("💬 Ask me anything about your application, decision, or how to improve!")
+            st.info("Ask me anything about your application, decision, or how to improve!")
             
             # Chat history display
             chat_container = st.container()
@@ -741,16 +742,16 @@ elif st.session_state.current_step == 4:
                             st.markdown(f"**AI Assistant:** {msg['content']}")
                         st.markdown("---")
                 else:
-                    st.info("👋 Start by asking a question or use the quick questions below!")
+                    st.info("Start by asking a question or use the quick questions below!")
             
             # Quick action buttons
             st.markdown("##### Quick Questions:")
             col1, col2, col3 = st.columns(3)
             
             with col1:
-                if st.button("💡 Why this decision?", use_container_width=True, key="quick_why"):
+                if st.button("Why this decision?", use_container_width=True, key="quick_why"):
                     query = "Why was I approved/declined? Explain in detail."
-                    with st.spinner("🤔 AI is analyzing your application... This may take up to 2 minutes."):
+                    with st.spinner("AI is analyzing your application... This may take up to 2 minutes."):
                         response = chat_with_agent(st.session_state.application_id, query)
                         if response:
                             st.session_state.chat_history.append({"role": "user", "content": query})
@@ -758,9 +759,9 @@ elif st.session_state.current_step == 4:
                             st.rerun()
             
             with col2:
-                if st.button("📈 How to improve?", use_container_width=True, key="quick_improve"):
+                if st.button("How to improve?", use_container_width=True, key="quick_improve"):
                     query = "What can I do to improve my chances next time?"
-                    with st.spinner("🤔 AI is analyzing your application... This may take up to 2 minutes."):
+                    with st.spinner("AI is analyzing your application... This may take up to 2 minutes."):
                         response = chat_with_agent(st.session_state.application_id, query)
                         if response:
                             st.session_state.chat_history.append({"role": "user", "content": query})
@@ -768,9 +769,9 @@ elif st.session_state.current_step == 4:
                             st.rerun()
             
             with col3:
-                if st.button("🔍 Check details", use_container_width=True, key="quick_details"):
+                if st.button("Check details", use_container_width=True, key="quick_details"):
                     query = "Show me the key factors in my application"
-                    with st.spinner("🤔 AI is analyzing your application... This may take up to 2 minutes."):
+                    with st.spinner("AI is analyzing your application... This may take up to 2 minutes."):
                         response = chat_with_agent(st.session_state.application_id, query)
                         if response:
                             st.session_state.chat_history.append({"role": "user", "content": query})
@@ -780,17 +781,17 @@ elif st.session_state.current_step == 4:
             # Chat input with form to handle submission properly
             with st.form(key="chat_form", clear_on_submit=True):
                 user_query = st.text_input("Ask your question:", placeholder="Type your question here...", key="chat_input")
-                submit_chat = st.form_submit_button("Send 💬", use_container_width=True, type="primary")
+                submit_chat = st.form_submit_button("Send", use_container_width=True, type="primary")
                 
                 if submit_chat and user_query.strip():
-                    with st.spinner("🤔 AI is analyzing your question... This may take up to 2 minutes for complex queries."):
+                    with st.spinner("AI is analyzing your question... This may take up to 2 minutes for complex queries."):
                         response = chat_with_agent(st.session_state.application_id, user_query)
                         if response:
                             st.session_state.chat_history.append({"role": "user", "content": user_query})
                             st.session_state.chat_history.append({"role": "assistant", "content": response})
                             st.rerun()
                         else:
-                            st.error("❌ Failed to get response from AI. Please try a simpler question or try again later.")
+                            st.error("Failed to get response from AI. Please try a simpler question or try again later.")
     else:
         st.error("Unable to load results")
 

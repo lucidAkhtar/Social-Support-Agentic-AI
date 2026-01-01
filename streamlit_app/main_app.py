@@ -21,7 +21,7 @@ sys.path.insert(0, str(project_root))
 # Configure page
 st.set_page_config(
     page_title="UAE Social Support Portal",
-    page_icon="🇦🇪",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
@@ -110,7 +110,7 @@ st.markdown("""
 with st.sidebar:
     st.markdown("""
     <div style='text-align: center; padding: 1rem 0;'>
-        <h1 style='color: #0066cc; margin: 0;'>🇦🇪</h1>
+        <h1 style='color: #0066cc; margin: 0;'></h1>
         <h3 style='margin: 0.5rem 0 0 0;'>UAE Social Support</h3>
         <p style='color: #6b7280; font-size: 0.875rem;'>Production System v2.0</p>
     </div>
@@ -119,7 +119,7 @@ with st.sidebar:
     st.divider()
     
     # Role selector (for demo purposes)
-    st.markdown("### 👤 User Role")
+    st.markdown("### User Role")
     role = st.radio(
         "Select Role:",
         ["Applicant", "Administrator"],
@@ -136,18 +136,18 @@ with st.sidebar:
     st.divider()
     
     # Quick stats (always visible)
-    st.markdown("### 📊 System Status")
+    st.markdown("### System Status")
     
     col1, col2 = st.columns(2)
     with col1:
-        st.metric("API", "🟢 Online", delta="99.9%")
+        st.metric("API", "Online", delta="99.9%")
     with col2:
-        st.metric("Database", "🟢 Healthy", delta="Fast")
+        st.metric("Database", "Healthy", delta="Fast")
     
     st.divider()
     
     # Help section
-    with st.expander("❓ Quick Help"):
+    with st.expander("Quick Help"):
         if st.session_state.user_role == "applicant":
             st.markdown("""
             **Application Process:**
@@ -158,8 +158,8 @@ with st.sidebar:
             5. Chat with AI assistant
             
             **Support:**
-            📞 800-SUPPORT
-            ✉️ help@uae.gov.ae
+            800-SUPPORT
+            help@uae.gov.ae
             """)
         else:
             st.markdown("""
@@ -170,7 +170,7 @@ with st.sidebar:
             - Real-time analytics
             
             **Emergency:**
-            📞 +971-x-xxx-xxxx
+            +971-x-xxx-xxxx
             """)
 
 # Main content area
@@ -185,7 +185,7 @@ st.markdown("""
 <div style='text-align: center; color: #6b7280; padding: 1rem 0;'>
     <p style='margin: 0;'><strong>UAE Social Support Portal</strong> | Powered by AI</p>
     <p style='margin: 0.25rem 0; font-size: 0.875rem;'>
-        🔒 Secure • 🔍 Transparent • ⚖️ Fair • 🚀 Fast
+        Secure • Transparent • Fair • Fast
     </p>
     <p style='margin: 0.5rem 0 0 0; font-size: 0.75rem;'>
         © 2026 UAE Government. All rights reserved. | <a href='#'>Privacy Policy</a> | <a href='#'>Terms of Service</a>

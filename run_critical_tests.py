@@ -101,9 +101,9 @@ def main():
     if failed == 0:
         print("\nALL TESTS PASSED - READY FOR PRODUCTION")
         print("\nCritical fixes verified:")
-        print("  ✓ ML model versioning with fallback chain")
-        print("  ✓ End-to-end integration workflow")
-        print("  ✓ Langfuse observability with full tracing")
+        print("  ML model versioning with fallback chain")
+        print("  End-to-end integration workflow")
+        print("  Langfuse observability with full tracing")
         return 0
     else:
         print(f"\n{failed} test(s) failed - review output above")

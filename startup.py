@@ -74,8 +74,8 @@ def start_fastapi():
         
         if is_port_open(8000):
             print_success(f"FastAPI backend started successfully (PID: {process.pid})")
-            print(f"  📡 Available at: {Colors.BLUE}http://localhost:8000{Colors.NC}")
-            print(f"  📚 API Docs at: {Colors.BLUE}http://localhost:8000/docs{Colors.NC}")
+            print(f"  Available at: {Colors.BLUE}http://localhost:8000{Colors.NC}")
+            print(f"  API Docs at: {Colors.BLUE}http://localhost:8000/docs{Colors.NC}")
             return process
         else:
             print_warning("FastAPI may not have started. Check output above for errors.")
@@ -91,12 +91,12 @@ def start_streamlit():
     print("=" * 64)
     print("")
     print_info("Starting Streamlit frontend...")
-    print(f"  Command: streamlit run streamlit_app/app.py --logger.level=info")
+    print(f"  Command: streamlit run streamlit_app/main_app.py --logger.level=info")
     print("")
     
     try:
         process = subprocess.run(
-            [sys.executable, "-m", "streamlit", "run", "streamlit_app/app.py",
+            [sys.executable, "-m", "streamlit", "run", "streamlit_app/main_app.py",
              "--logger.level=info"],
             cwd=os.path.dirname(os.path.abspath(__file__))
         )
@@ -115,7 +115,7 @@ def main():
     ui_only = "--ui-only" in sys.argv
     
     print("=" * 64)
-    print("🚀 Social Support Application - Startup")
+    print("Social Support Application - Startup")
     print("=" * 64)
     print("")
     

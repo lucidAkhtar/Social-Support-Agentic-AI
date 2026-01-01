@@ -1,0 +1,33 @@
+{
+  "trace_id": "trace_APP_2F50B917",
+  "application_id": "APP_2F50B917",
+  "applicant_name": "Fatima Al Kaabi",
+  "timestamp": "2026-01-02T00:30:33.595674",
+  "processing_time_seconds": 0.018441,
+  "stages": {
+    "extraction": {
+      "success": true,
+      "has_data": true
+    },
+    "validation": {
+      "success": true,
+      "validation_score": 0.0
+    },
+    "eligibility": {
+      "success": false,
+      "is_eligible": null,
+      "eligibility_score": 0.0
+    },
+    "recommendation": {
+      "success": false,
+      "support_amount": 0.0
+    }
+  },
+  "final_decision": {
+    "is_eligible": null,
+    "support_amount": 0.0
+  },
+  "errors": [
+    "Extraction error: 'document_type'"
+  ]
+}

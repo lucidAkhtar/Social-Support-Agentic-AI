@@ -1,0 +1,33 @@
+{
+  "trace_id": "trace_APP_6A3A711D",
+  "application_id": "APP_6A3A711D",
+  "applicant_name": "Fatima Al Kaabi",
+  "timestamp": "2026-01-02T00:49:02.782619",
+  "processing_time_seconds": 0.453289,
+  "stages": {
+    "extraction": {
+      "success": true,
+      "has_data": true
+    },
+    "validation": {
+      "success": true,
+      "validation_score": 1.0
+    },
+    "eligibility": {
+      "success": true,
+      "is_eligible": true,
+      "eligibility_score": 0.975
+    },
+    "recommendation": {
+      "success": true,
+      "support_amount": 500
+    }
+  },
+  "final_decision": {
+    "is_eligible": true,
+    "support_amount": 500
+  },
+  "errors": [
+    "Explanation error: object of type 'Explanation' has no len()"
+  ]
+}

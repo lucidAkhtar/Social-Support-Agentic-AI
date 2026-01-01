@@ -1,27 +1,27 @@
 # Complete System Architecture & Data Flow
 
-## 🏗️ System Architecture Overview
+## System Architecture Overview
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
 │                         FRONTEND (Streamlit UI)                              │
 │  ┌──────────────────────────────────────────────────────────────────────┐   │
-│  │ 📝 New Application Page                                              │   │
+│  │ New Application Page                                                 │   │
 │  │  ├─ Form Input: Name, Income, Family Size, Employment, Education    │   │
 │  │  ├─ Submit Button → POST /applications/submit                       │   │
 │  │  └─ Display: Application ID + Processing Progress                   │   │
 │  │                                                                      │   │
-│  │ 📊 Dashboard Page                                                    │   │
+│  │ Dashboard Page                                                       │   │
 │  │  ├─ Metrics: Total Apps, Avg Time, Approval Rate, System Health    │   │
 │  │  ├─ Charts: Approval Trend, Fairness Monitoring                    │   │
 │  │  └─ Tech Stack: LLM, ML, Orchestration, Observability              │   │
 │  │                                                                      │   │
-│  │ 🔍 Application Search Page                                          │   │
+│  │ Application Search Page                                             │   │
 │  │  ├─ Search Input: Application ID                                    │   │
 │  │  ├─ API Call: GET /applications/{id}/details                       │   │
 │  │  └─ Display: Full processing history                               │   │
 │  │                                                                      │   │
-│  │ ⚙️ Admin Panel                                                      │   │
+│  │ Admin Panel                                                         │   │
 │  │  ├─ Health Check: API, Database, Queue                             │   │
 │  │  ├─ Configuration: Feature Flags                                    │   │
 │  │  └─ Observability: Export Traces                                    │   │
@@ -190,7 +190,7 @@
 
 ---
 
-## 📊 Complete Data Flow: Submission to Decision
+## Complete Data Flow: Submission to Decision
 
 ```
 USER SUBMITS FORM IN STREAMLIT
@@ -309,8 +309,8 @@ LANGRAPH ORCHESTRATOR EXECUTES 5-STAGE PIPELINE
 │     │
 │     ├─ Process:
 │     │  ├─ Check thresholds:
-│     │  │  ├─ Validation quality (0.85) > 0.70? YES ✓
-│     │  │  └─ ML eligibility (0.92) > 0.60? YES ✓
+│     │  │  ├─ Validation quality (0.85) > 0.70? YES
+│     │  │  └─ ML eligibility (0.92) > 0.60? YES
 │     │  │
 │     │  ├─ Decision logic:
 │     │  │  if quality_score > 0.70 AND eligibility > 0.60:
@@ -407,7 +407,7 @@ STREAMLIT FETCHES FULL DETAILS
 ↓
 STREAMLIT SHOWS DECISION BANNER
 │
-├─ ✅ APPROVED (Confidence: 90%)
+├─ APPROVED (Confidence: 90%)
 ├─ Key Observations & LLM Analysis
 ├─ Recommendations (3-5 programs)
 └─ Balloons animation 🎉
@@ -431,7 +431,7 @@ ADMIN CAN EXPORT OBSERVABILITY
 
 ---
 
-## 🎯 Key Data Points in Processing Results
+## Key Data Points in Processing Results
 
 ```json
 {
@@ -530,7 +530,7 @@ ADMIN CAN EXPORT OBSERVABILITY
 
 ---
 
-## ✅ System Components Status Check
+## System Components Status Check
 
 When testing, verify each component:
 
@@ -565,5 +565,5 @@ When testing, verify each component:
 | Issues found | 0 | Perfect data quality |
 | Programs matched | 3-5 | Good recommendation coverage |
 
-This comprehensive visualization should help you truly understand what your system is doing at every stage! 🚀
+This comprehensive visualization should help you truly understand what your system is doing at every stage!
 

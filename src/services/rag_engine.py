@@ -491,13 +491,16 @@ Reasoning: {app.get('reasoning', dec.get('reasoning', 'Not available'))}
             validation = context.get('validation', {})
             validation_summary = f"\nVALIDATION STATUS:\n{json.dumps(validation, indent=2)}\n"
         
+        # Get applicant name for personalization
+        applicant_name = app.get('applicant_name', 'Applicant')
+        
         # System instruction based on query type
         if query_type == "explanation":
-            system_instruction = "You are an expert social support advisor. Explain decisions clearly using specific data from the application."
+            system_instruction = f"You are an expert social support advisor. The applicant's name is {applicant_name}. Address them by name in your response. Explain decisions clearly using specific data from the application."
         elif query_type == "simulation":
-            system_instruction = "You are a social support analyst. Analyze hypothetical scenarios based on historical patterns."
+            system_instruction = f"You are a social support analyst. The applicant's name is {applicant_name}. Analyze hypothetical scenarios based on historical patterns."
         else:
-            system_instruction = "You are a helpful UAE Social Support assistant. Answer questions accurately using the application data provided."
+            system_instruction = f"You are a helpful UAE Social Support assistant. The applicant's name is {applicant_name}. Address them by name at least once in your response. Answer questions accurately using the application data provided."
         
         prompt = f"""{system_instruction}
 
@@ -533,7 +536,7 @@ Your response:"""
                         "stream": False,
                         "options": {
                             "temperature": 0.7,
-                            "num_predict": 400,  # Optimized for concise responses
+                            "num_predict": 600,  # Increased to prevent truncation
                             "top_p": 0.9,
                             "top_k": 40,
                             "stop": ["\n\nUSER", "\n\nINSTRUCTIONS"]
@@ -545,6 +548,9 @@ Your response:"""
                 if response.status_code == 200:
                     result = response.json()
                     response_text = result.get('response', '').strip()
+                    
+                    # Remove signature placeholder if present
+                    response_text = self._clean_signature(response_text)
                     
                     # Calculate confidence based on response quality
                     confidence = self._calculate_confidence(response_text)
@@ -597,6 +603,31 @@ Your response:"""
             score += 0.05
         
         return min(score, 1.0)
+    
+    def _clean_signature(self, response: str) -> str:
+        """
+        Remove signature placeholders from LLM responses
+        Cleans up unprofessional placeholder text
+        """
+        import re
+        
+        # Remove common signature placeholders
+        placeholders = [
+            r'\[Your Name\]',
+            r'\[Your Position\]',
+            r'\[Your Title\]',
+            r'Best regards,\s*\[Your Name\]\s*\[Your Position\]',
+            r'Sincerely,\s*\[Your Name\]\s*\[Your Position\]',
+        ]
+        
+        for pattern in placeholders:
+            response = re.sub(pattern, '', response, flags=re.IGNORECASE)
+        
+        # Clean up extra whitespace and newlines
+        response = re.sub(r'\n{3,}', '\n\n', response)  # Max 2 newlines
+        response = response.strip()
+        
+        return response
     
     def _extract_sources(self, context: Dict[str, Any]) -> List[str]:
         """Extract source databases used"""

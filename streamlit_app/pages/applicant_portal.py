@@ -8,9 +8,75 @@ import requests
 import time
 from typing import Optional, Dict, Any
 import json
+import logging
 
 # API Configuration
 API_BASE_URL = "http://localhost:8000"
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+
+def api_call_with_retry(method: str, url: str, max_retries: int = 3, **kwargs) -> Optional[requests.Response]:
+    """
+    Make API call with exponential backoff retry logic
+    
+    Args:
+        method: HTTP method (GET, POST, etc.)
+        url: Full URL to call
+        max_retries: Maximum number of retry attempts
+        **kwargs: Additional arguments to pass to requests
+    
+    Returns:
+        Response object or None if all retries failed
+    """
+    # Increase timeout for LLM operations (can take 60-120s with Ollama)
+    default_timeout = 120  # 2 minutes for LLM operations
+    timeout = kwargs.pop('timeout', default_timeout)
+    
+    for attempt in range(max_retries):
+        try:
+            if method.upper() == "GET":
+                response = requests.get(url, timeout=timeout, **kwargs)
+            elif method.upper() == "POST":
+                response = requests.post(url, timeout=timeout, **kwargs)
+            elif method.upper() == "PUT":
+                response = requests.put(url, timeout=timeout, **kwargs)
+            else:
+                logger.error(f"Unsupported method: {method}")
+                return None
+            
+            response.raise_for_status()
+            return response
+        
+        except requests.exceptions.ConnectionError:
+            logger.warning(f"Connection failed (attempt {attempt + 1}/{max_retries})")
+            if attempt < max_retries - 1:
+                time.sleep(2 ** attempt)  # Exponential backoff: 1s, 2s, 4s
+            else:
+                st.error("🔌 Cannot connect to server. Please ensure the API is running at http://localhost:8000")
+                return None
+        
+        except requests.exceptions.Timeout:
+            logger.warning(f"Request timeout (attempt {attempt + 1}/{max_retries})")
+            if attempt < max_retries - 1:
+                time.sleep(2 ** attempt)
+            else:
+                st.error("⏱️ Request timed out. The server may be overloaded.")
+                return None
+        
+        except requests.exceptions.HTTPError as e:
+            logger.error(f"HTTP error: {e}")
+            st.error(f"❌ Server error: {e.response.status_code} - {e.response.reason}")
+            return None
+        
+        except Exception as e:
+            logger.error(f"Unexpected error: {e}")
+            st.error(f"❌ Unexpected error: {str(e)}")
+            return None
+    
+    return None
 
 def show():
     """Main applicant portal interface"""
@@ -123,15 +189,21 @@ def show_step1_create_application():
     </div>
     """, unsafe_allow_html=True)
     
-    with st.form("create_application"):
+    # Initialize form field state
+    if 'form_applicant_name' not in st.session_state:
+        st.session_state.form_applicant_name = ""
+    
+    with st.form("create_application", clear_on_submit=False):
         st.markdown("### 👤 Your Information")
         
         col1, col2 = st.columns(2)
         with col1:
             applicant_name = st.text_input(
                 "Full Name (as per Emirates ID) *",
+                value=st.session_state.form_applicant_name,
                 placeholder="Enter your complete legal name",
-                help="Must match your official documents exactly"
+                help="Must match your official documents exactly",
+                key="name_input"
             )
         with col2:
             email = st.text_input(
@@ -159,7 +231,8 @@ def show_step1_create_application():
         # Terms and conditions
         agree = st.checkbox(
             "I confirm that all information provided is accurate and I consent to data processing for eligibility assessment.",
-            value=False
+            value=False,
+            help="Required to proceed with application"
         )
         
         col1, col2, col3 = st.columns([1, 1, 1])
@@ -167,15 +240,17 @@ def show_step1_create_application():
             submitted = st.form_submit_button(
                 "✨ Create Application",
                 type="primary",
-                use_container_width=True,
-                disabled=not agree
+                use_container_width=True
             )
         
         if submitted:
+            # Save current form value
+            st.session_state.form_applicant_name = applicant_name
+            
             if not applicant_name or len(applicant_name.strip()) < 3:
                 st.error("⚠️ Please enter your full legal name (minimum 3 characters)")
             elif not agree:
-                st.error("⚠️ Please accept the terms and conditions to proceed")
+                st.error("⚠️ Please accept the terms and conditions before proceeding")
             else:
                 with st.spinner("Creating your application..."):
                     app_id = create_application(applicant_name.strip())
@@ -183,6 +258,7 @@ def show_step1_create_application():
                         st.session_state.application_id = app_id
                         st.session_state.applicant_name = applicant_name.strip()
                         st.session_state.current_step = 2
+                        st.session_state.form_applicant_name = ""  # Clear form
                         st.success(f"✅ Application created successfully!")
                         st.balloons()
                         time.sleep(1)
@@ -632,11 +708,22 @@ def show_programs(recommendation):
 
 def show_chatbot(application_id):
     """Show AI chatbot interface"""
-    st.markdown("### 🤖 AI Assistant - Ask Anything!")
+    # Prominent header with right-aligned styling
+    st.markdown("""
+    <div style='background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                color: white; padding: 2rem; border-radius: 12px; margin: 1rem 0;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); text-align: right;'>
+        <h2 style='margin: 0; font-size: 2.2rem; font-weight: 700;'>💬 Wanna Talk to Us?</h2>
+        <p style='margin: 0.75rem 0 0 0; font-size: 1.1rem; opacity: 0.95;'>
+            Get personalized answers about your application • Ask anything!
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("""
-    <div style='background: #eff6ff; padding: 1rem; border-radius: 8px; margin: 1rem 0;'>
-        <p style='margin: 0;'>💬 I'm here to help! Ask me about your decision, how to improve, or any questions about the application process.</p>
+    <div style='background: #f0f9ff; padding: 1rem; border-radius: 8px; margin: 1rem 0;
+                border-left: 4px solid #667eea;'>
+        <p style='margin: 0; color: #1e3a8a;'>💡 <strong>I'm your personal assistant!</strong> Ask me about your decision, ways to improve, eligibility factors, or any questions about the process.</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -805,16 +892,19 @@ def upload_documents(application_id: str, files) -> bool:
 
 
 def process_application(application_id: str) -> bool:
-    """Process application"""
+    """Process application with retry logic"""
     try:
-        response = requests.post(
-            f"{API_BASE_URL}/api/applications/{application_id}/process",
-            timeout=120
+        response = api_call_with_retry(
+            "POST",
+            f"{API_BASE_URL}/api/applications/{application_id}/process"
         )
-        response.raise_for_status()
-        return True
+        
+        if response and response.status_code == 200:
+            return True
+        return False
     except Exception as e:
-        st.error(f"❌ Processing failed: {e}")
+        logger.error(f"Error processing application: {e}")
+        st.error(f"❌ Processing failed: {str(e)}")
         return False
 
 
@@ -832,36 +922,39 @@ def get_application_status(application_id: str) -> Optional[Dict]:
 
 
 def get_application_results(application_id: str) -> Optional[Dict]:
-    """Get application results"""
+    """Get application results with retry logic"""
     try:
-        response = requests.get(
-            f"{API_BASE_URL}/api/applications/{application_id}/results",
-            timeout=10
+        response = api_call_with_retry(
+            "GET",
+            f"{API_BASE_URL}/api/applications/{application_id}/results"
         )
-        response.raise_for_status()
-        return response.json()
-    except:
+        
+        if response and response.status_code == 200:
+            return response.json()
+        return None
+    except Exception as e:
+        logger.error(f"Error fetching results: {e}")
         return None
 
 
 def chat_with_agent(application_id: str, query: str) -> Optional[str]:
-    """Send chat query"""
+    """Send chat query with retry logic"""
     try:
-        response = requests.post(
+        response = api_call_with_retry(
+            "POST",
             f"{API_BASE_URL}/api/applications/{application_id}/chat",
             json={
                 "application_id": application_id,
-                "query": query,
-                "query_type": "explanation"
-            },
-            timeout=180  # Increased from 30s - LLM can take 60-120s to generate responses
+                "query": query
+            }
         )
-        response.raise_for_status()
-        data = response.json()
-        return data.get('response')
-    except requests.exceptions.Timeout:
-        return "⏱️ The AI is taking longer than expected to respond. This might be due to complex analysis. Please try again or simplify your question."
-    except requests.exceptions.RequestException:
-        return "❌ Unable to connect to the AI service. Please check your connection and try again."
+        
+        if response and response.status_code == 200:
+            data = response.json()
+            return data.get("response")
+        return None
+    except Exception as e:
+        logger.error(f"Error in chat: {e}")
+        return "Sorry, I'm having trouble connecting to the chat service. Please try again."
     except Exception:
         return None

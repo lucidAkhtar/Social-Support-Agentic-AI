@@ -56,7 +56,7 @@ class DataValidationAgent(BaseAgent):
             return {
                 "validation_report": ValidationReport(
                     is_valid=False,
-                    completeness_score=0.0,
+                    data_completeness_score=0.0,
                     confidence_score=0.0,
                     issues=["No extracted data available for validation"],
                     cross_document_checks={}

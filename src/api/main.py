@@ -586,9 +586,9 @@ async def process_application(
         if hasattr(state, 'documents') and state.documents:
             documents_list = [
                 {
-                    "id": doc.document_id,
-                    "type": doc.document_type,
-                    "path": doc.file_path,
+                    "document_id": doc.document_id,
+                    "document_type": doc.document_type,
+                    "file_path": doc.file_path,
                     "filename": doc.filename
                 }
                 for doc in state.documents
@@ -600,6 +600,9 @@ async def process_application(
                 applicant_name=state.applicant_name,
                 documents=documents_list
             )
+            
+            # DEBUG: Log what name we're using
+            logger.info(f"[{application_id}] Processing with applicant_name: '{state.applicant_name}'")
             
             if final_state is None:
                 raise ValueError("Orchestrator returned None - workflow failed")
@@ -641,7 +644,7 @@ async def process_application(
                 "applicant_name": applicant_info.get("full_name", "Unknown"),
                 "emirates_id": applicant_info.get("id_number", ""),
                 "submission_date": datetime.now().strftime("%Y-%m-%d"),
-                "status": final_state["stage"].value,
+                "status": final_state["stage"],
                 "monthly_income": float(income_data.get("monthly_income") or 0),
                 "monthly_expenses": float(income_data.get("monthly_expenses") or 0),
                 "family_size": int(family_info.get("family_size") or 1),
@@ -740,7 +743,7 @@ async def process_application(
         
         response_data = ProcessingStatusResponse(
             application_id=application_id,
-            current_stage=final_state["stage"].value,
+            current_stage=final_state["stage"],
             progress_percentage=progress,
             message="Application processing completed",
             data={
@@ -754,7 +757,7 @@ async def process_application(
         # End request span with successful response
         request_span.end(output={
             "success": True,
-            "stage": final_state["stage"].value,
+            "stage": final_state["stage"],
             "is_eligible": final_state["eligibility_result"].is_eligible if final_state.get("eligibility_result") else False,
             "support_amount": final_state["recommendation"].financial_support_amount if final_state.get("recommendation") else 0
         })
@@ -829,27 +832,51 @@ async def get_application_status(
         
         state = active_applications[application_id]
         
+        # Handle both ApplicationState (old) and ApplicationGraphState (new dict from LangGraph)
+        if isinstance(state, dict):
+            # LangGraph state (dict)
+            stage = state.get("stage", "PENDING")
+            documents_count = len(state.get("documents", []))
+            has_extracted = state.get("extracted_data") is not None
+            has_validation = state.get("validation_report") is not None
+            has_eligibility = state.get("eligibility_result") is not None
+            has_recommendation = state.get("recommendation") is not None
+        else:
+            # Old ApplicationState object
+            stage = state.stage.value if hasattr(state.stage, 'value') else state.stage
+            documents_count = len(state.documents)
+            has_extracted = state.extracted_data is not None
+            has_validation = state.validation_report is not None
+            has_eligibility = state.eligibility_result is not None
+            has_recommendation = state.recommendation is not None
+        
         stage_progress = {
-            ProcessingStage.PENDING: 0,
-            ProcessingStage.EXTRACTING: 20,
-            ProcessingStage.VALIDATING: 40,
-            ProcessingStage.CHECKING_ELIGIBILITY: 60,
-            ProcessingStage.GENERATING_RECOMMENDATION: 80,
-            ProcessingStage.COMPLETED: 100,
-            ProcessingStage.FAILED: 0
+            "PENDING": 0,
+            "EXTRACTING": 20,
+            "extracting": 20,
+            "VALIDATING": 40,
+            "validating": 40,
+            "CHECKING_ELIGIBILITY": 60,
+            "checking_eligibility": 60,
+            "GENERATING_RECOMMENDATION": 80,
+            "generating_recommendation": 80,
+            "COMPLETED": 100,
+            "completed": 100,
+            "FAILED": 0,
+            "failed": 0
         }
         
         return ProcessingStatusResponse(
             application_id=application_id,
-            current_stage=state.stage.value,
-            progress_percentage=stage_progress.get(state.stage, 0),
-            message=f"Application is in {state.stage.value} stage",
+            current_stage=stage,
+            progress_percentage=stage_progress.get(stage, 0),
+            message=f"Application is in {stage} stage",
             data={
-                "documents_count": len(state.documents),
-                "has_extracted_data": state.extracted_data is not None,
-                "has_validation": state.validation_report is not None,
-                "has_eligibility": state.eligibility_result is not None,
-                "has_recommendation": state.recommendation is not None
+                "documents_count": documents_count,
+                "has_extracted_data": has_extracted,
+                "has_validation": has_validation,
+                "has_eligibility": has_eligibility,
+                "has_recommendation": has_recommendation
             }
         )
     
@@ -940,6 +967,24 @@ async def get_application_results(
         
         state = active_applications[application_id]
         
+        # Handle both ApplicationState (old) and ApplicationGraphState (new dict from LangGraph)
+        if isinstance(state, dict):
+            # LangGraph state (dict)
+            stage = state.get("stage", "UNKNOWN")
+            extracted_data = state.get("extracted_data")
+            validation_report = state.get("validation_report")
+            eligibility_result = state.get("eligibility_result")
+            recommendation = state.get("recommendation")
+            explanation = state.get("explanation")
+        else:
+            # Old ApplicationState object
+            stage = state.stage.value if hasattr(state.stage, 'value') else state.stage
+            extracted_data = state.extracted_data
+            validation_report = state.validation_report
+            eligibility_result = state.eligibility_result
+            recommendation = state.recommendation
+            explanation = state.explanation
+        
         # Get complete data from database
         try:
             full_data = sqlite_db.get_application(application_id)
@@ -952,15 +997,15 @@ async def get_application_results(
         
         return {
             "application_id": application_id,
-            "current_stage": state.stage.value,
+            "current_stage": stage,
             "extracted_data": {
-                "applicant_info": state.extracted_data.applicant_info,
-                "income_data": state.extracted_data.income_data,
-                "employment_data": state.extracted_data.employment_data,
-                "assets_liabilities": state.extracted_data.assets_liabilities,
-                "credit_data": state.extracted_data.credit_data,
-                "family_info": state.extracted_data.family_info,
-            } if state.extracted_data else None,
+                "applicant_info": extracted_data.applicant_info,
+                "income_data": extracted_data.income_data,
+                "employment_data": extracted_data.employment_data,
+                "assets_liabilities": extracted_data.assets_liabilities,
+                "credit_data": extracted_data.credit_data,
+                "family_info": extracted_data.family_info,
+            } if extracted_data else None,
             "database_stored_fields": {
                 "company_name": full_data.get('company_name'),
                 "current_position": full_data.get('current_position'),
@@ -973,32 +1018,32 @@ async def get_application_results(
                 "education_level": full_data.get('education_level')
             } if full_data else None,
             "validation": {
-                "is_valid": state.validation_report.is_valid,
-                "completeness_score": state.validation_report.data_completeness_score,
-                "confidence_score": state.validation_report.confidence_score,
+                "is_valid": validation_report.is_valid,
+                "completeness_score": validation_report.data_completeness_score,
+                "confidence_score": validation_report.confidence_score,
                 "issues": [{"field": i.field, "severity": i.severity, "message": i.message}
-                          for i in state.validation_report.issues]
-            } if state.validation_report else None,
+                          for i in validation_report.issues]
+            } if validation_report else None,
             "eligibility": {
-                "is_eligible": state.eligibility_result.is_eligible,
-                "eligibility_score": state.eligibility_result.eligibility_score,
-                "ml_prediction": state.eligibility_result.ml_prediction,
-                "policy_rules_met": state.eligibility_result.policy_rules_met,
-                "reasoning": state.eligibility_result.reasoning
-            } if state.eligibility_result else None,
+                "is_eligible": eligibility_result.is_eligible,
+                "eligibility_score": eligibility_result.eligibility_score,
+                "ml_prediction": eligibility_result.ml_prediction,
+                "policy_rules_met": eligibility_result.policy_rules_met,
+                "reasoning": eligibility_result.reasoning
+            } if eligibility_result else None,
             "recommendation": {
-                "decision": state.recommendation.decision.value,
-                "support_amount": state.recommendation.financial_support_amount,
-                "support_type": state.recommendation.financial_support_type,
-                "programs": state.recommendation.economic_enablement_programs,
-                "reasoning": state.recommendation.reasoning,
-                "key_factors": state.recommendation.key_factors
-            } if state.recommendation else None,
+                "decision": recommendation.decision.value,
+                "support_amount": recommendation.financial_support_amount,
+                "support_type": recommendation.financial_support_type,
+                "programs": recommendation.economic_enablement_programs,
+                "reasoning": recommendation.reasoning,
+                "key_factors": recommendation.key_factors
+            } if recommendation else None,
             "explanation": {
-                "summary": state.explanation.summary,
-                "detailed_reasoning": state.explanation.detailed_reasoning,
-                "factors_analysis": state.explanation.factors_analysis
-            } if state.explanation else None,
+                "summary": explanation.summary,
+                "detailed_reasoning": explanation.detailed_reasoning,
+                "factors_analysis": explanation.factors_analysis
+            } if explanation else None,
             "database_data": full_data
         }
     
@@ -1318,11 +1363,21 @@ async def simulate_changes(simulation: SimulationQuery):
         
         state = active_applications[application_id]
         
+        # Handle both dict and object state
+        if isinstance(state, dict):
+            extracted_data = state.get("extracted_data")
+            eligibility_result = state.get("eligibility_result")
+            stage = state.get("stage", "UNKNOWN")
+        else:
+            extracted_data = state.extracted_data
+            eligibility_result = state.eligibility_result
+            stage = state.stage.value if hasattr(state.stage, 'value') else state.stage
+        
         # Validate that application has been processed
-        if not state.extracted_data or not state.eligibility_result:
+        if not extracted_data or not eligibility_result:
             raise HTTPException(
                 status_code=400,
-                detail="Application must be fully processed before running simulations. Current stage: " + state.stage.value
+                detail="Application must be fully processed before running simulations. Current stage: " + stage
             )
         
         # Build simulation query
@@ -1422,11 +1477,11 @@ async def get_ml_model_info():
     **Example Response:**
     ```json
     {
-        "model_version": "v3",
-        "model_type": "RandomForestClassifier",
+        "model_version": "v4",
+        "model_type": "XGBoost",
         "n_features": 12,
         "test_accuracy": 1.0,
-        "training_date": "2026-01-01T12:00:00"
+        "training_date": "2026-01-01T20:37:33"
     }
     ```
     """
@@ -1435,7 +1490,7 @@ async def get_ml_model_info():
         from pathlib import Path
         
         models_dir = Path("models")
-        metadata_file = models_dir / "model_metadata_v3.json"
+        metadata_file = models_dir / "xgboost_metadata_v4.json"
         
         if not metadata_file.exists():
             raise HTTPException(status_code=404, detail="ML model metadata not found")
@@ -1443,12 +1498,9 @@ async def get_ml_model_info():
         with open(metadata_file) as f:
             metadata = json.load(f)
         
-        # Also load training report for more details
-        report_file = models_dir / "training_report_v3.json"
-        training_report = {}
-        if report_file.exists():
-            with open(report_file) as f:    
-                training_report = json.load(f)
+        # Extract metrics from v4 metadata structure
+        metrics = metadata.get("metrics", {})
+        training_report = metrics
         
         return {
             "status": "operational",
@@ -1457,12 +1509,11 @@ async def get_ml_model_info():
             "n_features": metadata.get("n_features"),
             "feature_names": metadata.get("feature_names"),
             "training_date": metadata.get("training_date"),
-            "hyperparameters": metadata.get("hyperparameters"),
-            "test_accuracy": training_report.get("test_accuracy"),
-            "test_f1_score": training_report.get("test_f1"),
-            "cv_mean_f1": training_report.get("cv_mean_f1"),
-            "label_definition": metadata.get("label_definition"),
-            "note": metadata.get("note")
+            "test_accuracy": metrics.get("accuracy"),
+            "test_f1_score": metrics.get("f1_score"),
+            "roc_auc": metrics.get("roc_auc"),
+            "default": metadata.get("default"),
+            "rationale": metadata.get("rationale")
         }
     
     except HTTPException:
@@ -1485,9 +1536,9 @@ async def get_feature_importance():
     ```json
     {
         "features": [
-            {"name": "credit_score", "importance": 0.1683},
-            {"name": "monthly_income", "importance": 0.1531},
-            {"name": "net_worth", "importance": 0.1405}
+            {"name": "credit_score", "importance": 0.3988},
+            {"name": "net_worth", "importance": 0.3342},
+            {"name": "monthly_income", "importance": 0.1661}
         ]
     }
     ```
@@ -1497,15 +1548,15 @@ async def get_feature_importance():
         from pathlib import Path
         
         models_dir = Path("models")
-        report_file = models_dir / "training_report_v3.json"
+        metadata_file = models_dir / "xgboost_metadata_v4.json"
         
-        if not report_file.exists():
-            raise HTTPException(status_code=404, detail="Training report not found")
+        if not metadata_file.exists():
+            raise HTTPException(status_code=404, detail="Model metadata not found")
         
-        with open(report_file) as f:
-            report = json.load(f)
+        with open(metadata_file) as f:
+            metadata = json.load(f)
         
-        feature_importances = report.get("feature_importances", {})
+        feature_importances = metadata.get("metrics", {}).get("feature_importance", {})
         
         # Sort by importance
         sorted_features = sorted(
@@ -1556,49 +1607,43 @@ async def explain_ml_decision(application_id: str):
     ```
     """
     try:
-        # Get application from database
+        # Get application from database with decision data
         app_data = sqlite_db.get_application(application_id)
         
         if not app_data:
             raise HTTPException(status_code=404, detail=f"Application {application_id} not found")
         
-        # Get eligibility result (contains ML prediction)
-        results = sqlite_db.get_application_results(application_id)
+        # Extract data from application record (SQLite stores all data in applications + decisions tables)
+        # The get_application method joins applications with decisions table
         
-        if not results:
-            raise HTTPException(status_code=404, detail=f"No results found for {application_id}")
-        
-        ml_prediction = results.get("ml_prediction", {})
-        extracted_data = results.get("extracted_data", {})
-        
-        # Extract feature values
-        income_data = extracted_data.get("income_data", {})
-        family_info = extracted_data.get("family_info", {})
-        assets_liabilities = extracted_data.get("assets_liabilities", {})
-        employment_data = extracted_data.get("employment_data", {})
-        credit_data = extracted_data.get("credit_data", {})
-        
+        # Extract feature values from the application data
         feature_values = {
-            "monthly_income": income_data.get("monthly_income", 0),
-            "family_size": family_info.get("family_size", 1),
-            "net_worth": assets_liabilities.get("net_worth", 0),
-            "total_assets": assets_liabilities.get("total_assets", 0),
-            "total_liabilities": assets_liabilities.get("total_liabilities", 0),
-            "credit_score": credit_data.get("credit_score", 600),
-            "employment_years": employment_data.get("years_of_experience", 0),
-            "employment_status": employment_data.get("employment_status", "unknown"),
-            "housing_type": family_info.get("housing_type", "unknown")
+            "monthly_income": app_data.get("monthly_income", 0),
+            "family_size": app_data.get("family_size", 1),
+            "net_worth": app_data.get("net_worth", 0),
+            "total_assets": app_data.get("total_assets", 0),
+            "total_liabilities": app_data.get("total_liabilities", 0),
+            "credit_score": app_data.get("credit_score", 600),
+            "employment_years": app_data.get("work_experience_years", 0),
+            "employment_status": app_data.get("employment_status", "unknown"),
+            "company_name": app_data.get("company_name", "unknown"),
+            "credit_rating": app_data.get("credit_rating", "unknown")
         }
         
-        prediction = ml_prediction.get("prediction", 0)
-        confidence = ml_prediction.get("probability", 0)
+        # ML prediction is stored in decisions table (joined by get_application)
+        ml_score = app_data.get("ml_score")
+        decision = app_data.get("decision", "PENDING")
+        
+        # Determine prediction and confidence from stored data
+        prediction = 1 if decision in ["APPROVE", "APPROVED", "CONDITIONAL"] else 0
+        confidence = ml_score if ml_score else 0.5
         
         return {
             "application_id": application_id,
             "ml_prediction": prediction,
             "confidence": confidence,
             "decision": "APPROVE" if prediction == 1 else "REJECT",
-            "model_version": ml_prediction.get("model_version", "unknown"),
+            "model_version": "v4",
             "feature_values": feature_values,
             "interpretation": (
                 f"ML model predicts {'APPROVAL' if prediction == 1 else 'REJECTION'} "
@@ -1624,6 +1669,12 @@ async def explain_ml_decision(application_id: str):
 async def test_sqlite_insert(application_data: ApplicationInput):
     """
     Test SQLite insertion with full application data.
+    
+    **IMPORTANT:** Applications inserted via this endpoint will NOT appear in /api/statistics 
+    unless their status is 'COMPLETED' or 'PROCESSED'. Statistics only count fully processed 
+    applications to maintain data integrity. This is EXPECTED BEHAVIOR, not a bug.
+    
+    To see your inserted application in statistics, set status to "COMPLETED" in the request.
     
     **TEST DATA (Copy for Swagger UI - Request Body):**
     ```json
@@ -1812,6 +1863,10 @@ async def test_sqlite_stats():
     """
     Test SQLite aggregation queries.
     
+    **NOTE:** This endpoint only counts applications with status='COMPLETED' or 'PROCESSED'.
+    Applications inserted via /test/sqlite/insert-application with status='PENDING' will NOT
+    be counted. This is intentional to show only fully processed applications.
+    
     **Expected Results:**
     ```json
     {
@@ -1853,11 +1908,16 @@ async def test_tinydb_session(session: SessionInput):
     Test TinyDB session creation with TTL.
     
     **TEST DATA (Copy for Swagger UI - Request Body):**
+    
+    **NOTE:** session_id and user_id can be ANY string value. For testing, you can use:
+    - session_id: "user_APP-000001" (link to your application)
+    - user_id: "testuser123" or "user_" + your app_id
+    
     ```json
     {
-      "session_id": "user_12345",
+      "session_id": "user_APP-000001",
       "data": {
-        "user_id": "user_12345",
+        "user_id": "testuser123",
         "language": "en",
         "current_app_id": "APP-000001",
         "preferences": {"theme": "dark", "notifications": true}
@@ -1868,9 +1928,9 @@ async def test_tinydb_session(session: SessionInput):
     **More Test Cases:**
     ```json
     {
-      "session_id": "user_67890",
+      "session_id": "user_APP-000015",
       "data": {
-        "user_id": "user_67890",
+        "user_id": "anotheruser456",
         "language": "ar",
         "current_app_id": "APP-000015",
         "last_activity": "2024-12-31T12:00:00Z"
@@ -1908,9 +1968,11 @@ async def test_tinydb_get_session(
     Test TinyDB session retrieval with expiration check.
     
     **TEST DATA (Copy for Swagger UI):**
+    
+    **NOTE:** Use the session_id you created in the POST endpoint. Examples:
     ```
-    session_id: user_12345  (Create first using POST /test/tinydb/create-session)
-    session_id: user_67890  (Another test session)
+    session_id: user_APP-000001  (Use your application ID)
+    session_id: testuser123      (Any string you used when creating)
     ```
     
     **Tests:**

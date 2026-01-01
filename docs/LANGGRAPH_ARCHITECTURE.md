@@ -1,6 +1,6 @@
 # LangGraph Architecture - Production Implementation
 
-**IMPLEMENTATION**:  **LangGraph StateGraph** - Full compliance achieved
+**IMPLEMENTATION**: **LangGraph StateGraph** - Full compliance achieved
 
 ---
 
@@ -52,7 +52,7 @@ workflow.add_node("extract", extract_node)
 ```
 
 ```python
-#  INCORRECT - Agents don't need to inherit LangGraph classes
+# INCORRECT - Agents don't need to inherit LangGraph classes
 class MyAgent(RunnableLambda):  # NOT NEEDED
     pass
 ```
@@ -168,10 +168,10 @@ class DataExtractionAgent(BaseAgent):
 ```
 
 **Why agents stay simple?**
--  **Separation of concerns**: Agents focus on domain logic
--  **Testability**: Test agents independently of LangGraph
--  **Reusability**: Agents can be used outside LangGraph
--  **Maintainability**: Business logic isolated from orchestration
+- **Separation of concerns**: Agents focus on domain logic
+- **Testability**: Test agents independently of LangGraph
+- **Reusability**: Agents can be used outside LangGraph
+- **Maintainability**: Business logic isolated from orchestration
 
 ---
 
@@ -226,16 +226,16 @@ poetry run python test_langgraph_migration.py
 
 ### Expected Output
 ```
- LangGraph Orchestrator initialized (Assignment Compliant)
- All 6 agents initialized
- Agents registered - LangGraph workflow compiled
- Starting LangGraph workflow
- LangGraph Node: Data Extraction
- LangGraph Node: Data Validation
- LangGraph Node: Eligibility Check
- LangGraph Node: Recommendation Generation
- LangGraph Node: Explanation Generation
- LangGraph workflow completed in 0.01s
+LangGraph Orchestrator initialized (Assignment Compliant)
+All 6 agents initialized
+Agents registered - LangGraph workflow compiled
+Starting LangGraph workflow
+LangGraph Node: Data Extraction
+LangGraph Node: Data Validation
+LangGraph Node: Eligibility Check
+LangGraph Node: Recommendation Generation
+LangGraph Node: Explanation Generation
+LangGraph workflow completed in 0.01s
 ```
 
 ---
@@ -267,28 +267,28 @@ async def process_application(application_id: str):
 ## Benefits of Our Architecture
 
 ### 1. **Assignment Compliance**
--  Uses LangGraph (as required)
--  Agentic orchestration tool
--  Multi-agent coordination
--  State management
+- Uses LangGraph (as required)
+- Agentic orchestration tool
+- Multi-agent coordination
+- State management
 
 ### 2. **Production Quality**
--  Type-safe state with TypedDict
--  Conditional routing for error handling
--  State persistence with checkpointing
--  Observable workflow (LangSmith integration ready)
+- Type-safe state with TypedDict
+- Conditional routing for error handling
+- State persistence with checkpointing
+- Observable workflow (LangSmith integration ready)
 
 ### 3. **Clean Architecture**
--  Separation of concerns (orchestration vs business logic)
--  Testable agents (no LangGraph coupling)
--  Reusable components
--  Easy to extend (add new agents/nodes)
+- Separation of concerns (orchestration vs business logic)
+- Testable agents (no LangGraph coupling)
+- Reusable components
+- Easy to extend (add new agents/nodes)
 
 ### 4. **Developer Experience**
--  IDE autocomplete with TypedDict
--  Clear error messages
--  Easy debugging (inspect state at each node)
--  Visual workflow representation (LangGraph)
+- IDE autocomplete with TypedDict
+- Clear error messages
+- Easy debugging (inspect state at each node)
+- Visual workflow representation (LangGraph)
 
 ---
 
@@ -301,7 +301,7 @@ async def process_application(application_id: str):
 | **Routing** | Sequential only | Sequential + Conditional |
 | **Error Handling** | Try/catch blocks | Conditional edges + checkpointing |
 | **Observability** | Custom logging | LangSmith integration ready |
-| **Assignment Compliance** |  No framework |  LangGraph required |
+| **Assignment Compliance** | No framework | LangGraph required |
 
 ---
 
@@ -314,7 +314,7 @@ poetry run python test_langgraph_migration.py
 
 ### Results (Mock Data)
 ```
- LangGraph workflow: WORKING
+LangGraph workflow: WORKING
  State management: WORKING
  Node execution: WORKING
  Conditional routing: WORKING (stopped on validation errors - expected)
@@ -332,14 +332,14 @@ When test_applications/ folder is present:
 
 ## Summary
 
-** LangGraph Implementation: COMPLETE**
+**LangGraph Implementation: COMPLETE**
 
-1. **StateGraph**: Orchestrates workflow 
-2. **Type-Safe State**: ApplicationGraphState 
-3. **6 Agents**: All integrated via node functions 
-4. **Conditional Routing**: Validation-based early termination 
-5. **API Integration**: FastAPI uses LangGraph 
-6. **Testing**: Poetry environment verified 
+1. **StateGraph**: Orchestrates workflow
+2. **Type-Safe State**: ApplicationGraphState
+3. **6 Agents**: All integrated via node functions
+4. **Conditional Routing**: Validation-based early termination
+5. **API Integration**: FastAPI uses LangGraph
+6. **Testing**: Poetry environment verified
 7. **Assignment Compliance**: LangGraph as required 
 
 **Architecture Pattern**: 

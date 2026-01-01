@@ -1,0 +1,31 @@
+{
+  "trace_id": "trace_APP_B94823DD",
+  "application_id": "APP_B94823DD",
+  "applicant_name": "Hassan Al Mazrouei",
+  "timestamp": "2026-01-02T01:31:14.370997",
+  "processing_time_seconds": 0.49098,
+  "stages": {
+    "extraction": {
+      "success": true,
+      "has_data": true
+    },
+    "validation": {
+      "success": true,
+      "validation_score": 1.0
+    },
+    "eligibility": {
+      "success": true,
+      "is_eligible": true,
+      "eligibility_score": 0.6649999999999999
+    },
+    "recommendation": {
+      "success": true,
+      "support_amount": 0.0
+    }
+  },
+  "final_decision": {
+    "is_eligible": true,
+    "support_amount": 0.0
+  },
+  "errors": []
+}
