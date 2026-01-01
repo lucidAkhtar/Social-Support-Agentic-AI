@@ -128,7 +128,7 @@ workflow.add_conditional_edges(
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                     🌐 PRESENTATION LAYER                       │
+│                     PRESENTATION LAYER                          │
 │  ┌──────────────────┐              ┌──────────────────┐         │
 │  │  FastAPI         │◄────────────►│  Streamlit UI    │         │
 │  │  29 Endpoints    │              │  Chat Interface  │         │
@@ -137,7 +137,7 @@ workflow.add_conditional_edges(
 └─────────────────────────────────────────────────────────────────┘
                               │
 ┌─────────────────────────────▼──────────────────────────────────┐
-│         🤖 ORCHESTRATION LAYER (LangGraph StateGraph)          │
+│          ORCHESTRATION LAYER (LangGraph StateGraph)            │
 │                                                                │
 │  ┌───────────────────────────────────────────────────────┐     │
 │  │          Master Orchestrator                          │     │
@@ -156,7 +156,7 @@ workflow.add_conditional_edges(
 └─────────────────────────────────────────────────────────────────┘
                               │
 ┌─────────────────────────────▼──────────────────────────────────┐
-│                📄 DATA PROCESSING LAYER                        │
+│                 DATA PROCESSING LAYER                          │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
 │  │   Tesseract  │  │  pdfplumber  │  │    pandas    │          │
 │  │  OCR Engine  │  │  PDF Parser  │  │ Excel Parser │          │
@@ -164,7 +164,7 @@ workflow.add_conditional_edges(
 └─────────────────────────────────────────────────────────────────┘
                               │
 ┌─────────────────────────────▼──────────────────────────────────┐
-│                  🧠 ML/AI LAYER (Intelligence)                 │
+│                  ML/AI LAYER (Intelligence)                    │
 │  ┌──────────────────────────────────────────────────────┐      │
 │  │  XGBoost v4 + Random Forest v3 (12 features, 85%)    │      │
 │  │  ├─ Model versioning: XGBoost v4 → RF v3 → v2        │      │
@@ -174,7 +174,7 @@ workflow.add_conditional_edges(
 └─────────────────────────────────────────────────────────────────┘
                               │
 ┌─────────────────────────────▼──────────────────────────────────┐
-│            💾 DATA STORAGE LAYER (4 Databases)                  │
+│             DATA STORAGE LAYER (4 Databases)                   │
 │  ┌─────────┐  ┌─────────┐  ┌──────────┐  ┌──────────┐          │
 │  │ SQLite  │  │ TinyDB  │  │ ChromaDB │  │ NetworkX │          │
 │  │ ACID    │  │ Cache   │  │ Vectors  │  │  Graph   │          │
@@ -185,7 +185,7 @@ workflow.add_conditional_edges(
 └─────────────────────────────────────────────────────────────────┘
                               │
 ┌─────────────────────────────▼──────────────────────────────────┐
-│        🔍 OBSERVABILITY LAYER (Langfuse Integration)           │
+│         OBSERVABILITY LAYER (Langfuse Integration)             │
 │  Tracing • Token usage • Cost tracking • Error monitoring      │
 └─────────────────────────────────────────────────────────────────┘
 ```
