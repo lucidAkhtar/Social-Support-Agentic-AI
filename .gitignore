@@ -37,4 +37,5 @@ models_archive/
 src_archive/
 tests/archive/
 convert_to_pdf.py
+SOLUTION_SUMMARY.md 
 
