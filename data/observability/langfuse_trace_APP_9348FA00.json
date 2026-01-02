@@ -1,0 +1,31 @@
+{
+  "trace_id": "trace_APP_9348FA00",
+  "application_id": "APP_9348FA00",
+  "applicant_name": "Layla Al Suwaidi",
+  "timestamp": "2026-01-02T15:46:00.645968",
+  "processing_time_seconds": 0.533297,
+  "stages": {
+    "extraction": {
+      "success": true,
+      "has_data": true
+    },
+    "validation": {
+      "success": true,
+      "validation_score": 1.0
+    },
+    "eligibility": {
+      "success": true,
+      "is_eligible": false,
+      "eligibility_score": 0.47
+    },
+    "recommendation": {
+      "success": true,
+      "support_amount": 0.0
+    }
+  },
+  "final_decision": {
+    "is_eligible": false,
+    "support_amount": 0.0
+  },
+  "errors": []
+}

@@ -69,7 +69,7 @@ An AI-driven workflow automation platform transforming social support applicatio
 |-----------|-----------|---------|
 | Programming | Python 3.11+ | Async/await, type hints, production standards |
 | LLM | Mistral-7B-Instruct-v0.2 via Ollama | Local hosting, data sovereignty, unlimited inference |
-| Embeddings | Cohere embed-english-v3.0 | 384-dim vectors for semantic search |
+| Embeddings | sentence-transformers/all-MiniLM-L6-v2 | 384-dim vectors for semantic search (local, free) |
 | ML Model | XGBoost v4 (primary) + Random Forest v3 (fallback) | 12 features, 85% test accuracy, explainable |
 | Backend | FastAPI 0.104+ | Async REST API, auto-documentation |
 | Frontend | Streamlit 1.28+ | Interactive web UI, real-time updates |
@@ -432,11 +432,30 @@ python --version
 # Install from: https://ollama.ai
 ollama pull mistral:7b-instruct-v0.2
 
-# Cohere API key for embeddings
-# Register at: https://cohere.ai
+# sentence-transformers will auto-install with dependencies
+# No API keys required - fully local system
 ```
 
 ### Installation
+
+**Option 1: Using Poetry (Recommended)**
+
+```bash
+# Clone repository
+git clone <repository-url>
+cd social_support_agentic_ai
+
+# Install Poetry (if not already installed)
+curl -sSL https://install.python-poetry.org | python3 -
+
+# Install dependencies using Poetry
+poetry install
+
+# Activate virtual environment
+poetry shell
+```
+
+**Option 2: Using pip (Alternative)**
 
 ```bash
 # Clone repository
@@ -450,10 +469,9 @@ source .venv/bin/activate  # On macOS/Linux
 
 # Install dependencies
 pip install -r requirements.txt
-
-# Configure environment
-echo "COHERE_API_KEY=your_key_here" > .env
 ```
+
+**Note**: No environment configuration or API keys needed - fully local system!
 
 ### Running the System
 
@@ -664,6 +682,6 @@ Built with modern best practices and inspired by:
 
 <div align="center">
 
-**Built with ❤️ for FAANG-level standards**
+**Built with ❤️ for Enterprise**
 
 ⭐ **Star this repo if it impresses you!** ⭐

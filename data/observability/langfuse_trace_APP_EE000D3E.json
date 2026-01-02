@@ -1,0 +1,31 @@
+{
+  "trace_id": "trace_APP_EE000D3E",
+  "application_id": "APP_EE000D3E",
+  "applicant_name": "Layla Al Suwaidi",
+  "timestamp": "2026-01-02T16:15:24.547820",
+  "processing_time_seconds": 0.444641,
+  "stages": {
+    "extraction": {
+      "success": true,
+      "has_data": true
+    },
+    "validation": {
+      "success": true,
+      "validation_score": 1.0
+    },
+    "eligibility": {
+      "success": true,
+      "is_eligible": false,
+      "eligibility_score": 0.47
+    },
+    "recommendation": {
+      "success": true,
+      "support_amount": 0.0
+    }
+  },
+  "final_decision": {
+    "is_eligible": false,
+    "support_amount": 0.0
+  },
+  "errors": []
+}

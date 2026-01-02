@@ -55,12 +55,14 @@ fi
 echo ""
 echo "════════════════════════════════════════════════════════════════"
 echo ""
-echo -e "${BLUE}[INFO]${NC} Starting Streamlit frontend..."
-echo "  Command: streamlit run streamlit_app/app.py --logger.level=info"
+echo -e "${BLUE}[INFO]${NC} Starting Streamlit frontend (Multi-Page App with Role Switcher)..."
+echo "  Command: streamlit run streamlit_app/main_app.py --logger.level=info"
+echo "  Access: http://localhost:8501"
+echo "  Features: Applicant Portal + Admin Dashboard"
 echo ""
 
 # Start Streamlit (runs in foreground)
-streamlit run streamlit_app/app.py --logger.level=info
+streamlit run streamlit_app/main_app.py --logger.level=info
 
 # Cleanup on exit
 trap "kill $FASTAPI_PID 2>/dev/null || true" EXIT

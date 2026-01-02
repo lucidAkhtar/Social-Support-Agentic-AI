@@ -21,7 +21,7 @@ sys.path.insert(0, str(project_root))
 # Configure page
 st.set_page_config(
     page_title="UAE Social Support Portal",
-    page_icon="",
+    page_icon="🇦🇪",
     layout="wide",
     initial_sidebar_state="expanded",
     menu_items={
@@ -31,8 +31,8 @@ st.set_page_config(
     }
 )
 
-# Import pages
-from pages import applicant_portal, admin_dashboard
+# Import modules (not using pages/ to avoid Streamlit auto-detection)
+from modules import applicant_portal, admin_dashboard
 
 # Initialize session state
 if 'page' not in st.session_state:
@@ -110,7 +110,7 @@ st.markdown("""
 with st.sidebar:
     st.markdown("""
     <div style='text-align: center; padding: 1rem 0;'>
-        <h1 style='color: #0066cc; margin: 0;'></h1>
+        <h1 style='color: #0066cc; margin: 0; font-size: 2.5rem;'>🇦🇪</h1>
         <h3 style='margin: 0.5rem 0 0 0;'>UAE Social Support</h3>
         <p style='color: #6b7280; font-size: 0.875rem;'>Production System v2.0</p>
     </div>
@@ -119,14 +119,15 @@ with st.sidebar:
     st.divider()
     
     # Role selector (for demo purposes)
-    st.markdown("### User Role")
+    st.markdown("### 👤 Select Your Portal")
     role = st.radio(
-        "Select Role:",
-        ["Applicant", "Administrator"],
-        label_visibility="collapsed"
+        "Choose your access level:",
+        ["🇦🇪 Apply for Financial Support", "⚙️ Admin Dashboard - System Management"],
+        label_visibility="collapsed",
+        index=0
     )
     
-    if role == "Administrator":
+    if "Admin Dashboard" in role:
         st.session_state.user_role = "admin"
         st.session_state.page = "Admin Dashboard"
     else:

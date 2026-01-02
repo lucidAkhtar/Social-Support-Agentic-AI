@@ -59,6 +59,39 @@ def api_call_with_retry(url: str, max_retries: int = 2, timeout: int = 5) -> Opt
 def show():
     """Main admin dashboard interface"""
     
+    # Enhanced CSS for admin dashboard
+    st.markdown("""
+    <style>
+        .admin-section-header {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin: 1.5rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 4px solid #3b82f6;
+        }
+        
+        .admin-subsection-header {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin: 1.25rem 0 0.75rem 0;
+            padding-left: 0.75rem;
+            border-left: 5px solid #10b981;
+            background: linear-gradient(90deg, #f0fdf4 0%, transparent 100%);
+            padding: 0.5rem 0 0.5rem 0.75rem;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            border-radius: 8px;
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+    """, unsafe_allow_html=True)
+    
     # Header
     st.markdown("""
     <div class="app-header" style='background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);'>
@@ -155,10 +188,10 @@ def show_quick_stats():
 
 def show_system_health():
     """System health monitoring tab"""
-    st.markdown("## System Health Monitor")
+    st.markdown('<h2 class="admin-section-header">System Health Monitor</h2>', unsafe_allow_html=True)
     
     # API Health Check
-    st.markdown("### API Endpoints")
+    st.markdown('<h3 class="admin-subsection-header">API Endpoints</h3>', unsafe_allow_html=True)
     
     endpoints_to_check = [
         ("/", "Root - System Info"),
@@ -183,7 +216,7 @@ def show_system_health():
     st.divider()
     
     # Database Health
-    st.markdown("### 💾 Database Health")
+    st.markdown('<h3 class="admin-subsection-header">💾 Database Health</h3>', unsafe_allow_html=True)
     
     col1, col2 = st.columns(2)
     
@@ -193,9 +226,10 @@ def show_system_health():
         if sqlite_stats:
             st.success("Connected")
             st.metric("Total Applications", sqlite_stats.get('total_applications', 0))
-            # Calculate database size (estimate ~5KB per application)
+            # Calculate database size more accurately (SQLite overhead + data)
             total_apps = sqlite_stats.get('total_applications', 0)
-            db_size_mb = (total_apps * 5) / 1024  # Rough estimate
+            # SQLite: ~2KB overhead + ~8-12KB per application with all data
+            db_size_mb = (2 + (total_apps * 10)) / 1024  # More realistic estimate
             st.metric("Database Size", f"{db_size_mb:.2f} MB")
         else:
             st.error("Connection Failed")
@@ -205,14 +239,9 @@ def show_system_health():
         chroma_stats = get_chroma_stats()
         if chroma_stats:
             st.success("Connected")
-            # Calculate total documents from all collections
-            total_docs = 0
-            num_collections = 0
-            if isinstance(chroma_stats, dict):
-                for collection_name, collection_data in chroma_stats.items():
-                    if isinstance(collection_data, dict):
-                        total_docs += collection_data.get('document_count', 0)
-                        num_collections += 1
+            # Get total documents from the response
+            total_docs = chroma_stats.get('total_documents', 0)
+            num_collections = len(chroma_stats.get('collections', {}))
             st.metric("Documents Indexed", f"{total_docs:,}")
             st.metric("Collections", num_collections)
         else:
@@ -221,7 +250,7 @@ def show_system_health():
     st.divider()
     
     # System Resources
-    st.markdown("### 💻 System Resources")
+    st.markdown('<h3 class="admin-subsection-header">💻 System Resources</h3>', unsafe_allow_html=True)
     
     col1, col2, col3 = st.columns(3)
     
@@ -240,13 +269,13 @@ def show_system_health():
 
 def show_ml_performance():
     """ML model performance metrics"""
-    st.markdown("## Machine Learning Performance")
+    st.markdown('<h2 class="admin-section-header">Machine Learning Performance</h2>', unsafe_allow_html=True)
     
     # Get ML model info
     ml_info = get_ml_model_info()
     
     if ml_info:
-        st.markdown("### Active Model Information")
+        st.markdown('<h3 class="admin-subsection-header">Active Model Information</h3>', unsafe_allow_html=True)
         
         col1, col2, col3, col4 = st.columns(4)
         
@@ -267,7 +296,7 @@ def show_ml_performance():
         st.divider()
         
         # Feature Importance
-        st.markdown("### Feature Importance Analysis")
+        st.markdown('<h3 class="admin-subsection-header">Feature Importance Analysis</h3>', unsafe_allow_html=True)
         
         feature_importance = get_feature_importance()
         if feature_importance:
@@ -381,20 +410,30 @@ def show_audit_logs():
     if gov_metrics:
         st.markdown("### Governance Metrics")
         
+        # Get actual statistics
+        stats = get_statistics()
+        
         col1, col2, col3, col4 = st.columns(4)
         
         with col1:
-            st.metric("Total API Calls", f"{gov_metrics.get('total_api_calls', 0):,}")
+            # Show total applications as proxy for API activity
+            total_apps = stats.get('total_applications', 0) if stats else 0
+            st.metric("Applications Processed", f"{total_apps:,}")
         with col2:
-            st.metric("Decisions Made", f"{gov_metrics.get('total_decisions', 0):,}")
+            # Show active applications count
+            active_apps = stats.get('active_applications', 0) if stats else 0
+            st.metric("Active Sessions", f"{active_apps:,}")
         with col3:
-            avg_response = gov_metrics.get('average_response_time_ms', 0)
-            st.metric("Avg Response", f"{avg_response:.0f}ms",
-                     delta="Fast" if avg_response < 100 else "Slow")
+            # Memory usage from governance metrics
+            system_info = gov_metrics.get('system', {})
+            memory_pct = system_info.get('memory_percent', 0)
+            st.metric("Memory Usage", f"{memory_pct:.1f}%",
+                     delta="Fast" if memory_pct < 75 else "Slow")
         with col4:
-            error_rate = gov_metrics.get('error_rate', 0)
-            st.metric("Error Rate", f"{error_rate:.2%}",
-                     delta="Low" if error_rate < 0.02 else "High")
+            # CPU usage
+            cpu_pct = system_info.get('cpu_percent', 0)
+            st.metric("CPU Usage", f"{cpu_pct:.1f}%",
+                     delta="Low" if cpu_pct < 50 else "High")
     
     st.divider()
     

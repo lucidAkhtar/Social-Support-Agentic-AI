@@ -37,6 +37,120 @@ This solution represents a paradigm shift in government service delivery, demons
 
 ## Solution Architecture
 
+---
+
+## Full System Architecture
+
+```mermaid
+graph TB
+    %% Styling
+    classDef presentation fill:#e1f5ff,stroke:#01579b,stroke-width:2px
+    classDef orchestration fill:#fff9c4,stroke:#f57f17,stroke-width:2px
+    classDef agents fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef data fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+    classDef ml fill:#ffe0b2,stroke:#e65100,stroke-width:2px
+    classDef observability fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+
+    %% Presentation Layer
+    subgraph Presentation["PRESENTATION LAYER"]
+        UI[Streamlit Web Interface<br/>Applicant Portal + Admin Dashboard]
+        API[FastAPI REST Backend<br/>29 Production Endpoints]
+        UI <-->|HTTP/REST| API
+    end
+
+    %% Orchestration Layer
+    subgraph Orchestration["ORCHESTRATION LAYER"]
+        MO[Master Orchestrator<br/>LangGraph StateGraph • Typed State Management]
+        MO --> Pipeline[6-Agent Processing Pipeline]
+    end
+
+    %% Agent Layer
+    subgraph Agents["AGENT PROCESSING LAYER"]
+        Pipeline --> Agent1[1. Data Extraction Agent<br/>OCR + PDF + Excel]
+        Agent1 --> Agent2[2. Data Validation Agent<br/>Cross-Document Consistency]
+        Agent2 --> Agent3[3. Eligibility Agent<br/>ML Model + Business Rules]
+        Agent3 --> Agent4[4. Recommendation Agent<br/>Support Calculation + Programs]
+        Agent4 --> Agent5[5. Explanation Agent<br/>Natural Language Justification]
+        Agent5 --> Agent6[6. RAG Chatbot Agent<br/>Interactive Q&A]
+    end
+
+    %% Data Processing Layer
+    subgraph DataProcessing["DATA PROCESSING LAYER"]
+        OCR[Tesseract OCR<br/>Arabic + English]
+        PDF[PyMuPDF<br/>PDF Parser]
+        Excel[Pandas<br/>Excel Parser]
+    end
+
+    %% ML/AI Layer
+    subgraph ML["MACHINE LEARNING LAYER"]
+        XGBModel[XGBoost v4 Primary<br/>12 Features • 85% Accuracy]
+        RFModel[Random Forest v3 Fallback<br/>12 Features • 83% Accuracy]
+        Fallback[Model Fallback Chain<br/>XGBoost v4 → RF v3 → v2 → Rule-Based]
+        LLM[Mistral-7B-Instruct-v0.2<br/>Ollama Local Hosting]
+        Embeddings[sentence-transformers/all-MiniLM-L6-v2<br/>384-Dim Vectors • Local • Privacy-Preserving]
+        
+        XGBModel --> Fallback
+        RFModel --> Fallback
+    end
+
+    %% Database Layer
+    subgraph Databases["DATA STORAGE LAYER - Hybrid 4-Database Architecture"]
+        DB1[(SQLite<br/>ACID Compliance<br/>Application Records<br/>Audit Trails)]
+        DB2[(TinyDB<br/>Document Cache<br/>TTL Expiration<br/>Session State)]
+        DB3[(ChromaDB<br/>Vector Database<br/>Semantic Search<br/>RAG Backend)]
+        DB4[(NetworkX<br/>Graph Database<br/>Relationships<br/>Program Networks)]
+        
+        DBManager[Unified Database Manager<br/>L1 Cache: Memory<br/>L2 Cache: TinyDB<br/>L3 Storage: SQLite]
+        
+        DBManager --> DB1
+        DBManager --> DB2
+        DBManager --> DB3
+        DBManager --> DB4
+    end
+
+    %% Observability Layer
+    subgraph Observability["OBSERVABILITY & GOVERNANCE LAYER"]
+        Langfuse[Langfuse Tracing<br/>Token Usage • Cost Tracking]
+        Audit[Audit Logger<br/>Complete Action Trail]
+        Metrics[Performance Metrics<br/>Response Time • Error Rate]
+        
+        Langfuse --> AuditDB[(Audit Database<br/>Compliance Records)]
+        Audit --> AuditDB
+        Metrics --> AuditDB
+    end
+
+    %% Connections between layers
+    API --> MO
+    
+    Agent1 --> OCR
+    Agent1 --> PDF
+    Agent1 --> Excel
+    
+    Agent3 --> XGBModel
+    Agent3 --> RFModel
+    Agent5 --> LLM
+    Agent6 --> LLM
+    Agent6 --> Embeddings
+    Agent6 --> DB3
+    
+    MO --> DBManager
+    Agents --> DBManager
+    
+    MO --> Langfuse
+    Agents --> Audit
+    API --> Metrics
+
+    %% Apply styles
+    class UI,API presentation
+    class MO,Pipeline orchestration
+    class Agent1,Agent2,Agent3,Agent4,Agent5,Agent6 agents
+    class DB1,DB2,DB3,DB4,DBManager data
+    class RFModel,Fallback,LLM,Embeddings,OCR,PDF,Excel ml
+    class Langfuse,Audit,Metrics,AuditDB observability
+```
+
+---
+
 ### High-Level System Design
 
 The platform employs a sophisticated multi-layered architecture designed for enterprise scalability, reliability, and maintainability:
@@ -260,8 +374,9 @@ User Upload (Documents)
 - Token limit optimization (600 tokens) preventing response truncation
 
 **Embedding Generation**
-- Cohere embed-english-v3.0 for semantic vector representations
+- sentence-transformers/all-MiniLM-L6-v2 for semantic vector representations
 - 384-dimensional embeddings enabling efficient similarity search
+- Fully local execution - no API calls, zero cost, complete data privacy
 - Application summaries, decision precedents, and document content vectorized
 - HNSW indexing with cosine similarity for sub-200ms retrieval
 
@@ -295,6 +410,23 @@ User Upload (Documents)
 - Token usage tracking for cost management and optimization
 - Error rate monitoring with automatic alerting thresholds
 - Performance waterfall charts identifying processing bottlenecks
+
+**Langfuse Distributed Tracing - Real Production Screenshots**
+
+The system implements comprehensive observability through Langfuse integration, providing complete visibility into multi-agent processing pipelines:
+
+![Langfuse Trace Overview - End-to-End Application Processing](data/observability/langfuse_trace_1.png)
+*Figure 1: Complete trace showing the 5-minute processing pipeline from document upload through final decision generation. Each agent execution is tracked with timing, token usage, and success status.*
+
+![Langfuse Agent Execution Details - Individual Agent Performance](data/observability/langfuse_trace_2.png)
+*Figure 2: Detailed agent-level tracing showing input/output data, LLM calls, token consumption, and execution latency. Enables performance optimization and debugging of individual processing stages.*
+
+**Key Observability Features:**
+- **End-to-End Tracing**: Complete visibility from request initiation to final response
+- **Token Economics**: Per-agent token usage enabling cost attribution and optimization
+- **Performance Monitoring**: Execution time tracking identifying bottlenecks
+- **Error Tracking**: Failed operations captured with stack traces for debugging
+- **Cost Management**: Real-time cost calculation based on token consumption
 
 ### Technical Decision Rationale
 
@@ -660,7 +792,9 @@ Collections:
 - Chat context: Conversation history for contextual chatbot responses
 
 Embedding Strategy:
-- Model: Cohere embed-english-v3.0 (384 dimensions)
+- Model: sentence-transformers/all-MiniLM-L6-v2 (384 dimensions)
+- Deployment: Local inference, no API dependencies
+- Privacy: 100% data sovereignty, government-compliant
 - Indexing: HNSW (Hierarchical Navigable Small World) graph
 - Distance metric: Cosine similarity for angular distance measurement
 - Update frequency: Real-time on application completion
@@ -1099,6 +1233,138 @@ Every system action generates an audit record containing:
 - Follow-up scheduling: Automated reminders for required check-ins
 - Benefit distribution: Coordination with payment processing systems
 - Reporting automation: Scheduled report generation for stakeholders
+
+---
+
+## Ethics, Bias & Fairness: Critical Gaps and Required Next Steps
+
+**Question:** If this system affected real citizens, how would you ensure it is fair, explainable, and accountable?
+
+**Honest Assessment:** While this prototype demonstrates technical feasibility and architecture design, it **does not yet meet production standards for fairness, bias mitigation, or ethical AI deployment**. The following outlines what was NOT done in this prototype and what MUST be done before production deployment.
+
+### Current Limitations (What This Prototype Does NOT Have)
+
+**1. No Formal Bias Testing or Mitigation**
+- **Missing:** Statistical testing for demographic parity, equal opportunity, or equalized odds across protected groups (nationality, gender, age, family size)
+- **Missing:** Fairness metrics (disparate impact ratio, demographic parity difference) that quantify model bias
+- **Missing:** Adversarial debiasing techniques or fairness constraints in ML training
+- **Reality:** The XGBoost model was trained on synthetic data without any fairness preprocessing or post-processing
+- **Risk:** Model may systematically disadvantage certain demographic groups without detection
+
+**2. No Explainability Beyond Basic Feature Importance**
+- **Missing:** Individual prediction explanations (SHAP values, LIME) showing why a specific applicant was approved/declined
+- **Missing:** Counterfactual explanations ("If your income were AED 1,500 higher, you would be approved")
+- **Missing:** Human-readable decision summaries accessible to non-technical applicants and case workers
+- **Current State:** Feature importance shows which features matter overall, but does NOT explain individual decisions
+- **Risk:** Applicants cannot meaningfully contest decisions; system fails transparency requirements
+
+**3. No Human-in-the-Loop Safeguards**
+- **Missing:** Mandatory human review for edge cases (confidence scores <70%, novel scenarios)
+- **Missing:** Override mechanisms allowing case workers to correct AI decisions with audit trails
+- **Missing:** Escalation workflows for appeals or disputed decisions
+- **Current State:** System makes fully automated decisions without human oversight checkpoints
+- **Risk:** Irrecoverable errors impact vulnerable populations without recourse
+
+**4. No Audit Trail for ML Model Decisions**
+- **Missing:** Versioning of ML models with decision attribution (which model version made this decision?)
+- **Missing:** Dataset provenance tracking (which training data influenced this decision?)
+- **Missing:** A/B testing framework to detect performance degradation or bias drift over time
+- **Current State:** Decisions recorded but not linked to specific model versions or training data
+- **Risk:** Cannot investigate systemic issues or reproduce historical decisions for legal review
+
+**5. No Protected Attribute Handling**
+- **Missing:** Identification and removal of proxy variables (e.g., ZIP code as proxy for ethnicity)
+- **Missing:** Explicit encoding constraints preventing discrimination on protected attributes
+- **Missing:** Disparate impact analysis comparing outcomes across demographic subgroups
+- **Current State:** Model uses raw features without fairness-aware feature engineering
+- **Risk:** Unintentional discrimination through correlated variables
+
+### What MUST Be Done Before Production (Required, Not Optional)
+
+**Phase 1: Fairness Testing & Measurement (3-4 weeks)**
+```python
+# Example fairness metrics to implement
+fairness_metrics = {
+    "demographic_parity": check_approval_rate_parity(by_nationality, by_gender),
+    "equal_opportunity": check_true_positive_rate_parity(eligible_applicants),
+    "equalized_odds": check_false_positive_and_negative_parity(),
+    "disparate_impact_ratio": calculate_adverse_impact_ratio()  # Must be >0.8
+}
+```
+- Implement AI Fairness 360 (IBM) or Fairlearn (Microsoft) library integration
+- Establish fairness thresholds: Disparate Impact Ratio ≥0.8, Demographic Parity Difference ≤0.1
+- Test across all protected groups: nationality, gender, age cohorts, family size, disability status
+
+**Phase 2: Individual Explainability (2-3 weeks)**
+```python
+# Example SHAP implementation
+import shap
+explainer = shap.TreeExplainer(xgboost_model)
+shap_values = explainer.shap_values(applicant_features)
+explanation = generate_human_readable_summary(shap_values, applicant_data)
+```
+- Integrate SHAP (SHapley Additive exPlanations) for per-decision feature attribution
+- Generate plain-language explanations: "Approved because income (45%) and low debt (30%) met thresholds"
+- Add counterfactual generator: "Change income from AED 4,200 to AED 5,800 to qualify"
+
+**Phase 3: Human Oversight Framework (3-4 weeks)**
+- Implement confidence-based routing: <70% confidence → mandatory human review
+- Build case worker dashboard with override capabilities and justification requirements
+- Create appeals workflow: applicant can request human review with supporting documents
+- Add second-opinion mechanism: High-stakes decisions (>AED 10,000/month) require dual review
+
+**Phase 4: Audit Infrastructure (2 weeks)**
+- Version all ML models with semantic versioning (v4.1.2) and deployment timestamps
+- Log model metadata: training data snapshot hash, hyperparameters, accuracy metrics
+- Implement decision reconstruction: retrieve exact model state and inputs that produced historical decision
+- Build bias monitoring dashboard: real-time tracking of fairness metrics by demographic group
+
+**Phase 5: Protected Attribute Safeguards (3 weeks)**
+- Conduct proxy variable analysis: Identify features correlated with protected attributes (e.g., address → ethnicity)
+- Remove or transform proxy variables using fairness preprocessing techniques
+- Add constraints to ML training: Penalize decisions that correlate with protected attributes
+- Validate using holdout test set stratified by demographic groups
+
+**Phase 6: External Audit & Certification (4-6 weeks)**
+- Engage third-party AI ethics firm for independent bias audit
+- Obtain certification from relevant regulatory bodies (UAE AI Ethics Board, if exists)
+- Conduct red team exercise: Adversarial testing to find failure modes and bias vulnerabilities
+- Publish transparency report: Model performance, fairness metrics, error rates by demographic group
+
+### Governance and Accountability Framework (Not Implemented)
+
+**What Should Exist:**
+1. **AI Ethics Committee**: Cross-functional team (data scientists, legal, social workers, ethicists) reviewing system quarterly
+2. **Algorithmic Impact Assessment**: Formal documentation of risks, mitigation strategies, and monitoring plans
+3. **Citizen Transparency Portal**: Public dashboard showing approval rates, processing times, and fairness metrics by demographic group (anonymized)
+4. **Incident Response Plan**: Documented procedures for handling bias discoveries, system failures, or legal challenges
+5. **Continuous Monitoring**: Automated alerts when fairness metrics degrade beyond acceptable thresholds
+
+**Current Reality:**
+- None of the above exists in this prototype
+- Would require 6-8 weeks to design and implement governance framework
+- Requires executive sponsorship and cross-departmental collaboration
+
+### Regulatory Compliance Gaps
+
+**Not Addressed in Prototype:**
+- GDPR/UAE Data Protection Law: Right to explanation of automated decisions
+- Anti-Discrimination Laws: Compliance with UAE labor and equality regulations
+- Model Documentation: No model cards or datasheets for accountability
+- Data Retention: No policies for how long decisions/data are stored and when they're purged
+
+### Key Takeaway
+
+This prototype proves technical feasibility and demonstrates architecture design, but **it is not yet ethical or fair for production deployment affecting real citizens**. The ML model makes decisions without bias testing, individual explanations, or human oversight mechanisms. These are not "nice-to-have" features—they are **mandatory requirements** for any government AI system affecting citizen welfare.
+
+Before deploying this system to production:
+1. I would implement all fairness testing and bias mitigation measures outlined above
+2. I would establish human review checkpoints for all decisions
+3. I would publish transparency reports showing fairness metrics by demographic group
+4. I would engage external AI ethics auditors for independent certification
+5. I would create governance structures ensuring ongoing monitoring and accountability
+
+**Commitment:** I understand the ethical weight of deploying AI systems that affect vulnerable populations. This prototype showcases technical capability, but production deployment requires the additional 4-5 months of ethical AI engineering described above. Shortcuts in this area are unacceptable.
 
 ---
 

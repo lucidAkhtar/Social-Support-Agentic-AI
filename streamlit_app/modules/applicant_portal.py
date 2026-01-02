@@ -97,6 +97,27 @@ def show():
     if 'auto_refresh' not in st.session_state:
         st.session_state.auto_refresh = False
     
+    # Scroll to top on page load - multiple methods for reliability
+    st.markdown("""
+    <script>
+        // Scroll main content area
+        const mainSection = window.parent.document.querySelector('section.main');
+        if (mainSection) {
+            mainSection.scrollTop = 0;
+            mainSection.scrollTo({top: 0, behavior: 'instant'});
+        }
+        
+        // Scroll body as fallback
+        window.parent.document.body.scrollTop = 0;
+        window.parent.document.documentElement.scrollTop = 0;
+        
+        // Scroll inner iframe if exists
+        window.scrollTo({top: 0, behavior: 'instant'});
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    </script>
+    """, unsafe_allow_html=True)
+    
     # Header
     st.markdown("""
     <div class="app-header">
@@ -159,12 +180,36 @@ def show_progress_tracker():
     
     st.divider()
     
-    # Show application info
-    col1, col2, col3 = st.columns([2, 2, 1])
+    # Show application info with enhanced styling using columns
+    col1, col2 = st.columns(2)
+    
     with col1:
-        st.caption(f"**Application ID:** `{st.session_state.application_id}`")
+        st.markdown(f"""
+        <div style='background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%); 
+                    padding: 1rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);'>
+            <div style='color: rgba(255,255,255,0.8); font-size: 0.7rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 0.25rem;'>
+                APPLICATION ID
+            </div>
+            <div style='color: white; font-size: 1.4rem; font-weight: 800; font-family: monospace; letter-spacing: 1.5px;'>
+                {st.session_state.application_id}
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
     with col2:
-        st.caption(f"**Applicant:** {st.session_state.applicant_name}")
+        st.markdown(f"""
+        <div style='background: linear-gradient(135deg, #10b981 0%, #059669 100%); 
+                    padding: 1rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);'>
+            <div style='color: rgba(255,255,255,0.8); font-size: 0.7rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 0.25rem;'>
+                APPLICANT NAME
+            </div>
+            <div style='color: white; font-size: 1.25rem; font-weight: 800;'>
+                {st.session_state.applicant_name}
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    col1, col2, col3 = st.columns([3, 3, 1])
     with col3:
         if st.button("🗑️ Reset", use_container_width=True):
             for key in list(st.session_state.keys()):
@@ -530,13 +575,31 @@ def show_step4_results():
         </div>
         """, unsafe_allow_html=True)
     
+    # Enhanced tabs with custom styling
+    st.markdown("""
+    <style>
+        /* Make tab labels larger and more prominent */
+        .stTabs [data-baseweb="tab-list"] button [data-testid="stMarkdownContainer"] p {
+            font-size: 1.2rem !important;
+            font-weight: 700 !important;
+        }
+        .stTabs [data-baseweb="tab-list"] {
+            gap: 12px;
+        }
+        .stTabs [data-baseweb="tab"] {
+            padding: 14px 28px;
+            border-radius: 8px 8px 0 0;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+    
     # Detailed tabs
     tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "📊 Overview",
         "✅ Validation",
         "🎓 Programs",
-        "💬 AI Chat",
-        "📄 Export"
+        "🤖 AI Chat",
+        "📥 Export"
     ])
     
     with tab1:
@@ -557,7 +620,13 @@ def show_step4_results():
 
 def show_results_overview(results, support_amount):
     """Show overview tab"""
-    st.markdown("### 💰 Financial Overview")
+    st.markdown("""
+    <div style='font-size: 2rem; font-weight: 800; color: #1f2937; margin: 1rem 0 1.5rem 0; 
+                padding: 1.25rem; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); 
+                border-left: 6px solid #f59e0b; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.07);'>
+        💰 Financial Overview
+    </div>
+    """, unsafe_allow_html=True)
     
     extracted = results.get('extracted_data', {})
     income_data = extracted.get('income_data', {})
@@ -580,7 +649,14 @@ def show_results_overview(results, support_amount):
     st.divider()
     
     # Applicant profile
-    st.markdown("### 👤 Applicant Profile")
+    st.markdown("""
+    <div style='font-size: 1.6rem; font-weight: 700; color: #1f2937; margin: 1.5rem 0 1rem 0; 
+                padding: 1rem 1.25rem; border-left: 5px solid #10b981; 
+                background: linear-gradient(90deg, #d1fae5 0%, #a7f3d0 50%, transparent 100%); 
+                border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);'>
+        👤 Applicant Profile
+    </div>
+    """, unsafe_allow_html=True)
     col1, col2, col3 = st.columns(3)
     with col1:
         st.markdown(f"**Name:** {applicant_info.get('full_name', 'N/A')}")
@@ -596,7 +672,14 @@ def show_results_overview(results, support_amount):
     st.divider()
     
     # Decision reasoning
-    st.markdown("### 🧠 AI Decision Reasoning")
+    st.markdown("""
+    <div style='font-size: 1.6rem; font-weight: 700; color: #1f2937; margin: 1.5rem 0 1rem 0; 
+                padding: 1rem 1.25rem; border-left: 5px solid #8b5cf6; 
+                background: linear-gradient(90deg, #ede9fe 0%, #ddd6fe 50%, transparent 100%); 
+                border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);'>
+        🧠 AI Decision Reasoning
+    </div>
+    """, unsafe_allow_html=True)
     recommendation = results.get('recommendation', {})
     reasoning = recommendation.get('reasoning', 'No reasoning provided')
     
@@ -609,7 +692,13 @@ def show_results_overview(results, support_amount):
 
 def show_validation_results(results):
     """Show validation tab"""
-    st.markdown("### ✅ Document Validation Report")
+    st.markdown("""
+    <div style='font-size: 2rem; font-weight: 800; color: #1f2937; margin: 1rem 0 1.5rem 0; 
+                padding: 1.25rem; background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); 
+                border-left: 6px solid #10b981; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.07);'>
+        ✅ Document Validation Report
+    </div>
+    """, unsafe_allow_html=True)
     
     validation = results.get('validation', {})
     is_valid = validation.get('is_valid', False)
@@ -674,7 +763,15 @@ def show_validation_results(results):
 
 def show_programs(recommendation):
     """Show recommended programs"""
-    st.markdown("### 🎓 Recommended Support Programs")
+    st.markdown("""
+    <div style='font-size: 2rem; font-weight: 800; color: #1f2937; 
+                margin: 1rem 0 1.5rem 0; padding: 1.25rem; 
+                background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); 
+                border-left: 6px solid #3b82f6; border-radius: 10px; 
+                box-shadow: 0 4px 6px rgba(0,0,0,0.07);'>
+        🎓 Recommended Support Programs
+    </div>
+    """, unsafe_allow_html=True)
     
     programs = recommendation.get('programs', [])
     
@@ -810,7 +907,15 @@ def show_chatbot(application_id):
 
 def show_export_options(application_id, results):
     """Show export options"""
-    st.markdown("### 📄 Export & Download Options")
+    st.markdown("""
+    <div style='font-size: 2rem; font-weight: 800; color: #1f2937; 
+                margin: 1rem 0 1.5rem 0; padding: 1.25rem; 
+                background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); 
+                border-left: 6px solid #6366f1; border-radius: 10px; 
+                box-shadow: 0 4px 6px rgba(0,0,0,0.07);'>
+        📄 Export & Download Options
+    </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("""
     <div style='background: #f9fafb; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #3b82f6;'>
@@ -822,7 +927,15 @@ def show_export_options(application_id, results):
     col1, col2 = st.columns(2)
     
     with col1:
-        st.markdown("#### 📊 Results Export")
+        st.markdown("""
+        <div style='font-size: 1.6rem; font-weight: 700; color: #1f2937; 
+                    margin: 1.5rem 0 1rem 0; padding: 1rem 1.25rem; 
+                    border-left: 5px solid #3b82f6; 
+                    background: linear-gradient(90deg, #dbeafe 0%, #bfdbfe 50%, transparent 100%); 
+                    border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);'>
+            📊 Results Export
+        </div>
+        """, unsafe_allow_html=True)
         if st.button("📥 Download Results (JSON)", use_container_width=True):
             st.download_button(
                 label="💾 Save JSON File",
@@ -836,7 +949,15 @@ def show_export_options(application_id, results):
             st.info("PDF export feature coming soon!")
     
     with col2:
-        st.markdown("#### 💬 Chat History")
+        st.markdown("""
+        <div style='font-size: 1.6rem; font-weight: 700; color: #1f2937; 
+                    margin: 1.5rem 0 1rem 0; padding: 1rem 1.25rem; 
+                    border-left: 5px solid #8b5cf6; 
+                    background: linear-gradient(90deg, #ede9fe 0%, #ddd6fe 50%, transparent 100%); 
+                    border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);'>
+            💬 Chat History
+        </div>
+        """, unsafe_allow_html=True)
         if st.button("📥 Export Chat History", use_container_width=True):
             if st.session_state.chat_history:
                 chat_export = json.dumps(st.session_state.chat_history, indent=2)
