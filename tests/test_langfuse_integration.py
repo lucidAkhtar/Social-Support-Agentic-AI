@@ -17,11 +17,17 @@ Author: FAANG-Grade Engineering Team
 Date: 2025
 """
 
+import sys
+from pathlib import Path
+
+# Add project root to path for standalone execution
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
 import pytest
 import asyncio
 import json
 import time
-from pathlib import Path
 from datetime import datetime
 from typing import Dict, Any
 
@@ -54,8 +60,31 @@ class TestLangfuseIntegration:
     
     @pytest.fixture(scope="class")
     def orchestrator(self):
-        """Initialize orchestrator with Langfuse enabled"""
-        return LangGraphOrchestrator()
+        """Initialize orchestrator with Langfuse enabled and register all agents"""
+        from src.agents.extraction_agent import DataExtractionAgent
+        from src.agents.validation_agent import DataValidationAgent
+        from src.agents.eligibility_agent import EligibilityAgent
+        from src.agents.recommendation_agent import RecommendationAgent
+        from src.agents.explanation_agent import ExplanationAgent
+        from src.agents.rag_chatbot_agent import RAGChatbotAgent
+        
+        orchestrator = LangGraphOrchestrator()
+        
+        # Register all agents to build the workflow
+        orchestrator.register_agents(
+            extraction_agent=DataExtractionAgent(),
+            validation_agent=DataValidationAgent(),
+            eligibility_agent=EligibilityAgent(),
+            recommendation_agent=RecommendationAgent(),
+            explanation_agent=ExplanationAgent(),
+            rag_chatbot_agent=RAGChatbotAgent({
+                'db_path': 'data/databases/applications.db',
+                'ollama_url': 'http://localhost:11434',
+                'ollama_model': 'mistral:latest'
+            })
+        )
+        
+        return orchestrator
     
     @pytest.fixture(scope="class")
     def sqlite_db(self):
@@ -70,30 +99,21 @@ class TestLangfuseIntegration:
     @pytest.fixture(scope="class")
     def test_documents(self):
         """
-        Mock test documents for processing
-        
-        In production, use real documents from data/processed/documents/
+        Real test documents from approved_1 test case
         """
-        return [
-            {
-                "id": "doc1",
-                "type": "resume",
-                "path": "data/processed/documents/resumes/test_resume.pdf",
-                "content": "Test applicant resume content"
-            },
-            {
-                "id": "doc2",
-                "type": "bank_statement",
-                "path": "data/processed/documents/bank_statements/test_bank.xlsx",
-                "content": "Monthly income: 5000 AED, Expenses: 3000 AED"
-            },
-            {
-                "id": "doc3",
-                "type": "credit_report",
-                "path": "data/processed/documents/credit_reports/test_credit.pdf",
-                "content": "Credit score: 680, Payment history: 95%"
-            }
-        ]
+        docs_path = Path("data/test_applications/approved_1")
+        documents = []
+        
+        if docs_path.exists():
+            for doc_file in docs_path.glob('*'):
+                if doc_file.is_file():
+                    documents.append({
+                        'file_name': doc_file.name,
+                        'file_path': str(doc_file),
+                        'document_type': 'application_document'
+                    })
+        
+        return documents
     
     # ========== Test 1: LangGraph Full Pipeline with Langfuse Tracing ==========
     
@@ -129,17 +149,17 @@ class TestLangfuseIntegration:
         )
         
         processing_time = time.time() - start_time
-        print(f"✓ Pipeline completed in {processing_time:.2f}s")
+        print(f"[OK] Pipeline completed in {processing_time:.2f}s")
         
         # Verify final state
         assert final_state is not None, "Final state should not be None"
         assert final_state.get("application_id") == test_application_id
-        print(f"✓ Final state valid: {final_state.get('stage')}")
+        print(f"[OK] Final state valid: {final_state.get('stage')}")
         
         # Verify Langfuse trace file exported
         trace_file = TRACE_OUTPUT_DIR / f"langfuse_trace_{test_application_id}.json"
         assert trace_file.exists(), f"Trace file should exist: {trace_file}"
-        print(f"✓ Trace file exported: {trace_file}")
+        print(f"[OK] Trace file exported: {trace_file}")
         
         # Load and validate trace structure
         with open(trace_file, 'r') as f:
@@ -151,7 +171,7 @@ class TestLangfuseIntegration:
         assert "application_id" in trace_data
         assert "processing_time_seconds" in trace_data
         assert "stages" in trace_data
-        print(f"✓ Trace structure valid")
+        print(f"[OK] Trace structure valid")
         
         # Validate all 6 stages present
         stages = trace_data["stages"]
@@ -160,18 +180,18 @@ class TestLangfuseIntegration:
         for stage in expected_stages:
             assert stage in stages, f"Stage {stage} should be in trace"
             assert "success" in stages[stage]
-            print(f"✓ Stage '{stage}' traced: success={stages[stage]['success']}")
+            print(f"[OK] Stage '{stage}' traced: success={stages[stage]['success']}")
         
         # Validate metrics
         assert "final_decision" in trace_data
-        print(f"✓ Final decision captured: {trace_data['final_decision']}")
+        print(f"[OK] Final decision captured: {trace_data['final_decision']}")
         
         # Validate errors list
         assert "errors" in trace_data
-        print(f"✓ Errors tracked: {len(trace_data['errors'])} errors")
+        print(f"[OK] Errors tracked: {len(trace_data['errors'])} errors")
         
         print(f"\n{'='*70}")
-        print(f"TEST 1: PASSED ✓")
+        print(f"TEST 1: PASSED [OK]")
         print(f"{'='*70}\n")
         
         return trace_data
@@ -215,25 +235,25 @@ class TestLangfuseIntegration:
         # Validate extraction node span
         extraction = trace_data["stages"]["extraction"]
         assert "fields_extracted" in extraction or "success" in extraction
-        print(f"✓ Extraction node span valid")
+        print(f"[OK] Extraction node span valid")
         
         # Validate validation node span
         validation = trace_data["stages"]["validation"]
         assert "validation_score" in validation or "success" in validation
-        print(f"✓ Validation node span valid")
+        print(f"[OK] Validation node span valid")
         
         # Validate eligibility node span
         eligibility = trace_data["stages"]["eligibility"]
         assert "eligibility_score" in eligibility or "success" in eligibility
-        print(f"✓ Eligibility node span valid")
+        print(f"[OK] Eligibility node span valid")
         
         # Validate recommendation node span
         recommendation = trace_data["stages"]["recommendation"]
         assert "support_amount" in recommendation or "success" in recommendation
-        print(f"✓ Recommendation node span valid")
+        print(f"[OK] Recommendation node span valid")
         
         print(f"\n{'='*70}")
-        print(f"TEST 2: PASSED ✓")
+        print(f"TEST 2: PASSED [OK]")
         print(f"{'='*70}\n")
     
     # ========== Test 3: Multi-Application Trace Separation ==========
@@ -270,7 +290,7 @@ class TestLangfuseIntegration:
                 applicant_name=f"Multi Test {app_id}",
                 documents=test_documents
             )
-            print(f"✓ {app_id} processed")
+            print(f"[OK] {app_id} processed")
         
         # Verify all trace files created
         for app_id in app_ids:
@@ -283,10 +303,10 @@ class TestLangfuseIntegration:
             
             assert trace_data["trace_id"] == f"trace_{app_id}"
             assert trace_data["application_id"] == app_id
-            print(f"✓ Trace file valid for {app_id}")
+            print(f"[OK] Trace file valid for {app_id}")
         
         print(f"\n{'='*70}")
-        print(f"TEST 3: PASSED ✓")
+        print(f"TEST 3: PASSED [OK]")
         print(f"{'='*70}\n")
     
     # ========== Test 4: Trace Export Format Validation ==========
@@ -329,16 +349,16 @@ class TestLangfuseIntegration:
         
         for field in required_fields:
             assert field in trace_data, f"Required field '{field}' missing"
-            print(f"✓ Field '{field}' present")
+            print(f"[OK] Field '{field}' present")
         
         # Validate stages structure
         stages = trace_data["stages"]
         for stage_name, stage_data in stages.items():
             assert "success" in stage_data, f"Stage {stage_name} should have 'success' field"
-            print(f"✓ Stage '{stage_name}' structure valid")
+            print(f"[OK] Stage '{stage_name}' structure valid")
         
         print(f"\n{'='*70}")
-        print(f"TEST 4: PASSED ✓")
+        print(f"TEST 4: PASSED [OK]")
         print(f"{'='*70}\n")
     
     # ========== Test 5: Langfuse Client Initialization ==========
@@ -359,15 +379,15 @@ class TestLangfuseIntegration:
         # Verify orchestrator has Langfuse client
         assert hasattr(orchestrator, 'langfuse'), "Orchestrator should have langfuse attribute"
         assert orchestrator.langfuse is not None, "Langfuse client should not be None"
-        print(f"✓ Langfuse client initialized")
+        print(f"[OK] Langfuse client initialized")
         
         # Verify trace directory
         assert hasattr(orchestrator, 'trace_dir'), "Orchestrator should have trace_dir"
         assert orchestrator.trace_dir.exists(), "Trace directory should exist"
-        print(f"✓ Trace directory: {orchestrator.trace_dir}")
+        print(f"[OK] Trace directory: {orchestrator.trace_dir}")
         
         print(f"\n{'='*70}")
-        print(f"TEST 5: PASSED ✓")
+        print(f"TEST 5: PASSED [OK]")
         print(f"{'='*70}\n")
     
     # ========== Test 6: Error Handling in Traces ==========
@@ -405,23 +425,23 @@ class TestLangfuseIntegration:
                 
                 # Check if errors were captured
                 errors = trace_data.get("errors", [])
-                print(f"✓ Errors captured in trace: {len(errors)} errors")
+                print(f"[OK] Errors captured in trace: {len(errors)} errors")
                 
                 # Verify stages still present (even if failed)
                 assert "stages" in trace_data
-                print(f"✓ Stages present despite errors")
+                print(f"[OK] Stages present despite errors")
             
-            print(f"✓ Error handling validated")
+            print(f"[OK] Error handling validated")
             
         except Exception as e:
-            print(f"✓ Exception occurred as expected: {e}")
+            print(f"[OK] Exception occurred as expected: {e}")
             # Verify trace was still exported
             trace_file = TRACE_OUTPUT_DIR / f"langfuse_trace_{test_app_id}.json"
             if trace_file.exists():
-                print(f"✓ Trace exported despite exception")
+                print(f"[OK] Trace exported despite exception")
         
         print(f"\n{'='*70}")
-        print(f"TEST 6: PASSED ✓")
+        print(f"TEST 6: PASSED [OK]")
         print(f"{'='*70}\n")
 
 
@@ -454,7 +474,7 @@ def print_trace_summary(trace_file_path: Path):
     
     for stage_name, stage_data in trace_data.get('stages', {}).items():
         success = stage_data.get('success', False)
-        status_icon = "✓" if success else "✗"
+        status_icon = "[OK]" if success else "[X]"
         print(f"{status_icon} {stage_name.upper()}")
         
         for key, value in stage_data.items():
@@ -477,7 +497,7 @@ def print_trace_summary(trace_file_path: Path):
         print(f"{'─'*70}\n")
         
         for error in errors:
-            print(f"✗ {error}")
+            print(f"[X] {error}")
     
     print(f"\n{'='*70}\n")
 
@@ -505,7 +525,7 @@ def list_all_traces():
         timestamp = trace_data.get('timestamp', 'Unknown')
         processing_time = trace_data.get('processing_time_seconds', 0)
         
-        print(f"📄 {trace_file.name}")
+        print(f" {trace_file.name}")
         print(f"   App ID: {app_id}")
         print(f"   Time: {timestamp}")
         print(f"   Duration: {processing_time:.2f}s")

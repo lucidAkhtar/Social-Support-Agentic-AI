@@ -1,0 +1,102 @@
+{
+  "timestamp": "2026-01-02T22:20:45.408985",
+  "demo_type": "comprehensive_langfuse_observability",
+  "total_applications": 3,
+  "applications": [
+    {
+      "application_id": "APP_HIGH_NEED_20260102_222042",
+      "processing_time": "0.89s",
+      "stages": {
+        "document_processing": {
+          "documents": 5,
+          "avg_confidence": 0.9000607733902548
+        },
+        "validation": {
+          "score": 0.9400000000000001,
+          "checks_passed": 5
+        },
+        "ml_prediction": {
+          "model_version": "v3",
+          "prediction": 1,
+          "confidence": 0.756243254023877,
+          "inference_time_ms": 55.06706237792969
+        },
+        "decision": {
+          "final_decision": "APPROVED",
+          "final_score": 0.7967634500550967,
+          "score_breakdown": {
+            "ml": 0.30249730160955085,
+            "policy": 0.2546455873346719,
+            "need": 0.23962056111087404
+          }
+        }
+      }
+    },
+    {
+      "application_id": "APP_MODERATE_NEED_20260102_222043",
+      "processing_time": "0.71s",
+      "stages": {
+        "document_processing": {
+          "documents": 5,
+          "avg_confidence": 0.8862595627964869
+        },
+        "validation": {
+          "score": 0.9400000000000001,
+          "checks_passed": 5
+        },
+        "ml_prediction": {
+          "model_version": "v3",
+          "prediction": 0,
+          "confidence": 0.7728105990590418,
+          "inference_time_ms": 50.79793930053711
+        },
+        "decision": {
+          "final_decision": "APPROVED",
+          "final_score": 0.8249000829322602,
+          "score_breakdown": {
+            "ml": 0.30912423962361674,
+            "policy": 0.28274371220408595,
+            "need": 0.23303213110455756
+          }
+        }
+      }
+    },
+    {
+      "application_id": "APP_LOW_NEED_20260102_222044",
+      "processing_time": "0.55s",
+      "stages": {
+        "document_processing": {
+          "documents": 5,
+          "avg_confidence": 0.9239515145609815
+        },
+        "validation": {
+          "score": 0.9400000000000001,
+          "checks_passed": 5
+        },
+        "ml_prediction": {
+          "model_version": "v3",
+          "prediction": 0,
+          "confidence": 0.7466900228952777,
+          "inference_time_ms": 54.08310890197754
+        },
+        "decision": {
+          "final_decision": "APPROVED",
+          "final_score": 0.8158671579079961,
+          "score_breakdown": {
+            "ml": 0.2986760091581111,
+            "policy": 0.25900290135050186,
+            "need": 0.2581882473993832
+          }
+        }
+      }
+    }
+  ],
+  "aggregate_statistics": {
+    "avg_processing_time": 0.7188882827758789,
+    "approved_count": 3,
+    "declined_count": 0,
+    "soft_decline_count": 0,
+    "avg_ml_confidence": 0.7585812919927322,
+    "avg_final_score": 0.812510230298451
+  }
+}

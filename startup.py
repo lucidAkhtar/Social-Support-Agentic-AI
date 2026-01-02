@@ -96,7 +96,6 @@ def start_streamlit():
     
     try:
         process = subprocess.run(
-            [sys.executable, "-m", "streamlit", "run", "streamlit_app/main_app.py",
              "--logger.level=info"],
             cwd=os.path.dirname(os.path.abspath(__file__))
         )

@@ -12,7 +12,7 @@ cd "$PROJECT_DIR"
 source .venv/bin/activate
 
 echo "════════════════════════════════════════════════════════════════"
-echo "🚀 Social Support Application - Complete Startup"
+echo "Social Support Application - Complete Startup"
 echo "════════════════════════════════════════════════════════════════"
 echo ""
 
@@ -25,7 +25,7 @@ NC='\033[0m' # No Color
 # Check if FastAPI is already running
 echo -e "${BLUE}[INFO]${NC} Checking for FastAPI on port 8000..."
 if ! nc -z localhost 8000 2>/dev/null; then
-    echo -e "${GREEN}[✓]${NC} FastAPI port 8000 available"
+    echo -e "${GREEN}[OK]${NC} FastAPI port 8000 available"
     
     echo ""
     echo -e "${BLUE}[INFO]${NC} Starting FastAPI backend..."
@@ -37,19 +37,19 @@ if ! nc -z localhost 8000 2>/dev/null; then
     FASTAPI_PID=$!
     
     # Wait for FastAPI to start
-    echo -e "${YELLOW}[⏳]${NC} Waiting for FastAPI to initialize..."
+    echo -e "${YELLOW}[WAIT]${NC} Waiting for FastAPI to initialize..."
     sleep 3
     
     # Check if FastAPI started successfully
     if nc -z localhost 8000 2>/dev/null; then
-        echo -e "${GREEN}[✓]${NC} FastAPI backend started successfully (PID: $FASTAPI_PID)"
-        echo "  📡 Available at: http://localhost:8000"
-        echo "  📚 API Docs at: http://localhost:8000/docs"
+        echo -e "${GREEN}[OK]${NC} FastAPI backend started successfully (PID: $FASTAPI_PID)"
+        echo "  Available at: http://localhost:8000"
+        echo "  API Docs at: http://localhost:8000/docs"
     else
-        echo -e "${YELLOW}[⚠]${NC} FastAPI may not have started. Check the output above for errors."
+        echo -e "${YELLOW}[WARN]${NC} FastAPI may not have started. Check the output above for errors."
     fi
 else
-    echo -e "${YELLOW}[⚠]${NC} FastAPI already running on port 8000"
+    echo -e "${YELLOW}[WARN]${NC} FastAPI already running on port 8000"
 fi
 
 echo ""

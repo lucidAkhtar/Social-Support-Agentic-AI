@@ -221,30 +221,30 @@ class ComprehensiveLangfuseDemo:
         for doc in docs:
             result = self.simulate_document_processing(app_id, doc)
             doc_results.append(result)
-            print(f"  ✓ {doc}: {result['ocr_confidence']:.1%} confidence")
+            print(f"  [OK] {doc}: {result['ocr_confidence']:.1%} confidence")
         
         # Stage 2: Validation
         print(f"\n[STAGE 2] Data Validation")
         validation_result = self.simulate_validation_checks(app_id)
-        print(f"  ✓ Validation score: {validation_result['score']:.2%}")
-        print(f"  ✓ Checks passed: {len([c for c in validation_result['checks'] if c['status'] == 'PASS'])}/{len(validation_result['checks'])}")
+        print(f"  [OK] Validation score: {validation_result['score']:.2%}")
+        print(f"  [OK] Checks passed: {len([c for c in validation_result['checks'] if c['status'] == 'PASS'])}/{len(validation_result['checks'])}")
         
         # Stage 3: ML Prediction
         print(f"\n[STAGE 3] ML Model Prediction")
         ml_result = self.simulate_ml_prediction(app_id, features)
-        print(f"  ✓ Model: v3 (12 features)")
-        print(f"  ✓ Prediction: {ml_result['prediction']} ({'APPROVE' if ml_result['prediction'] == 1 else 'REJECT'})")
-        print(f"  ✓ Confidence: {ml_result['confidence']:.1%}")
-        print(f"  ✓ Inference time: {ml_result['inference_time']*1000:.1f}ms")
+        print(f"  [OK] Model: v3 (12 features)")
+        print(f"  [OK] Prediction: {ml_result['prediction']} ({'APPROVE' if ml_result['prediction'] == 1 else 'REJECT'})")
+        print(f"  [OK] Confidence: {ml_result['confidence']:.1%}")
+        print(f"  [OK] Inference time: {ml_result['inference_time']*1000:.1f}ms")
         
         # Stage 4: Final Decision
         print(f"\n[STAGE 4] Final Eligibility Decision")
         decision_result = self.simulate_eligibility_decision(app_id, ml_result, validation_result)
-        print(f"  ✓ Decision: {decision_result['decision']}")
-        print(f"  ✓ Final Score: {decision_result['final_score']:.3f}")
-        print(f"  ✓ ML Contribution: {ml_result['confidence'] * 0.40:.3f} (40%)")
-        print(f"  ✓ Policy Score: {decision_result['policy_score'] * 0.30:.3f} (30%)")
-        print(f"  ✓ Need Assessment: {decision_result['need_assessment'] * 0.30:.3f} (30%)")
+        print(f"  [OK] Decision: {decision_result['decision']}")
+        print(f"  [OK] Final Score: {decision_result['final_score']:.3f}")
+        print(f"  [OK] ML Contribution: {ml_result['confidence'] * 0.40:.3f} (40%)")
+        print(f"  [OK] Policy Score: {decision_result['policy_score'] * 0.30:.3f} (30%)")
+        print(f"  [OK] Need Assessment: {decision_result['need_assessment'] * 0.30:.3f} (30%)")
         
         total_time = time.time() - start_time
         
@@ -264,7 +264,7 @@ class ComprehensiveLangfuseDemo:
             }
         )
         
-        print(f"\n  ✓ Total processing time: {total_time:.2f}s")
+        print(f"\n  [OK] Total processing time: {total_time:.2f}s")
         
         return {
             "application_id": app_id,
@@ -397,7 +397,7 @@ class ComprehensiveLangfuseDemo:
         
         trace_file = self.export_comprehensive_trace(results)
         
-        print(f"\n✓ Comprehensive trace exported to:")
+        print(f"\n[OK] Comprehensive trace exported to:")
         print(f"  {trace_file}")
         
         # Display summary
@@ -416,18 +416,18 @@ class ComprehensiveLangfuseDemo:
         print(f"  • Avg Final Score: {sum(r['decision']['final_score'] for r in results) / len(results):.3f}")
         
         print(f"\n{'='*80}")
-        print("✅ COMPREHENSIVE LANGFUSE DEMONSTRATION COMPLETE")
+        print("[PASS] COMPREHENSIVE LANGFUSE DEMONSTRATION COMPLETE")
         print(f"{'='*80}")
         
         print(f"\nObservability Capabilities Demonstrated:")
-        print(f"  ✓ End-to-end application tracing")
-        print(f"  ✓ Multi-stage pipeline monitoring")
-        print(f"  ✓ ML model prediction tracking with feature importance")
-        print(f"  ✓ Performance metrics (inference time, processing time)")
-        print(f"  ✓ Decision explainability (score breakdown)")
-        print(f"  ✓ Audit trail for compliance")
-        print(f"  ✓ Aggregate statistics across applications")
-        print(f"  ✓ Exportable traces for Langfuse Cloud integration")
+        print(f"  [OK] End-to-end application tracing")
+        print(f"  [OK] Multi-stage pipeline monitoring")
+        print(f"  [OK] ML model prediction tracking with feature importance")
+        print(f"  [OK] Performance metrics (inference time, processing time)")
+        print(f"  [OK] Decision explainability (score breakdown)")
+        print(f"  [OK] Audit trail for compliance")
+        print(f"  [OK] Aggregate statistics across applications")
+        print(f"  [OK] Exportable traces for Langfuse Cloud integration")
         
         print(f"\n{'='*80}\n")
         
