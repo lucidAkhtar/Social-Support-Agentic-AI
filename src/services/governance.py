@@ -35,11 +35,14 @@ class StructuredLogger:
         self.logger.handlers = []
         
         # File handler - JSON structured logs (for automated parsing)
+        # Force flush every 6 hours or on significant events
         json_handler = logging.FileHandler(
             self.log_dir / f"{name}_structured.jsonl",
-            encoding='utf-8'
+            encoding='utf-8',
+            delay=False  # Open file immediately
         )
         json_handler.setFormatter(JSONFormatter())
+        json_handler.setLevel(logging.INFO)  # Ensure INFO level logs
         self.logger.addHandler(json_handler)
         
         # Console handler - human-readable (for debugging)
@@ -63,14 +66,23 @@ class StructuredLogger:
     def info(self, message: str, **kwargs):
         """Log info with structured data"""
         self.logger.info(message, extra={'structured_data': kwargs})
+        # Force flush to ensure logs are written immediately
+        for handler in self.logger.handlers:
+            handler.flush()
     
     def error(self, message: str, **kwargs):
         """Log error with structured data"""
         self.logger.error(message, extra={'structured_data': kwargs})
+        # Force flush to ensure logs are written immediately
+        for handler in self.logger.handlers:
+            handler.flush()
     
     def warning(self, message: str, **kwargs):
         """Log warning with structured data"""
         self.logger.warning(message, extra={'structured_data': kwargs})
+        # Force flush to ensure logs are written immediately
+        for handler in self.logger.handlers:
+            handler.flush()
     
     def debug(self, message: str, **kwargs):
         """Log debug with structured data"""

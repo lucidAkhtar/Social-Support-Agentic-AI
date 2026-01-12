@@ -1,1 +1,178 @@
-{"_default": {}}
+{
+  "applications": {},
+  "_default": {},
+  "app_context": {
+    "1": {
+      "app_id": "APP_BD8CEF49",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "PENDING",
+        "created_at": "2026-01-12T16:09:40.395911"
+      },
+      "cached_at": "2026-01-12T16:09:40.397235",
+      "expires_at": "2026-01-12T16:19:40.397227"
+    },
+    "2": {
+      "app_id": "APP_2D2A38ED",
+      "context": {
+        "applicant_name": "Ahmed Al Hosani",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 5410.38,
+        "monthly_expenses": 1.0,
+        "credit_score": 0,
+        "credit_rating": null,
+        "employment_status": "employed",
+        "company_name": "EMIRATES NATIONAL OIL COMPANY",
+        "current_position": "Administrative Officer",
+        "family_size": 1,
+        "total_assets": 6559.0,
+        "total_liabilities": 22060.0,
+        "payment_ratio": null,
+        "total_outstanding": null,
+        "decision": "approved",
+        "eligibility": "ELIGIBLE",
+        "eligibility_score": 0.9049999999999999,
+        "support_amount": 500,
+        "policy_score": 0.9049999999999999,
+        "updated_at": "2026-01-12T16:10:21.966100"
+      },
+      "cached_at": "2026-01-12T16:10:21.966119",
+      "expires_at": "2026-01-12T16:20:21.966109"
+    },
+    "3": {
+      "app_id": "APP_2D2A38ED_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_54917A16"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_A492FF70"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_7C13928C"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_4FF6EE08"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_7C00D628"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_C23B9D03"
+          }
+        ],
+        "uploaded_at": "2026-01-12T16:10:15.203191"
+      },
+      "cached_at": "2026-01-12T16:10:15.203229",
+      "expires_at": "2026-01-12T16:20:15.203203"
+    },
+    "4": {
+      "app_id": "APP_2D2A38ED_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.9049999999999999,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T16:10:21.965479",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T16:10:21.965539",
+      "expires_at": "2026-01-12T16:20:21.965506"
+    },
+    "5": {
+      "app_id": "APP_0F86C511",
+      "context": {
+        "applicant_name": "Ahmed Al Hosani",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 5410.38,
+        "monthly_expenses": 1.0,
+        "credit_score": 0,
+        "credit_rating": null,
+        "employment_status": "employed",
+        "company_name": "EMIRATES NATIONAL OIL COMPANY",
+        "current_position": null,
+        "family_size": 1,
+        "total_assets": 6559.0,
+        "total_liabilities": 22060.0,
+        "payment_ratio": null,
+        "total_outstanding": null,
+        "decision": "approved",
+        "eligibility": "ELIGIBLE",
+        "eligibility_score": 0.9049999999999999,
+        "support_amount": 500,
+        "policy_score": 0.9049999999999999,
+        "updated_at": "2026-01-12T16:34:32.106318"
+      },
+      "cached_at": "2026-01-12T16:34:32.106332",
+      "expires_at": "2026-01-12T16:44:32.106326"
+    },
+    "6": {
+      "app_id": "APP_0F86C511_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_470DC8B2"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_F46B995E"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_796C4755"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_0F4037CD"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_B239F1BB"
+          },
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_4885D26F"
+          }
+        ],
+        "uploaded_at": "2026-01-12T16:34:23.288921"
+      },
+      "cached_at": "2026-01-12T16:34:23.288941",
+      "expires_at": "2026-01-12T16:44:23.288929"
+    },
+    "7": {
+      "app_id": "APP_0F86C511_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.9049999999999999,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T16:34:32.105670",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T16:34:32.105711",
+      "expires_at": "2026-01-12T16:44:32.105691"
+    }
+  }
+}

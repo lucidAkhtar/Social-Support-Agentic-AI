@@ -267,10 +267,10 @@ class UnifiedDatabaseManager:
             duration = (time.time() - start) * 1000
             
             if cached_data:
-                # Enrich with decision from SQLite
+                # Enrich with decision from SQLite (CRITICAL: Get full decision with conditions)
                 if self.sqlite:
-                    decision = self._query_sqlite_with_timing('get_decision_history', app_id)
-                    cached_data['decision'] = decision[0] if decision else None
+                    decision = self._query_sqlite_with_timing('get_decision_by_app_id', app_id)
+                    cached_data['decision'] = decision if decision else {}
                 
                 cached_data['source'] = 'l2_cache'
                 cached_data['l2_latency_ms'] = duration

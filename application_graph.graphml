@@ -1,6 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
-<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d12" for="edge" attr.name="similarity_score" attr.type="double"/>
-<key id="d11" for="edge" attr.name="relationship" attr.type="string"/>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d19" for="edge" attr.name="similarity_score" attr.type="double"/>
+<key id="d18" for="edge" attr.name="relationship" attr.type="string"/>
+<key id="d17" for="node" attr.name="support_amount" attr.type="long"/>
+<key id="d16" for="node" attr.name="eligibility_score" attr.type="double"/>
+<key id="d15" for="node" attr.name="id_number" attr.type="string"/>
+<key id="d14" for="node" attr.name="credit_score" attr.type="long"/>
+<key id="d13" for="node" attr.name="status" attr.type="string"/>
+<key id="d12" for="node" attr.name="created_at" attr.type="string"/>
+<key id="d11" for="node" attr.name="application_id" attr.type="string"/>
 <key id="d10" for="node" attr.name="decision" attr.type="string"/>
 <key id="d9" for="node" attr.name="name" attr.type="string"/>
 <key id="d8" for="node" attr.name="policy_score" attr.type="long"/>
@@ -852,488 +859,800 @@
   <data key="d8">10</data>
   <data key="d7">LOW</data>
 </node>
+<node id="APP_APP_856AF0C6">
+  <data key="d0">application</data>
+  <data key="d11">APP_856AF0C6</data>
+  <data key="d1">Fatima Al Kaabi</data>
+  <data key="d12">2026-01-12T14:28:19.828807</data>
+  <data key="d13">pending</data>
+  <data key="d2">4210.06</data>
+  <data key="d4">employed</data>
+  <data key="d14">891</data>
+  <data key="d3">1</data>
+  <data key="d15">1993-1218-21668732-7</data>
+  <data key="d10">approved</data>
+  <data key="d16">0.975</data>
+  <data key="d17">500</data>
+</node>
+<node id="PERSON_1993-1218-21668732-7">
+  <data key="d0">person</data>
+  <data key="d9">Fatima Al Kaabi</data>
+  <data key="d15">1993-1218-21668732-7</data>
+  <data key="d2">4210.06</data>
+  <data key="d4">employed</data>
+  <data key="d3">1</data>
+</node>
+<node id="APP_APP_2AA36F94">
+  <data key="d0">application</data>
+  <data key="d11">APP_2AA36F94</data>
+  <data key="d1">Fatima Al Kaabi</data>
+  <data key="d12">2026-01-12T14:38:08.693690</data>
+  <data key="d13">pending</data>
+  <data key="d2">4210.06</data>
+  <data key="d4">employed</data>
+  <data key="d14">891</data>
+  <data key="d3">1</data>
+  <data key="d15">1993-1218-21668732-7</data>
+  <data key="d10">approved</data>
+  <data key="d16">0.975</data>
+  <data key="d17">500</data>
+</node>
+<node id="APP_APP_E150A1D4">
+  <data key="d0">application</data>
+  <data key="d11">APP_E150A1D4</data>
+  <data key="d1">Fatima Al Kaabi</data>
+  <data key="d12">2026-01-12T14:42:32.720960</data>
+  <data key="d13">pending</data>
+  <data key="d2">4210.06</data>
+  <data key="d4">employed</data>
+  <data key="d14">891</data>
+  <data key="d3">1</data>
+  <data key="d15">1993-1218-21668732-7</data>
+  <data key="d10">approved</data>
+  <data key="d16">0.975</data>
+  <data key="d17">500</data>
+</node>
+<node id="APP_APP_C0345D56">
+  <data key="d0">application</data>
+  <data key="d11">APP_C0345D56</data>
+  <data key="d1">Fatima Al Kaabi</data>
+  <data key="d12">2026-01-12T14:45:43.792994</data>
+  <data key="d13">pending</data>
+  <data key="d2">4210.06</data>
+  <data key="d4">employed</data>
+  <data key="d14">891</data>
+  <data key="d3">1</data>
+  <data key="d15">1993-1218-21668732-7</data>
+  <data key="d10">approved</data>
+  <data key="d16">0.975</data>
+  <data key="d17">500</data>
+</node>
+<node id="APP_APP_8AD66C93">
+  <data key="d0">application</data>
+  <data key="d11">APP_8AD66C93</data>
+  <data key="d1">Fatima Al Kaabi</data>
+  <data key="d12">2026-01-12T14:50:18.206252</data>
+  <data key="d13">pending</data>
+  <data key="d2">4210.06</data>
+  <data key="d4">employed</data>
+  <data key="d14">891</data>
+  <data key="d3">1</data>
+  <data key="d15">1993-1218-21668732-7</data>
+  <data key="d10">approved</data>
+  <data key="d16">0.975</data>
+  <data key="d17">500</data>
+</node>
+<node id="APP_APP_2F5724DB">
+  <data key="d0">application</data>
+  <data key="d11">APP_2F5724DB</data>
+  <data key="d1">Fatima Al Kaabi</data>
+  <data key="d12">2026-01-12T14:56:46.162125</data>
+  <data key="d13">pending</data>
+  <data key="d2">4210.06</data>
+  <data key="d4">employed</data>
+  <data key="d14">891</data>
+  <data key="d3">1</data>
+  <data key="d15">1993-1218-21668732-7</data>
+  <data key="d10">approved</data>
+  <data key="d16">0.975</data>
+  <data key="d17">500</data>
+</node>
+<node id="APP_APP_B6248BE4">
+  <data key="d0">application</data>
+  <data key="d11">APP_B6248BE4</data>
+  <data key="d1">Fatima Al Kaabi</data>
+  <data key="d12">2026-01-12T15:05:35.847203</data>
+  <data key="d13">pending</data>
+  <data key="d2">4210.06</data>
+  <data key="d4">employed</data>
+  <data key="d14">891</data>
+  <data key="d3">1</data>
+  <data key="d15">1993-1218-21668732-7</data>
+  <data key="d10">approved</data>
+  <data key="d16">0.975</data>
+  <data key="d17">500</data>
+</node>
+<node id="APP_APP_72522E84">
+  <data key="d0">application</data>
+  <data key="d11">APP_72522E84</data>
+  <data key="d1">Ahmed Al Hosani</data>
+  <data key="d12">2026-01-12T15:06:31.287038</data>
+  <data key="d13">pending</data>
+  <data key="d2">5410.38</data>
+  <data key="d4">employed</data>
+  <data key="d14">0</data>
+  <data key="d3">1</data>
+  <data key="d15">1960-0827-82909480</data>
+  <data key="d10">approved</data>
+  <data key="d16">0.9049999999999999</data>
+  <data key="d17">500</data>
+</node>
+<node id="PERSON_1960-0827-82909480">
+  <data key="d0">person</data>
+  <data key="d9">Ahmed Al Hosani</data>
+  <data key="d15">1960-0827-82909480</data>
+  <data key="d2">5410.38</data>
+  <data key="d4">employed</data>
+  <data key="d3">1</data>
+</node>
+<node id="APP_APP_2CE068E6">
+  <data key="d0">application</data>
+  <data key="d11">APP_2CE068E6</data>
+  <data key="d1">Mariam Al Qubaisi</data>
+  <data key="d12">2026-01-12T15:07:27.094214</data>
+  <data key="d13">pending</data>
+  <data key="d2">3740.02</data>
+  <data key="d4">employed</data>
+  <data key="d14">0</data>
+  <data key="d3">1</data>
+  <data key="d15">1979-1209-59512272-7</data>
+  <data key="d10">approved</data>
+  <data key="d16">0.9686708860759494</data>
+  <data key="d17">500</data>
+</node>
+<node id="PERSON_1979-1209-59512272-7">
+  <data key="d0">person</data>
+  <data key="d9">Mariam Al Qubaisi</data>
+  <data key="d15">1979-1209-59512272-7</data>
+  <data key="d2">3740.02</data>
+  <data key="d4">employed</data>
+  <data key="d3">1</data>
+</node>
+<node id="APP_APP_F99F3740">
+  <data key="d0">application</data>
+  <data key="d11">APP_F99F3740</data>
+  <data key="d1">Fatima Al Kaabi</data>
+  <data key="d12">2026-01-12T15:12:37.903440</data>
+  <data key="d13">pending</data>
+  <data key="d2">4210.06</data>
+  <data key="d4">employed</data>
+  <data key="d14">891</data>
+  <data key="d3">1</data>
+  <data key="d15">1993-1218-21668732-7</data>
+  <data key="d10">approved</data>
+  <data key="d16">0.975</data>
+  <data key="d17">500</data>
+</node>
+<node id="APP_APP_6D203FD7">
+  <data key="d0">application</data>
+  <data key="d11">APP_6D203FD7</data>
+  <data key="d1">Fatima Al Kaabi</data>
+  <data key="d12">2026-01-12T15:30:58.812482</data>
+  <data key="d13">pending</data>
+  <data key="d2">4210.06</data>
+  <data key="d4">employed</data>
+  <data key="d14">891</data>
+  <data key="d3">1</data>
+  <data key="d15">1993-1218-21668732-7</data>
+  <data key="d10">approved</data>
+  <data key="d16">0.975</data>
+  <data key="d17">500</data>
+</node>
+<node id="APP_APP_9DA4FA5D">
+  <data key="d0">application</data>
+  <data key="d11">APP_9DA4FA5D</data>
+  <data key="d1">Fatima Al Kaabi</data>
+  <data key="d12">2026-01-12T15:41:14.461425</data>
+  <data key="d13">pending</data>
+  <data key="d2">4210.06</data>
+  <data key="d4">employed</data>
+  <data key="d14">891</data>
+  <data key="d3">1</data>
+  <data key="d15">1993-1218-21668732-7</data>
+  <data key="d10">approved</data>
+  <data key="d16">0.975</data>
+  <data key="d17">500</data>
+</node>
+<node id="APP_APP_A4D1D562">
+  <data key="d0">application</data>
+  <data key="d11">APP_A4D1D562</data>
+  <data key="d1">Fatima Al Kaabi</data>
+  <data key="d12">2026-01-12T15:54:25.513689</data>
+  <data key="d13">pending</data>
+  <data key="d2">4210.06</data>
+  <data key="d4">employed</data>
+  <data key="d14">891</data>
+  <data key="d3">1</data>
+  <data key="d15">1993-1218-21668732-7</data>
+  <data key="d10">approved</data>
+  <data key="d16">0.975</data>
+  <data key="d17">500</data>
+</node>
+<node id="APP_APP_071C7F67">
+  <data key="d0">application</data>
+  <data key="d11">APP_071C7F67</data>
+  <data key="d1">Fatima Al Kaabi</data>
+  <data key="d12">2026-01-12T16:02:39.116787</data>
+  <data key="d13">pending</data>
+  <data key="d2">4210.06</data>
+  <data key="d4">employed</data>
+  <data key="d14">891</data>
+  <data key="d3">1</data>
+  <data key="d15">1993-1218-21668732-7</data>
+  <data key="d10">approved</data>
+  <data key="d16">0.975</data>
+  <data key="d17">500</data>
+</node>
+<node id="APP_APP_2D2A38ED">
+  <data key="d0">application</data>
+  <data key="d11">APP_2D2A38ED</data>
+  <data key="d1">Ahmed Al Hosani</data>
+  <data key="d12">2026-01-12T16:10:21.966528</data>
+  <data key="d13">pending</data>
+  <data key="d2">5410.38</data>
+  <data key="d4">employed</data>
+  <data key="d14">0</data>
+  <data key="d3">1</data>
+  <data key="d15">1960-0827-82909480</data>
+  <data key="d10">approved</data>
+  <data key="d16">0.9049999999999999</data>
+  <data key="d17">500</data>
+</node>
+<node id="APP_APP_0F86C511">
+  <data key="d0">application</data>
+  <data key="d11">APP_0F86C511</data>
+  <data key="d1">Ahmed Al Hosani</data>
+  <data key="d12">2026-01-12T16:34:32.106787</data>
+  <data key="d13">pending</data>
+  <data key="d2">5410.38</data>
+  <data key="d4">employed</data>
+  <data key="d14">0</data>
+  <data key="d3">1</data>
+  <data key="d15">1960-0827-82909480</data>
+  <data key="d10">approved</data>
+  <data key="d16">0.9049999999999999</data>
+  <data key="d17">500</data>
+</node>
 <edge source="APP-000001" target="Person_Applicant_1">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000001" target="Decision_APP-000001">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000001" target="APP-000002">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.767</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.767</data>
 </edge>
 <edge source="APP-000001" target="APP-000003">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.366</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.366</data>
 </edge>
 <edge source="APP-000001" target="APP-000004">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.362</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.362</data>
 </edge>
 <edge source="APP-000002" target="Person_Applicant_2">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000002" target="Decision_APP-000002">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000002" target="APP-000003">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.329</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.329</data>
 </edge>
 <edge source="APP-000002" target="APP-000004">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.326</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.326</data>
 </edge>
 <edge source="APP-000003" target="Person_Applicant_3">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000003" target="Decision_APP-000003">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000003" target="APP-000004">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.977</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.977</data>
 </edge>
 <edge source="APP-000003" target="APP-000005">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.324</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.324</data>
 </edge>
 <edge source="APP-000004" target="Person_Applicant_4">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000004" target="Decision_APP-000004">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000004" target="APP-000005">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.321</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.321</data>
 </edge>
 <edge source="APP-000005" target="Person_Applicant_5">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000005" target="Decision_APP-000005">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000006" target="Person_Applicant_6">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000006" target="Decision_APP-000006">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000006" target="APP-000008">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.81</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.81</data>
 </edge>
 <edge source="APP-000007" target="Person_Applicant_7">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000007" target="Decision_APP-000007">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000007" target="APP-000009">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.65</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.65</data>
 </edge>
 <edge source="APP-000007" target="APP-000010">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.406</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.406</data>
 </edge>
 <edge source="APP-000008" target="Person_Applicant_8">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000008" target="Decision_APP-000008">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000008" target="APP-000010">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.316</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.316</data>
 </edge>
 <edge source="APP-000009" target="Person_Applicant_9">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000009" target="Decision_APP-000009">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000009" target="APP-000010">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.333</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.333</data>
 </edge>
 <edge source="APP-000009" target="APP-000011">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.391</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.391</data>
 </edge>
 <edge source="APP-000009" target="APP-000012">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.302</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.302</data>
 </edge>
 <edge source="APP-000010" target="Person_Applicant_10">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000010" target="Decision_APP-000010">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000010" target="APP-000011">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.391</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.391</data>
 </edge>
 <edge source="APP-000010" target="APP-000012">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.764</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.764</data>
 </edge>
 <edge source="APP-000010" target="APP-000013">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.411</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.411</data>
 </edge>
 <edge source="APP-000011" target="Person_Applicant_11">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000011" target="Decision_APP-000011">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000011" target="APP-000012">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.445</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.445</data>
 </edge>
 <edge source="APP-000011" target="APP-000013">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.891</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.891</data>
 </edge>
 <edge source="APP-000011" target="APP-000014">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.318</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.318</data>
 </edge>
 <edge source="APP-000012" target="Person_Applicant_12">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000012" target="Decision_APP-000012">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000012" target="APP-000013">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.47</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.47</data>
 </edge>
 <edge source="APP-000012" target="APP-000014">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.419</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.419</data>
 </edge>
 <edge source="APP-000012" target="APP-000015">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.32</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.32</data>
 </edge>
 <edge source="APP-000013" target="Person_Applicant_13">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000013" target="Decision_APP-000013">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000013" target="APP-000014">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.307</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.307</data>
 </edge>
 <edge source="APP-000013" target="APP-000015">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.445</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.445</data>
 </edge>
 <edge source="APP-000014" target="Person_Applicant_14">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000014" target="Decision_APP-000014">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000015" target="Person_Applicant_15">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000015" target="Decision_APP-000015">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000015" target="APP-000016">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.385</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.385</data>
 </edge>
 <edge source="APP-000016" target="Person_Applicant_16">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000016" target="Decision_APP-000016">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000017" target="Person_Applicant_17">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000017" target="Decision_APP-000017">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000017" target="APP-000018">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.765</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.765</data>
 </edge>
 <edge source="APP-000017" target="APP-000019">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.368</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.368</data>
 </edge>
 <edge source="APP-000017" target="APP-000020">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.305</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.305</data>
 </edge>
 <edge source="APP-000018" target="Person_Applicant_18">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000018" target="Decision_APP-000018">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000018" target="APP-000019">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.414</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.414</data>
 </edge>
 <edge source="APP-000018" target="APP-000021">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.493</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.493</data>
 </edge>
 <edge source="APP-000019" target="Person_Applicant_19">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000019" target="Decision_APP-000019">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000019" target="APP-000020">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.333</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.333</data>
 </edge>
 <edge source="APP-000019" target="APP-000022">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.31</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.31</data>
 </edge>
 <edge source="APP-000020" target="Person_Applicant_20">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000020" target="Decision_APP-000020">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000020" target="APP-000022">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.31</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.31</data>
 </edge>
 <edge source="APP-000020" target="APP-000023">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.661</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.661</data>
 </edge>
 <edge source="APP-000021" target="Person_Applicant_21">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000021" target="Decision_APP-000021">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000021" target="APP-000022">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.822</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.822</data>
 </edge>
 <edge source="APP-000021" target="APP-000023">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.326</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.326</data>
 </edge>
 <edge source="APP-000022" target="Person_Applicant_22">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000022" target="Decision_APP-000022">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000022" target="APP-000023">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.304</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.304</data>
 </edge>
 <edge source="APP-000023" target="Person_Applicant_23">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000023" target="Decision_APP-000023">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000023" target="APP-000024">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.458</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.458</data>
 </edge>
 <edge source="APP-000023" target="APP-000025">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.313</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.313</data>
 </edge>
 <edge source="APP-000023" target="APP-000026">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.349</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.349</data>
 </edge>
 <edge source="APP-000024" target="Person_Applicant_24">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000024" target="Decision_APP-000024">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000024" target="APP-000025">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.497</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.497</data>
 </edge>
 <edge source="APP-000024" target="APP-000027">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.929</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.929</data>
 </edge>
 <edge source="APP-000025" target="Person_Applicant_25">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000025" target="Decision_APP-000025">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000025" target="APP-000026">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.3</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.3</data>
 </edge>
 <edge source="APP-000025" target="APP-000027">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.517</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.517</data>
 </edge>
 <edge source="APP-000025" target="APP-000028">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.626</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.626</data>
 </edge>
 <edge source="APP-000026" target="Person_Applicant_26">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000026" target="Decision_APP-000026">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000027" target="Person_Applicant_27">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000027" target="Decision_APP-000027">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000027" target="APP-000028">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.395</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.395</data>
 </edge>
 <edge source="APP-000027" target="APP-000029">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.368</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.368</data>
 </edge>
 <edge source="APP-000027" target="APP-000030">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.9</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.9</data>
 </edge>
 <edge source="APP-000028" target="Person_Applicant_28">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000028" target="Decision_APP-000028">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000028" target="APP-000029">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.841</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.841</data>
 </edge>
 <edge source="APP-000028" target="APP-000030">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.413</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.413</data>
 </edge>
 <edge source="APP-000029" target="Person_Applicant_29">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000029" target="Decision_APP-000029">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000029" target="APP-000030">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.383</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.383</data>
 </edge>
 <edge source="APP-000030" target="Person_Applicant_30">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000030" target="Decision_APP-000030">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000031" target="Person_Applicant_31">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000031" target="Decision_APP-000031">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000031" target="APP-000033">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.308</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.308</data>
 </edge>
 <edge source="APP-000031" target="APP-000034">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.364</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.364</data>
 </edge>
 <edge source="APP-000032" target="Person_Applicant_32">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000032" target="Decision_APP-000032">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000033" target="Person_Applicant_33">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000033" target="Decision_APP-000033">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000033" target="APP-000034">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.67</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.67</data>
 </edge>
 <edge source="APP-000034" target="Person_Applicant_34">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000034" target="Decision_APP-000034">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000035" target="Person_Applicant_35">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000035" target="Decision_APP-000035">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000036" target="Person_Applicant_36">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000036" target="Decision_APP-000036">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000036" target="APP-000037">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.344</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.344</data>
 </edge>
 <edge source="APP-000036" target="APP-000039">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.565</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.565</data>
 </edge>
 <edge source="APP-000037" target="Person_Applicant_37">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000037" target="Decision_APP-000037">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000038" target="Person_Applicant_38">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000038" target="Decision_APP-000038">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000038" target="APP-000039">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.317</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.317</data>
 </edge>
 <edge source="APP-000038" target="APP-000040">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.716</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.716</data>
 </edge>
 <edge source="APP-000039" target="Person_Applicant_39">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000039" target="Decision_APP-000039">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
 </edge>
 <edge source="APP-000039" target="APP-000040">
-  <data key="d11">SIMILAR_TO</data>
-  <data key="d12">0.308</data>
+  <data key="d18">SIMILAR_TO</data>
+  <data key="d19">0.308</data>
 </edge>
 <edge source="APP-000040" target="Person_Applicant_40">
-  <data key="d11">APPLIED_BY</data>
+  <data key="d18">APPLIED_BY</data>
 </edge>
 <edge source="APP-000040" target="Decision_APP-000040">
-  <data key="d11">HAS_DECISION</data>
+  <data key="d18">HAS_DECISION</data>
+</edge>
+<edge source="PERSON_1993-1218-21668732-7" target="APP_APP_856AF0C6">
+  <data key="d18">APPLIED_FOR</data>
+</edge>
+<edge source="PERSON_1993-1218-21668732-7" target="APP_APP_2AA36F94">
+  <data key="d18">APPLIED_FOR</data>
+</edge>
+<edge source="PERSON_1993-1218-21668732-7" target="APP_APP_E150A1D4">
+  <data key="d18">APPLIED_FOR</data>
+</edge>
+<edge source="PERSON_1993-1218-21668732-7" target="APP_APP_C0345D56">
+  <data key="d18">APPLIED_FOR</data>
+</edge>
+<edge source="PERSON_1993-1218-21668732-7" target="APP_APP_8AD66C93">
+  <data key="d18">APPLIED_FOR</data>
+</edge>
+<edge source="PERSON_1993-1218-21668732-7" target="APP_APP_2F5724DB">
+  <data key="d18">APPLIED_FOR</data>
+</edge>
+<edge source="PERSON_1993-1218-21668732-7" target="APP_APP_B6248BE4">
+  <data key="d18">APPLIED_FOR</data>
+</edge>
+<edge source="PERSON_1993-1218-21668732-7" target="APP_APP_F99F3740">
+  <data key="d18">APPLIED_FOR</data>
+</edge>
+<edge source="PERSON_1993-1218-21668732-7" target="APP_APP_6D203FD7">
+  <data key="d18">APPLIED_FOR</data>
+</edge>
+<edge source="PERSON_1993-1218-21668732-7" target="APP_APP_9DA4FA5D">
+  <data key="d18">APPLIED_FOR</data>
+</edge>
+<edge source="PERSON_1993-1218-21668732-7" target="APP_APP_A4D1D562">
+  <data key="d18">APPLIED_FOR</data>
+</edge>
+<edge source="PERSON_1993-1218-21668732-7" target="APP_APP_071C7F67">
+  <data key="d18">APPLIED_FOR</data>
+</edge>
+<edge source="PERSON_1960-0827-82909480" target="APP_APP_72522E84">
+  <data key="d18">APPLIED_FOR</data>
+</edge>
+<edge source="PERSON_1960-0827-82909480" target="APP_APP_2D2A38ED">
+  <data key="d18">APPLIED_FOR</data>
+</edge>
+<edge source="PERSON_1960-0827-82909480" target="APP_APP_0F86C511">
+  <data key="d18">APPLIED_FOR</data>
+</edge>
+<edge source="PERSON_1979-1209-59512272-7" target="APP_APP_2CE068E6">
+  <data key="d18">APPLIED_FOR</data>
 </edge>
 </graph></graphml>

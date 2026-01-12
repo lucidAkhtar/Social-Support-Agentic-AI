@@ -53,9 +53,9 @@ class TinyDBManager:
         # Thread lock for safe concurrent access
         self._lock = threading.Lock()
         
-        # Default TTL settings (in seconds)
-        self.DEFAULT_SESSION_TTL = 3600  # 1 hour
-        self.DEFAULT_RAG_CACHE_TTL = 1800  # 30 minutes
+        # Default TTL settings (in seconds) - 10 minutes
+        self.DEFAULT_SESSION_TTL = 600  # 10 minutes
+        self.DEFAULT_RAG_CACHE_TTL = 600  # 10 minutes
         self.DEFAULT_CONTEXT_TTL = 600  # 10 minutes
     
     # ============================================================================
@@ -83,6 +83,9 @@ class TinyDBManager:
                 'expires_at': expiry.isoformat(),
                 'ttl': ttl
             }, Query_.session_id == session_id)
+            
+            # Force write to disk immediately (6-hour cache)
+            self.db.storage.flush()
     
     def get_session(self, session_id: str) -> Optional[Dict]:
         """
@@ -152,6 +155,9 @@ class TinyDBManager:
                 'expires_at': expiry.isoformat(),
                 'hit_count': 1
             }, Query_.query_hash == query_hash)
+            
+            # Force write to disk immediately (6-hour cache)
+            self.db.storage.flush()
     
     def get_cached_rag_results(self, query: str) -> Optional[List[Dict]]:
         """
@@ -211,6 +217,9 @@ class TinyDBManager:
                 'cached_at': datetime.now().isoformat(),
                 'expires_at': expiry.isoformat()
             }, Query_.app_id == app_id)
+            
+            # Force write to disk immediately (6-hour cache)
+            self.db.storage.flush()
     
     def get_app_context(self, app_id: str) -> Optional[Dict]:
         """Retrieve cached application context"""

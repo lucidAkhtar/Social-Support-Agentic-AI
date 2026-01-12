@@ -1,0 +1,1874 @@
+{
+  "_default": {},
+  "app_context": {
+    "1": {
+      "app_id": "APP_2B42FB15",
+      "context": {
+        "applicant_name": "Noor Al Maktoum",
+        "status": "PENDING",
+        "created_at": "2026-01-12T02:38:26.485882"
+      },
+      "cached_at": "2026-01-12T02:38:26.487513",
+      "expires_at": "2026-01-12T08:38:26.487500"
+    },
+    "2": {
+      "app_id": "APP_2B42FB15_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_8B9554D7"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_014CA88C"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_CA3953DB"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_382F750F"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_86B66626"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_79CAF387"
+          }
+        ],
+        "uploaded_at": "2026-01-12T02:38:44.765046"
+      },
+      "cached_at": "2026-01-12T02:38:44.765067",
+      "expires_at": "2026-01-12T08:38:44.765055"
+    },
+    "3": {
+      "app_id": "APP_2697EBF5",
+      "context": {
+        "applicant_name": "Mariam Al Qubaisi",
+        "status": "PENDING",
+        "created_at": "2026-01-12T02:42:28.677740"
+      },
+      "cached_at": "2026-01-12T02:42:28.680940",
+      "expires_at": "2026-01-12T08:42:28.680893"
+    },
+    "4": {
+      "app_id": "APP_2697EBF5_uploads",
+      "context": {
+        "count": 5,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_31C3FBDB"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_0109F83F"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_E7C75DA0"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_635DA0BE"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_50C64EAD"
+          }
+        ],
+        "uploaded_at": "2026-01-12T02:42:46.897019"
+      },
+      "cached_at": "2026-01-12T02:42:46.897042",
+      "expires_at": "2026-01-12T08:42:46.897028"
+    },
+    "5": {
+      "app_id": "APP_8B7C46A9",
+      "context": {
+        "applicant_name": "Noor Al Maktoum",
+        "status": "PENDING",
+        "created_at": "2026-01-12T13:25:29.515153"
+      },
+      "cached_at": "2026-01-12T13:25:29.517485",
+      "expires_at": "2026-01-12T19:25:29.517443"
+    },
+    "6": {
+      "app_id": "APP_8B7C46A9_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_0A370746"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_40E93615"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_876271C5"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_CF81E450"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_0F1EB428"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_18F30B53"
+          }
+        ],
+        "uploaded_at": "2026-01-12T13:25:53.800947"
+      },
+      "cached_at": "2026-01-12T13:25:53.800970",
+      "expires_at": "2026-01-12T19:25:53.800957"
+    },
+    "7": {
+      "app_id": "APP_3F521A9C",
+      "context": {
+        "applicant_name": "Noor Al Maktoum",
+        "status": "PENDING",
+        "created_at": "2026-01-12T13:33:30.225444"
+      },
+      "cached_at": "2026-01-12T13:33:30.227036",
+      "expires_at": "2026-01-12T19:33:30.227008"
+    },
+    "8": {
+      "app_id": "APP_3F521A9C_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_A4465B5F"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_A823AC14"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_A80CCA33"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_12DA4D36"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_A9CF566F"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_7A7E5D36"
+          }
+        ],
+        "uploaded_at": "2026-01-12T13:34:27.924789"
+      },
+      "cached_at": "2026-01-12T13:34:27.925769",
+      "expires_at": "2026-01-12T19:34:27.925757"
+    },
+    "9": {
+      "app_id": "APP_A806DC7D",
+      "context": {
+        "applicant_name": "Noor Al Maktoum",
+        "status": "PENDING",
+        "created_at": "2026-01-12T13:37:13.160375"
+      },
+      "cached_at": "2026-01-12T13:37:13.163616",
+      "expires_at": "2026-01-12T19:37:13.163595"
+    },
+    "10": {
+      "app_id": "APP_A806DC7D_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_100C4C19"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_5DBF8610"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_6FBF5C6A"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_898E7FFE"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_1CE6C52B"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_4345BFF9"
+          }
+        ],
+        "uploaded_at": "2026-01-12T13:37:52.085239"
+      },
+      "cached_at": "2026-01-12T13:37:52.085266",
+      "expires_at": "2026-01-12T19:37:52.085252"
+    },
+    "11": {
+      "app_id": "APP_A806DC7D_result",
+      "context": {
+        "decision": "declined",
+        "eligibility_score": 0.16499999999999998,
+        "support_amount": null,
+        "processed_at": "2026-01-12T13:38:03.732667",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T13:38:03.732719",
+      "expires_at": "2026-01-12T19:38:03.732696"
+    },
+    "12": {
+      "app_id": "APP_55BB5513",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "PENDING",
+        "created_at": "2026-01-12T13:39:09.665188"
+      },
+      "cached_at": "2026-01-12T13:39:09.665888",
+      "expires_at": "2026-01-12T19:39:09.665879"
+    },
+    "13": {
+      "app_id": "APP_55BB5513_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_4AFEBB18"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_8F9F89EE"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_E0F3AF2E"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_929E8D7B"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_E0911D9D"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_2F385BBC"
+          }
+        ],
+        "uploaded_at": "2026-01-12T13:39:58.543405"
+      },
+      "cached_at": "2026-01-12T13:39:58.543432",
+      "expires_at": "2026-01-12T19:39:58.543418"
+    },
+    "14": {
+      "app_id": "APP_55BB5513_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T13:40:14.150324",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T13:40:14.150374",
+      "expires_at": "2026-01-12T19:40:14.150355"
+    },
+    "15": {
+      "app_id": "APP_64182DC0",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "PENDING",
+        "created_at": "2026-01-12T13:43:36.654576"
+      },
+      "cached_at": "2026-01-12T13:43:36.656519",
+      "expires_at": "2026-01-12T19:43:36.656339"
+    },
+    "16": {
+      "app_id": "APP_64182DC0_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_4F1AD2A6"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_66DA4A84"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_85695EA4"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_CF15C8B3"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_7334FABA"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_73278A18"
+          }
+        ],
+        "uploaded_at": "2026-01-12T13:43:50.751708"
+      },
+      "cached_at": "2026-01-12T13:43:50.751727",
+      "expires_at": "2026-01-12T19:43:50.751715"
+    },
+    "17": {
+      "app_id": "APP_64182DC0_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T13:43:57.601162",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T13:43:57.601213",
+      "expires_at": "2026-01-12T19:43:57.601184"
+    },
+    "18": {
+      "app_id": "APP_C7543FC1",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "PENDING",
+        "created_at": "2026-01-12T13:50:14.695605"
+      },
+      "cached_at": "2026-01-12T13:50:14.720006",
+      "expires_at": "2026-01-12T19:50:14.719430"
+    },
+    "19": {
+      "app_id": "APP_C7543FC1_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_6E4F073F"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_631E5799"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_91039AA6"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_94D4BCFA"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_51169267"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_C894C745"
+          }
+        ],
+        "uploaded_at": "2026-01-12T13:50:33.125497"
+      },
+      "cached_at": "2026-01-12T13:50:33.126291",
+      "expires_at": "2026-01-12T19:50:33.126139"
+    },
+    "20": {
+      "app_id": "APP_C7543FC1_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T13:50:40.127747",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T13:50:40.127836",
+      "expires_at": "2026-01-12T19:50:40.127787"
+    },
+    "21": {
+      "app_id": "APP_000BD3C2",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "PENDING",
+        "created_at": "2026-01-12T13:55:59.067918"
+      },
+      "cached_at": "2026-01-12T13:55:59.082653",
+      "expires_at": "2026-01-12T19:55:59.082308"
+    },
+    "22": {
+      "app_id": "APP_000BD3C2_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_ACD02A25"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_D4456483"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_4DD6271C"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_0309AC95"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_C1FD1116"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_15A94ECE"
+          }
+        ],
+        "uploaded_at": "2026-01-12T13:56:47.450589"
+      },
+      "cached_at": "2026-01-12T13:56:47.450670",
+      "expires_at": "2026-01-12T19:56:47.450629"
+    },
+    "23": {
+      "app_id": "APP_000BD3C2_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T13:56:55.938975",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T13:56:55.939026",
+      "expires_at": "2026-01-12T19:56:55.939002"
+    },
+    "24": {
+      "app_id": "APP_493424C5",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "PENDING",
+        "created_at": "2026-01-12T14:02:41.939290"
+      },
+      "cached_at": "2026-01-12T14:02:41.945786",
+      "expires_at": "2026-01-12T20:02:41.945556"
+    },
+    "25": {
+      "app_id": "APP_493424C5_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_1B907A01"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_B4D090A3"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_BD87FD8F"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_D4476D11"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_212FFC67"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_10DBAA92"
+          }
+        ],
+        "uploaded_at": "2026-01-12T14:02:54.619155"
+      },
+      "cached_at": "2026-01-12T14:02:54.619172",
+      "expires_at": "2026-01-12T20:02:54.619162"
+    },
+    "26": {
+      "app_id": "APP_493424C5_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T14:02:59.801291",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T14:02:59.801338",
+      "expires_at": "2026-01-12T20:02:59.801313"
+    },
+    "27": {
+      "app_id": "APP_23A0C403",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 4210.06,
+        "credit_score": 891,
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "updated_at": "2026-01-12T14:08:11.073490"
+      },
+      "cached_at": "2026-01-12T14:08:11.073499",
+      "expires_at": "2026-01-12T20:08:11.073494"
+    },
+    "28": {
+      "app_id": "APP_23A0C403_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_F689006F"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_BCFD86D8"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_A2A601A0"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_90161A10"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_11874A57"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_3337EB39"
+          }
+        ],
+        "uploaded_at": "2026-01-12T14:08:02.735351"
+      },
+      "cached_at": "2026-01-12T14:08:02.735688",
+      "expires_at": "2026-01-12T20:08:02.735656"
+    },
+    "29": {
+      "app_id": "APP_23A0C403_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T14:08:11.072482",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T14:08:11.072561",
+      "expires_at": "2026-01-12T20:08:11.072515"
+    },
+    "30": {
+      "app_id": "APP_1E1AA91F",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 4210.06,
+        "monthly_expenses": 1.0,
+        "credit_score": 891,
+        "credit_rating": null,
+        "employment_status": "employed",
+        "company_name": "ROTANA HOTELS",
+        "current_position": null,
+        "family_size": 1,
+        "total_assets": 5104.0,
+        "total_liabilities": 110725.0,
+        "payment_ratio": null,
+        "total_outstanding": null,
+        "decision": "approved",
+        "eligibility": "ELIGIBLE",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "policy_score": 0.975,
+        "updated_at": "2026-01-12T14:17:04.892538"
+      },
+      "cached_at": "2026-01-12T14:17:04.892553",
+      "expires_at": "2026-01-12T14:27:04.892546"
+    },
+    "31": {
+      "app_id": "APP_1E1AA91F_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_C5A141C0"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_5098B5AA"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_31DE0743"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_2FF0058A"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_A83B6910"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_8ACBEA3B"
+          }
+        ],
+        "uploaded_at": "2026-01-12T14:16:57.275759"
+      },
+      "cached_at": "2026-01-12T14:16:57.275778",
+      "expires_at": "2026-01-12T14:26:57.275767"
+    },
+    "32": {
+      "app_id": "APP_1E1AA91F_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T14:17:04.890849",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T14:17:04.890918",
+      "expires_at": "2026-01-12T14:27:04.890883"
+    },
+    "33": {
+      "app_id": "APP_856AF0C6",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 4210.06,
+        "monthly_expenses": 1.0,
+        "credit_score": 891,
+        "credit_rating": null,
+        "employment_status": "employed",
+        "company_name": "ROTANA HOTELS",
+        "current_position": "Administrative Officer",
+        "family_size": 1,
+        "total_assets": 5104.0,
+        "total_liabilities": 110725.0,
+        "payment_ratio": null,
+        "total_outstanding": null,
+        "decision": "approved",
+        "eligibility": "ELIGIBLE",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "policy_score": 0.975,
+        "updated_at": "2026-01-12T14:28:19.827198"
+      },
+      "cached_at": "2026-01-12T14:28:19.827212",
+      "expires_at": "2026-01-12T14:38:19.827205"
+    },
+    "34": {
+      "app_id": "APP_856AF0C6_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_2B89B506"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_5D013425"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_DA80EC05"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_DA6F4251"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_C92B2F41"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_394225B2"
+          }
+        ],
+        "uploaded_at": "2026-01-12T14:28:12.706375"
+      },
+      "cached_at": "2026-01-12T14:28:12.706394",
+      "expires_at": "2026-01-12T14:38:12.706383"
+    },
+    "35": {
+      "app_id": "APP_856AF0C6_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T14:28:19.825443",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T14:28:19.825493",
+      "expires_at": "2026-01-12T14:38:19.825466"
+    },
+    "36": {
+      "app_id": "APP_2AA36F94",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 4210.06,
+        "monthly_expenses": 1.0,
+        "credit_score": 891,
+        "credit_rating": null,
+        "employment_status": "employed",
+        "company_name": "ROTANA HOTELS",
+        "current_position": "Administrative Officer",
+        "family_size": 1,
+        "total_assets": 5104.0,
+        "total_liabilities": 110725.0,
+        "payment_ratio": null,
+        "total_outstanding": null,
+        "decision": "approved",
+        "eligibility": "ELIGIBLE",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "policy_score": 0.975,
+        "updated_at": "2026-01-12T14:38:08.691919"
+      },
+      "cached_at": "2026-01-12T14:38:08.691944",
+      "expires_at": "2026-01-12T14:48:08.691932"
+    },
+    "37": {
+      "app_id": "APP_2AA36F94_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_D1117EB2"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_9CA0113C"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_C03BC93F"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_376AAB4A"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_EB22F0B9"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_6C2F319B"
+          }
+        ],
+        "uploaded_at": "2026-01-12T14:38:01.014910"
+      },
+      "cached_at": "2026-01-12T14:38:01.014933",
+      "expires_at": "2026-01-12T14:48:01.014917"
+    },
+    "38": {
+      "app_id": "APP_2AA36F94_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T14:38:08.689602",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T14:38:08.689664",
+      "expires_at": "2026-01-12T14:48:08.689632"
+    },
+    "39": {
+      "app_id": "APP_E150A1D4",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 4210.06,
+        "monthly_expenses": 1.0,
+        "credit_score": 891,
+        "credit_rating": null,
+        "employment_status": "employed",
+        "company_name": "ROTANA HOTELS",
+        "current_position": "Administrative Officer",
+        "family_size": 1,
+        "total_assets": 5104.0,
+        "total_liabilities": 110725.0,
+        "payment_ratio": null,
+        "total_outstanding": null,
+        "decision": "approved",
+        "eligibility": "ELIGIBLE",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "policy_score": 0.975,
+        "updated_at": "2026-01-12T14:42:32.719382"
+      },
+      "cached_at": "2026-01-12T14:42:32.719394",
+      "expires_at": "2026-01-12T14:52:32.719388"
+    },
+    "40": {
+      "app_id": "APP_E150A1D4_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_6A575F19"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_9A701B80"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_3878E650"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_92548002"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_3E82FEDE"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_F1278E6C"
+          }
+        ],
+        "uploaded_at": "2026-01-12T14:42:21.635774"
+      },
+      "cached_at": "2026-01-12T14:42:21.638631",
+      "expires_at": "2026-01-12T14:52:21.636400"
+    },
+    "41": {
+      "app_id": "APP_E150A1D4_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T14:42:32.716394",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T14:42:32.716694",
+      "expires_at": "2026-01-12T14:52:32.716531"
+    },
+    "42": {
+      "app_id": "APP_C0345D56",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 4210.06,
+        "monthly_expenses": 1.0,
+        "credit_score": 891,
+        "credit_rating": null,
+        "employment_status": "employed",
+        "company_name": "ROTANA HOTELS",
+        "current_position": "Administrative Officer",
+        "family_size": 1,
+        "total_assets": 5104.0,
+        "total_liabilities": 110725.0,
+        "payment_ratio": null,
+        "total_outstanding": null,
+        "decision": "approved",
+        "eligibility": "ELIGIBLE",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "policy_score": 0.975,
+        "updated_at": "2026-01-12T14:45:43.791027"
+      },
+      "cached_at": "2026-01-12T14:45:43.791042",
+      "expires_at": "2026-01-12T14:55:43.791036"
+    },
+    "43": {
+      "app_id": "APP_C0345D56_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_77A6EDA6"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_20A90A45"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_9383D96C"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_3EF2B3B9"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_5E773F9D"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_3B855B3E"
+          }
+        ],
+        "uploaded_at": "2026-01-12T14:45:36.477599"
+      },
+      "cached_at": "2026-01-12T14:45:36.477623",
+      "expires_at": "2026-01-12T14:55:36.477607"
+    },
+    "44": {
+      "app_id": "APP_C0345D56_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T14:45:43.788745",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T14:45:43.788799",
+      "expires_at": "2026-01-12T14:55:43.788778"
+    },
+    "45": {
+      "app_id": "APP_8AD66C93",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 4210.06,
+        "monthly_expenses": 1.0,
+        "credit_score": 891,
+        "credit_rating": null,
+        "employment_status": "employed",
+        "company_name": "ROTANA HOTELS",
+        "current_position": "Administrative Officer",
+        "family_size": 1,
+        "total_assets": 5104.0,
+        "total_liabilities": 110725.0,
+        "payment_ratio": null,
+        "total_outstanding": null,
+        "decision": "approved",
+        "eligibility": "ELIGIBLE",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "policy_score": 0.975,
+        "updated_at": "2026-01-12T14:50:18.203593"
+      },
+      "cached_at": "2026-01-12T14:50:18.203605",
+      "expires_at": "2026-01-12T15:00:18.203599"
+    },
+    "46": {
+      "app_id": "APP_8AD66C93_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_0B1DCD26"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_DF3A58E2"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_FF09D4A1"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_BC8D3325"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_0365BC50"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_7E81C65A"
+          }
+        ],
+        "uploaded_at": "2026-01-12T14:50:12.466572"
+      },
+      "cached_at": "2026-01-12T14:50:12.467814",
+      "expires_at": "2026-01-12T15:00:12.467045"
+    },
+    "47": {
+      "app_id": "APP_8AD66C93_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T14:50:18.200905",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T14:50:18.201047",
+      "expires_at": "2026-01-12T15:00:18.200965"
+    },
+    "48": {
+      "app_id": "APP_2F5724DB",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 4210.06,
+        "monthly_expenses": 1.0,
+        "credit_score": 891,
+        "credit_rating": null,
+        "employment_status": "employed",
+        "company_name": "ROTANA HOTELS",
+        "current_position": null,
+        "family_size": 1,
+        "total_assets": 5104.0,
+        "total_liabilities": 110725.0,
+        "payment_ratio": null,
+        "total_outstanding": null,
+        "decision": "approved",
+        "eligibility": "ELIGIBLE",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "policy_score": 0.975,
+        "updated_at": "2026-01-12T14:56:46.159885"
+      },
+      "cached_at": "2026-01-12T14:56:46.159901",
+      "expires_at": "2026-01-12T15:06:46.159894"
+    },
+    "49": {
+      "app_id": "APP_2F5724DB_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_2EAD5B76"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_540614F3"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_8721014B"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_91A327EE"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_AE31C3CC"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_F727AE0C"
+          }
+        ],
+        "uploaded_at": "2026-01-12T14:56:39.898892"
+      },
+      "cached_at": "2026-01-12T14:56:39.898913",
+      "expires_at": "2026-01-12T15:06:39.898901"
+    },
+    "50": {
+      "app_id": "APP_2F5724DB_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T14:56:46.156898",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T14:56:46.156974",
+      "expires_at": "2026-01-12T15:06:46.156940"
+    },
+    "51": {
+      "app_id": "APP_B6248BE4",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 4210.06,
+        "monthly_expenses": 1.0,
+        "credit_score": 891,
+        "credit_rating": null,
+        "employment_status": "employed",
+        "company_name": "ROTANA HOTELS",
+        "current_position": "Administrative Officer",
+        "family_size": 1,
+        "total_assets": 5104.0,
+        "total_liabilities": 110725.0,
+        "payment_ratio": null,
+        "total_outstanding": null,
+        "decision": "approved",
+        "eligibility": "ELIGIBLE",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "policy_score": 0.975,
+        "updated_at": "2026-01-12T15:05:35.844941"
+      },
+      "cached_at": "2026-01-12T15:05:35.844958",
+      "expires_at": "2026-01-12T15:15:35.844950"
+    },
+    "52": {
+      "app_id": "APP_B6248BE4_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_60B642F3"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_E7154502"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_A6021B5A"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_22353DA2"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_91ABC48F"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_A77A7651"
+          }
+        ],
+        "uploaded_at": "2026-01-12T15:05:27.351577"
+      },
+      "cached_at": "2026-01-12T15:05:27.351594",
+      "expires_at": "2026-01-12T15:15:27.351585"
+    },
+    "53": {
+      "app_id": "APP_B6248BE4_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T15:05:35.842699",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T15:05:35.842756",
+      "expires_at": "2026-01-12T15:15:35.842730"
+    },
+    "54": {
+      "app_id": "APP_72522E84",
+      "context": {
+        "applicant_name": "Ahmed Al Hosani",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 5410.38,
+        "monthly_expenses": 1.0,
+        "credit_score": 0,
+        "credit_rating": null,
+        "employment_status": "employed",
+        "company_name": "EMIRATES NATIONAL OIL COMPANY",
+        "current_position": "Administrative Officer",
+        "family_size": 1,
+        "total_assets": 6559.0,
+        "total_liabilities": 22060.0,
+        "payment_ratio": null,
+        "total_outstanding": null,
+        "decision": "approved",
+        "eligibility": "ELIGIBLE",
+        "eligibility_score": 0.9049999999999999,
+        "support_amount": 500,
+        "policy_score": 0.9049999999999999,
+        "updated_at": "2026-01-12T15:06:31.284460"
+      },
+      "cached_at": "2026-01-12T15:06:31.284478",
+      "expires_at": "2026-01-12T15:16:31.284470"
+    },
+    "55": {
+      "app_id": "APP_72522E84_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_05FC1A0B"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_8A054484"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_ED61439E"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_BA669823"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_2945E908"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_E0D4FE7D"
+          }
+        ],
+        "uploaded_at": "2026-01-12T15:06:22.693650"
+      },
+      "cached_at": "2026-01-12T15:06:22.693674",
+      "expires_at": "2026-01-12T15:16:22.693660"
+    },
+    "56": {
+      "app_id": "APP_72522E84_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.9049999999999999,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T15:06:31.281672",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T15:06:31.281729",
+      "expires_at": "2026-01-12T15:16:31.281703"
+    },
+    "57": {
+      "app_id": "APP_2CE068E6",
+      "context": {
+        "applicant_name": "Mariam Al Qubaisi",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 3740.02,
+        "monthly_expenses": 1.0,
+        "credit_score": 0,
+        "credit_rating": null,
+        "employment_status": "employed",
+        "company_name": null,
+        "current_position": null,
+        "family_size": 1,
+        "total_assets": 2647.0,
+        "total_liabilities": 44638.0,
+        "payment_ratio": null,
+        "total_outstanding": null,
+        "decision": "approved",
+        "eligibility": "ELIGIBLE",
+        "eligibility_score": 0.9686708860759494,
+        "support_amount": 500,
+        "policy_score": 0.9686708860759494,
+        "updated_at": "2026-01-12T15:07:27.091318"
+      },
+      "cached_at": "2026-01-12T15:07:27.091333",
+      "expires_at": "2026-01-12T15:17:27.091326"
+    },
+    "58": {
+      "app_id": "APP_2CE068E6_uploads",
+      "context": {
+        "count": 5,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_ACCCA990"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_F5398680"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_C5F562A7"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_3240FEAB"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_761FE73A"
+          }
+        ],
+        "uploaded_at": "2026-01-12T15:07:16.368817"
+      },
+      "cached_at": "2026-01-12T15:07:16.368836",
+      "expires_at": "2026-01-12T15:17:16.368825"
+    },
+    "59": {
+      "app_id": "APP_2CE068E6_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.9686708860759494,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T15:07:27.088413",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T15:07:27.088462",
+      "expires_at": "2026-01-12T15:17:27.088440"
+    },
+    "60": {
+      "app_id": "APP_F99F3740",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 4210.06,
+        "monthly_expenses": 1.0,
+        "credit_score": 891,
+        "credit_rating": null,
+        "employment_status": "employed",
+        "company_name": "ROTANA HOTELS",
+        "current_position": "Administrative Officer",
+        "family_size": 1,
+        "total_assets": 5104.0,
+        "total_liabilities": 110725.0,
+        "payment_ratio": null,
+        "total_outstanding": null,
+        "decision": "approved",
+        "eligibility": "ELIGIBLE",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "policy_score": 0.975,
+        "updated_at": "2026-01-12T15:12:37.900581"
+      },
+      "cached_at": "2026-01-12T15:12:37.900601",
+      "expires_at": "2026-01-12T15:22:37.900591"
+    },
+    "61": {
+      "app_id": "APP_F99F3740_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_EA807F28"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_F6AFBD84"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_C15026B7"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_8A898338"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_C4F8350A"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_2B3782C4"
+          }
+        ],
+        "uploaded_at": "2026-01-12T15:12:29.352871"
+      },
+      "cached_at": "2026-01-12T15:12:29.352890",
+      "expires_at": "2026-01-12T15:22:29.352879"
+    },
+    "62": {
+      "app_id": "APP_F99F3740_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T15:12:37.897440",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T15:12:37.897499",
+      "expires_at": "2026-01-12T15:22:37.897470"
+    },
+    "63": {
+      "app_id": "APP_6D203FD7",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 4210.06,
+        "monthly_expenses": 1.0,
+        "credit_score": 891,
+        "credit_rating": null,
+        "employment_status": "employed",
+        "company_name": "ROTANA HOTELS",
+        "current_position": "Administrative Officer",
+        "family_size": 1,
+        "total_assets": 5104.0,
+        "total_liabilities": 110725.0,
+        "payment_ratio": null,
+        "total_outstanding": null,
+        "decision": "approved",
+        "eligibility": "ELIGIBLE",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "policy_score": 0.975,
+        "updated_at": "2026-01-12T15:30:58.809640"
+      },
+      "cached_at": "2026-01-12T15:30:58.809655",
+      "expires_at": "2026-01-12T15:40:58.809648"
+    },
+    "64": {
+      "app_id": "APP_6D203FD7_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_D7FA551D"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_2F1902EB"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_DAD31F95"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_D2F81C89"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_44279F0F"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_7CB7A394"
+          }
+        ],
+        "uploaded_at": "2026-01-12T15:30:53.792112"
+      },
+      "cached_at": "2026-01-12T15:30:53.792132",
+      "expires_at": "2026-01-12T15:40:53.792120"
+    },
+    "65": {
+      "app_id": "APP_6D203FD7_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T15:30:58.806245",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T15:30:58.806288",
+      "expires_at": "2026-01-12T15:40:58.806262"
+    },
+    "66": {
+      "app_id": "APP_9DA4FA5D",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 4210.06,
+        "monthly_expenses": 1.0,
+        "credit_score": 891,
+        "credit_rating": null,
+        "employment_status": "employed",
+        "company_name": "ROTANA HOTELS",
+        "current_position": "Administrative Officer",
+        "family_size": 1,
+        "total_assets": 5104.0,
+        "total_liabilities": 110725.0,
+        "payment_ratio": null,
+        "total_outstanding": null,
+        "decision": "approved",
+        "eligibility": "ELIGIBLE",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "policy_score": 0.975,
+        "updated_at": "2026-01-12T15:41:14.458275"
+      },
+      "cached_at": "2026-01-12T15:41:14.458295",
+      "expires_at": "2026-01-12T15:51:14.458285"
+    },
+    "67": {
+      "app_id": "APP_9DA4FA5D_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_EA74518A"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_784878C8"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_4E80459D"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_E4184E57"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_836E5FB9"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_927FB884"
+          }
+        ],
+        "uploaded_at": "2026-01-12T15:41:07.816021"
+      },
+      "cached_at": "2026-01-12T15:41:07.816042",
+      "expires_at": "2026-01-12T15:51:07.816030"
+    },
+    "68": {
+      "app_id": "APP_9DA4FA5D_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T15:41:14.454879",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T15:41:14.454934",
+      "expires_at": "2026-01-12T15:51:14.454903"
+    },
+    "69": {
+      "app_id": "APP_A4D1D562",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 4210.06,
+        "monthly_expenses": 1.0,
+        "credit_score": 891,
+        "credit_rating": null,
+        "employment_status": "employed",
+        "company_name": "ROTANA HOTELS",
+        "current_position": "Administrative Officer",
+        "family_size": 1,
+        "total_assets": 5104.0,
+        "total_liabilities": 110725.0,
+        "payment_ratio": null,
+        "total_outstanding": null,
+        "decision": "approved",
+        "eligibility": "ELIGIBLE",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "policy_score": 0.975,
+        "updated_at": "2026-01-12T15:54:25.512001"
+      },
+      "cached_at": "2026-01-12T15:54:25.512009",
+      "expires_at": "2026-01-12T16:04:25.512005"
+    },
+    "70": {
+      "app_id": "APP_A4D1D562_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_603E03BB"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_41FF0D68"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_B5796E72"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_57F618D9"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_DACFCD0D"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_97C2D319"
+          }
+        ],
+        "uploaded_at": "2026-01-12T15:54:19.418815"
+      },
+      "cached_at": "2026-01-12T15:54:19.418833",
+      "expires_at": "2026-01-12T16:04:19.418822"
+    },
+    "71": {
+      "app_id": "APP_A4D1D562_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T15:54:25.509885",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T15:54:25.509922",
+      "expires_at": "2026-01-12T16:04:25.509905"
+    },
+    "72": {
+      "app_id": "APP_071C7F67",
+      "context": {
+        "applicant_name": "Fatima Al Kaabi",
+        "status": "completed",
+        "created_at": "",
+        "monthly_income": 4210.06,
+        "monthly_expenses": 1.0,
+        "credit_score": 891,
+        "credit_rating": null,
+        "employment_status": "employed",
+        "company_name": "ROTANA HOTELS",
+        "current_position": "Administrative Officer",
+        "family_size": 1,
+        "total_assets": 5104.0,
+        "total_liabilities": 110725.0,
+        "payment_ratio": null,
+        "total_outstanding": null,
+        "decision": "approved",
+        "eligibility": "ELIGIBLE",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "policy_score": 0.975,
+        "updated_at": "2026-01-12T16:02:39.114006"
+      },
+      "cached_at": "2026-01-12T16:02:39.114025",
+      "expires_at": "2026-01-12T16:12:39.114016"
+    },
+    "73": {
+      "app_id": "APP_071C7F67_uploads",
+      "context": {
+        "count": 6,
+        "files": [
+          {
+            "filename": "credit_report.pdf",
+            "document_type": "credit_report",
+            "document_id": "DOC_91F21220"
+          },
+          {
+            "filename": "assets_liabilities.xlsx",
+            "document_type": "assets_liabilities",
+            "document_id": "DOC_1445CFC9"
+          },
+          {
+            "filename": "resume.pdf",
+            "document_type": "resume",
+            "document_id": "DOC_A7C7EE6A"
+          },
+          {
+            "filename": "employment_letter.pdf",
+            "document_type": "employment_letter",
+            "document_id": "DOC_E8E8E3B4"
+          },
+          {
+            "filename": "emirates_id.png",
+            "document_type": "emirates_id",
+            "document_id": "DOC_4D9BBA58"
+          },
+          {
+            "filename": "bank_statement.pdf",
+            "document_type": "bank_statement",
+            "document_id": "DOC_A7FB8972"
+          }
+        ],
+        "uploaded_at": "2026-01-12T16:02:32.491668"
+      },
+      "cached_at": "2026-01-12T16:02:32.492735",
+      "expires_at": "2026-01-12T16:12:32.492351"
+    },
+    "74": {
+      "app_id": "APP_071C7F67_result",
+      "context": {
+        "decision": "approved",
+        "eligibility_score": 0.975,
+        "support_amount": 500,
+        "processed_at": "2026-01-12T16:02:39.110210",
+        "status": "COMPLETED"
+      },
+      "cached_at": "2026-01-12T16:02:39.110256",
+      "expires_at": "2026-01-12T16:12:39.110236"
+    }
+  },
+  "sessions": {
+    "1": {
+      "session_id": "user_12345",
+      "data": {
+        "current_app_id": "APP-000001",
+        "language": "en",
+        "user_id": "user_12345"
+      },
+      "created_at": "2026-01-12T13:31:08.263566",
+      "expires_at": "2026-01-12T19:31:08.263500",
+      "ttl": 21600
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "trace_id": "trace_APP_0F86C511",
+  "application_id": "APP_0F86C511",
+  "applicant_name": "Ahmed Al Hosani",
+  "timestamp": "2026-01-12T16:34:32.096702",
+  "processing_time_seconds": 0.444472,
+  "stages": {
+    "extraction": {
+      "success": true,
+      "has_data": true
+    },
+    "validation": {
+      "success": true,
+      "validation_score": 1.0
+    },
+    "eligibility": {
+      "success": true,
+      "is_eligible": true,
+      "eligibility_score": 0.9049999999999999
+    },
+    "recommendation": {
+      "success": true,
+      "support_amount": 500
+    }
+  },
+  "final_decision": {
+    "is_eligible": true,
+    "support_amount": 500
+  },
+  "errors": []
+}

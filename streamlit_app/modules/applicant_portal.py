@@ -525,10 +525,10 @@ def show_step4_results():
     
     # Decision banner
     recommendation = results.get('recommendation', {})
-    decision = recommendation.get('decision', 'pending')
-    support_amount = recommendation.get('support_amount', 0)
+    decision = recommendation.get('decision', 'pending').lower()  # Convert to lowercase for comparison
+    support_amount = float(recommendation.get('support_amount') or 0)  # Ensure it's a float
     
-    if decision == 'APPROVED':
+    if decision == 'approved':
         st.markdown(f"""
         <div style='background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%); 
                     padding: 2.5rem; border-radius: 12px; text-align: center; margin: 2rem 0; 
@@ -545,7 +545,7 @@ def show_step4_results():
             </p>
         </div>
         """, unsafe_allow_html=True)
-    elif decision == 'SOFT_DECLINED':
+    elif decision == 'soft_declined':
         st.markdown(f"""
         <div style='background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); 
                     padding: 2.5rem; border-radius: 12px; text-align: center; margin: 2rem 0;'>
@@ -643,8 +643,9 @@ def show_results_overview(results, support_amount):
         st.metric("Eligibility Score", f"{score:.0%}", 
                  delta="Qualified" if score >= 0.6 else "Not Qualified")
     with col4:
-        st.metric("Support Amount", f"AED {support_amount:,.0f}",
-                 delta=f"AED {support_amount:,.0f}/month")
+        amount = float(support_amount) if support_amount is not None else 0.0
+        st.metric("Support Amount", f"AED {amount:,.0f}",
+                 delta=f"AED {amount:,.0f}/month")
     
     st.divider()
     
@@ -874,13 +875,14 @@ def show_chatbot(application_id):
                 st.session_state.chat_history = []
                 st.rerun()
     
-    # Chat input
+    # Chat input (key changes with chat history length to clear after submission)
     st.markdown("#### ✏️ Ask Your Question")
     user_query = st.text_area(
         "Type your question here:",
         placeholder="E.g., Why was my income considered low? What programs can help me?",
         height=100,
-        label_visibility="collapsed"
+        label_visibility="collapsed",
+        key=f"user_query_{len(st.session_state.get('chat_history', []))}"
     )
     
     col1, col2, col3 = st.columns([1, 1, 1])

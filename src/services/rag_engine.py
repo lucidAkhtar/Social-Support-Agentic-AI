@@ -160,11 +160,11 @@ class RAGEngine:
         self.ollama_url = ollama_url
         self.ollama_model = ollama_model
         
-        # Response cache (1 hour TTL)
-        self.response_cache = LRUCache(max_size=100, ttl_seconds=3600)
+        # Response cache (10 minutes TTL)
+        self.response_cache = LRUCache(max_size=100, ttl_seconds=600)
         
-        # Context cache (5 minutes TTL for frequently accessed data)
-        self.context_cache = LRUCache(max_size=200, ttl_seconds=300)
+        # Context cache (10 minutes TTL for frequently accessed data)
+        self.context_cache = LRUCache(max_size=200, ttl_seconds=600)
         
         # Performance metrics
         self.metrics = {
@@ -296,9 +296,33 @@ class RAGEngine:
             # 1. SQLite - Application data (PRIMARY SOURCE)
             try:
                 app_result = self.db_manager.query_application(application_id, include_full_context=False)
+                logger.info(f"[{application_id}] DEBUG - app_result from query_application: {app_result}")
                 if app_result:
-                    context['application'] = app_result.get('application', {})
-                    context['decision'] = app_result.get('decision', {})
+                    # app_result structure depends on source (cache vs database)
+                    # From database: {'application': {...}, 'decision': {...}}
+                    # From cache: {'context': {...}, 'decision': {...}} or flat {...}
+                    
+                    if 'application' in app_result:
+                        # Database structure
+                        context['application'] = app_result['application']
+                        context['decision'] = app_result.get('decision', {}) if isinstance(app_result.get('decision'), dict) else {}
+                    elif 'context' in app_result:
+                        # TinyDB cache structure with separate context and decision
+                        context['application'] = app_result['context']
+                        context['decision'] = app_result.get('decision', {}) if isinstance(app_result.get('decision'), dict) else {}
+                    else:
+                        # Flat structure - application fields at root
+                        context['application'] = app_result
+                        # Decision might be string ("approved") or dict - check both
+                        decision_field = app_result.get('decision')
+                        if isinstance(decision_field, dict):
+                            context['decision'] = decision_field
+                        else:
+                            # Decision is string or missing - initialize empty dict
+                            context['decision'] = {}
+                    
+                    logger.info(f"[{application_id}] DEBUG - context['decision'] type: {type(context['decision'])}, keys: {list(context['decision'].keys()) if isinstance(context['decision'], dict) else 'N/A'}")
+                    logger.info(f"[{application_id}] DEBUG - context['application']: {context['application']}")
                     
                     # CRITICAL CHECK: Is application actually processed?
                     app_data = context['application']
@@ -346,21 +370,65 @@ class RAGEngine:
             except Exception as e:
                 logger.warning(f"TinyDB query failed: {e}")
             
-            # 4. NetworkX - Similar cases (if available)
+            # 4. NetworkX - Graph relationships (always query for graph context)
             try:
                 if hasattr(self.db_manager, 'networkx'):
+                    # Get similar applications (income/status similarity)
                     similar = self.db_manager.networkx.get_similar_applications(application_id, limit=3)
                     context['similar_cases'] = similar if similar else []
+                    
+                    # Get decision path (graph traversal)
+                    try:
+                        if hasattr(self.db_manager.networkx, 'trace_decision_path'):
+                            path = self.db_manager.networkx.trace_decision_path(application_id)
+                            context['decision_path'] = path if path else []
+                    except Exception:
+                        pass
+                    
+                    logger.info(f"NetworkX graph queried - found {len(similar)} similar cases")
             except Exception as e:
                 logger.warning(f"NetworkX query failed: {e}")
             
-            # 5. ChromaDB - Semantic search (if available and relevant)
+            # 5. Fetch programs from SQLite decision conditions (JSON array)
             try:
-                if any(keyword in query.lower() for keyword in ['similar', 'like', 'compare', 'other']):
+                decision = context.get('decision', {})
+                logger.info(f"[{application_id}] DEBUG - Fetching programs from decision: {decision}")
+                conditions = decision.get('conditions') if decision else None
+                logger.info(f"[{application_id}] DEBUG - Conditions field: {conditions}")
+                
+                if conditions:
+                    # Parse conditions JSON to get program list
+                    if isinstance(conditions, str):
+                        try:
+                            programs_list = json.loads(conditions)
+                            if programs_list and isinstance(programs_list, list):
+                                context['connected_programs'] = programs_list
+                                logger.info(f"[{application_id}] Fetched {len(programs_list)} programs from decision conditions: {programs_list}")
+                        except json.JSONDecodeError as json_err:
+                            logger.warning(f"[{application_id}] Failed to parse decision conditions as JSON: {conditions}, Error: {json_err}")
+                    elif isinstance(conditions, list):
+                        context['connected_programs'] = conditions
+                        logger.info(f"[{application_id}] Fetched {len(conditions)} programs from decision conditions (already list): {conditions}")
+                else:
+                    logger.warning(f"[{application_id}] No conditions field found in decision. Decision keys: {list(decision.keys()) if decision else 'None'}")
+            except Exception as e:
+                logger.warning(f"[{application_id}] Failed to fetch programs from decision conditions: {e}", exc_info=True)
+            
+            # 6. ChromaDB - Semantic search (if available and relevant)
+            try:
+                # Expanded keywords to trigger semantic search
+                semantic_keywords = ['similar', 'like', 'compare', 'other', 'show', 'find', 
+                                    'who', 'cases', 'examples', 'same', 'related', 'match']
+                logger.info(f"[{application_id}] Checking if query '{query}' triggers semantic search...")
+                if any(keyword in query.lower() for keyword in semantic_keywords):
+                    logger.info(f"[{application_id}] ChromaDB semantic search TRIGGERED for query: {query}")
                     semantic_results = self.db_manager.semantic_search(query, limit=3)
                     context['semantic_matches'] = semantic_results if semantic_results else []
+                    logger.info(f"[{application_id}] ChromaDB returned {len(semantic_results) if semantic_results else 0} results")
+                else:
+                    logger.info(f"[{application_id}] No semantic keywords found in query")
             except Exception as e:
-                logger.warning(f"Semantic search failed: {e}")
+                logger.warning(f"Semantic search failed: {e}", exc_info=True)
             
         except Exception as e:
             logger.error(f"Context retrieval error: {e}", exc_info=True)
@@ -394,8 +462,22 @@ class RAGEngine:
         if context.get('decision'):
             ranked['decision'] = context['decision']
         
-        # Rank other contexts
-        for key in ['validation', 'extraction', 'semantic_matches', 'similar_cases']:
+        # Always include connected programs (no filtering)
+        if context.get('connected_programs'):
+            ranked['connected_programs'] = context['connected_programs']
+            logger.info(f"Including {len(context['connected_programs'])} connected programs from NetworkX")
+        
+        # CRITICAL: Always include similar cases and semantic matches (no filtering)
+        if context.get('similar_cases'):
+            ranked['similar_cases'] = context['similar_cases']
+            logger.info(f"Including {len(context['similar_cases'])} similar_cases from NetworkX")
+        
+        if context.get('semantic_matches'):
+            ranked['semantic_matches'] = context['semantic_matches']
+            logger.info(f"Including {len(context['semantic_matches'])} semantic_matches from ChromaDB")
+        
+        # Rank other contexts (validation, extraction, etc.)
+        for key in ['validation', 'extraction']:
             if context.get(key):
                 score = ContextRanker.score_context(query, context[key])
                 if score > 0.3:  # Threshold: only include if >30% relevant
@@ -456,19 +538,19 @@ Generate a clear, accurate response now:"""
 APPLICATION DETAILS:
 ID: {app.get('app_id', app.get('application_id', 'N/A'))}
 Name: {app.get('applicant_name', 'N/A')}
-Income: {app.get('monthly_income', 0)} AED/month
-Expenses: {app.get('monthly_expenses', 0)} AED/month
+Monthly Income: {app.get('monthly_income', 0)} AED
+Monthly Expenses: {app.get('monthly_expenses', 0)} AED
 Family Size: {app.get('family_size', 0)} members
 Employment: {app.get('employment_status', 'N/A')}
 Company: {app.get('company_name', 'N/A')}
 Position: {app.get('current_position', 'N/A')}
-Monthly Salary: {app.get('monthly_salary', 0)} AED
-Assets: {app.get('total_assets', 0)} AED
-Liabilities: {app.get('total_liabilities', 0)} AED
+Total Assets: {app.get('total_assets', 0)} AED
+Total Liabilities: {app.get('total_liabilities', 0)} AED
 Credit Score: {app.get('credit_score', 0)}
 Credit Rating: {app.get('credit_rating', 'N/A')}
 Payment History: {app.get('payment_ratio', 0)}% on-time
 Outstanding Debt: {app.get('total_outstanding', 0)} AED
+Status: {app.get('status', 'PENDING')}
 Decision: {app.get('decision', app.get('eligibility', 'PENDING'))}
 """
         
@@ -485,39 +567,150 @@ Duration: {app.get('duration_months', dec.get('duration_months', 0))} months
 Reasoning: {app.get('reasoning', dec.get('reasoning', 'Not available'))}
 """
         
+        # Add recommended programs (always include if available, let Mistral decide)
+        programs_summary = ""
+        connected_programs = context.get('connected_programs', [])
+        
+        if connected_programs:
+            programs_summary = f"\nRECOMMENDED PROGRAMS:\n"
+            for program in connected_programs:
+                if isinstance(program, dict):
+                    prog_name = program.get('name', 'N/A')
+                    prog_category = program.get('category', 'N/A')
+                    prog_desc = program.get('description', 'N/A')
+                    programs_summary += f"• {prog_name} ({prog_category}): {prog_desc}\n"
+                else:
+                    programs_summary += f"• {program}\n"
+        
         # Add validation if relevant
         validation_summary = ""
         if context.get('validation') and 'issue' in query.lower():
             validation = context.get('validation', {})
             validation_summary = f"\nVALIDATION STATUS:\n{json.dumps(validation, indent=2)}\n"
         
+        # CRITICAL: Only add similar cases if query explicitly asks for them
+        similar_cases_summary = ""
+        semantic_matches = context.get('semantic_matches', [])
+        similar_cases = context.get('similar_cases', [])
+        
+        # Keywords that indicate user wants similar cases
+        comparison_keywords = ['similar', 'compare', 'other', 'like', 'same', 'examples', 'cases', 'who else']
+        wants_similar = any(keyword in query.lower() for keyword in comparison_keywords)
+        
+        app_id_log = app.get('app_id') or app.get('application_id') or 'UNKNOWN'
+        
+        if wants_similar and (semantic_matches or similar_cases):
+            logger.info(f"[{app_id_log}] Including similar cases (query asked for comparison)")
+            similar_cases_summary = "\nSIMILAR APPLICATIONS:\n"
+            
+            # Add NetworkX similar cases with app IDs
+            if similar_cases:
+                similar_cases_summary += f"NetworkX Graph Analysis (income ±2000 AED, same employment):\n"
+                for sc_id in similar_cases[:5]:
+                    similar_cases_summary += f"• Application {sc_id}\n"
+            
+            # Add ChromaDB semantic matches
+            if semantic_matches:
+                similar_cases_summary += f"\nChromaDB Semantic Search:\n"
+                for match in semantic_matches[:3]:
+                    metadata = match.get('metadata', {})
+                    app_id = metadata.get('app_id', 'N/A')
+                    distance = match.get('distance', 0)
+                    similarity = round((1 - distance) * 100, 1)
+                    
+                    # Extract available metadata fields
+                    name = metadata.get('applicant_name', '')
+                    income = metadata.get('monthly_income', '')
+                    employment = metadata.get('employment_status', '')
+                    eligibility = metadata.get('eligibility', '')
+                    
+                    # Build bullet point
+                    similar_cases_summary += f"• "
+                    if name:
+                        similar_cases_summary += f"{name} ({app_id})"
+                    else:
+                        similar_cases_summary += f"Application {app_id}"
+                    
+                    details = []
+                    if income:
+                        details.append(f"Income={income} AED")
+                    if employment:
+                        details.append(f"Employment={employment}")
+                    if eligibility:
+                        details.append(f"Status={eligibility}")
+                    
+                    if details:
+                        similar_cases_summary += f" - {', '.join(details)}"
+                    
+                    similar_cases_summary += f" ({similarity}% similar)\n"
+        
+        # Add extracted features for explanation queries (first response)
+        extracted_features = ""
+        if query_type == "explanation":
+            extracted_features = f"\nEXTRACTED FEATURES (From Document Analysis):\n"
+            features = [
+                ("Applicant Name", app.get('applicant_name', 'N/A')),
+                ("Monthly Income", f"{app.get('monthly_income', 0)} AED"),
+                ("Employment Status", app.get('employment_status', 'N/A')),
+                ("Company", app.get('company_name', 'N/A')),
+                ("Position", app.get('current_position', 'N/A')),
+                ("Credit Score", app.get('credit_score', 0)),
+                ("Total Assets", f"{app.get('total_assets', 0)} AED"),
+                ("Total Liabilities", f"{app.get('total_liabilities', 0)} AED"),
+                ("Family Size", app.get('family_size', 0)),
+                ("Credit Rating", app.get('credit_rating', 'N/A'))
+            ]
+            for feature_name, feature_value in features:
+                extracted_features += f"• {feature_name}: {feature_value}\n"
+        
         # Get applicant name for personalization
         applicant_name = app.get('applicant_name', 'Applicant')
         
-        # System instruction based on query type
+        # System instruction based on query type - STRICT FACTUAL CONSTRAINTS
         if query_type == "explanation":
-            system_instruction = f"You are an expert social support advisor. The applicant's name is {applicant_name}. Address them by name in your response. Explain decisions clearly using specific data from the application."
+            system_instruction = f"""You are a UAE Social Support case officer providing factual information about {applicant_name}'s application.
+
+CRITICAL RULES:
+1. ONLY use data from the APPLICATION DETAILS and DECISION INFORMATION sections below
+2. DO NOT suggest contacting HR, financial advisors, or external parties
+3. DO NOT make generic recommendations - use ONLY the specific programs listed in RECOMMENDED PROGRAMS
+4. DO NOT mention "insufficient information" - use the data provided
+5. If a field shows 0 or N/A, acknowledge it briefly and move on
+6. Keep responses concise (2-3 paragraphs maximum)"""
         elif query_type == "simulation":
-            system_instruction = f"You are a social support analyst. The applicant's name is {applicant_name}. Analyze hypothetical scenarios based on historical patterns."
+            system_instruction = f"""You are a social support analyst for {applicant_name}. Analyze using ONLY the factual data provided below. No generic advice."""
         else:
-            system_instruction = f"You are a helpful UAE Social Support assistant. The applicant's name is {applicant_name}. Address them by name at least once in your response. Answer questions accurately using the application data provided."
+            system_instruction = f"""You are a UAE Social Support assistant for {applicant_name}.
+
+STRICT RULES:
+1. Answer using ONLY the factual data in the sections below
+2. DO NOT suggest external consultations (HR, advisors, etc.)
+3. For program questions: Use ONLY programs listed in RECOMMENDED PROGRAMS section
+4. For comparison questions: Use ONLY data in SIMILAR APPLICATIONS section
+5. Be direct and factual - no generic advice
+6. Keep answers brief (2-3 paragraphs)"""
         
         prompt = f"""{system_instruction}
 
 {app_summary}
 {decision_summary}
+{extracted_features}
+{programs_summary}
 {validation_summary}
+{similar_cases_summary}
 
 USER QUESTION: {query}
 
-INSTRUCTIONS:
-1. Answer using SPECIFIC data from the application above
-2. Reference exact numbers and facts
-3. Be direct and concise (2-4 paragraphs)
-4. If data is missing, acknowledge it clearly
-5. Maintain a helpful, professional tone
+RESPONSE REQUIREMENTS:
+1. Use ONLY the data provided above - no external suggestions
+2. Be specific - reference actual numbers and program names
+3. If asked about programs: List ONLY programs from RECOMMENDED PROGRAMS section
+4. If asked for comparisons: Use ONLY data from SIMILAR APPLICATIONS section
+5. DO NOT suggest: contacting HR, financial advisors, or any external parties
+6. DO NOT provide: generic advice, hypothetical scenarios, or information not in the data above
+7. Length: 2-3 paragraphs maximum
 
-Your response:"""
+Your factual response:"""
         
         return prompt
     

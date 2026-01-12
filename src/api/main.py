@@ -59,6 +59,7 @@ from src.services.conversation_manager import get_conversation_manager
 # Initialize services
 audit_logger = get_audit_logger()
 structured_logger = get_structured_logger("social_support_api")
+langfuse_logger = get_structured_logger("langfuse_comprehensive")  # Second log file
 conversation_manager = get_conversation_manager()
 
 # Initialize Langfuse for FastAPI endpoint tracing
@@ -136,7 +137,7 @@ async def audit_middleware(request: Request, call_next):
         response = await call_next(request)
         response_time_ms = int((time.time() - start_time) * 1000)
         
-        # Log API access
+        # Log API access to audit log
         audit_logger.log_api_access(
             method=request.method,
             endpoint=request.url.path,
@@ -145,6 +146,15 @@ async def audit_middleware(request: Request, call_next):
             response_time_ms=response_time_ms,
             ip_address=request.client.host,
             user_agent=request.headers.get("user-agent")
+        )
+        
+        # Log to langfuse comprehensive log
+        langfuse_logger.info(
+            f"API Request: {request.method} {request.url.path}",
+            application_id=application_id,
+            status_code=response.status_code,
+            response_time_ms=response_time_ms,
+            endpoint=request.url.path
         )
         
         # Log performance metric
@@ -402,11 +412,35 @@ async def create_application(applicant_name: str = Form(..., example="Ahmed Hass
         active_applications[application_id] = state
         
         logger.info(f"Created application {application_id} for {applicant_name}")
+        structured_logger.info(
+            f"New application created",
+            application_id=application_id,
+            applicant_name=applicant_name,
+            created_at=state.created_at.isoformat()
+        )
+        
+        # Audit logging for governance
+        audit_logger.log_audit_event(
+            event_type="application_create",
+            action="CREATE",
+            application_id=application_id,
+            user_id=applicant_name,
+            resource="application",
+            resource_id=application_id,
+            details={"applicant_name": applicant_name, "status": "PENDING"},
+            status="success"
+        )
+        
+        # Cache application context in TinyDB (6-hour TTL)
+        tinydb_cache.store_app_context(
+            application_id,
+            {"applicant_name": applicant_name, "status": "PENDING", "created_at": state.created_at.isoformat()}
+        )
         
         return ApplicationResponse(
             application_id=application_id,
             status="created",
-            current_stage=state.stage.value,
+            current_stage=state.stage.value if hasattr(state.stage, 'value') else str(state.stage),
             message=f"Application created successfully for {applicant_name}"
         )
     
@@ -505,11 +539,33 @@ async def upload_documents(
                 "document_id": doc.document_id
             })
         
-        # Log action to TinyDB
-        # unified_db.tinydb.store_session(f"{application_id}_upload", 
-        #     {"count": len(documents), "files": uploaded_files})
+        # Cache upload metadata in TinyDB (6-hour TTL)
+        tinydb_cache.store_app_context(
+            f"{application_id}_uploads",
+            {"count": len(documents), "files": uploaded_files, "uploaded_at": datetime.now().isoformat()}
+        )
         
         logger.info(f"Uploaded {len(documents)} documents for {application_id}")
+        structured_logger.info(
+            f"Documents uploaded successfully",
+            application_id=application_id,
+            document_count=len(documents),
+            document_types=[d['document_type'] for d in uploaded_files]
+        )
+        
+        # Audit logging for document uploads
+        audit_logger.log_audit_event(
+            event_type="document_upload",
+            action="UPLOAD",
+            application_id=application_id,
+            resource="documents",
+            details={
+                "document_count": len(documents),
+                "document_types": [d['document_type'] for d in uploaded_files],
+                "filenames": [d['filename'] for d in uploaded_files]
+            },
+            status="success"
+        )
         
         return {
             "application_id": application_id,
@@ -636,6 +692,8 @@ async def process_application(
             logger.info(f"[{application_id}] DEBUG - credit_score value: {credit_data.get('credit_score')}")
             logger.info(f"[{application_id}] DEBUG - employment_data keys: {list(employment_data.keys())}")
             logger.info(f"[{application_id}] DEBUG - company_name value: {employment_data.get('company_name')}")
+            logger.info(f"[{application_id}] DEBUG - final_state['stage'] = {final_state['stage']}")
+            logger.info(f"[{application_id}] DEBUG - final_state['stage'] type = {type(final_state['stage'])}")
             
             # Prepare application data for database
             # CRITICAL: Ensure all NOT NULL fields have valid defaults
@@ -644,7 +702,7 @@ async def process_application(
                 "applicant_name": applicant_info.get("full_name", "Unknown"),
                 "emirates_id": applicant_info.get("id_number", ""),
                 "submission_date": datetime.now().strftime("%Y-%m-%d"),
-                "status": final_state["stage"],
+                "status": final_state["stage"].value if hasattr(final_state["stage"], 'value') else str(final_state["stage"]),
                 "monthly_income": float(income_data.get("monthly_income") or 0),
                 "monthly_expenses": float(income_data.get("monthly_expenses") or 0),
                 "family_size": int(family_info.get("family_size") or 1),
@@ -656,25 +714,26 @@ async def process_application(
                 "ml_prediction": str(final_state["eligibility_result"].ml_prediction) if final_state.get("eligibility_result") else None,
                 "ml_confidence": None,
                 "eligibility": "ELIGIBLE" if (final_state.get("eligibility_result") and final_state["eligibility_result"].is_eligible) else "NOT_ELIGIBLE",
-                "support_amount": float(final_state["recommendation"].financial_support_amount) if final_state.get("recommendation") else 0.0,
+                "support_amount": float(final_state["recommendation"].financial_support_amount or 0) if final_state.get("recommendation") else 0.0,
                 # New fields from enhanced extraction (nullable fields can be None)
                 "company_name": employment_data.get("company_name"),
                 "current_position": employment_data.get("current_position"),
                 "join_date": employment_data.get("join_date"),
                 "credit_rating": credit_data.get("credit_rating"),
                 "credit_accounts": json.dumps(credit_data.get("credit_accounts", [])),
-                "payment_ratio": float(credit_data.get("payment_history", {}).get("payment_ratio")) if (credit_data.get("payment_history") and credit_data.get("payment_history", {}).get("payment_ratio") is not None) else None,
-                "total_outstanding": float(credit_data.get("total_outstanding")) if credit_data.get("total_outstanding") is not None else None,
-                "work_experience_years": int(employment_data.get("experience_years")) if employment_data.get("experience_years") is not None else None,
+                "payment_ratio": float(credit_data.get("payment_history", {}).get("payment_ratio", 0)) if (credit_data.get("payment_history") and credit_data.get("payment_history", {}).get("payment_ratio") is not None) else None,
+                "total_outstanding": float(credit_data.get("total_outstanding", 0)) if credit_data.get("total_outstanding") is not None else None,
+                "work_experience_years": int(employment_data.get("experience_years", 0)) if employment_data.get("experience_years") is not None else None,
                 "education_level": employment_data.get("education_level")
             }
             # DEBUG: Log prepared app_data before DB insert
             logger.info(f"[{application_id}] DEBUG - app_data credit_score: {app_data.get('credit_score')}")
             logger.info(f"[{application_id}] DEBUG - app_data company_name: {app_data.get('company_name')}")
             logger.info(f"[{application_id}] DEBUG - app_data credit_rating: {app_data.get('credit_rating')}")
+            logger.info(f"[{application_id}] DEBUG - app_data status BEFORE save: {app_data.get('status')}")
             # Save to SQLite
             unified_db.sqlite.insert_application(app_data)
-            logger.info(f"Saved application data to SQLite for {application_id}")
+            logger.info(f"Saved application data to SQLite for {application_id} with status: {app_data.get('status')}")
         
         if final_state.get("validation_report"):
             validation_report = final_state["validation_report"]
@@ -699,7 +758,7 @@ async def process_application(
             decision_data = {
                 "decision_id": f"DEC_{application_id}",
                 "app_id": application_id,
-                "decision": recommendation.decision.value,
+                "decision": recommendation.decision.value if hasattr(recommendation.decision, 'value') else str(recommendation.decision),
                 "decision_date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                 "decided_by": "SYSTEM",
                 "policy_score": eligibility.eligibility_score,
@@ -718,7 +777,7 @@ async def process_application(
         if final_state.get("recommendation"):
             recommendation = final_state["recommendation"]
             recommendation_data = {
-                "decision_type": recommendation.decision.value,
+                "decision_type": recommendation.decision.value if hasattr(recommendation.decision, 'value') else str(recommendation.decision),
                 "financial_support_amount": recommendation.financial_support_amount,
                 "financial_support_type": recommendation.financial_support_type,
                 "programs": recommendation.economic_enablement_programs,
@@ -727,7 +786,7 @@ async def process_application(
             # Store recommendation summary in analytics
             unified_db.sqlite.update_analytics(
                 f"{application_id}_recommendation",
-                recommendation.financial_support_amount,
+                float(recommendation.financial_support_amount or 0),
                 recommendation_data
             )
             logger.info(f"Saved recommendation data for {application_id}")
@@ -737,6 +796,163 @@ async def process_application(
         # Update state
         active_applications[application_id] = final_state
         logger.info(f"Application {application_id} processing complete - all data saved to database")
+        
+        # Extract metrics for structured logging
+        recommendation = final_state.get('recommendation')
+        eligibility_result = final_state.get('eligibility_result')
+        
+        # Safely extract decision (handle both enum and string)
+        if recommendation:
+            decision_obj = recommendation.decision
+            decision = decision_obj.value if hasattr(decision_obj, 'value') else str(decision_obj)
+        else:
+            decision = 'unknown'
+        
+        eligibility_score = eligibility_result.eligibility_score if eligibility_result else 0
+        support_amount = recommendation.financial_support_amount if recommendation else 0
+        
+        # Structured logging for observability
+        structured_logger.info(
+            "Application processing completed",
+            application_id=application_id,
+            decision=decision,
+            eligibility_score=eligibility_score,
+            support_amount=support_amount,
+            programs_recommended=len(recommendation.economic_enablement_programs) if recommendation else 0
+        )
+        
+        # Audit logging for compliance
+        audit_logger.log_audit_event(
+            event_type="application_process",
+            action="PROCESS_COMPLETE",
+            application_id=application_id,
+            resource="application",
+            resource_id=application_id,
+            details={
+                "decision": decision,
+                "eligibility_score": eligibility_score,
+                "support_amount": support_amount,
+                "processing_stage": final_state["stage"].value if (final_state.get("stage") and hasattr(final_state["stage"], 'value')) else (str(final_state.get("stage", "unknown")))
+            },
+            status="success"
+        )
+        
+        # Cache final results AND full application data in TinyDB (6-hour TTL)
+        tinydb_cache.store_app_context(
+            f"{application_id}_result",
+            {
+                "decision": decision,
+                "eligibility_score": eligibility_score,
+                "support_amount": support_amount,
+                "processed_at": datetime.now().isoformat(),
+                "status": "COMPLETED"
+            }
+        )
+        
+        # CRITICAL: Update main application cache with completed status and ALL relevant fields
+        tinydb_cache.store_app_context(
+            application_id,
+            {
+                "applicant_name": app_data.get("applicant_name", ""),
+                "status": app_data.get("status", "completed"),
+                "created_at": app_data.get("created_at", ""),
+                "monthly_income": app_data.get("monthly_income", 0),
+                "monthly_expenses": app_data.get("monthly_expenses", 0),
+                "credit_score": app_data.get("credit_score", 0),
+                "credit_rating": app_data.get("credit_rating", "N/A"),
+                "employment_status": app_data.get("employment_status", "Unknown"),
+                "company_name": app_data.get("company_name", ""),
+                "current_position": app_data.get("current_position", ""),
+                "family_size": app_data.get("family_size", 1),
+                "total_assets": app_data.get("total_assets", 0),
+                "total_liabilities": app_data.get("total_liabilities", 0),
+                "payment_ratio": app_data.get("payment_ratio", 0),
+                "total_outstanding": app_data.get("total_outstanding", 0),
+                "decision": decision,
+                "eligibility": app_data.get("eligibility", ""),
+                "eligibility_score": eligibility_score,
+                "support_amount": support_amount,
+                "policy_score": app_data.get("policy_score", 0),
+                "updated_at": datetime.now().isoformat()
+            }
+        )
+        
+        # Add/Update NetworkX graph with application data for similarity matching
+        try:
+            # Check if node exists, update if so, create if not
+            app_node = f"APP_{application_id}"
+            if app_node in networkx_db.graph:
+                # Update existing node
+                networkx_db.graph.nodes[app_node].update({
+                    'status': app_data.get('status', 'completed'),
+                    'monthly_income': app_data.get('monthly_income', 0),
+                    'employment_status': app_data.get('employment_status', 'Unknown'),
+                    'credit_score': app_data.get('credit_score', 0),
+                    'decision': decision,
+                    'eligibility_score': eligibility_score,
+                    'support_amount': support_amount,
+                    'updated_at': datetime.now().isoformat()
+                })
+            else:
+                # Create new application node
+                profile_data = {
+                    'monthly_income': app_data.get('monthly_income', 0),
+                    'employment_status': app_data.get('employment_status', 'Unknown'),
+                    'credit_score': app_data.get('credit_score', 0),
+                    'family_size': app_data.get('family_size', 1),
+                    'id_number': app_data.get('emirates_id', ''),
+                    'decision': decision,
+                    'eligibility_score': eligibility_score,
+                    'support_amount': support_amount
+                }
+                networkx_db.create_application_node(
+                    application_id,
+                    app_data.get('applicant_name', 'Unknown'),
+                    profile_data
+                )
+            
+            # Save updated graph to file
+            import networkx as nx
+            nx.write_graphml(networkx_db.graph, "application_graph.graphml")
+            logger.info(f"Updated NetworkX graph with {application_id}")
+        except Exception as e:
+            logger.warning(f"Failed to update NetworkX graph: {e}")
+        
+        # Index to ChromaDB for semantic search
+        try:
+            # Index application summary
+            summary_data = {
+                'applicant_name': app_data.get('applicant_name', 'Unknown'),
+                'employment_status': app_data.get('employment_status', 'Unknown'),
+                'monthly_income': app_data.get('monthly_income', 0),
+                'family_size': app_data.get('family_size', 1),
+                'policy_score': eligibility_score,
+                'eligibility': app_data.get('eligibility', 'PENDING')
+            }
+            chroma_db.index_application_summary(application_id, summary_data)
+            
+            # Index income pattern
+            income_data = {
+                'monthly_income': app_data.get('monthly_income', 0),
+                'monthly_expenses': app_data.get('monthly_expenses', 0),
+                'employment_status': app_data.get('employment_status', 'Unknown'),
+                'credit_score': app_data.get('credit_score', 0),
+                'net_worth': app_data.get('total_assets', 0) - app_data.get('total_liabilities', 0)
+            }
+            chroma_db.index_income_pattern(application_id, income_data)
+            
+            # Index case decision
+            decision_data = {
+                'decision_type': decision,
+                'eligibility_score': eligibility_score,
+                'support_amount': support_amount,
+                'reasoning': f"Policy score: {eligibility_score}, Programs: {len(recommendation_data.get('programs', []))}"
+            }
+            chroma_db.index_case_decision(application_id, decision_data)
+            
+            logger.info(f"Indexed {application_id} to ChromaDB (3 collections)")
+        except Exception as e:
+            logger.warning(f"Failed to index to ChromaDB: {e}")
         
         # Prepare response
         progress = 100 if final_state["stage"] == ProcessingStage.COMPLETED else 50
@@ -750,7 +966,7 @@ async def process_application(
                 "extracted_data": final_state.get("extracted_data") is not None,
                 "validation_valid": final_state["validation_report"].is_valid if final_state.get("validation_report") else False,
                 "eligibility_score": final_state["eligibility_result"].eligibility_score if final_state.get("eligibility_result") else 0,
-                "decision": final_state["recommendation"].decision.value if final_state.get("recommendation") else "PENDING"
+                "decision": (final_state["recommendation"].decision.value if hasattr(final_state["recommendation"].decision, 'value') else str(final_state["recommendation"].decision)) if final_state.get("recommendation") else "PENDING"
             }
         )
         
@@ -770,7 +986,9 @@ async def process_application(
         return response_data
     
     except Exception as e:
-        logger.error(f"Error processing application: {e}")
+        import traceback
+        error_trace = traceback.format_exc()
+        logger.error(f"Error processing application: {e}\n{error_trace}")
         request_span.end(output={"success": False, "error": str(e)}, level="ERROR")
         langfuse_client.flush()
         raise HTTPException(status_code=500, detail=str(e))
@@ -1032,7 +1250,7 @@ async def get_application_results(
                 "reasoning": eligibility_result.reasoning
             } if eligibility_result else None,
             "recommendation": {
-                "decision": recommendation.decision.value,
+                "decision": recommendation.decision.value if hasattr(recommendation.decision, 'value') else str(recommendation.decision),
                 "support_amount": recommendation.financial_support_amount,
                 "support_type": recommendation.financial_support_type,
                 "programs": recommendation.economic_enablement_programs,

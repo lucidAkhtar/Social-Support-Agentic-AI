@@ -1,0 +1,31 @@
+{
+  "trace_id": "trace_APP_6D203FD7",
+  "application_id": "APP_6D203FD7",
+  "applicant_name": "Fatima Al Kaabi",
+  "timestamp": "2026-01-12T15:30:58.797360",
+  "processing_time_seconds": 0.4376,
+  "stages": {
+    "extraction": {
+      "success": true,
+      "has_data": true
+    },
+    "validation": {
+      "success": true,
+      "validation_score": 1.0
+    },
+    "eligibility": {
+      "success": true,
+      "is_eligible": true,
+      "eligibility_score": 0.975
+    },
+    "recommendation": {
+      "success": true,
+      "support_amount": 500
+    }
+  },
+  "final_decision": {
+    "is_eligible": true,
+    "support_amount": 500
+  },
+  "errors": []
+}

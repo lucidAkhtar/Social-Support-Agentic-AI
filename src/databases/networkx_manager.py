@@ -294,15 +294,36 @@ class NetworkXManager:
         """Find similar applications based on graph structure"""
         app_node = f"APP_{application_id}"
         
-        if app_node not in self.graph:
-            return []
+        # Get application profile - either from graph or database
+        if app_node in self.graph:
+            app_data = self.graph.nodes[app_node]
+            target_income = app_data.get('monthly_income', 0)
+            target_status = app_data.get('employment_status', '')
+        else:
+            # Application not in graph yet - fetch from database for comparison
+            try:
+                import sqlite3
+                conn = sqlite3.connect('data/databases/applications.db')
+                conn.row_factory = sqlite3.Row
+                cursor = conn.cursor()
+                cursor.execute("""
+                    SELECT monthly_income, employment_status 
+                    FROM applications 
+                    WHERE app_id = ?
+                """, (application_id,))
+                row = cursor.fetchone()
+                conn.close()
+                
+                if not row:
+                    return []
+                
+                target_income = float(row['monthly_income']) if row['monthly_income'] else 0
+                target_status = row['employment_status'] or ''
+            except Exception as e:
+                logger.warning(f"Failed to get application data from database: {e}")
+                return []
         
-        # Get application profile
-        app_data = self.graph.nodes[app_node]
-        target_income = app_data.get('monthly_income', 0)
-        target_status = app_data.get('employment_status', '')
-        
-        # Find similar applications
+        # Find similar applications in graph
         similar_apps = []
         for node, data in self.graph.nodes(data=True):
             if data.get('node_type') == 'application' and node != app_node:

@@ -1,0 +1,31 @@
+{
+  "trace_id": "trace_APP_A806DC7D",
+  "application_id": "APP_A806DC7D",
+  "applicant_name": "Noor Al Maktoum",
+  "timestamp": "2026-01-12T13:38:03.723692",
+  "processing_time_seconds": 0.448419,
+  "stages": {
+    "extraction": {
+      "success": true,
+      "has_data": true
+    },
+    "validation": {
+      "success": true,
+      "validation_score": 1.0
+    },
+    "eligibility": {
+      "success": true,
+      "is_eligible": false,
+      "eligibility_score": 0.16499999999999998
+    },
+    "recommendation": {
+      "success": true,
+      "support_amount": null
+    }
+  },
+  "final_decision": {
+    "is_eligible": false,
+    "support_amount": null
+  },
+  "errors": []
+}

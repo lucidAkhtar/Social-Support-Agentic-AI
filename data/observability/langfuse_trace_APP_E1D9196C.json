@@ -1,0 +1,31 @@
+{
+  "trace_id": "trace_APP_E1D9196C",
+  "application_id": "APP_E1D9196C",
+  "applicant_name": "Mariam Al Qubaisi",
+  "timestamp": "2026-01-12T02:24:50.901357",
+  "processing_time_seconds": 0.47665,
+  "stages": {
+    "extraction": {
+      "success": true,
+      "has_data": true
+    },
+    "validation": {
+      "success": true,
+      "validation_score": 0.9367088607594937
+    },
+    "eligibility": {
+      "success": true,
+      "is_eligible": true,
+      "eligibility_score": 0.9686708860759494
+    },
+    "recommendation": {
+      "success": true,
+      "support_amount": 500
+    }
+  },
+  "final_decision": {
+    "is_eligible": true,
+    "support_amount": 500
+  },
+  "errors": []
+}
